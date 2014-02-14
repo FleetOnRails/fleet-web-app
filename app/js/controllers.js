@@ -1,11 +1,18 @@
-'use strict';
 
-/* Controllers */
+var myApp = angular.module('myApp',[]);
 
-angular.module('myApp.controllers', []).
-  controller('MyCtrl1', [function() {
+myApp.factory('Data',function(){
+    return {message:"Service Data"}
+})
 
-  }])
-  .controller('MyCtrl2', [function() {
+function FirstCtrl($scope, Data){
+    $scope.data = Data;
+}
 
-  }]);
+function SecondCtrl($scope, Data){
+    $scope.data = Data;
+
+    $scope.reversedMassage = function(){
+        return $scope.data.message.split("").reverse().join("");
+    }
+}
