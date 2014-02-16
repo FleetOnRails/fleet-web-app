@@ -6,10 +6,3 @@ angular.module('fleetonrails.filters', [])
 
     })
 
-    .filter('SecondFilter', function () {
-
-    })
-
-    .filter('ThirdFilter', function() {
-
-    })

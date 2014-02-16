@@ -2,22 +2,33 @@
 <html ng-app="fleetonrails">
 <head>
     <meta charset="utf-8">
-    <title>Fleet on Rails</title>
+    <title>FleetOnRails</title>
 
     <!-- REQUIRED THIRD PARTY LIBRARY JAVASCRIPT AND CSS -->
-    <link rel="stylesheet" href="lib/bootstrap-3.1.1-dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"/>
     <script src="lib/angular/angular.min.js"></script>
     <script src="lib/angular/angular-route.min.js"></script>
 
-    <!-- APPLICATION SPECIFIC CSS AND JAVASCRIPT -->
+    <!-- APPLICATION CSS AND JAVASCRIPT -->
     <link rel="stylesheet" href="css/app.css"/>
     <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/controllers/controllers.js"></script>
-    <script type="text/javascript" src="js/filters/filters.js"></script>
-    <script type="text/javascript" src="js/directives/directives.js"></script>
+
+    <!-- APPLICATION CONTROLLERS -->
+    <script type="text/javascript" src="js/controllers/login-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/second-controller.js"></script>
+
+    <!-- APPLICATION FILTERS -->
+    <script type="text/javascript" src="js/filters/my-filter.js"></script>
+
+    <!-- APPLICATION DIRECTIVES -->
+    <script type="text/javascript" src="js/directives/my-directive.js"></script>
+
+    <!-- APPLICATION SERVICES -->
+    <script type="text/javascript" src="js/services/version-service.js"></script>
 </head>
 
 <body>
     <div ng-view></div>
 </body>
+
 </html>
