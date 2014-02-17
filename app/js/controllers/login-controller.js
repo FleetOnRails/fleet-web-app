@@ -4,7 +4,6 @@ angular.module('fleetonrails.controllers.login-controller', [])
 
     .controller('LoginCtrl', ['$scope', '$http', function ($scope, $http) {
         $scope.login = function() {
-            //delete $httpProvider.defaults.headers.common['X-Requested-With'];
             var params = {
                 'grant_type': 'password',
                 'client_id': '2abe8af97a1e45ee655b5f19d9fb4977990374c2a2895b4aaa6a9d80aa7edeeb',
