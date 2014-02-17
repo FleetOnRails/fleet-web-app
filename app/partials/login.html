@@ -10,7 +10,7 @@
             <a class="navbar-brand" href="#">Fleet On Rails</a>
         </div>
         <div ng-controller="LoginCtrl" class="navbar-collapse collapse">
-            <form ng-submit="submit()" class="navbar-form navbar-right" role="form">
+            <form ng-submit="login()" class="navbar-form navbar-right" role="form">
                 <div class="form-group">
                     <input ng-model="user.email" type="text" placeholder="Email" class="form-control">
                 </div>
@@ -42,7 +42,18 @@
 
             <p>To be finished</p>
 
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+            <div ng-controller="SecondCtrl">
+                <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Learn More >> </button>
+                <hr>
+                <div collapse="isCollapsed">
+                    <div class="well well-lg">
+                        <div class="glyphicon-arrow-up">
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -54,5 +65,6 @@
 </div>
 
 <script type="text/javascript" src="../js/controllers/login-controller.js"></script>
+<script type="text/javascript" src="../js/controllers/second-controller.js"></script>
 <script type="text/javascript" src="../js/filters/my-filter.js"></script>
 <script type="text/javascript" src="../js/directives/my-directive.js"></script>
