@@ -1,6 +1,4 @@
-'use strict';
-
-angular.module('fleetonrails', ['ngRoute','ui.bootstrap' ,'fleetonrails.controllers', 'fleetonrails.filters', 'fleetonrails.directives']).
+angular.module('fleetonrails', ['ngRoute', 'ui.bootstrap' , 'fleetonrails.services', 'fleetonrails.controllers']).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
             when('/', {templateUrl: 'partials/login.html'}).
