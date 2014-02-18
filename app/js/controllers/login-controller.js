@@ -10,6 +10,6 @@ angular.module('fleetonrails.controllers.login-controller', [])
                     console.log("refresh_token", localStorage.getItem("refresh_token"));
                 }).error(function (data, status) {
                     console.log('fail', data, status)
-                });;
+                });
         }
     }]);
