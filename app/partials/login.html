@@ -42,6 +42,17 @@
 
             <p>To be finished</p>
 
+            <div ng-controller="ToggleCtrl">
+                <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Learn More >> </button>
+                <hr>
+                <div collapse="isCollapsed">
+                    <div class="well well-lg">
+                        <div class="glyphicon-arrow-up">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -51,3 +62,4 @@
         <p>&copy; FleetOnRails 2014</p>
     </footer>
 </div>
+
