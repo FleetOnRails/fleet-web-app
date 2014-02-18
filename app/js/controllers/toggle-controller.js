@@ -6,6 +6,4 @@ angular.module('fleetonrails.controllers.toggle-controller', [])
         $scope.isCollapsed = true;
 
     }])
-/**
- * Created by krystian on 18/02/2014.
- */
+
