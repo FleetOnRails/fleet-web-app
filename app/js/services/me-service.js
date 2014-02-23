@@ -9,7 +9,8 @@ angular.module('fleetonrails.services.me-service', [])
                     params: {
                         access_token: localStorage.getItem('access_token')
                     }
-                }).success(function(user) {
+                }).success(function(user){
+                    console.log('sucess', user);
                     success(user);
                     }).error(function(data) {
                         console.log(data);
