@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header ">
@@ -13,11 +13,12 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">{{user.me.first_name}}</a></li>
+                <li><a href="#"> {{user.me.first_name}}</a></li>
                 <li><a href="#">Link</a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li><a href="#">Action</a></li>
                         <li><a href="#">Another action</a></li>
@@ -29,7 +30,30 @@
                     </ul>
                 </li>
             </ul>
-            <button type="button" ng-click="logout()" class="btn btn-default navbar-btn navbar-right">Log out</button>
+            <button type="button" ng-click="logout()" class="btn btn-primary navbar-btn navbar-right">Log out</button>
         </div><!-- /.navbar-collapse -->
+        <div id="wrapper">
+
+            <!-- Sidebar -->
+            <div id="sidebar-wrapper">
+                <ul class="sidebar-nav">
+                    <li class="sidebar-brand"><a href="#">Fleet on Rails</a>
+                    </li>
+                    <li><a href="#">Dashboard</a>
+                    </li>
+                    <li><a href="#">Driver Profile</a>
+                    </li>
+                    <li><a href="#">GPS Tracking</a>
+                    </li>
+                    <li><a href="#">Events</a>
+                    </li>
+                    <li><a href="#">About</a>
+                    </li>
+                    <li><a href="#">Services</a>
+                    </li>
+                    <li><a href="#">Contact</a>
+                    </li>
+                </ul>
+            </div>
     </div><!-- /.container-fluid -->
 </nav>
