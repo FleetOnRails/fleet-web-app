@@ -1,27 +1,6 @@
 <style>
-    .margin_top_50 {
-        margin-top: 50px;
-    }
-
-    .margin_top_10 {
-        margin-top: 10px;
-    }
-
-    .padding_top_30 {
-        padding-top: 30px;
-    }
-
-    .margin_25_bottom {
-        margin-bottom: 25px;
-    }
-
-    .register {
-        border-top: 1px solid #888;
-        padding-top: 15px;
-        font-size: 85%
-    }
     html {
-        background: url(img/Hybrid-Electric-Vehicles-for-Fleet-Markets1.jpg) no-repeat center center fixed;
+        background: url(img/Unknown) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -44,46 +23,131 @@
         margin: 40px 0;
     }
 
+    .login-wrapper {
+        position: absolute;
+        top: 90px;
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
+    .login-wrapper .logo {
+        margin-bottom: 45px;
+        position: relative;
+        left: -2px;
+    }
+    .login-wrapper .box {
+        margin: 0 auto;
+        padding: 35px 0 30px;
+        float: none;
+        width: 400px;
+        box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.65);
+    }
+    .login-wrapper .box .content-wrap {
+        width: 82%;
+        margin: 0 auto;
+    }
+    .login-wrapper .box h6 {
+        text-transform: uppercase;
+        margin: 0 0 30px 0;
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .login-wrapper .box input[type="text"],
+    .login-wrapper .box input[type="password"] {
+        font-size: 15px;
+        height: 40px;
+        margin-bottom: 18px;
+        border-color: #b2bfc7;
+        padding-left: 12px;
+    }
+    .login-wrapper .box input[type="password"] {
+        margin-bottom: 10px;
+    }
 
+    .login-wrapper .box a.forgot {
+        display: block;
+        text-align: right;
+        font-style: italic;
+        text-decoration: underline;
+        color: #3d88ba;
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+    .login-wrapper .box .remember {
+        display: block;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+    .login-wrapper .box .remember input[type="checkbox"] {
+        float: left;
+        margin-right: 8px;
+    }
+    .login-wrapper .box .remember label {
+        float: left;
+        color: #4a576a;
+        font-size: 13px;
+        font-weight: 600;
+    }
+    .login-wrapper .box .login {
+        text-transform: uppercase;
+        font-size: 13px;
+        padding: 8px 30px;
+    }
+    .login-wrapper .no-account {
+        margin: 0 auto;
+        float: none;
+        text-align: center;
+        font-size: 14px;
+        margin-top: 25px;
+    }
+    .login-wrapper .no-account p {
+        display: inline-block;
+        color: #aaaaaa;
+    }
+
+    .login-wrapper .no-account a:hover {
+        text-decoration: none;
+        color: #fff;
+        border-bottom-color: #fff;
+    }
+
+    /* responsive */
+    @media (max-width: 767px) {
+        .login-wrapper .box {
+            width: 350px;
+        }
+    }
+    @media (max-width: 480px) {
+        .login-wrapper .box {
+            width: 90%;
+        }
+    }
 
 </style>
-
-<div class="container">
-    <div class="margin_top_50 col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-        <div class="panel panel-info">
-
-            <div class="panel-heading">
-                <div class="panel-title">Sign In</div>
-            </div>
-
-            <div class=" padding_top_30 panel-body" ng-controller="loginController">
-                <form class="form-horizontal" role="form" ng-submit="login()">
-                    <div class="margin_25_bottom input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="login-username" type="text" class="form-control" name="username"
-                               placeholder="username or email" ng-model="user.email">
-                    </div>
-
-                    <div class="margin_25_bottom input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="login-password" type="password" class="form-control" name="password"
-                               placeholder="password" ng-model="user.password">
-                    </div>
-
-                    <div class="margin_top_10 form-group">
-                        <div class="col-sm-12">
-                            <button type="submit" class="btn btn-primary">Login </button>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="register col-md-12 control">
-                            Don't have an account?
-                            <a href="#">Register Here</a>
-                        </div>
-                    </div>
-                </form>
-            </div>
+<div ng-controller="loginController" class="login-wrapper">
+    <div class="box">
+        <div class="content-wrap" ng-controller="loginController">
+            <form ng-submit="login()">
+                <h6>Fleet on Rails</h6>
+                <h6>Log in</h6>
+                <input id="login-username" type="text" class="form-control" name="username"
+                       placeholder="username or email" ng-model="user.email">
+                <input id="login-password" type="password" class="form-control" name="password"
+                       placeholder="password" ng-model="user.password">
+                <a href="#" class="forgot">Forgot password?</a>
+                <div class="remember">
+                    <input id="remember-me" type="checkbox">
+                    <label for="remember-me">Remember me</label>
+                </div>
+                <button type="submit" class="btn btn-primary ">Sign in</button>
+            </form>
         </div>
+    </div>
+
+    <div class="no-account">
+        <p>Don't have an account?</p>
+        <a href="signup.html">Sign up</a>
     </div>
 </div>
