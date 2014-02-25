@@ -17,12 +17,11 @@ angular.module('fleetonrails.services.me-service', [])
                     })
             },
             change: function(attributes, success) {
+                attributes.access_token = localStorage.getItem('access_token');
                 $http({
                     method: 'PUT',
                     url: globalSettings.api_base_url + '/v1/me',
-                    params: {
-                        access_token: localStorage.getItem('access_token')
-                    }
+                    params: attributes
                 }).success(function(user) {
                         success(user);
                     }).error(function(data) {

@@ -9,4 +9,16 @@ angular.module('fleetonrails.controllers.main-controller', [])
             loginService.logout();
             $location.path('/');
         }
+
+        $scope.changeProfile = function() {
+            var attributes = {};
+            angular.forEach($scope.user.me, function(value, key) {
+                console.log(key + ' : ' + value);
+                attributes[key] = value;
+            });
+            console.log(attributes);
+            MeService.change(attributes, function(user) {
+                console.log(user);
+            })
+        };
     }]);

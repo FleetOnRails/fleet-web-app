@@ -16,10 +16,10 @@
         <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 
             <ul class="nav navbar-nav">
-                <li><a href="#"> {{user.me.first_name}}</a></li>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Driver Profile</a></li>
-                <li><a href="#">GPS Tracking</a></li>
+                <li><a href=""> {{user.me.first_name}}</a></li>
+                <li><a href="">Dashboard</a></li>
+                <li><a href="">Driver Profile</a></li>
+                <li><a href="">GPS Tracking</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -50,54 +50,42 @@
             </div>
 
             <!-- edit form column -->
-            <div class="col-md-7 personal-info">
+            <div class="col-md-7">
                 <h5 class="personal-title">Personal info:</h5>
 
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
                         <label class="col-lg-2 control-label">First name:</label>
                         <div class="col-lg-8">
-                            <input class="form-control" type="text" value="Alejandra" />
+                            <input class="form-control" type="text" ng-model=" user.me.first_name" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-2 control-label">Last name:</label>
                         <div class="col-lg-8">
-                            <input class="form-control" type="text" value="Galvan" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Company:</label>
-                        <div class="col-lg-8">
-                            <input class="form-control" type="text" value="Design Co." />
+                            <input class="form-control" type="text" ng-model="user.me.last_name" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-2 control-label">Email:</label>
                         <div class="col-lg-8">
-                            <input class="form-control" type="text" value="alejandra@design.com" />
+                            <input class="form-control" type="text" ng-model="user.me.email" />
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-lg-2 control-label">Username:</label>
                         <div class="col-lg-8">
-                            <input class="form-control" type="text" value="alegalvan" />
+                            <input class="form-control" type="text" ng-model="user.me.username" />
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-lg-2 control-label">Password:</label>
+                        <label class="col-lg-2 control-label">Phone Number:</label>
                         <div class="col-lg-8">
-                            <input class="form-control" type="password" value="blablablabla" />
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Confirm password:</label>
-                        <div class="col-lg-8">
-                            <input class="form-control" type="password" value="blablablabla" />
+                            <input class="form-control" type="password" ng-model="user.me.phone_no" />
                         </div>
                     </div>
                     <div class="actions">
-                        <input type="button" class="btn btn-primary" value="Save Changes">
+                        <input type="button" class="btn btn-primary" value="Save Changes" ng-click="changeProfile()">
                         <span>OR</span>
                         <input type="reset" value="Cancel" class="btn btn-primary">
                     </div>
