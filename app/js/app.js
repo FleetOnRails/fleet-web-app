@@ -4,5 +4,6 @@ angular.module('fleetonrails', ['ngRoute', 'ui.bootstrap' , 'fleetonrails.servic
         $routeProvider.
             when('/', {templateUrl: 'partials/login.html'}).
             when('/main', {templateUrl: 'partials/main.html', controller: 'MainCtrl'}).
+            when('/profile',{templateUrl:'partials/profile.html', controller: 'MainCtrl'}).
             otherwise({redirectTo: '/'});
     }]);

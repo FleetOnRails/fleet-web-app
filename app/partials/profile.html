@@ -1,0 +1,108 @@
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header ">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Fleet on Rails</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+
+            <ul class="nav navbar-nav">
+                <li><a href="#"> {{user.me.first_name}}</a></li>
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Driver Profile</a></li>
+                <li><a href="#">GPS Tracking</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Profile</a></li>
+                        <li><a href="#">Settings</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Help</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">About</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <button type="button" ng-click="logout()" class="btn btn-primary navbar-btn navbar-right">Log out</button>
+        </div><!-- /.navbar-collapse -->
+    </div>
+</nav>
+<div class="content wide-content">
+    <div class="settings-wrapper" id="pad-wrapper">
+        <div class="row">
+            <!-- avatar column -->
+            <div class="col-md-3 col-md-offset-1 avatar-box">
+                <div class="personal-image">
+                    <img src="img/personal-info.png" class="avatar img-circle" alt="avatar" />
+                    <p>Upload a different photo...</p>
+
+                    <input type="file" />
+                </div>
+            </div>
+
+            <!-- edit form column -->
+            <div class="col-md-7 personal-info">
+                <h5 class="personal-title">Personal info:</h5>
+
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">First name:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" value="Alejandra" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Last name:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" value="Galvan" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Company:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" value="Design Co." />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Email:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" value="alejandra@design.com" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Username:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="text" value="alegalvan" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Password:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="password" value="blablablabla" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-lg-2 control-label">Confirm password:</label>
+                        <div class="col-lg-8">
+                            <input class="form-control" type="password" value="blablablabla" />
+                        </div>
+                    </div>
+                    <div class="actions">
+                        <input type="button" class="btn btn-primary" value="Save Changes">
+                        <span>OR</span>
+                        <input type="reset" value="Cancel" class="btn btn-primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
