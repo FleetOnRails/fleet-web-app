@@ -18,7 +18,7 @@
                 <li><a href="#/profile"> {{user.me.first_name}}</a></li>
                 <li><a href="#/main">Dashboard</a></li>
                 <li><a href="#/main">Driver Profile</a></li>
-                <li><a href="#/GPS">GPS Tracking</a></li>
+                <li><a href="#/main">GPS Tracking</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -33,4 +33,6 @@
             </ul>
             <button type="button" ng-click="logout()" class="btn btn-primary navbar-btn navbar-right">Log out</button>
         </div><!-- /.navbar-collapse -->
+    </div>>
 </nav>
+<google-map center="map.center" zoom="map.zoom"></google-map>
