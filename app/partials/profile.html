@@ -9,26 +9,26 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Fleet on Rails</a>
+            <a class="navbar-brand" href="#/main">Fleet on Rails</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 
             <ul class="nav navbar-nav">
-                <li><a href=""> {{user.me.first_name}}</a></li>
-                <li><a href="">Dashboard</a></li>
-                <li><a href="">Driver Profile</a></li>
-                <li><a href="">GPS Tracking</a></li>
+                <li><a href="#/profile"> {{user.me.first_name}}</a></li>
+                <li><a href="#/main">Dashboard</a></li>
+                <li><a href="#/main">Driver Profile</a></li>
+                <li><a href="#/main">GPS Tracking</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Profile</a></li>
-                        <li><a href="#">Settings</a></li>
+                        <li><a href="#/main">Profile</a></li>
+                        <li><a href="#/main">Settings</a></li>
+                        <li class="#/main"></li>
+                        <li><a href="#/main">Help</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Help</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">About</a></li>
+                        <li><a href="#/main">About</a></li>
                     </ul>
                 </li>
             </ul>
@@ -42,7 +42,7 @@
             <!-- avatar column -->
             <div class="col-md-3 col-md-offset-1 avatar-box">
                 <div class="personal-image">
-                    <img src="img/personal-info.png" class="avatar img-circle" alt="avatar" />
+                    <img src="" class="avatar img-circle" alt="avatar" />
                     <p>Upload a different photo...</p>
 
                     <input type="file" />
@@ -84,7 +84,7 @@
                             <input class="form-control" type="password" ng-model="user.me.phone_no" />
                         </div>
                     </div>
-                    <div class="actions move-rigth">
+                    <div class="actions pull-right">
                         <input type="button" class="btn btn-primary " value="Save Changes" ng-click="changeProfile()">
                         <span>OR</span>
                         <input type="reset" value="Cancel" class="btn btn-primary">
