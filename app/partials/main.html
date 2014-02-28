@@ -15,12 +15,12 @@
         <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
 
             <ul class="nav navbar-nav">
-                <li><a href="#/profile"> {{user.me.first_name}}</a></li>
-                <li><a href="#/main">Dashboard</a></li>
-                <li><a href="#/main">Driver Profile</a></li>
-                <li><a href="#/gps">GPS Tracking</a></li>
+                <li><a href="#/main"><i class="fa fa-dashboard fa-lg"></i></a></li>
+                <li><a href="#/main"><i class="fa fa-male fa-lg"></i></a></li>
+                <li><a href="#/gps"><i class="fa fa-globe fa-lg"></i></a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
+
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-wrench fa-lg"></i></a>
                     <ul class="dropdown-menu">
                         <li><a href="#/profile">Profile</a></li>
                         <li><a href="#">Settings</a></li>
@@ -33,4 +33,21 @@
             </ul>
             <button type="button" ng-click="logout()" class="btn btn-primary navbar-btn navbar-right">Log out</button>
         </div><!-- /.navbar-collapse -->
+    </div>
 </nav>
+<div class="container">
+    <h1>Current cars:</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Table heading</th>
+            <th>Table heading</th>
+            <th>Table heading</th>
+            <th>Table heading</th>
+            <th>Table heading</th>
+            <th>Table heading</th>
+        </tr>
+        </thead>
+    </table>
+</div>
