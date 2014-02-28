@@ -5,6 +5,6 @@ angular.module('fleetonrails', ['ngRoute', 'ui.bootstrap' , 'fleetonrails.servic
             when('/', {templateUrl: 'partials/login.html'}).
             when('/main', {templateUrl: 'partials/main.html', controller: 'MainCtrl'}).
             when('/profile',{templateUrl:'partials/profile.html', controller: 'MainCtrl'}).
-            when('/GPS',{templateUrl:'partials/GPS.html', controller: 'MainCtrl'}).
+            when('/gps',{templateUrl:'partials/gps.html', controller: 'MainCtrl'}).
             otherwise({redirectTo: '/'});
     }]);

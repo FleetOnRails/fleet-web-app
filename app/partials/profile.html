@@ -1,9 +1,9 @@
-
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header ">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <button type="button" class="navbar-toggle" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -19,7 +19,7 @@
                 <li><a href="#/profile"> {{user.me.first_name}}</a></li>
                 <li><a href="#/main">Dashboard</a></li>
                 <li><a href="#/main">Driver Profile</a></li>
-                <li><a href="#/main">GPS Tracking</a></li>
+                <li><a href="#/gps">GPS Tracking</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">Settings <b class="caret"></b></a>
                     <ul class="dropdown-menu">
@@ -33,63 +33,72 @@
                 </li>
             </ul>
             <button type="button" ng-click="logout()" class="btn btn-primary navbar-btn navbar-right">Log out</button>
-        </div><!-- /.navbar-collapse -->
+        </div>
+        <!-- /.navbar-collapse -->
     </div>
 </nav>
-<div class="content wide-content">
-    <div class="settings-wrapper" id="pad-wrapper">
-        <div class="row">
-            <!-- avatar column -->
-            <div class="col-md-3 col-md-offset-1 avatar-box">
-                <div class="personal-image">
-                    <img src="" class="avatar img-circle" alt="avatar" />
-                    <p>Upload a different photo...</p>
+<div class="container">
+    <div class="">
+        <div class="">
+            <div class="row">
+                <!-- avatar column -->
+                <div class="col-md-3 col-md-offset-1">
+                    <div class="personal-image">
+                        <img src="" class="avatar img-circle" alt="avatar"/>
 
-                    <input type="file" />
+                        <p>Upload a different photo...</p>
+
+                        <input type="file"/>
+                    </div>
                 </div>
-            </div>
 
-            <!-- edit form column -->
-            <div class="col-md-7 mycontent-left"  >
-                <h5 class="personal-title">Personal info:</h5>
+                <!-- edit form column -->
+                <div class="col-md-7 mycontent-left">
+                    <h5>Personal info:</h5>
 
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">First name:</label>
-                        <div class="col-lg-8">
-                            <input class="form-control" type="text" ng-model=" user.me.first_name" />
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">First name:</label>
+
+                            <div class="col-lg-8">
+                                <input class="form-control" type="text" ng-model=" user.me.first_name"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Last name:</label>
-                        <div class="col-lg-8">
-                            <input class="form-control" type="text" ng-model="user.me.last_name" />
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Last name:</label>
+
+                            <div class="col-lg-8">
+                                <input class="form-control" type="text" ng-model="user.me.last_name"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Email:</label>
-                        <div class="col-lg-8">
-                            <input class="form-control" type="text" ng-model="user.me.email" />
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Email:</label>
+
+                            <div class="col-lg-8">
+                                <input class="form-control" type="text" ng-model="user.me.email"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Username:</label>
-                        <div class="col-lg-8">
-                            <input class="form-control" type="text" ng-model="user.me.username" />
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Username:</label>
+
+                            <div class="col-lg-8">
+                                <input class="form-control" type="text" ng-model="user.me.username"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Phone Number:</label>
-                        <div class="col-lg-8">
-                            <input class="form-control" type="password" ng-model="user.me.phone_no" />
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">Phone Number:</label>
+
+                            <div class="col-lg-8">
+                                <input class="form-control" type="text" ng-model="user.me.phone_no"/>
+                            </div>
                         </div>
-                    </div>
-                    <div class="actions pull-right">
-                        <input type="button" class="btn btn-primary " value="Save Changes" ng-click="changeProfile()">
-                        <span>OR</span>
-                        <input type="reset" value="Cancel" class="btn btn-primary">
-                    </div>
-                </form>
+                        <div class="pull-right">
+                            <input type="button" class="btn btn-primary " value="Save Changes"
+                                   ng-click="changeProfile()">
+                            <input type="reset" value="Cancel" class="btn btn-primary">
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>

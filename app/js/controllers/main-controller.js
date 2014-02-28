@@ -24,8 +24,8 @@ angular.module('fleetonrails.controllers.main-controller', [])
 
         $scope.map = {
             center: {
-                latitude: 45,
-                longitude: -73
+                latitude: 53.34991410000001,
+                longitude: -6.260663699999999
             },
             zoom: 8
         };
