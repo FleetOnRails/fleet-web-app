@@ -55,11 +55,11 @@
         font-weight: 600;
     }
     .login-wrapper .box input[type="text"],
+    .login-wrapper .box input[type="email"],
     .login-wrapper .box input[type="password"] {
         font-size: 15px;
         height: 40px;
         margin-bottom: 18px;
-        border-color: #b2bfc7;
         padding-left: 12px;
     }
     .login-wrapper .box input[type="password"] {
@@ -125,6 +125,24 @@
         }
     }
 
+    form[novalidate] input{
+        border-left-width:8px ;
+        border-color: #3498db;
+        border-style: solid;
+    }
+
+    input[required].ng-pristine{
+        border-color: #e74c3c;
+    }
+
+    input.ng-invalid.ng-dirty{
+        border-color: #e74c3c;
+    }
+
+    input.ng-valid.ng-dirty{
+        border-color: #2ecc71;
+    }
+
 </style>
 <div class="login-wrapper">
     <div class="box">
@@ -132,16 +150,19 @@
             <form ng-submit="registerUser()" name="form" novalidate>
                 <h6>Fleet on Rails</h6>
                 <h6>Create Account</h6>
-                <input  type="text" class="form-control" name="Name"
-                       placeholder="First Name" ng-model="user.name">
-                <input  type="text" class="form-control" name="Surname"
-                       placeholder="Second Name" ng-model="user.surname">
-                <input  type="text" class="form-control" name="email"
-                        placeholder="Email Address" ng-model="user.email">
-                <input  type="text" class="form-control" name="username"
-                        placeholder="Username" ng-model="user.username">
+                <input  type="text" class="form-control" name="Name" placeholder="First Name" ng-model="user.name" required>
 
-                <button type="submit" class="btn btn-primary ">Create</button>
+                <input  type="text" class="form-control" name="Surname" placeholder="Second Name" ng-model="user.surname" required>
+
+                <input  type="text" class="form-control" name="username" placeholder="Username" ng-model="user.username" required>
+
+                <input  type="password" class="form-control" name="password" placeholder="Password" ng-model="user.password" required ng-minlength="6">
+
+                <input  type="email" class="form-control"  placeholder="Email Address" ng-model="user.email" required>
+
+                <p class="help-block" ng-show="form.password.$error.minlength || form.password.$invalid">Password must be at least 6 characters.</p>
+
+                <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
             </form>
         </div>
     </div>
