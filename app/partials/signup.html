@@ -126,28 +126,23 @@
     }
 
 </style>
-<div ng-controller="loginController" class="login-wrapper">
+<div class="login-wrapper">
     <div class="box">
-        <div class="content-wrap" ng-controller="loginController">
-            <form ng-submit="login()">
+        <div class="content-wrap">
+            <form ng-submit="registerUser()" name="form" novalidate>
                 <h6>Fleet on Rails</h6>
-                <h6>Log in</h6>
-                <input id="login-username" type="text" class="form-control" name="username"
-                       placeholder="username or email" ng-model="user.email">
-                <input id="login-password" type="password" class="form-control" name="password"
-                       placeholder="password" ng-model="user.password">
-                <a href="#" class="forgot">Forgot password?</a>
-                <div class="remember">
-                    <input id="remember-me" type="checkbox">
-                    <label for="remember-me">Remember me</label>
-                </div>
-                <button type="submit" class="btn btn-primary ">Sign in</button>
+                <h6>Create Account</h6>
+                <input  type="text" class="form-control" name="Name"
+                       placeholder="First Name" ng-model="user.name">
+                <input  type="text" class="form-control" name="Surname"
+                       placeholder="Second Name" ng-model="user.surname">
+                <input  type="text" class="form-control" name="email"
+                        placeholder="Email Address" ng-model="user.email">
+                <input  type="text" class="form-control" name="username"
+                        placeholder="Username" ng-model="user.username">
+
+                <button type="submit" class="btn btn-primary ">Create</button>
             </form>
         </div>
-    </div>
-
-    <div class="no-account">
-        <p>Don't have an account?</p>
-        <a href="#/signup">Sign up</a>
     </div>
 </div>
