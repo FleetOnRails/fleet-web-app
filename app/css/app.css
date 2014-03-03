@@ -28,4 +28,26 @@ body {
     font-family: "Open Sans",serif;
 }
 
-.angular-google-map-container { height: 400px; }
+.angular-google-map-container {
+    height: 400px;
+}
+.navbar-custom {
+    background-color: #dadada;
+    color:#ffffff;
+    border-radius:0;
+}
+
+.navbar-custom .navbar-nav > li > a {
+    color: #525252;
+}
+.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+    color: #ffffff;
+    background-color:transparent;
+}
+.navbar-custom .navbar-brand {
+    color:#eeeeee;
+}
+
+.navbar-inverse{
+    margin-bottom: 0px;
+}
