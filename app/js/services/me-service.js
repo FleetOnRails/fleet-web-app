@@ -6,8 +6,10 @@ angular.module('fleetonrails.services.me-service', [])
                 $http({
                     method: 'GET',
                     url: globalSettings.api_base_url + '/v1/me',
-                    params: {
-                        access_token: localStorage.getItem('access_token')
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
                     }
                 }).success(function(user){
                     console.log('sucess', user);
@@ -21,7 +23,12 @@ angular.module('fleetonrails.services.me-service', [])
                 $http({
                     method: 'PUT',
                     url: globalSettings.api_base_url + '/v1/me',
-                    params: attributes
+                    params: attributes,
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
                 }).success(function(user) {
                         success(user);
                     }).error(function(data) {
