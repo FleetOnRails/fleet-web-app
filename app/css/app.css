@@ -57,7 +57,7 @@ body {
     color: #ecf0f1;
 }
 .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-    color: #ffbbbc;
+    color: #a0a0a0;
 }
 .navbar-default .navbar-text {
     color: #ecf0f1;
@@ -66,21 +66,21 @@ body {
     color: #ecf0f1;
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-    color: #ffbbbc;
+    color: #a0a0a0;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
-    color: #ffbbbc;
-    background-color: #c0392b;
+    color: #a0a0a0;
+    background-color: #525252;
 }
 .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
-    color: #ffbbbc;
-    background-color: #c0392b;
+    color: #a0a0a0;
+    background-color: #525252;
 }
 .navbar-default .navbar-toggle {
-    border-color: #c0392b;
+    border-color: #525252;
 }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
-    background-color: #c0392b;
+    background-color: #a0a0a0;
 }
 .navbar-default .navbar-toggle .icon-bar {
     background-color: #ecf0f1;
@@ -101,10 +101,26 @@ body {
         color: #ecf0f1;
     }
     .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-        color: #ffbbbc;
+        color: #a0a0a0;
     }
     .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-        color: #ffbbbc;
-        background-color: #c0392b;
+        color: #a0a0a0;
+        background-color: #525252;
     }
+}
+
+.ul-custom {
+    display: -moz-box;
+    display: -webkit-box;
+    display: box;
+}
+
+.li-custom {
+    -moz-box-flex: 1;
+    -webkit-box-flex: 1;
+    box-flex: 1;
+
+    padding: 20px;
+    margin: 5px;
+    border: 1px solid rgb(200, 200, 255);
 }
