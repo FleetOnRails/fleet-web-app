@@ -1,5 +1,5 @@
 angular.module('fleetonrails', ['ngRoute', 'ui.bootstrap' , 'fleetonrails.services',
-        'fleetonrails.controllers', 'fleetonrails.factories','google-maps']).
+        'fleetonrails.controllers', 'fleetonrails.factories', 'fleetonrails.directives','google-maps']).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
             when('/', {templateUrl: 'partials/login.html'}).
