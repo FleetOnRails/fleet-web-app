@@ -113,6 +113,7 @@ body {
 .navbar-custom {
     background-color: #efefef;
     color:#000000;
+    min-height: 40px;
 }
 
 /*.navbar-custom .navbar-nav > li > a {*/
@@ -135,7 +136,11 @@ body {
     /*text-align: left;*/
 /*}*/
 
-.navbar .navbar-nav a {
+.navbar .nav a {
     color: #525252;
+}
+
+.navbar .nav a:hover {
+    background: #ffffff;
 }
 
