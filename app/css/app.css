@@ -31,22 +31,7 @@ body {
 .angular-google-map-container {
     height: 400px;
 }
-.navbar-custom {
-    background-color: #f6f6f6;
-    color:#ffffff;
-    border-radius:0;
-}
 
-.navbar-custom .navbar-nav > li > a {
-    color: #525252;
-}
-.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
-    color: #ffffff;
-    background-color:transparent;
-}
-.navbar-custom .navbar-brand {
-    color:#eeeeee;
-}
 
 
 .navbar-default {
@@ -124,3 +109,33 @@ body {
     margin: 5px;
     border: 1px solid rgb(200, 200, 255);
 }
+
+.navbar-custom {
+    background-color: #efefef;
+    color:#000000;
+}
+
+/*.navbar-custom .navbar-nav > li > a {*/
+    /*color: #525252;*/
+    /*float:none;*/
+    /*display:inline-block;*/
+    /*vertical-align: top;*/
+/*}*/
+/*.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {*/
+    /*color: #ffffff;*/
+    /*background-color:transparent;*/
+    /*display:inline-block;*/
+    /*vertical-align: top;*/
+/*}*/
+/*.navbar-custom .navbar-brand {*/
+    /*color:#eeeeee;*/
+/*}*/
+
+/*.navbar-custom .navbar-inner{*/
+    /*text-align: left;*/
+/*}*/
+
+.navbar .navbar-nav a {
+    color: #525252;
+}
+
