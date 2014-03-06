@@ -18,6 +18,7 @@ angular.module('fleetonrails.services.me-service', [])
                         console.log(data);
                     })
             },
+
             change: function(attributes, success) {
                 attributes.access_token = localStorage.getItem('access_token');
                 $http({

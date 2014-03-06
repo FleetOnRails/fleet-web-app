@@ -12,7 +12,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
         $scope.logout = function() {
             loginService.logout();
             $location.path('/');
-        }
+        };
 
         $scope.changeProfile = function() {
             var attributes = {};
@@ -24,6 +24,20 @@ angular.module('fleetonrails.controllers.main-controller', [])
             console.log(attributes);
             MeService.change(attributes, function(user) {
                 console.log(user);
+            })
+        };
+
+        $scope.addCar = function() {
+            console.log("Inside addCarr function 1");
+            var attributes = {};
+            angular.forEach($scope.car, function(value, key) {
+                console.log(key + ' : ' + value);
+                attributes[key] = value;
+                console.log("Inside addCarr function");
+            });
+            console.log(attributes);
+            CarsService.create(attributes, function(car) {
+                console.log(car);
             })
         };
 
