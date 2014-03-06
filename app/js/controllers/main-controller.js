@@ -1,8 +1,12 @@
 angular.module('fleetonrails.controllers.main-controller', [])
 
-    .controller('MainCtrl', [ '$scope', 'MeService', '$location', 'loginService', function($scope, MeService, $location, loginService) {
+    .controller('MainCtrl', [ '$scope', 'MeService','CarsService', '$location', 'loginService', function($scope, MeService,CarsService,$location, loginService) {
         MeService.get(function(user) {
             $scope.user = user;
+        });
+
+        CarsService.get(function(cars){
+            $scope.cars=cars;
         });
 
         $scope.logout = function() {
