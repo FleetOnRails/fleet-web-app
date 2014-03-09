@@ -1,18 +1,9 @@
 angular.module('fleetonrails.controllers.main-controller', [])
 
-    .controller('MainCtrl', [ '$scope', 'MeService', 'CarsService', '$location', 'loginService', function ($scope, MeService, CarsService, $location, loginService) {
-        $scope.cars = [];
+    .controller('MainCtrl', [ '$scope', 'MeService', '$location', 'loginService', function ($scope, MeService, $location, loginService) {
 
         MeService.get(function (user) {
             $scope.user = user;
-        });
-
-        CarsService.get(function (data) {
-            angular.forEach(data, function (cars, index) {
-                angular.forEach(cars, function(value, index) {
-                    $scope.cars.push(value.car)
-                })
-            });
         });
 
         $scope.logout = function () {
