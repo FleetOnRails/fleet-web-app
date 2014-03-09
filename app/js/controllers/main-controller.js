@@ -24,19 +24,6 @@ angular.module('fleetonrails.controllers.main-controller', [])
             })
         };
 
-        $scope.addCar = function () {
-            var attributes = {
-                car: {
-                    make: $scope.car.make,
-                    model: $scope.car.model,
-                    registration: $scope.car.registration
-                }
-            };
-            console.log(attributes);
-            CarsService.create(attributes, function (car) {
-                console.log(car);
-            })
-        };
 
         $scope.map = {
             center: {
