@@ -11,7 +11,9 @@
 </nav>
 <div class="container col-md-8 col-md-offset-1">
     <ul>
-        <li>{{cars[1].car.make}}</li>
+        <li ng-repeat="car in cars">
+            {{car.make}}, {{car.model}}
+        </li>
     </ul>
 </div>
 <div class="panel panel-default col-md-2 col-md-offset-1">
@@ -24,10 +26,10 @@
             <th>Reg. Num</th>
         </tr>
         </thead>
-        <tr ng-repeat="object in $scope.cars">
-            <td>
-                {{car.make}}
-            </td>
+        <tr ng-repeat="car in cars">
+            <td> {{car.make}} </td>
+            <td> {{car.model}} </td>
+            <td> {{car.registration}} </td>
         </tr>
     </table>
 </div>
