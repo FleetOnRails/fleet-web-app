@@ -7,6 +7,8 @@ angular.module('fleetonrails.controllers.main-controller', [])
 
         CarsService.get(function (cars) {
             $scope.cars = cars;
+            console.log("Before putting cars in the log");
+            console.log(cars);
         });
 
         $scope.logout = function () {

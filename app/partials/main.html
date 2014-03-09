@@ -10,16 +10,9 @@
     </div>
 </nav>
 <div class="container col-md-8 col-md-offset-1">
-    <h1>Current cars:</h1>
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Make</th>
-            <th>Model</th>
-            <th>Reg. Num</th>
-        </tr>
-        </thead>
-    </table>
+    <ul>
+        <li>{{cars[1].car.make}}</li>
+    </ul>
 </div>
 <div class="panel panel-default col-md-2 col-md-offset-1">
     <div class="panel-heading"><a href="#/cars">Cars</a></div>
@@ -31,6 +24,11 @@
             <th>Reg. Num</th>
         </tr>
         </thead>
+        <tr ng-repeat="object in $scope.cars">
+            <td>
+                {{car.make}}
+            </td>
+        </tr>
     </table>
 </div>
 
