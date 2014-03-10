@@ -7,7 +7,7 @@ angular.module('fleetonrails', ['ngRoute', 'ui.bootstrap' , 'fleetonrails.servic
             when('/main', {templateUrl: 'partials/main.html', controller: 'MainCtrl'}).
             when('/profile',{templateUrl:'partials/profile.html', controller: 'MainCtrl'}).
             when('/gps',{templateUrl:'partials/gps.html', controller: 'MainCtrl'}).
-            when('/cars',{templateUrl:'partials/cars.html',controller:'carController'}).
-            when('/cars/:id',{templateUrl:'partials/cars.html',controller:'carController'}).
+            when('/car',{templateUrl:'partials/car.html',controller:'carController'}).
+            when('/car/:id',{templateUrl:'partials/car.html',controller:'carController'}).
             otherwise({redirectTo: '/'});
     }]);
