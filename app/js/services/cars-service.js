@@ -22,6 +22,23 @@ angular.module('fleetonrails.services.cars-service', [])
                     })
             },
 
+            show: function (id, success) {
+                $http({
+                    method: 'GET',
+                    url: globalSettings.api_base_url + '/v1/cars/' + id,
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                }).success(function (car) {
+                        console.log('success', car);
+                        success(car);
+                    }).error(function (data) {
+                        console.log(data);
+                    })
+            },
+
             create: function (attributes, success) {
                 $http({
                     method: 'POST',
@@ -39,10 +56,11 @@ angular.module('fleetonrails.services.cars-service', [])
                     })
             },
 
-            change: function(attributes,succes){
+            change: function(id, attributes,succes){
+                console.log(globalSettings.api_base_url);
                 $http({
                     method: 'PUT',
-                    url: globalSettings.api_base_url + 'v1/cars:id',
+                    url: globalSettings.api_base_url + '/v1/cars/' + id,
                     headers:{
                         'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
                         'Content-Type': 'application/json',
@@ -52,6 +70,24 @@ angular.module('fleetonrails.services.cars-service', [])
                 }).success(function(cars){
                     succes(cars);
                 })
+                    .error(function(cars){
+                        console.log(cars);
+                    })
+            },
+            delete: function(id, attributes,succes){
+                console.log(globalSettings.api_base_url);
+                $http({
+                    method: 'DELETE',
+                    url: globalSettings.api_base_url + '/v1/cars/' + id,
+                    headers:{
+                        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+
+                }).success(function(cars){
+                        succes(cars);
+                    })
                     .error(function(cars){
                         console.log(cars);
                     })

@@ -147,5 +147,8 @@ body {
 .custom-border{
     border: 10px;
 }
+.custom-panel{
+    padding: 0px;
+}
 
 

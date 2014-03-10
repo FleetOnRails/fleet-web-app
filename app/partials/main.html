@@ -16,7 +16,7 @@
         </li>
     </ul>
 </div>
-<div class="panel panel-default col-md-2" ng-controller="carController">
+<div class="panel panel-default col-md-2 custom-panel" ng-controller="carController">
     <div class="panel-heading"><a href="#/cars">Cars <i class="fa fa-plus pull-right"></i></a></div>
     <table class="table">
         <thead>
@@ -27,7 +27,7 @@
         </tr>
         </thead>
         <tr ng-repeat="car in cars">
-            <td> <a href="#/cars">{{car.make}} </a></td>
+            <td> <a href="#/cars/{{car.id}}">{{car.make}} </a></td>
             <td> {{car.model}} </td>
             <td> {{car.registration}} </td>
         </tr>
