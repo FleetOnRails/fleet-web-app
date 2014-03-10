@@ -37,6 +37,24 @@ angular.module('fleetonrails.services.cars-service', [])
                     }).error(function (data) {
                         console.log(data);
                     })
+            },
+
+            change: function(attributes,succes){
+                $http({
+                    method: 'PUT',
+                    url: globalSettings.api_base_url + 'v1/cars:id',
+                    headers:{
+                        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+
+                }).success(function(cars){
+                    succes(cars);
+                })
+                    .error(function(cars){
+                        console.log(cars);
+                    })
             }
         }
     }]);
