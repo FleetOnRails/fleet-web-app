@@ -61,6 +61,7 @@ angular.module('fleetonrails.services.cars-service', [])
                 $http({
                     method: 'PUT',
                     url: globalSettings.api_base_url + '/v1/cars/' + id,
+                    data: attributes,
                     headers:{
                         'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
                         'Content-Type': 'application/json',

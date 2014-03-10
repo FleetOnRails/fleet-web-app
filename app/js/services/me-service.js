@@ -19,12 +19,12 @@ angular.module('fleetonrails.services.me-service', [])
                     })
             },
 
-            change: function(attributes, success) {
-                attributes.access_token = localStorage.getItem('access_token');
+            change: function(data, success) {
+                data.access_token = localStorage.getItem('access_token');
                 $http({
                     method: 'PUT',
                     url: globalSettings.api_base_url + '/v1/me',
-                    params: attributes,
+                    data: data,
                     headers: {
                         'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
                         'Content-Type': 'application/json',
