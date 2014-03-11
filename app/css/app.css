@@ -155,4 +155,33 @@ body {
     margin-top: 5px;
 }
 
+.custom-enter,
+.custom-leave,
+.custom-move {
+    -webkit-transition: 1s linear all;
+    -moz-transition: 1s linear all;
+    -o-transition: 1s linear all;
+    transition: 1s linear all;
+    position:relative;
+}
 
+.animation.ng-enter,
+.animation.ng-leave{
+    -webkit-transition: 1s;
+}
+
+.animation.ng-enter {
+    opacity: 0;
+}
+
+.animation.ng-leave {
+    opacity: 1;
+}
+
+.animation.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+
+.animation.ng-leave.ng-leave-active {
+    opacity: 0;
+}

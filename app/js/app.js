@@ -1,4 +1,4 @@
-angular.module('fleetonrails', ['ngRoute', 'ui.bootstrap' , 'fleetonrails.services',
+angular.module('fleetonrails', ['ngRoute','ngAnimate', 'ui.bootstrap' , 'fleetonrails.services',
         'fleetonrails.controllers', 'fleetonrails.factories', 'fleetonrails.directives','google-maps']).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
@@ -8,6 +8,8 @@ angular.module('fleetonrails', ['ngRoute', 'ui.bootstrap' , 'fleetonrails.servic
             when('/profile',{templateUrl:'partials/profile.html', controller: 'MainCtrl'}).
             when('/gps',{templateUrl:'partials/gps.html', controller: 'MainCtrl'}).
             when('/car',{templateUrl:'partials/car.html',controller:'carController'}).
+            when('/addcar',{templateUrl:'partials/addcar.html',controller:'carController'}).
+            when('/deletecar/:id',{templateUrl:'partials/deletecar.html',controller:'carController'}).
             when('/car/:id',{templateUrl:'partials/car.html',controller:'carController'}).
             otherwise({redirectTo: '/'});
     }]);

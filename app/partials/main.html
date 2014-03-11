@@ -9,27 +9,35 @@
         </ul>
     </div>
 </nav>
-<div class="container col-md-8 " ng-controller="carController">
-    <ul>
-        <li ng-repeat="car in cars">
-            {{car.make}}, {{car.model}}
-        </li>
-    </ul>
+<div class=" col-md-8" ng-controller="carController">
+    <form class="form-search">
+        <div class="input-append">
+            <input type="text" ng-model="search" class="search-query" style="width: 80px">
+            <button type="submit" class="btn">Search</button>
+        </div>
+        <ul class="nav nav-pills nav-stacked">
+            <li ng-repeat="car in cars | filter:search" class="animation">
+                <a href="#/car/{{car.id}}"> {{car.make}} </a>
+            </li>
+        </ul>
+    </form>
 </div>
 <div class="panel panel-default col-md-3 custom-panel" ng-controller="carController">
-    <div class="panel-heading"><input placeholder="Filter Cars" ng-model="searchText"><a href="#/car"><i class="fa fa-plus pull-right custom-icon-pos" tooltip-placement="bottom" tooltip="Add Car"></i></a></div>
+    <div class="panel-heading"><input placeholder="Filter Cars" ng-model="searchText"><a href="#/addcar"><i class="fa fa-plus pull-right custom-icon-pos" tooltip-placement="bottom" tooltip="Add Car"></i></a></div>
     <table class="table">
         <thead>
         <tr>
             <th>Make</th>
             <th>Model</th>
             <th>Reg. Num</th>
+            <th></th>
         </tr>
         </thead>
         <tr ng-repeat="car in cars | filter:searchText">
             <td> <a href="#/car/{{car.id}}">{{car.make}} </a></td>
             <td> {{car.model}} </td>
             <td> {{car.registration}} </td>
+            <td><a href="#/deletecar/{{car.id}}"><i class="fa fa-trash-o pull-right"></i></a></td>
         </tr>
     </table>
 </div>
