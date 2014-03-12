@@ -79,7 +79,7 @@ angular.module('fleetonrails.services.cars-service', [])
                 console.log(globalSettings.api_base_url);
                 $http({
                     method: 'DELETE',
-                    url: globalSettings.api_base_url + '/v1/cars/' + id,
+                    url: globalSettings.api_base_url + '/v1/cars/' + attributes,
                     headers:{
                         'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
                         'Content-Type': 'application/json',
@@ -88,6 +88,7 @@ angular.module('fleetonrails.services.cars-service', [])
 
                 }).success(function(cars){
                         succes(cars);
+
                     })
                     .error(function(cars){
                         console.log(cars);

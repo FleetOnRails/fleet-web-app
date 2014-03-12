@@ -47,17 +47,12 @@ angular.module('fleetonrails.controllers.car-controller', [])
             })
         };
 
-        $scope.deleteCar = function(){
-            var attributes = {
-                car :{
-                    make:$scope.car.make,
-                    model:$scope.car.model,
-                    registration: $scope.car.registration
-                }
-            };
+        $scope.deleteCar = function(id){
+            var attributes = id
 
             CarsService.delete($routeParams.id, attributes,function(car){
                 console.log(car);
+                $scope.cars.splice($scope.cars.indexOf(id),1);
             })
         };
 
