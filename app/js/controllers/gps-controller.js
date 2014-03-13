@@ -1,12 +1,27 @@
 angular.module('fleetonrails.controllers.gps-controller', [])
 
-    .controller('gpsController', ['$scope', 'GpsService', '$location', '$routeParams', function ($scope, GpsService, $location, $routeParams) {
-        $scope.cars = [];
+    .controller('gpsController', ['$scope', 'GpsService', 'CarsService', '$location', '$routeParams', function ($scope, GpsService, CarsService, $location, $routeParams) {
+//        var my_car_ids = [];
+//        var my_locations = [];
+//
+//        $scope.getCars = function () {
+//            CarsService.get(function (data) {
+//                angular.forEach(data, function (cars, index) {
+//                    angular.forEach(cars, function (value, index) {
+//                        my_car_ids.push(value.car)
+//                    })
+//                });
+//            });
+//        };
+//
+//        console.log(my_cars);
+//
+//        angular.forEach(my_car_ids, function (id, index) {
+//            GpsService.get(function () {
+//                my_locations.push()
+//            })
+//        })
 
-
-        GpsService.get(function(){
-
-        })
 
         $scope.map = {
             center: {
