@@ -11,13 +11,13 @@
 </nav>
 <div class="container">
     <div class="panel panel-default col-md-3 custom-panel">
-        <div class="panel-heading">Panel heading without title</div>
+        <div class="panel-heading">Services Reminders</div>
         <div class="panel-body">
             Panel content
         </div>
     </div>
     <div class="panel panel-default col-md-3 custom-panel col-md-offset-1">
-        <div class="panel-heading">Panel heading without title</div>
+        <div class="panel-heading">Fuel Statistics</div>
         <div class="panel-body">
             Panel content
         </div>
@@ -38,20 +38,27 @@
                 <td> <a href="#/car/{{car.id}}">{{car.make}} </a></td>
                 <td> {{car.model}} </td>
                 <td> {{car.registration}} </td>
-                <td><i class="fa fa-trash-o pull-right" ng-click="deleteCar(car.id)"></i></td>
+                <td class="dropdown">
+
+                    <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/car/{{car.id}}"><i class="fa fa-pencil"> Edit</i></a></li>
+                        <li><a><i class="fa fa-trash-o" ng-click="deleteCar(car.id)"> Delete</i></a></li>
+                    </ul>
+                </td>
             </tr>
         </table>
     </div>
 </div>
 <div class="container">
     <div class="panel panel-default col-md-3 custom-panel">
-        <div class="panel-heading">Panel heading without title</div>
+        <div class="panel-heading">Faults</div>
         <div class="panel-body">
             Panel content
         </div>
     </div>
     <div class="panel panel-default col-md-3 custom-panel col-md-offset-1">
-        <div class="panel-heading">Panel heading without title</div>
+        <div class="panel-heading">Service Cost</div>
         <div class="panel-body">
             Panel content
         </div>

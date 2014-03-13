@@ -1,8 +1,48 @@
 <navbar></navbar>
 <div class="container">
-    <google-map center="map.center" zoom="map.zoom">
-        <marker coords='{"latitude":53.34991410000001,"longitude":-6.260663699999999}'>
-        </marker>
-        <marker coords='{"latitude":54.34991410000001,"longitude":-6.260663699999999}'></marker>
-    </google-map>
+    <div class="panel panel-default col-md-8 custom-panel">
+        <div class="panel-heading">GPS Tracking</div>
+        <div class="panel-body">
+            <google-map center="map.center" zoom="map.zoom">
+                <marker coords='{"latitude":53.34991410000001,"longitude":-6.260663699999999}'>
+                </marker>
+                <marker coords='{"latitude":54.34991410000001,"longitude":-6.260663699999999}'></marker>
+            </google-map>
+        </div>
+    </div>
+    <div class="panel panel-default col-md-3 custom-panel col-md-offset-1" ng-controller="carController">
+        <div class="panel-heading"><input placeholder="Filter Cars" ng-model="searchText"><a href="#/addcar"><i class="fa fa-plus pull-right custom-icon-pos" tooltip-placement="bottom" tooltip="Add Car"></i></a></div>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Reg. Num</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tr ng-repeat="car in cars | filter:searchText">
+                <td> <a href="#/car/{{car.id}}">{{car.make}} </a></td>
+                <td> {{car.model}} </td>
+                <td> {{car.registration}} </td>
+                <td class="dropdown">
+
+                    <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/car/{{car.id}}"><i class="fa fa-pencil"> Edit</i></a></li>
+                        <li><a><i class="fa fa-trash-o" ng-click="deleteCar(car.id)"> Delete</i></a></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="container">
+    <div class="panel panel-default col-md-8 custom-panel">
+        <div class="panel-heading">GPS Tracking</div>
+        <div class="panel-body">
+
+        </div>
+        </div>
+    </div>
 </div>
