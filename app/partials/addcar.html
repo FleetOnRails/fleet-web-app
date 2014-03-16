@@ -1,64 +1,32 @@
+<style>
+    form[novalidate] input{
+        border-left-width:8px ;
+        border-color: #3498db;
+        border-style: solid;
+    }
+
+    input[required].ng-pristine{
+        border-color: #e74c3c;
+    }
+
+    input.ng-invalid.ng-dirty{
+        border-color: #e74c3c;
+    }
+
+    input.ng-valid.ng-dirty{
+        border-color: #2ecc71;
+    }
+</style>
 <navbar></navbar>
-<div class="col-md-4">
-    <form class="form-horizontal">
-        <fieldset>
+<div class=" col-md-3 col-md-offset-1">
+    <h4>Create car:</h4>
+    <form ng-submit="addCar()" name="form" novalidate>
+        <input  type="text" class="form-control custom-margin" name="Name" placeholder="Car make" ng-model="car.make" required>
 
-            <!-- Form Name -->
-            <legend>Form Name</legend>
+        <input  type="text" class="form-control custom-margin" name="Surname" placeholder="Car model" ng-model="car.model" required>
 
-            <!-- Text input-->
-            <div class="control-group">
-                <label class="control-label" for="Make">Make</label>
-                <div class="controls">
-                    <input id="Make" name="Make" type="text" placeholder="eg. Ford" class="input-xlarge" ng-model="car.make">
+        <input  type="text" class="form-control custom-margin" name="username" placeholder="Car registration" ng-model="car.registration" required>
 
-                </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="control-group">
-                <label class="control-label" for="textinput">Model</label>
-                <div class="controls">
-                    <input id="textinput" name="textinput" type="text" placeholder="eg. Focus" class="input-xlarge" ng-model="car.model">
-
-                </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="control-group">
-                <label class="control-label" for="textinput">Reg. number</label>
-                <div class="controls">
-                    <input id="textinput" name="textinput" type="text" placeholder="eg. 00D0000" class="input-xlarge" ng-model="car.registration">
-
-                </div>
-            </div>
-
-            <!-- Text input-->
-            <div class="control-group">
-                <label class="control-label" for="textinput">Location</label>
-                <div class="controls">
-                    <input id="textinput" name="textinput" type="text" placeholder="eg. Dublin" class="input-xlarge">
-
-                </div>
-            </div>
-
-            <!-- File Button -->
-            <div class="control-group">
-                <label class="control-label" for="AddPictures">Add Pictures</label>
-                <div class="controls">
-                    <input id="AddPictures" name="AddPictures" class="input-file" type="file">
-                </div>
-            </div>
-
-            <!-- Button -->
-            <div class="control-group">
-                <label class="control-label" for="singlebutton"></label>
-                <div class="controls">
-                    <a href="#/main"><button id="singlebutton" name="singlebutton" class="btn btn-primary" ng-click="addCar()">Create</button></a>
-                </div>
-            </div>
-
-        </fieldset>
+        <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
     </form>
-
 </div>

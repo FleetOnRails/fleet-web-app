@@ -144,6 +144,9 @@ body {
     background: #ffffff;
 }
 
+.custom-margin{
+    margin-bottom: 10px;
+}
 .custom-border{
     border: 10px;
 }

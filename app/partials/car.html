@@ -12,20 +12,21 @@
 </nav>
 <!-- edit form column -->
 <div class="container">
-    <div class="panel panel-default col-md-3 custom-panel">
-        <div class="panel-heading">Fuel Cost</div>
+    <div class="panel panel-default col-md-7 custom-panel">
+        <div class="panel-heading">GPS Tracking</div>
         <div class="panel-body">
-            Graph to go here
+            <google-map id="mymap"
+                        center="center"
+                        zoom="zoom"
+                        draggable="true"
+                        mark-click="false">
+                <markers>
+                    <marker ng-repeat="marker in markers" coords="marker">
+                    </marker>
+                </markers>
+            </google-map>
         </div>
     </div>
-    <div class="panel panel-default col-md-3 custom-panel col-md-offset-1">
-        <div class="panel-heading">Service Cost</div>
-        <div class="panel-body">
-            {{car.current_gps_statistic.location.latitude}}
-            {{car.current_gps_statistic.location.longitude}}
-        </div>
-    </div>
-
     <div class=" col-md-3 col-md-offset-1">
         <h4>Edit car:</h4>
         <form class="form-horizontal" role="form">
@@ -59,21 +60,34 @@
     </div>
 </div>
 <div class="container">
-    <div class="panel panel-default col-md-7 custom-panel">
-        <div class="panel-heading">GPS Tracking</div>
+    <div class="panel panel-default col-md-3 custom-panel">
+        <div class="panel-heading">Faults</div>
         <div class="panel-body">
-            <google-map id="mymap"
-                        center="center"
-                        zoom="zoom"
-                        draggable="true"
-                        mark-click="false">
-                <markers>
-                    <marker ng-repeat="marker in markers" coords="marker">
-                    </marker>
-                </markers>
-            </google-map>
+            Faults to go here
         </div>
     </div>
+    <div class="panel panel-default col-md-3 custom-panel col-md-offset-1">
+        <div class="panel-heading">Remainders</div>
+        <div class="panel-body">
+            reminaders to go here
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="panel panel-default col-md-3 custom-panel">
+        <div class="panel-heading">Fuel Cost</div>
+        <div class="panel-body">
+            Graph to go here
+        </div>
+    </div>
+    <div class="panel panel-default col-md-3 custom-panel col-md-offset-1">
+        <div class="panel-heading">Service Cost</div>
+        <div class="panel-body">
+            {{car.current_gps_statistic.location.latitude}}
+            {{car.current_gps_statistic.location.longitude}}
+        </div>
+    </div>
+
 </div>
 
 

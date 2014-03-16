@@ -23,13 +23,4 @@ angular.module('fleetonrails.controllers.main-controller', [])
                 console.log(user);
             })
         };
-
-
-        $scope.map = {
-            center: {
-                latitude: 53.34991410000001,
-                longitude: -6.260663699999999
-            },
-            zoom: 8
-        };
     }]);

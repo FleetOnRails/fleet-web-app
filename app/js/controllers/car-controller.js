@@ -54,6 +54,7 @@ angular.module('fleetonrails.controllers.car-controller', [])
             CarsService.create(attributes, function (car) {
                 console.log(car);
             })
+
         };
 
         $scope.updateCar = function(){
