@@ -13,6 +13,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                     filled_tank: $scope.fuel.filled_tank
                 }
             };
+            console.log(attributes)
             FuelService.create(id,attributes, function (fuel_entry) {
                 console.log(fuel_entry)
             })
