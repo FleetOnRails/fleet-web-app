@@ -29,33 +29,14 @@
     </div>
     <div class=" col-md-3 col-md-offset-1">
         <h4>Edit car:</h4>
-        <form class="form-horizontal" role="form">
-            <div class="form-group">
-                <label class="col-lg-2 control-label">Make:</label>
+        <form ng-submit="updateCar()" name="form" novalidate>
+            <input  type="text" class="form-control custom-margin" name="Name" placeholder="Car make" ng-model="car.make" required>
 
-                <div class="col-lg-8">
-                    <input class="form-control" type="text" ng-model="car.make"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-lg-2 control-label">Model:</label>
+            <input  type="text" class="form-control custom-margin" name="Surname" placeholder="Car model" ng-model="car.model" required>
 
-                <div class="col-lg-8">
-                    <input class="form-control" type="text" ng-model="car.model"/>
-                </div>
-            </div>
-            <div class="form-group">
-                <label class="col-lg-2 control-label">Reg. Number:</label>
+            <input  type="text" class="form-control custom-margin" name="username" placeholder="Car registration" ng-model="car.registration" required>
 
-                <div class="col-lg-8">
-                    <input class="form-control" type="text" ng-model="car.registration"/>
-                </div>
-            </div>
-            <div class="pull-right">
-                <input type="button" class="btn btn-primary " value="Save Changes"
-                       ng-click="updateCar()">
-                <input type="reset" value="Cancel" class="btn btn-primary">
-            </div>
+            <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
         </form>
     </div>
 </div>
