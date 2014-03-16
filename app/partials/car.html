@@ -2,26 +2,27 @@
 <nav class="navbar navbar-custom">
     <div class="navbar-inner ">
         <ul class="nav nav-justified">
-            <li><a href="#">Car</a></li>
-            <li><a href="#">Fault Entry</a></li>
-            <li><a href="#">Docs</a></li>
-            <li><a href="#">Diagnostics Statistics</a></li>
-            <li><a href="#">Service Records</a></li>
+            <li><a href="">Car</a></li>
+            <li><a href="">Fault Entry</a></li>
+            <li><a href="">Docs</a></li>
+            <li><a href="">Diagnostics Statistics</a></li>
+            <li><a href="">Service Records</a></li>
         </ul>
     </div>
 </nav>
 <!-- edit form column -->
 <div class="container">
     <div class="panel panel-default col-md-3 custom-panel">
-        <div class="panel-heading">Faults</div>
+        <div class="panel-heading">Fuel Cost</div>
         <div class="panel-body">
-            Panel content
+            Graph to go here
         </div>
     </div>
     <div class="panel panel-default col-md-3 custom-panel col-md-offset-1">
         <div class="panel-heading">Service Cost</div>
         <div class="panel-body">
-            Panel content
+            {{car.current_gps_statistic.location.latitude}}
+            {{car.current_gps_statistic.location.longitude}}
         </div>
     </div>
 
@@ -57,4 +58,22 @@
         </form>
     </div>
 </div>
+<div class="container">
+    <div class="panel panel-default col-md-7 custom-panel">
+        <div class="panel-heading">GPS Tracking</div>
+        <div class="panel-body">
+            <google-map id="mymap"
+                        center="center"
+                        zoom="zoom"
+                        draggable="true"
+                        mark-click="false">
+                <markers>
+                    <marker ng-repeat="marker in markers" coords="marker">
+                    </marker>
+                </markers>
+            </google-map>
+        </div>
+    </div>
+</div>
+
 
