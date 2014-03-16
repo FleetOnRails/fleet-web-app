@@ -25,7 +25,7 @@
 
     <div class="panel panel-default col-md-4 custom-panel col-md-offset-1" ng-controller="carController">
         <div class="panel-heading"><input placeholder="Filter Cars" ng-model="searchText"><a href="#/addcar"><i class="fa fa-plus pull-right custom-icon-pos" tooltip-placement="bottom" tooltip="Add Car"></i></a></div>
-        <table class="table">
+        <table class="table table-hover">
             <thead>
             <tr>
                 <th>Make</th>
@@ -35,7 +35,7 @@
             </tr>
             </thead>
             <tr ng-repeat="car in cars | filter:searchText">
-                <td> <a href="#/car/{{car.id}}">{{car.make}} </a></td>
+                <td> {{car.make}} </td>
                 <td> {{car.model}} </td>
                 <td> {{car.registration}} </td>
                 <td class="dropdown">

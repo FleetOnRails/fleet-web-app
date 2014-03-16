@@ -13,7 +13,7 @@ angular.module('fleetonrails.controllers.gps-controller', [])
 //                });
 //            });
 //        };
-//
+//c
 //        console.log(my_cars);
 //
 //        angular.forEach(my_car_ids, function (id, index) {

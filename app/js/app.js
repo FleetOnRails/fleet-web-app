@@ -9,7 +9,6 @@ angular.module('fleetonrails', ['ngRoute','ngAnimate', 'ui.bootstrap' , 'fleeton
             when('/gps',{templateUrl:'partials/gps.html', controller: 'gpsController'}).
             when('/car',{templateUrl:'partials/car.html',controller:'carController'}).
             when('/addcar',{templateUrl:'partials/addcar.html',controller:'carController'}).
-            when('/deletecar/:id',{templateUrl:'partials/deletecar.html',controller:'carController'}).
             when('/car/:id',{templateUrl:'partials/car.html',controller:'carController'}).
             otherwise({redirectTo: '/'});
     }]);
