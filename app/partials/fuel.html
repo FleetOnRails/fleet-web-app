@@ -2,10 +2,10 @@
 <nav class="navbar navbar-custom">
     <div class="navbar-inner ">
         <ul class="nav nav-justified">
-            <li><a href="#">Service Remainders</a></li>
-            <li><a href="#">Faults</a></li>
-            <li><a href="#">Docs</a></li>
-            <li><a href="#">Diagnostics Statistics</a></li>
+            <li><a href="">Service Remainders</a></li>
+            <li><a href="">Faults</a></li>
+            <li><a href="">Docs</a></li>
+            <li><a href="">Diagnostics Statistics</a></li>
         </ul>
     </div>
 </nav>
@@ -30,16 +30,27 @@
                     </form>
             </div>
         </div>
-        <div class="panel panel-default col-md-5 custom-panel col-md-offset-1">
-            <div class="panel-heading">List of fuel entires</div>
-            <div class="panel-body">
-                {{car.id}}
-            </div>
-        </div>
+    <div class="panel panel-default col-md-5 custom-panel col-md-offset-1" ng-controller="fuelController">
+        <div class="panel-heading"><input placeholder="Filter fuel entries" ng-model="searchText"></div>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Odometer</th>
+                <th>Price</th>
+                <th>Price</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tr ng-repeat="fuel_entry in fuel_entries | filter:searchText">
+                <td> {{fuel_entry.odometer}} </td>
+                <td> {{fuel_entry.liters}} </td>
+                <td> {{fuel_entry.price}} </td>
+            </tr>
+        </table>
+    </div>
         <div class="panel panel-default col-md-5 custom-panel col-md-offset-1">
             <div class="panel-heading">Graph</div>
             <div class="panel-body">
-                Panel content
             </div>
         </div>
 
