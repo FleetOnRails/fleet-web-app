@@ -31,6 +31,14 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
             });
         };
 
+        $scope.deleteEntry = function(id, fuel_id){
+
+            FuelService.delete(id,fuel_id ,function(car){
+                console.log(fuel_entries);
+                $scope.fuel_entries($scope.fuel_entries.indexOf(id),1);
+            })
+        };
+
         if ($routeParams && $routeParams.id) {
             $scope.getFuelEntries($routeParams.id)
         } else {

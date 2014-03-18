@@ -38,6 +38,24 @@ angular.module('fleetonrails.services.fuel-service', [])
                     }).error(function (data) {
                         console.log(data);
                     })
+            },
+            delete: function(id,fuel_id,succes){
+                console.log(globalSettings.api_base_url);
+                $http({
+                    method: 'DELETE',
+                    url: globalSettings.api_base_url + '/v1/cars/' + id + '/fuel_entries/' + fuel_id,
+                    headers:{
+                        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+
+                }).success(function(fuel_entries){
+                        succes(fuel_entries);
+                    })
+                    .error(function(data){
+                        console.log(data);
+                    })
             }
         }
     }]);

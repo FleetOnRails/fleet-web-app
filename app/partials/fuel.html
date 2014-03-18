@@ -36,6 +36,7 @@
             <thead>
             <tr>
                 <th>Odometer</th>
+                <th>Liters</th>
                 <th>Price</th>
                 <th>Price</th>
                 <th></th>
@@ -45,14 +46,22 @@
                 <td> {{fuel_entry.odometer}} </td>
                 <td> {{fuel_entry.liters}} </td>
                 <td> {{fuel_entry.price}} </td>
+                <td> {{fuel_entry.price}} </td>
+                <td class="dropdown">
+
+                    <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a><i class="fa fa-trash-o" ng-click="deleteEntry(car.id,fuel_entry.id)"> Delete</i></a></li>
+                    </ul>
+                </td>
             </tr>
         </table>
     </div>
-        <div class="panel panel-default col-md-5 custom-panel col-md-offset-1">
-            <div class="panel-heading">Graph</div>
-            <div class="panel-body">
-            </div>
+    <div class="panel panel-default col-md-5 custom-panel col-md-offset-1">
+        <div class="panel-heading">Graph</div>
+        <div class="panel-body">
         </div>
+    </div>
 
 </div>
 
