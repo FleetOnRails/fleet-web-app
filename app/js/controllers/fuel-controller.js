@@ -34,8 +34,9 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
         $scope.deleteEntry = function(id, fuel_id){
 
             FuelService.delete(id,fuel_id ,function(car){
-                console.log(fuel_entries);
-                $scope.fuel_entries($scope.fuel_entries.indexOf(id),1);
+                // TODO fixed the table update after deletion
+                //console.log(fuel_entries);
+                //$scope.fuel_entries($scope.fuel_entries.indexOf(fuel_id),1);
             })
         };
 

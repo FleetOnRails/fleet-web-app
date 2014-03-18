@@ -53,8 +53,8 @@ angular.module('fleetonrails.services.fuel-service', [])
                 }).success(function(fuel_entries){
                         succes(fuel_entries);
                     })
-                    .error(function(data){
-                        console.log(data);
+                    .error(function(fuel_entries){
+                        console.log(fuel_entries);
                     })
             }
         }

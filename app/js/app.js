@@ -10,6 +10,6 @@ angular.module('fleetonrails', ['ngRoute','ngAnimate', 'ui.bootstrap' , 'fleeton
             when('/car',{templateUrl:'partials/car.html',controller:'carController'}).
             when('/addcar',{templateUrl:'partials/addcar.html',controller:'carController'}).
             when('/car/:id',{templateUrl:'partials/car.html',controller:'carController'}).
-            when('/fuel/:id',{templateUrl:'partials/fuel.html',controller:'carController'}).
+            when('/car/:id/fuel',{templateUrl:'partials/fuel.html',controller:'carController'}).
             otherwise({redirectTo: '/'});
     }]);
