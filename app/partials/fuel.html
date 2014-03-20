@@ -28,6 +28,15 @@
                                 <label>Fuel Type:</label> <select class="form-control custom-margin"data-ng-options="o.name for o in optionsFuel" data-ng-model="selectedOptionFuel" required><option></option></select>
                             </div>
                         </div>
+                        <div class="row" >
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add location</button>
+                                <hr>
+                                <div collapse="!isCollapsed">
+                                    <input  type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="fuel.location_attributes.address">
+                                </div>
+                            </div>
+                        </div>
                         <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
                     </form>
             </div>
@@ -40,7 +49,7 @@
                 <th>Odometer</th>
                 <th>Liters</th>
                 <th>Price</th>
-                <th>Price</th>
+                <th>Location</th>
                 <th></th>
             </tr>
             </thead>
@@ -48,7 +57,7 @@
                 <td> {{fuel_entry.odometer}} </td>
                 <td> {{fuel_entry.liters}} </td>
                 <td> {{fuel_entry.price}} </td>
-                <td> {{fuel_entry.price}} </td>
+                <td> {{fuel_entry.location.city}} </td>
                 <td class="dropdown">
 
                     <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>

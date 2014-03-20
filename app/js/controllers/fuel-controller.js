@@ -10,6 +10,10 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
 
         $scope.fuel_entries = [];
 
+        $scope.CollapseDemoCtrl = function(){
+            $scope.isCollapsed = false;
+
+        }
 
 
         $scope.addFuel = function(id){
@@ -20,7 +24,10 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                     price: $scope.fuel.price,
                     fuel_type: $scope.selectedOptionFuel.name,
                     filling_station: $scope.fuel.filling_station,
-                    filled_tank: $scope.selectedOption.name.toLocaleUpperCase()
+                    filled_tank: $scope.selectedOption.name.toLocaleUpperCase(),
+                    location_attributes:{
+                        address: $scope.fuel.location_attributes.address
+                    }
                 }
             };
             console.log($scope.selectedOption.name)
