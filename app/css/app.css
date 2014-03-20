@@ -188,3 +188,6 @@ body {
 .animation.ng-leave.ng-leave-active {
     opacity: 0;
 }
+.gauge {
+    height: 250px;
+}

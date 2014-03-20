@@ -10,11 +10,19 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
 
         $scope.fuel_entries = [];
 
+        $scope.fuel_data = [];
+
+
+
         $scope.CollapseDemoCtrl = function(){
             $scope.isCollapsed = false;
 
         }
 
+        $scope.gauge_data = [
+            {label: "CPU", value: 78, color: "#d62728", suffix: "%"}
+        ];
+        $scope.fuel_options = {thickness: 5, mode: "gauge", total: 100};
 
         $scope.addFuel = function(id){
             var attributes = {
