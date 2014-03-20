@@ -15,17 +15,19 @@
             <div class="panel-body">
                     <form ng-submit="addFuel(car.id)" name="form" novalidate>
                         <input  type="text" class="form-control custom-margin" name="Name" placeholder="Odometer" ng-model="fuel.odometer" required>
-
                         <input  type="text" class="form-control custom-margin" name="Surname" placeholder="liters" ng-model="fuel.liters" required>
-
                         <input  type="text" class="form-control custom-margin" name="username" placeholder="price" ng-model="fuel.price" required>
-
-                        <input  type="text" class="form-control custom-margin" name="username" placeholder="fuel type" ng-model="fuel.fuel_type" required>
-
                         <input  type="text" class="form-control custom-margin" name="username" placeholder="filling station" ng-model="fuel.filling_station" required>
-
-                        <input  type="text" class="form-control custom-margin" name="username" placeholder="filled tank" ng-model="fuel.filled_tank" required>
-
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Filled Tank:</label> <select class="form-control custom-margin"data-ng-options="o.name for o in options" data-ng-model="selectedOption" required><option></option></select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Fuel Type:</label> <select class="form-control custom-margin"data-ng-options="o.name for o in optionsFuel" data-ng-model="selectedOptionFuel" required><option></option></select>
+                            </div>
+                        </div>
                         <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
                     </form>
             </div>
