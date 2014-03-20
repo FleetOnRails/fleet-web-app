@@ -2,7 +2,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
 
     .controller('fuelController', ['$scope', 'FuelService', '$location', '$routeParams', function ($scope, FuelService, $location, $routeParams) {
 
-        $scope.options = [{ name: "true", id: 1 }, { name: "false", id: 2 }];
+        $scope.options = [{ name: "True", id: 1 }, { name: "False", id: 2 }];
         $scope.selectedOption = $scope.options[1];
 
         $scope.optionsFuel = [{ name: "Petrol", id: 1 }, { name: "Diesel", id: 2 }];
@@ -20,7 +20,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                     price: $scope.fuel.price,
                     fuel_type: $scope.selectedOptionFuel.name,
                     filling_station: $scope.fuel.filling_station,
-                    filled_tank: $scope.selectedOption.name
+                    filled_tank: $scope.selectedOption.name.toLocaleUpperCase()
                 }
             };
             console.log($scope.selectedOption.name)
