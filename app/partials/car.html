@@ -10,9 +10,10 @@
         </ul>
     </div>
 </nav>
-<!-- edit form column -->
+
+
 <div class="container">
-    <div class="panel panel-default col-md-7 custom-panel">
+    <div class="panel panel-default custom-panel">
         <div class="panel-heading">GPS Tracking</div>
         <div class="panel-body">
             <google-map
@@ -41,50 +42,51 @@
             </google-map>
         </div>
     </div>
-    <div class=" col-md-3 col-md-offset-1">
-        <h4>Edit car:</h4>
 
-        <form ng-submit="updateCar()" name="form" novalidate>
-            <input type="text" class="form-control custom-margin" name="Name" placeholder="Car make" ng-model="car.make"
-                   required>
-
-            <input type="text" class="form-control custom-margin" name="Surname" placeholder="Car model"
-                   ng-model="car.model" required>
-
-            <input type="text" class="form-control custom-margin" name="username" placeholder="Car registration"
-                   ng-model="car.registration" required>
-
-            <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Update</button>
-        </form>
-    </div>
-</div>
-<div class="container">
-    <div class="panel panel-default col-md-3 custom-panel">
+    <div class="panel panel-default custom-panel">
         <div class="panel-heading">Faults</div>
         <div class="panel-body">
             Faults to go here
         </div>
     </div>
-    <div class="panel panel-default col-md-3 custom-panel col-md-offset-1">
-        <div class="panel-heading">Remainders</div>
+    <div class="panel panel-default custom-panel">
+        <div class="panel-heading">Reminders</div>
         <div class="panel-body">
-            reminaders to go here
+            reminders to go here
         </div>
     </div>
-</div>
-<div class="container">
-    <div class="panel panel-default col-md-3 custom-panel">
-        <div class="panel-heading">Fuel Cost</div>
+    <div class="panel panel-default custom-panel">
+        <div class="panel-heading">Fuel Graph</div>
         <div class="panel-body">
             Graph to go here
         </div>
     </div>
-    <div class="panel panel-default col-md-3 custom-panel col-md-offset-1">
+    <div class="panel panel-default custom-panel">
         <div class="panel-heading">Service Cost</div>
         <div class="panel-body">
             {{car.current_gps_statistic.latitude}}
             {{car.current_gps_statistic.longitude}}
             {{car.current_gps_statistic.kmh}}
+        </div>
+    </div>
+    <div class="panel panel-default custom-panel">
+        <div class="panel-heading">Edit Car Details</div>
+        <div class="panel-body">
+            <h4>Edit car:</h4>
+
+            <form ng-submit="updateCar()" name="form" novalidate>
+                <input type="text" class="form-control custom-margin" name="Name" placeholder="Car make"
+                       ng-model="car.make"
+                       required>
+
+                <input type="text" class="form-control custom-margin" name="Surname" placeholder="Car model"
+                       ng-model="car.model" required>
+
+                <input type="text" class="form-control custom-margin" name="username" placeholder="Car registration"
+                       ng-model="car.registration" required>
+
+                <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Update</button>
+            </form>
         </div>
     </div>
 </div>
