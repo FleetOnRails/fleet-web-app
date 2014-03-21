@@ -13,61 +13,93 @@
 
 
 <div class="container">
-    <div class="panel panel-default custom-panel">
-        <div class="panel-heading">GPS Tracking</div>
-        <div class="panel-body">
-            <google-map
-                    center="map.center"
-                    zoom="map.zoom"
-                    draggable="true"
-                    dragging="map.dragging"
-                    bounds="map.bounds"
-                    events="map.events"
-                    options="map.options"
-                    pan="true"
-                    control="map.control"
-                    >
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">GPS Tracking</div>
+            <div class="panel-body">
+                <google-map
+                        center="map.center"
+                        zoom="map.zoom"
+                        draggable="true"
+                        dragging="map.dragging"
+                        bounds="map.bounds"
+                        events="map.events"
+                        options="map.options"
+                        pan="true"
+                        control="map.control"
+                        >
 
-                <layer type="TrafficLayer" show="map.showTraffic"></layer>
+                    <layer type="TrafficLayer" show="map.showTraffic"></layer>
 
-                <markers models="map.dynamicMarkers" coords="'self'">
-                    <windows show="'showWindow'" ng-cloak>
-                        <p>Dynamic Marker created via a delay!</p>
+                    <markers models="map.dynamicMarkers" coords="'self'">
+                        <windows show="'showWindow'" ng-cloak>
+                            <p>Dynamic Marker created via a delay!</p>
 
-                        <p ng-non-bindable>
-                            {{ latitude | number:4 }}, {{ longitude | number:4}}
-                        </p>
-                    </windows>
-                </markers>
-            </google-map>
+                            <p ng-non-bindable>
+                                {{ latitude | number:4 }}, {{ longitude | number:4}}
+                            </p>
+                        </windows>
+                    </markers>
+                </google-map>
+            </div>
         </div>
     </div>
 
-    <div class="panel panel-default custom-panel">
-        <div class="panel-heading">Fuel Graph</div>
-        <div class="panel-body">
-            Graph to go here
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Speed</h3></div>
+                <div class="panel-body">
+                    something else else
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">RPM</h3></div>
+                <div class="panel-body">
+                    something
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">MPG</h3></div>
+                <div class="panel-body">
+                    something else
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="panel panel-default custom-panel">
-        <div class="panel-heading">Edit Car Details</div>
-        <div class="panel-body">
-            <h4>Edit car:</h4>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Service Reminders</h3></div>
+                <div class="panel-body">
+                    something
+                </div>
+            </div>
+        </div>
 
-            <form ng-submit="updateCar()" name="form" novalidate>
-                <input type="text" class="form-control custom-margin" name="Name" placeholder="Car make"
-                       ng-model="car.make"
-                       required>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Fault Codes</h3></div>
+                <div class="panel-body">
+                    something else
+                </div>
+            </div>
+        </div>
 
-                <input type="text" class="form-control custom-margin" name="Surname" placeholder="Car model"
-                       ng-model="car.model" required>
-
-                <input type="text" class="form-control custom-margin" name="username" placeholder="Car registration"
-                       ng-model="car.registration" required>
-
-                <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Update</button>
-            </form>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Expenses</h3></div>
+                <div class="panel-body">
+                    something else else
+                </div>
+            </div>
         </div>
     </div>
 </div>
