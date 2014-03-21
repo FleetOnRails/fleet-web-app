@@ -2,27 +2,31 @@ angular.module('fleetonrails.controllers.car-controller', [])
 
     .controller('carController', ['$scope', 'CarsService', '$location', '$routeParams', function ($scope, CarsService, $location, $routeParams) {
         $scope.cars = [];
-        var lat = null
-        var long = null
+//        var lat = null
+//        var long = null
 
+        $scope.myMarkers = [];
+        $scope.center = [];
+        $scope.zoom = 13;
+        $scope.markers = $scope.myMarkers;
+        $scope.fit = true;
 
-       $scope.createMap = function(){
+       createMap = function(lat,long){
            console.log('inside create map')
-           $scope.myMarkers = [
+           $scope.myMarkers.push(
                {
                    "latitude":lat,
                    "longitude":long
                }
-           ];
+           )
 
-           $scope.center = {
-               latitude: lat,
-               longitude: long
-           };
-
-           $scope.zoom = 13;
-           $scope.markers = $scope.myMarkers;
-           $scope.fit = true;
+           $scope.center.push(
+               {
+                   latitude: lat,
+                   longitude: long
+               }
+           );
+           console.log($scope.myMarkers)
        }
 
        $scope.getCars = function() {
@@ -38,11 +42,11 @@ angular.module('fleetonrails.controllers.car-controller', [])
         $scope.getCar = function(id) {
             CarsService.show(id, function (data) {
                 $scope.car = data['car'];
-                lat = $scope.car.current_gps_statistic.latitude
+                var lat = $scope.car.current_gps_statistic.latitude
                 console.log(lat)
-                long = $scope.car.current_gps_statistic.longitude
+                var long = $scope.car.current_gps_statistic.longitude
                 console.log(long)
-                $scope.createMap()
+                createMap(lat,long)
             });
         };
 
@@ -90,5 +94,5 @@ angular.module('fleetonrails.controllers.car-controller', [])
             $scope.getCars();
         }
 
-
+       $scope.$apply();
     }]);
