@@ -12,7 +12,7 @@
 </nav>
 <!-- edit form column -->
 <div class="container">
-    <div class="panel panel-default col-md-7 custom-panel">
+    <div class="panel panel-default col-md-12 custom-panel">
         <div class="panel-heading">GPS Tracking</div>
         <div class="panel-body">
             <google-map
@@ -31,7 +31,7 @@
 
                 <markers models="map.dynamicMarkers" coords="'self'">
                     <windows show="'showWindow'" ng-cloak>
-                        <p>Dynamic Marker created via a delay!</p>
+                        <p> Car last seen speed {{car.current_gps_statistic.kmh}}</p>
 
                         <p ng-non-bindable>
                             {{ latitude | number:4 }}, {{ longitude | number:4}}
@@ -41,22 +41,7 @@
             </google-map>
         </div>
     </div>
-    <div class=" col-md-3 col-md-offset-1">
-        <h4>Edit car:</h4>
 
-        <form ng-submit="updateCar()" name="form" novalidate>
-            <input type="text" class="form-control custom-margin" name="Name" placeholder="Car make" ng-model="car.make"
-                   required>
-
-            <input type="text" class="form-control custom-margin" name="Surname" placeholder="Car model"
-                   ng-model="car.model" required>
-
-            <input type="text" class="form-control custom-margin" name="username" placeholder="Car registration"
-                   ng-model="car.registration" required>
-
-            <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Update</button>
-        </form>
-    </div>
 </div>
 <div class="container">
     <div class="panel panel-default col-md-3 custom-panel">
@@ -69,6 +54,23 @@
         <div class="panel-heading">Remainders</div>
         <div class="panel-body">
             reminaders to go here
+        </div>
+    </div>
+    <div class="panel panel-default custom-panel col-md-4 col-md-offset-1">
+        <div class="panel-heading">Edit Car:</div>
+        <div class="panel-body">
+            <form ng-submit="updateCar()" name="form" novalidate>
+                <input type="text" class="form-control custom-margin" name="Name" placeholder="Car make" ng-model="car.make"
+                       required>
+
+                <input type="text" class="form-control custom-margin" name="Surname" placeholder="Car model"
+                       ng-model="car.model" required>
+
+                <input type="text" class="form-control custom-margin" name="username" placeholder="Car registration"
+                       ng-model="car.registration" required>
+
+                <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Update</button>
+            </form>
         </div>
     </div>
 </div>
