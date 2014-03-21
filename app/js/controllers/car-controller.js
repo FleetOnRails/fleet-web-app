@@ -1,98 +1,101 @@
 angular.module('fleetonrails.controllers.car-controller', [])
 
-    .controller('carController', ['$scope', 'CarsService', '$location', '$routeParams', function ($scope, CarsService, $location, $routeParams) {
-        $scope.cars = [];
-//        var lat = null
-//        var long = null
+    .controller('carController', ['$scope', 'CarsService', '$location', '$timeout', '$routeParams',
+        function ($scope, CarsService, $location, $timeout, $routeParams) {
+            $scope.cars = [];
 
-        $scope.myMarkers = [];
-        $scope.center = [];
-        $scope.zoom = 13;
-        $scope.markers = $scope.myMarkers;
-        $scope.fit = true;
+            var dynamicMarkers = [];
 
-       createMap = function(lat,long){
-           console.log('inside create map')
-           $scope.myMarkers.push(
-               {
-                   "latitude":lat,
-                   "longitude":long
-               }
-           )
-
-           $scope.center.push(
-               {
-                   latitude: lat,
-                   longitude: long
-               }
-           );
-           console.log($scope.myMarkers)
-       }
-
-       $scope.getCars = function() {
-           CarsService.get(function (data) {
-                angular.forEach(data, function (cars, index) {
-                    angular.forEach(cars, function(value, index) {
-                        $scope.cars.push(value.car)
-                    })
-                });
-           });
-       };
-
-        $scope.getCar = function(id) {
-            CarsService.show(id, function (data) {
-                $scope.car = data['car'];
-                var lat = $scope.car.current_gps_statistic.latitude
-                console.log(lat)
-                var long = $scope.car.current_gps_statistic.longitude
-                console.log(long)
-                createMap(lat,long)
+            angular.extend($scope, {
+                map: {
+                    control: {},
+                    showTraffic: true,
+                    showBicycling: false,
+                    showWeather: false,
+                    showHeat: false,
+                    center: {
+                        latitude: 54,
+                        longitude: -7
+                    },
+                    options: {
+                        streetViewControl: true,
+                        panControl: false,
+                        maxZoom: 20,
+                        minZoom: 3
+                    },
+                    zoom: 5,
+                    dragging: false,
+                    bounds: {},
+                    dynamicMarkers: []
+                }
             });
-        };
 
-        $scope.addCar = function () {
-            var attributes = {
-                car: {
-                    make: $scope.car.make,
-                    model: $scope.car.model,
-                    registration: $scope.car.registration
-                }
-            };
-            console.log(attributes);
-            CarsService.create(attributes, function (car) {
-                console.log(car);
-            })
-
-        };
-
-        $scope.updateCar = function(){
-            var attributes = {
-                car :{
-                    make:$scope.car.make,
-                    model:$scope.car.model,
-                    registration: $scope.car.registration
-                }
+            $scope.getCars = function () {
+                CarsService.get(function (data) {
+                    angular.forEach(data, function (cars) {
+                        angular.forEach(cars, function (value) {
+                            $scope.cars.push(value.car)
+                        })
+                    });
+                });
             };
 
-            CarsService.change($routeParams.id, attributes,function(car){
-                console.log(car);
-            })
-        };
+            $scope.getCar = function (id) {
+                CarsService.show(id, function (data) {
+                    $scope.car = data['car'];
+                    dynamicMarkers = [
+                        {
+                            latitude: $scope.car.current_gps_statistic.latitude,
+                            longitude: $scope.car.current_gps_statistic.longitude,
+                            showWindow: false
+                        }
+                    ];
+                });
+            };
 
-        $scope.deleteCar = function(id){
-            var attributes = id
+            $scope.addCar = function () {
+                var attributes = {
+                    car: {
+                        make: $scope.car.make,
+                        model: $scope.car.model,
+                        registration: $scope.car.registration
+                    }
+                };
+                console.log(attributes);
+                CarsService.create(attributes, function (car) {
+                    console.log(car);
+                })
 
-            CarsService.delete($routeParams.id, attributes,function(car){
-                console.log(car);
-                $scope.cars.splice($scope.cars.indexOf(id),1);
-            })
-        };
+            };
 
-        if ($routeParams && $routeParams.id) {
-            $scope.getCar($routeParams.id)
-        } else {
-            $scope.getCars();
-        }
+            $scope.updateCar = function () {
+                var attributes = {
+                    car: {
+                        make: $scope.car.make,
+                        model: $scope.car.model,
+                        registration: $scope.car.registration
+                    }
+                };
 
-       $scope.$apply();
-    }]);
+                CarsService.change($routeParams.id, attributes, function (car) {
+                    console.log(car);
+                })
+            };
+
+            $scope.deleteCar = function (id) {
+                CarsService.delete($routeParams.id, function (car) {
+                    console.log(car);
+                    $scope.cars.splice($scope.cars.indexOf(id), 1);
+                })
+            };
+
+            if ($routeParams && $routeParams.id) {
+                $scope.getCar($routeParams.id)
+            } else {
+                $scope.getCars();
+            }
+
+            $timeout(function () {
+                $scope.map.dynamicMarkers = dynamicMarkers;
+            }, 2000);
+        }]);
