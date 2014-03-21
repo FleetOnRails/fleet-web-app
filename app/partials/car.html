@@ -15,16 +15,16 @@
     <div class="panel panel-default col-md-7 custom-panel">
         <div class="panel-heading">GPS Tracking</div>
         <div class="panel-body">
-            <div class="google-map"
-                 center="map.center"
-                 zoom="map.zoom"
-                 draggable="true"
-                 dragging="map.dragging"
-                 bounds="map.bounds"
-                 events="map.events"
-                 options="map.options"
-                 pan="true"
-                 control="map.control"
+            <google-map
+                    center="map.center"
+                    zoom="map.zoom"
+                    draggable="true"
+                    dragging="map.dragging"
+                    bounds="map.bounds"
+                    events="map.events"
+                    options="map.options"
+                    pan="true"
+                    control="map.control"
                     >
 
                 <markers models="map.dynamicMarkers" coords="'self'">
@@ -36,7 +36,7 @@
                         </p>
                     </windows>
                 </markers>
-            </div>
+            </google-map>
         </div>
     </div>
     <div class=" col-md-3 col-md-offset-1">
