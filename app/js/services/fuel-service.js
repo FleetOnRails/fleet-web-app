@@ -32,8 +32,6 @@ angular.module('fleetonrails.services.fuel-service', [])
                         'Accept': 'application/json'
                     }
                 }).success(function (fuel_entries) {
-                        console.log('after succes')
-                        console.log(fuel_entries);
                         success(fuel_entries);
                     }).error(function (data) {
                         console.log(data);

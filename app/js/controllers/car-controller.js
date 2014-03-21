@@ -5,22 +5,25 @@ angular.module('fleetonrails.controllers.car-controller', [])
         var lat = null
         var long = null
 
-        console.log('Before markers lati is ' + lat + ' long is ' + long)
-        $scope.myMarkers = [
-            {
-                "latitude":lat,
-                "longitude":long
-            }
-        ];
 
-        $scope.center = {
-            latitude: lat,
-            longitude: long
-        };
+       $scope.createMap = function(){
+           console.log('inside create map')
+           $scope.myMarkers = [
+               {
+                   "latitude":lat,
+                   "longitude":long
+               }
+           ];
 
-        $scope.zoom = 13;
-        $scope.markers = $scope.myMarkers;
-        $scope.fit = true;
+           $scope.center = {
+               latitude: lat,
+               longitude: long
+           };
+
+           $scope.zoom = 13;
+           $scope.markers = $scope.myMarkers;
+           $scope.fit = true;
+       }
 
        $scope.getCars = function() {
            CarsService.get(function (data) {
@@ -35,10 +38,11 @@ angular.module('fleetonrails.controllers.car-controller', [])
         $scope.getCar = function(id) {
             CarsService.show(id, function (data) {
                 $scope.car = data['car'];
-                lat = $scope.car.current_gps_statistic.location.latitude
+                lat = $scope.car.current_gps_statistic.latitude
                 console.log(lat)
-                long = $scope.car.current_gps_statistic.location.longitude
+                long = $scope.car.current_gps_statistic.longitude
                 console.log(long)
+                $scope.createMap()
             });
         };
 

@@ -13,6 +13,15 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
         $scope.fuel_data = [];
 
 
+        $scope.total=function(){
+            var total=0;
+            angular.forEach($scope.fuel_entries, function(fuel_entry) {
+                total += fuel_entry.liters;
+            });
+            console.log("total Fuel is " + total)
+            return total;
+        };
+
 
         $scope.CollapseDemoCtrl = function(){
             $scope.isCollapsed = false;
@@ -20,7 +29,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
         }
 
         $scope.gauge_data = [
-            {label: "CPU", value: 78, color: "#d62728", suffix: "%"}
+            {label: "Fuel", value: 78, color: "#5398f1", suffix: "%"}
         ];
         $scope.fuel_options = {thickness: 5, mode: "gauge", total: 100};
 
@@ -51,6 +60,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                 angular.forEach(data, function (fuel_entries, index) {
                     angular.forEach(fuel_entries, function(value, index) {
                         $scope.fuel_entries.push(value.fuel_entry)
+                        $scope.fuel_data.push(value.fuel_entry.liters)
                     })
                 });
             });
