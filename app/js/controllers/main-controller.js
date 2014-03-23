@@ -21,4 +21,5 @@ angular.module('fleetonrails.controllers.main-controller', [])
                 console.log(user);
             })
         };
+
     }]);
