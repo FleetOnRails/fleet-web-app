@@ -12,5 +12,6 @@ angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart', 'ui.bootst
             when('/car/:id',{templateUrl:'partials/car.html',controller:'carController' }).
             when('/car/:id/fuel',{templateUrl:'partials/fuel.html',controller:'carController'}).
             when('/car/:id/edit',{templateUrl:'partials/editcar.html',controller:'carController'}).
+            when('/car/:id/service',{templateUrl:'partials/service.html',controller:'carController'}).
             otherwise({redirectTo: '/'});
     }]);

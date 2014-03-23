@@ -4,5 +4,6 @@ angular.module('fleetonrails.services', [
     'fleetonrails.services.cars-service',
     'fleetonrails.services.gps-service',
     'fleetonrails.services.fuel-service',
-    'fleetonrails.services.users-service'
+    'fleetonrails.services.users-service',
+    'fleetonrails.services.services-service'
 ]);

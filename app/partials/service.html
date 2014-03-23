@@ -1,0 +1,52 @@
+<navbar></navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner ">
+        <ul class="nav nav-justified">
+            <li><a href="#/car/{{car.id}}/edit">Settings</a></li>
+            <li><a href="#/car/{{car.id}}/fuel">Fuel Entry</a></li>
+            <li><a href="">Documents</a></li>
+            <li><a href="#/car/{{car.id}}/service">Service</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container" ng-controller="serviceController">
+    <div class="panel panel-default col-md-5 custom-panel">
+        <div class="panel-heading">Add a service record</div>
+        <div class="panel-body">
+            <form ng-submit="addRecord(car.id)" name="form" novalidate>
+                <input  type="text" class="form-control custom-margin" name="odometer" placeholder="Odometer" ng-model="service_record.odometer_reading" required>
+                <input  type="text" class="form-control custom-margin" name="technician" placeholder="Technician" ng-model="service_record.technician" required>
+                <input  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="service_record.description" required>
+                <div class="row" >
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add location</button>
+                        <hr>
+                        <div collapse="!isCollapsed">
+                            <input  type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="service_record.location_attributes.address">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default col-md-5 custom-panel col-md-offset-1">
+        <div class="panel-heading"><input placeholder="Filter service records" ng-model="searchText"></div>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Odometer</th>
+                <th>Technician</th>
+                <th>Description</th>
+                <th>Location</th>
+            </tr>
+            </thead>
+            <tr ng-repeat="service_record in service_records | filter:searchText">
+                <td> {{service_record.odometer_reading}} </td>
+                <td> {{service_record.technician}} </td>
+                <td> {{service_record.description}} </td>
+                <td> {{service_record.location.city}} </td>
+            </tr>
+        </table>
+    </div>
+</div>

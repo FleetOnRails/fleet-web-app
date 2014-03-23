@@ -2,10 +2,10 @@
 <nav class="navbar navbar-custom">
     <div class="navbar-inner ">
         <ul class="nav nav-justified">
-            <li><a href="">Service Remainders</a></li>
-            <li><a href="">Faults</a></li>
-            <li><a href="">Docs</a></li>
-            <li><a href="">Diagnostics Statistics</a></li>
+            <li><a href="#/car/{{car.id}}/edit">Settings</a></li>
+            <li><a href="#/car/{{car.id}}/fuel">Fuel Entry</a></li>
+            <li><a href="">Documents</a></li>
+            <li><a href="#/car/{{car.id}}/service">Service</a></li>
         </ul>
     </div>
 </nav>
@@ -15,9 +15,9 @@
             <div class="panel-body">
                     <form ng-submit="addFuel(car.id)" name="form" novalidate>
                         <input  type="text" class="form-control custom-margin" name="Name" placeholder="Odometer" ng-model="fuel.odometer" required>
-                        <input  type="text" class="form-control custom-margin" name="Surname" placeholder="liters" ng-model="fuel.liters" required>
-                        <input  type="text" class="form-control custom-margin" name="username" placeholder="price" ng-model="fuel.price" required>
-                        <input  type="text" class="form-control custom-margin" name="username" placeholder="filling station" ng-model="fuel.filling_station" required>
+                        <input  type="text" class="form-control custom-margin" name="liters" placeholder="liters" ng-model="fuel.liters" required>
+                        <input  type="text" class="form-control custom-margin" name="price" placeholder="price" ng-model="fuel.price" required>
+                        <input  type="text" class="form-control custom-margin" name="fillingStation" placeholder="filling station" ng-model="fuel.filling_station" required>
                         <div class="row">
                             <div class="col-md-6">
                                 <label>Filled Tank:</label> <select class="form-control custom-margin"data-ng-options="o.name for o in options" data-ng-model="selectedOption" required><option></option></select>
