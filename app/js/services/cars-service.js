@@ -70,6 +70,7 @@ angular.module('fleetonrails.services.cars-service', [])
 
                 }).success(function(cars){
                     succes(cars);
+
                 })
                     .error(function(cars){
                         console.log(cars);

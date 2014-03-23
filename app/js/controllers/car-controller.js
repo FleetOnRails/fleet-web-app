@@ -79,6 +79,7 @@ angular.module('fleetonrails.controllers.car-controller', [])
 
                 CarsService.change($routeParams.id, attributes, function (car) {
                     console.log(car);
+                    $location.path('/car/' + $routeParams.id)
                 })
             };
 

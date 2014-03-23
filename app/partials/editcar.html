@@ -1,0 +1,19 @@
+<navbar></navbar>
+<div class="container">
+    <div class="panel panel-default col-md-5 custom-panel custom-panel-profile col-md-offset-3">
+        <div class="panel-heading">Edit car information</div>
+        <div class="panel-body">
+                    <form ng-submit="updateCar()" name="form">
+                        <h4>Make:</h4>
+                        <input  type="text" class="form-control custom-margin" name="Make" placeholder="Make" ng-model="car.make">
+                        <h4>Model:</h4>
+                        <input  type="text" class="form-control custom-margin" name="Surname" placeholder="Model" ng-model="car.model" >
+                        <h4>Registration number:</h4>
+                        <input  type="text" class="form-control custom-margin" name="Registration" placeholder="registration" ng-model="car.registration" >
+                        <button type="submit" class="btn btn-primary">Update</button>
+                   </form>
+        </div>
+    </div>
+</div>
+
+
