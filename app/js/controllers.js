@@ -4,5 +4,6 @@ angular.module('fleetonrails.controllers', [
     'fleetonrails.controllers.main-controller',
     'fleetonrails.controllers.car-controller',
     'fleetonrails.controllers.gps-controller',
-    'fleetonrails.controllers.fuel-controller'
+    'fleetonrails.controllers.fuel-controller',
+    'fleetonrails.controllers.users-controller'
 ]);

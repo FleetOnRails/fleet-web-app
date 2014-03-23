@@ -1,6 +1,5 @@
 <style>
     html {
-        background: url(img/Unknown) no-repeat center center fixed;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
@@ -157,6 +156,8 @@
                 <input  type="text" class="form-control" name="username" placeholder="Username" ng-model="user.username" required>
 
                 <input  autocomplete='off' type="password" class="form-control" name="password" placeholder="Password" ng-model="user.password" required ng-minlength="6">
+
+                <input  autocomplete='off' type="password" class="form-control" name="password_confirmation" placeholder="Password confirmation" ng-model="user.password_confirmation" required ng-minlength="6">
 
                 <input autocomplete='off' type="email" class="form-control"  placeholder="Email Address" ng-model="user.email" required>
 

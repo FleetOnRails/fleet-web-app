@@ -3,7 +3,7 @@ angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart', 'ui.bootst
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
             when('/', {templateUrl: 'partials/login.html'}).
-            when('/signup', {templateUrl: 'partials/signup.html'}).
+            when('/signup', {templateUrl: 'partials/signup.html',controller:'usersController'}).
             when('/main', {templateUrl: 'partials/main.html', controller: 'MainCtrl'}).
             when('/profile',{templateUrl:'partials/profile.html', controller: 'MainCtrl'}).
             when('/gps',{templateUrl:'partials/gps.html', controller: 'gpsController'}).
