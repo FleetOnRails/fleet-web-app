@@ -1,65 +1,21 @@
 <navbar></navbar>
 <div class="container">
-    <div class="row">
-        <!-- avatar column -->
-        <div class="col-md-3">
-            <div class="personal-image">
-                <img src="" class="avatar img-circle" alt="avatar"/>
-
-                <p>Upload a different photo...</p>
-
-                <input type="file"/>
-            </div>
-        </div>
-
-        <!-- edit form column -->
-        <div class="col-md-8 mycontent-left">
-            <div class="row">
-                <h5>Personal info:</h5>
-
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">First name:</label>
-
-                        <div class="col-lg-8">
-                            <input class="form-control" type="text" ng-model=" user.me.first_name"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Last name:</label>
-
-                        <div class="col-lg-8">
-                            <input class="form-control" type="text" ng-model="user.me.last_name"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Email:</label>
-
-                        <div class="col-lg-8">
-                            <input class="form-control" type="text" ng-model="user.me.email"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Username:</label>
-
-                        <div class="col-lg-8">
-                            <input class="form-control" type="text" ng-model="user.me.username"/>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-lg-2 control-label">Phone Number:</label>
-
-                        <div class="col-lg-8">
-                            <input class="form-control" type="text" ng-model="user.me.phone_no"/>
-                        </div>
-                    </div>
-                    <div class="pull-right">
-                        <input type="button" class="btn btn-primary " value="Save Changes"
-                               ng-click="changeProfile()">
-                        <input type="reset" value="Cancel" class="btn btn-primary">
-                    </div>
+        <div class="panel panel-default col-md-5 custom-panel custom-panel-profile">
+            <div class="panel-heading">Edit personal information</div>
+            <div class="panel-body">
+                <form ng-submit="changeProfile()" name="form" novalidate>
+                    <h4>First Name:</h4>
+                    <input  type="text" class="form-control custom-margin" name="Name" placeholder="First Name" ng-model="user.me.first_name" required>
+                    <h4>Second Name:</h4>
+                    <input  type="text" class="form-control custom-margin" name="Surname" placeholder="Last name" ng-model="user.me.last_name" required>
+                    <h4>Email Address:</h4>
+                    <input  type="text" class="form-control custom-margin" name="email" placeholder="Email address" ng-model="user.me.email" required>
+                    <h4>Username:</h4>
+                    <input  type="text" class="form-control custom-margin" name="username" placeholder="User name" ng-model="user.me.username" required>
+                    <h4>Phone Number:</h4>
+                    <input  type="text" class="form-control custom-margin" name="phone" placeholder="Phone Number" ng-model="user.me.phone_no" >
+                    <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
                 </form>
             </div>
         </div>
-    </div>
 </div>

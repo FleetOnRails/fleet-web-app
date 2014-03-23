@@ -17,8 +17,6 @@ angular.module('fleetonrails.controllers.main-controller', [])
                 console.log(key + ' : ' + value);
                 attributes[key] = value;
             });
-//            TODO - Remove
-            console.log(attributes);
             MeService.change(attributes, function (user) {
                 console.log(user);
             })

@@ -153,6 +153,9 @@ body {
 .custom-panel{
     padding: 0px;
 }
+.custom-panel-profile{
+    margin-top: 10px;
+}
 
 .custom-icon-pos{
     margin-top: 5px;
