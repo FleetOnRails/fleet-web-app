@@ -34,8 +34,11 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                         count = count + 1;
                     })
                 });
+                if(count=1){
+                    count = 2
+                }
                 $scope.gauge_data.push(
-                    {label: "Fuel", value:total/count, color: "#5398f1", suffix: "L"}
+                    {label: "Fuel", value:total/(count-1), color: "#5398f1", suffix: "L"}
                 )
             });
         };
