@@ -155,13 +155,13 @@
 
                 <input  type="text" class="form-control" name="username" placeholder="Username" ng-model="user.username" required>
 
-                <input  autocomplete='off' type="password" class="form-control" name="password" placeholder="Password" ng-model="user.password" required ng-minlength="6">
+                <input  autocomplete='off' type="password" class="form-control" name="password" placeholder="Password" ng-model="user.password" required ng-minlength="8">
 
-                <input  autocomplete='off' type="password" class="form-control" name="password_confirmation" placeholder="Password confirmation" ng-model="user.password_confirmation" required ng-minlength="6">
+                <input  autocomplete='off' type="password" class="form-control" name="password_confirmation" placeholder="Password confirmation" ng-model="user.password_confirmation" required ng-minlength="8">
 
                 <input autocomplete='off' type="email" class="form-control"  placeholder="Email Address" ng-model="user.email" required>
 
-                <p class="help-block" ng-show="form.password.$error.minlength || form.password.$invalid">Password must be at least 6 characters.</p>
+                <p class="help-block" ng-show="form.password.$error.minlength || form.password.$invalid">Password must be at least 8 characters.</p>
 
                 <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
             </form>

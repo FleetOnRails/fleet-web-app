@@ -12,15 +12,12 @@ angular.module('fleetonrails.controllers.users-controller', [])
                     email : $scope.user.email,
                     username : $scope.user.username,
                     password : $scope.user.password,
-                    password_confirmation : $scope.password_confirmation
+                    password_confirmation : $scope.user.password_confirmation
                 }
             };
             UsersService.create(attributes, function(user){
                 console.log( user)
-            }).success(function(data){
-                    console.log(data)
-                    $location.path('/main');
-                })
+            })
 
         }
     }]);
