@@ -4,7 +4,7 @@
             <div class="panel-heading">Edit personal information</div>
             <div class="panel-body">
                 <tabset>
-                    <tab heading="Edit Profile">
+                    <tab heading="Edit Profile" ng-controller="MainCtrl">
                         <form ng-submit="changeProfile()" name="form" novalidate>
                             <h4>First Name:</h4>
                             <input  type="text" class="form-control custom-margin" name="profile" placeholder="First Name" ng-model="user.me.first_name" required>
@@ -19,7 +19,7 @@
                             <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
                         </form>
                     </tab>
-                    <tab heading="Update Password">
+                    <tab heading="Update Password" ng-controller="MainCtrl">
                         <form ng-submit="changePassword()" name="update" novalidate>
                             <h4>New password:</h4>
                             <input autocomplete="off" type="password" class="form-control custom-margin" name="Name" placeholder="New Password" ng-model="user.me.password" required>

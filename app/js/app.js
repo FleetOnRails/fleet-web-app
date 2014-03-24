@@ -5,7 +5,7 @@ angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart', 'ui.bootst
             when('/', {templateUrl: 'partials/login.html'}).
             when('/signup', {templateUrl: 'partials/signup.html',controller:'usersController'}).
             when('/main', {templateUrl: 'partials/main.html', controller: 'MainCtrl'}).
-            when('/profile',{templateUrl:'partials/profile.html', controller: 'MainCtrl'}).
+            when('/profile',{templateUrl:'partials/profile.html'}).
             when('/gps',{templateUrl:'partials/gps.html', controller: 'gpsController'}).
             when('/car',{templateUrl:'partials/car.html',controller:'carController'}).
             when('/addcar',{templateUrl:'partials/addcar.html',controller:'carController'}).
