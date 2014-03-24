@@ -5,6 +5,10 @@ angular.module('fleetonrails.controllers.car-controller', [])
             $scope.cars = [];
 
             var dynamicMarkers = [];
+            var center = {
+                latitude: 54,
+                longitude: -7
+            }
 
             angular.extend($scope, {
                 map: {
@@ -13,10 +17,7 @@ angular.module('fleetonrails.controllers.car-controller', [])
                     showBicycling: false,
                     showWeather: false,
                     showHeat: false,
-                    center: {
-                        latitude: 54,
-                        longitude: -7
-                    },
+                    center: center,
                     options: {
                         streetViewControl: true,
                         panControl: false,
@@ -44,7 +45,6 @@ angular.module('fleetonrails.controllers.car-controller', [])
                 CarsService.show(id, function (data) {
                     $scope.car = data['car'];
                     if ($scope.car.current_gps_statistic) {
-
                         dynamicMarkers = [
                             {
                                 latitude: $scope.car.current_gps_statistic.latitude,
@@ -52,6 +52,11 @@ angular.module('fleetonrails.controllers.car-controller', [])
                                 showWindow: false
                             }
                         ];
+
+                        center = {
+                            latitude: $scope.car.current_gps_statistic.latitude,
+                            longitude: $scope.car.current_gps_statistic.longitude
+                        };
                     }
                     else {
                         dynamicMarkers = [];
@@ -99,12 +104,13 @@ angular.module('fleetonrails.controllers.car-controller', [])
             };
 
             if ($routeParams && $routeParams.id) {
-                $scope.getCar( $routeParams.id)
+                $scope.getCar($routeParams.id)
             } else {
                 $scope.getCars();
             }
 
             $timeout(function () {
                 $scope.map.dynamicMarkers = dynamicMarkers;
+                $scope.map.center = center;
             }, 2000);
         }]);

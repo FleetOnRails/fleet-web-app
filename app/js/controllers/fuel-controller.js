@@ -48,9 +48,9 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
             });
         };
 
-        $scope.deleteEntry = function(id, fuel_id){
+        $scope.deleteEntry = function( fuel_id){
 
-            FuelService.delete(id,fuel_id ,function(fuel_entries){
+            FuelService.delete($routeParams.id,fuel_id ,function(fuel_entries){
                 // TODO fixed the table update after deletion
                 //console.log(fuel_entries);
                 //$scope.fuel_entries($scope.fuel_entries.indexOf(fuel_id),1);
@@ -58,7 +58,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
         };
 
 
-        $scope.addFuel = function(id){
+        $scope.addFuel = function(){
             var attributes = {
                 fuel_entry: {
                     odometer: $scope.fuel.odometer,
@@ -74,7 +74,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
             };
             console.log($scope.selectedOption.name)
             console.log(attributes)
-            FuelService.create(id,attributes, function (fuel_entry) {
+            FuelService.create($routeParams.id,attributes, function (fuel_entry) {
                 console.log(fuel_entry)
             })
 

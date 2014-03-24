@@ -22,7 +22,7 @@ angular.module('fleetonrails.controllers.services-controller', [])
             });
         };
 
-        $scope.addRecord = function(id){
+        $scope.addRecord = function(){
             var attributes = {
                 service_record: {
                     odometer_reading: $scope.service_record.odometer_reading,
@@ -34,7 +34,7 @@ angular.module('fleetonrails.controllers.services-controller', [])
                 }
             };
             console.log(attributes)
-            ServicesService.create(id,attributes, function (service_record) {
+            ServicesService.create($routeParams.id,attributes, function (service_record) {
                 console.log(service_record)
             })
 

@@ -15,7 +15,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">GPS Tracking</div>
+                <div class="panel-heading">
+                    <b>GPS Tracking</b>
+                    <div class="btn-group pull-right">
+                        Traffic: <input type="checkbox" text="TrafficLayer On/Off" ng-model="map.showTraffic">
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
                 <div class="panel-body">
                     <google-map
                             center="map.center"
