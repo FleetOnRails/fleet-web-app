@@ -48,7 +48,7 @@
             </tr>
             </thead>
             <tr ng-repeat="car in cars | filter:searchText" class="my-repeat-animation">
-                <td> {{car.make}} </td>
+                <td><a href="#/car/{{car.id}}">{{car.make}} </a></td>
                 <td> {{car.model}} </td>
                 <td> {{car.registration}} </td>
                 <td class="dropdown">
