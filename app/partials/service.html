@@ -41,7 +41,7 @@
                 <th>Location</th>
             </tr>
             </thead>
-            <tr ng-repeat="service_record in service_records | filter:searchText">
+            <tr ng-repeat="service_record in service_records | filter:searchText" class="my-repeat-animation">
                 <td> {{service_record.odometer_reading}} </td>
                 <td> {{service_record.technician}} </td>
                 <td> {{service_record.description}} </td>

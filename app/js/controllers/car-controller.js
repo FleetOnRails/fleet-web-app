@@ -70,6 +70,7 @@ angular.module('fleetonrails.controllers.car-controller', [])
                 };
                 console.log(attributes);
                 CarsService.create(attributes, function (car) {
+                    $location.path('/main')
                     console.log(car);
                 })
 
