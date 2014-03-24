@@ -14,6 +14,8 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
 
         $scope.gauge_data = [];
 
+        $scope.total_fuel_price = [];
+
 
         $scope.CollapseDemoCtrl = function(){
             $scope.isCollapsed = false;
@@ -25,15 +27,18 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
             FuelService.get(id,function (data) {
                 var total=0;
                 var count = 1;
+                var total_fuel = 0;
                 $scope.gauge_data = [];
                 angular.forEach(data, function (fuel_entries, index) {
                     angular.forEach(fuel_entries, function(value, index) {
                         $scope.fuel_entries.push(value.fuel_entry)
                         $scope.fuel_data.push(value.fuel_entry.liters)
                         total += value.fuel_entry.liters;
+                        total_fuel = total_fuel+(value.fuel_entry.liters * value.fuel_entry.price);
                         count = count + 1;
                     })
                 });
+                $scope.total_fuel_price.push(total_fuel)
                 if(count=1){
                     count = 2
                 }
