@@ -20,7 +20,6 @@ angular.module('fleetonrails.services.me-service', [])
             },
 
             change: function(data, success) {
-                data.access_token = localStorage.getItem('access_token');
                 $http({
                     method: 'PUT',
                     url: globalSettings.api_base_url + '/v1/me',
@@ -37,7 +36,6 @@ angular.module('fleetonrails.services.me-service', [])
                     })
             },
             changePassword: function(data, success) {
-                data.access_token = localStorage.getItem('access_token');
                 $http({
                     method: 'PUT',
                     url: globalSettings.api_base_url + '/v1/me',
