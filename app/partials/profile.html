@@ -7,20 +7,20 @@
                     <tab heading="Edit Profile">
                         <form ng-submit="changeProfile()" name="form" novalidate>
                             <h4>First Name:</h4>
-                            <input  type="text" class="form-control custom-margin" name="Name" placeholder="First Name" ng-model="user.me.first_name" required>
+                            <input  type="text" class="form-control custom-margin" name="profile" placeholder="First Name" ng-model="user.me.first_name" required>
                             <h4>Second Name:</h4>
-                            <input  type="text" class="form-control custom-margin" name="Surname" placeholder="Last name" ng-model="user.me.last_name" required>
+                            <input  type="text" class="form-control custom-margin" name="profile" placeholder="Last name" ng-model="user.me.last_name" required>
                             <h4>Email Address:</h4>
-                            <input  type="text" class="form-control custom-margin" name="email" placeholder="Email address" ng-model="user.me.email" required>
+                            <input  type="text" class="form-control custom-margin" name="profile" placeholder="Email address" ng-model="user.me.email" required>
                             <h4>Username:</h4>
-                            <input  type="text" class="form-control custom-margin" name="username" placeholder="User name" ng-model="user.me.username" required>
+                            <input  type="text" class="form-control custom-margin" name="profile" placeholder="User name" ng-model="user.me.username" required>
                             <h4>Phone Number:</h4>
-                            <input  type="text" class="form-control custom-margin" name="phone" placeholder="Phone Number" ng-model="user.me.phone_no" >
+                            <input  type="text" class="form-control custom-margin" name="profile" placeholder="Phone Number" ng-model="user.me.phone_no" >
                             <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
                         </form>
                     </tab>
                     <tab heading="Update Password">
-                        <form ng-submit="changePassword()" name="form" novalidate>
+                        <form ng-submit="changePassword()" name="update" novalidate>
                             <h4>New password:</h4>
                             <input autocomplete="off" type="password" class="form-control custom-margin" name="Name" placeholder="New Password" ng-model="user.me.password" required>
                             <h4>Retype new password:</h4>
