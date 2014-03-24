@@ -161,36 +161,39 @@ body {
     margin-top: 5px;
 }
 
-.custom-enter,
-.custom-leave,
-.custom-move {
-    -webkit-transition: 1s linear all;
-    -moz-transition: 1s linear all;
-    -o-transition: 1s linear all;
-    transition: 1s linear all;
+.gauge {
+    height: 250px;
+}
+
+.my-repeat-animation.ng-enter,
+.my-repeat-animation.ng-leave,
+.my-repeat-animation.ng-move {
+    -webkit-transition: 0.5s linear all;
+    transition: 0.5s linear all;
     position:relative;
 }
 
-.animation.ng-enter,
-.animation.ng-leave{
-    -webkit-transition: 1s;
+.my-repeat-animation.ng-enter {
+    left:-10px;
+    opacity:0;
+}
+.my-repeat-animation.ng-enter.ng-enter-active {
+    left:0;
+    opacity:1;
 }
 
-.animation.ng-enter {
-    opacity: 0;
+.my-repeat-animation.ng-leave {
+    left:0;
+    opacity:1;
+}
+.my-repeat-animation.ng-leave.ng-leave-active {
+    left:-10px;
+    opacity:0;
 }
 
-.animation.ng-leave {
-    opacity: 1;
+.my-repeat-animation.ng-move {
+    opacity:0.5;
 }
-
-.animation.ng-enter.ng-enter-active {
-    opacity: 1;
-}
-
-.animation.ng-leave.ng-leave-active {
-    opacity: 0;
-}
-.gauge {
-    height: 250px;
+.my-repeat-animation.ng-move.ng-move-active {
+    opacity:1;
 }
