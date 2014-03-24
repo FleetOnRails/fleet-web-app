@@ -22,4 +22,15 @@ angular.module('fleetonrails.controllers.main-controller', [])
             })
         };
 
+        $scope.changePassword = function(){
+          var attributes = {
+              password: $scope.user.me.password,
+              password_confirmation: $scope.user.me.password_confirmation,
+              current_password : $scope.user.me.current_password
+          };
+            MeService.changePassword(attributes,function(user){
+                console.log(user)
+            })
+        };
+
     }]);

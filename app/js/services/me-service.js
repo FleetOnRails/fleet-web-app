@@ -35,6 +35,23 @@ angular.module('fleetonrails.services.me-service', [])
                     }).error(function(data) {
                         console.log(data);
                     })
+            },
+            changePassword: function(data, success) {
+                data.access_token = localStorage.getItem('access_token');
+                $http({
+                    method: 'PUT',
+                    url: globalSettings.api_base_url + '/v1/me',
+                    data: data,
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                }).success(function(user) {
+                        success(user);
+                    }).error(function(data) {
+                        console.log(data);
+                    })
             }
         }
     }]);

@@ -43,7 +43,7 @@ angular.module('fleetonrails.controllers.car-controller', [])
             $scope.getCar = function (id) {
                 CarsService.show(id, function (data) {
                     $scope.car = data['car'];
-                    if($scope.car.current_gps_statistic){
+                    if ($scope.car.current_gps_statistic) {
 
                         dynamicMarkers = [
                             {
@@ -53,14 +53,8 @@ angular.module('fleetonrails.controllers.car-controller', [])
                             }
                         ];
                     }
-                    else{
-                        dynamicMarkers = [
-                            {
-                                latitude: 53.333333,
-                                longitude: -6.25,
-                                showWindow: false
-                            }
-                        ];
+                    else {
+                        dynamicMarkers = [];
                     }
 
                 });
@@ -104,7 +98,7 @@ angular.module('fleetonrails.controllers.car-controller', [])
             };
 
             if ($routeParams && $routeParams.id) {
-                $scope.getCar($routeParams.id)
+                $scope.getCar( $routeParams.id)
             } else {
                 $scope.getCars();
             }
