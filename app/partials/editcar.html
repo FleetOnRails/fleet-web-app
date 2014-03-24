@@ -1,6 +1,16 @@
 <navbar></navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner ">
+        <ul class="nav nav-justified">
+            <li><a href="#/car/{{car.id}}">Dashboard</a></li>
+            <li><a href="#/car/{{car.id}}/fuel">Fuel Entry</a></li>
+            <li><a href="">Documents</a></li>
+            <li><a href="#/car/{{car.id}}/service">Service</a></li>
+        </ul>
+    </div>
+</nav>
 <div class="container">
-    <div class="panel panel-default col-md-5 custom-panel custom-panel-profile col-md-offset-3">
+    <div class="panel panel-default col-md-5 custom-panel col-md-offset-3">
         <div class="panel-heading">Edit car information</div>
         <div class="panel-body">
                     <form ng-submit="updateCar()" name="form">

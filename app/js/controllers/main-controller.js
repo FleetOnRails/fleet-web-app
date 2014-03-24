@@ -2,6 +2,8 @@ angular.module('fleetonrails.controllers.main-controller', [])
 
     .controller('MainCtrl', [ '$scope', 'MeService', '$location', 'loginService', function ($scope, MeService, $location, loginService) {
 
+        var attributes = []
+
         MeService.get(function (user) {
             $scope.user = user;
         });
@@ -23,7 +25,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
         };
 
         $scope.changePassword = function(){
-          var attributes = {
+          attributes = {
               password: $scope.user.me.password,
               password_confirmation: $scope.user.me.password_confirmation,
               current_password : $scope.user.me.current_password
