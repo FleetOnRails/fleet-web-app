@@ -6,6 +6,9 @@ angular.module('fleetonrails.controllers.main-controller', [])
 
         MeService.get(function (user) {
             $scope.user = user;
+        }, function(data) {
+            alert('Fuck off')
+            $location.path('/')
         });
 
         $scope.logout = function () {
@@ -34,7 +37,13 @@ angular.module('fleetonrails.controllers.main-controller', [])
             console.log(attributes)
             MeService.changePassword(attributes,function(user){
                 console.log(user)
+            }, function(data) {
+
             })
         };
+
+//        if(localStorage.isEmpty('access_token')){
+//            $location.path('/');
+//        }
 
     }]);

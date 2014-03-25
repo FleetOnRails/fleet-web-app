@@ -2,7 +2,7 @@ angular.module('fleetonrails.services.me-service', [])
 
     .factory('MeService', [ '$http', 'globalSettings', function($http, globalSettings) {
         return {
-            get: function(success) {
+            get: function(success, error) {
                 $http({
                     method: 'GET',
                     url: globalSettings.api_base_url + '/v1/me',
@@ -15,11 +15,12 @@ angular.module('fleetonrails.services.me-service', [])
                     console.log('sucess', user);
                     success(user);
                     }).error(function(data) {
+                        error(data)
                         console.log(data);
                     })
             },
 
-            change: function(data, success) {
+            change: function(data, success, error) {
                 $http({
                     method: 'PUT',
                     url: globalSettings.api_base_url + '/v1/me',
@@ -32,10 +33,11 @@ angular.module('fleetonrails.services.me-service', [])
                 }).success(function(user) {
                         success(user);
                     }).error(function(data) {
+                        error(data)
                         console.log(data);
                     })
             },
-            changePassword: function(data, success) {
+            changePassword: function(data, success, error) {
                 $http({
                     method: 'PUT',
                     url: globalSettings.api_base_url + '/v1/me',
@@ -48,6 +50,7 @@ angular.module('fleetonrails.services.me-service', [])
                 }).success(function(user) {
                         success(user);
                     }).error(function(data) {
+                        error(data);
                         console.log(data);
                     })
             }
