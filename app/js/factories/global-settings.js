@@ -3,7 +3,7 @@ angular.module('fleetonrails.factories.global-settings', [])
     .factory('globalSettings', [function () {
         return {
             api_base_url : 'http://fleet-api.raven.com',
-            api_client_id : '73bb593a38b4dc659c189ec6749fc1fd323330b12d86f1f25f4e2d3575c8d1ac',
-            api_client_secret : 'cbbbf066762f56a4b97f7f85791156d6f1a0bb2b0901fa4dae6285179faa13bd'
+            api_client_id : '7236d09f6fd8210ea98914b603cbf4b3b10f6ef3ad8ad308e9f24b4a326cabb4',
+            api_client_secret : '6080523131ac5b51fd73bd1bfe073658de7684b1d497cff6c789d0b8adf17a82'
         };
     }]);
