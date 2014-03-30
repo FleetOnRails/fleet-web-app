@@ -15,7 +15,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
         $scope.gauge_data = [];
 
         $scope.total_fuel_price = [];
-
+        $scope.pending = true;
 
         $scope.CollapseDemoCtrl = function(){
             $scope.isCollapsed = false;
@@ -76,6 +76,8 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
             console.log(attributes)
             FuelService.create($routeParams.id,attributes, function (fuel_entry) {
                 console.log(fuel_entry)
+                $scope.pending = false
+
             })
 
         }

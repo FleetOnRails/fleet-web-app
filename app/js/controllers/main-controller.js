@@ -4,8 +4,11 @@ angular.module('fleetonrails.controllers.main-controller', [])
 
         var attributes = []
 
+        $scope.pending = true
+
         MeService.get(function (user) {
             $scope.user = user;
+            $scope.pending = false
         }, function(data) {
             alert('Fuck off')
             $location.path('/')

@@ -13,6 +13,7 @@
         <div class="panel panel-default col-md-5 custom-panel">
             <div class="panel-heading">Add a fuel entry</div>
             <div class="panel-body">
+                    {{pending}}
                     <form ng-submit="addFuel(car.id)" name="form" novalidate>
                         <input  type="text" class="form-control custom-margin" name="Name" placeholder="Odometer" ng-model="fuel.odometer" required>
                         <input  type="text" class="form-control custom-margin" name="liters" placeholder="liters" ng-model="fuel.liters" required>
