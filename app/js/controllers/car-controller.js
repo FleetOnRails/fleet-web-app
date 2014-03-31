@@ -4,6 +4,8 @@ angular.module('fleetonrails.controllers.car-controller', [])
         function ($scope, CarsService, $location, $timeout, $routeParams) {
             $scope.cars = [];
 
+            $scope.pending = true
+
             var dynamicMarkers = [];
             var center = {
                 latitude: 54,
@@ -62,6 +64,8 @@ angular.module('fleetonrails.controllers.car-controller', [])
                         dynamicMarkers = [];
                     }
 
+
+
                 });
             };
 
@@ -112,5 +116,6 @@ angular.module('fleetonrails.controllers.car-controller', [])
             $timeout(function () {
                 $scope.map.dynamicMarkers = dynamicMarkers;
                 $scope.map.center = center;
+                $scope.pending = false
             }, 2000);
         }]);

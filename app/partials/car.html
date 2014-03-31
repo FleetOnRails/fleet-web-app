@@ -22,7 +22,10 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
-                <div class="panel-body">
+                <div class="panel-body text-center" ng-if="pending">
+                    <i class="fa fa-spinner fa-spin fa-4x"></i>
+                </div>
+                <div class="panel-body" ng-if="!pending">
                     <google-map
                             center="map.center"
                             zoom="map.zoom"
