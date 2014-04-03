@@ -109,12 +109,18 @@ angular.module('fleetonrails.controllers.car-controller', [])
 
             if ($routeParams && $routeParams.id) {
                 $scope.getCar($routeParams.id)
-                $interval(function() {
+                var timeInterval = $interval(function() {
                     $scope.getCar($routeParams.id)
                 }, 5000)
+                $scope.$on('$destroy', function () { $interval.cancel(timeInterval); });
             } else {
                 $scope.getCars();
             }
+
+            $scope.$on('$destroy',function(){
+                console.log('Destroyed called')
+                $interval.cancel(timeInterval);
+            })
 
             $timeout(function () {
                 $scope.map.dynamicMarkers = dynamicMarkers;
