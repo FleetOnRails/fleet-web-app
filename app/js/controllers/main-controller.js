@@ -37,6 +37,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
               password_confirmation: $scope.user.me.password_confirmation,
               current_password : $scope.user.me.current_password
           }};
+
             console.log(attributes)
             MeService.changePassword(attributes,function(user){
                 console.log(user)
