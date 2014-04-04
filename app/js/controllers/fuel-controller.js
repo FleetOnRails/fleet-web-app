@@ -1,6 +1,6 @@
 angular.module('fleetonrails.controllers.fuel-controller', [])
 
-    .controller('fuelController', ['$scope', 'FuelService', '$location', '$routeParams', function ($scope, FuelService, $location, $routeParams) {
+    .controller('fuelController', ['$scope', 'FuelService', 'CarsService','$location', '$routeParams', function ($scope, FuelService,CarsService, $location, $routeParams) {
 
         $scope.options = [{ name: "True", id: 1 }, { name: "False", id: 2 }];
         $scope.selectedOption = $scope.options[1];
@@ -21,6 +21,13 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
             $scope.isCollapsed = false;
 
         }
+
+        getCar = function (id) {
+            CarsService.show(id, function (data) {
+                console.log('Insdie get car function')
+                $scope.car = data['car'];
+            });
+        };
 
 
         getFuelEntries = function(id) {
@@ -66,6 +73,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                     price: $scope.fuel.price,
                     fuel_type: $scope.selectedOptionFuel.name,
                     filling_station: $scope.fuel.filling_station,
+                    date: $scope.fuel.date,
                     filled_tank: $scope.selectedOption.name.toLocaleUpperCase(),
                     location_attributes:{
                         address: $scope.fuel.location_attributes.address
@@ -82,10 +90,50 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
 
         }
 
+        $scope.today = function() {
+            $scope.dt = new Date();
+        };
+        $scope.today();
+
+        $scope.showWeeks = true;
+        $scope.toggleWeeks = function () {
+            $scope.showWeeks = ! $scope.showWeeks;
+        };
+
+        $scope.clear = function () {
+            $scope.dt = null;
+        };
+
+        // Disable weekend selection
+        $scope.disabled = function(date, mode) {
+            return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
+        };
+
+        $scope.toggleMin = function() {
+            $scope.minDate = ( $scope.minDate ) ? null : new Date();
+        };
+        $scope.toggleMin();
+
+        $scope.open = function($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            $scope.opened = true;
+        };
+
+        $scope.dateOptions = {
+            'year-format': "'yy'",
+            'starting-day': 1
+        };
+
+        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'shortDate'];
+        $scope.format = $scope.formats[0];
+
         $scope.fuel_options = {thickness: 5, mode: "gauge", total: 100};
 
         if ($routeParams && $routeParams.id) {
             getFuelEntries($routeParams.id)
+            getCar($routeParams.id)
         } else {
             console.log('something wrong')
         }

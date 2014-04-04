@@ -107,6 +107,11 @@ angular.module('fleetonrails.controllers.car-controller', [])
                 })
             };
 
+            $scope.stopInterval = function(){
+                console.log("Inside stop interval method")
+                $interval.cancel(timeInterval);
+            }
+
             if ($routeParams && $routeParams.id) {
                 $scope.getCar($routeParams.id)
                 var timeInterval = $interval(function() {
@@ -117,10 +122,6 @@ angular.module('fleetonrails.controllers.car-controller', [])
                 $scope.getCars();
             }
 
-            $scope.$on('$destroy',function(){
-                console.log('Destroyed called')
-                $interval.cancel(timeInterval);
-            })
 
             $timeout(function () {
                 $scope.map.dynamicMarkers = dynamicMarkers;

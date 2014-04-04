@@ -3,7 +3,7 @@
     <div class="navbar-inner ">
         <ul class="nav nav-justified">
             <li><a href="#/car/{{car.id}}/edit">Settings</a></li>
-            <li><a href="#/car/{{car.id}}/fuel">Fuel Entry</a></li>
+            <li><a href="#/car/{{car.id}}/fuel" ng-click="stopInterval()">Fuel Entry</a></li>
             <li><a href="">Documents</a></li>
             <li><a href="#/car/{{car.id}}/service">Service</a></li>
         </ul>
@@ -11,7 +11,7 @@
 </nav>
 
 
-<div class="container">
+<div class="container" ng>
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">

@@ -13,12 +13,22 @@
         <div class="panel panel-default col-md-5 custom-panel">
             <div class="panel-heading">Add a fuel entry</div>
             <div class="panel-body">
-                    {{pending}}
                     <form ng-submit="addFuel(car.id)" name="form" novalidate>
                         <input  type="text" class="form-control custom-margin" name="Name" placeholder="Odometer" ng-model="fuel.odometer" required>
                         <input  type="text" class="form-control custom-margin" name="liters" placeholder="liters" ng-model="fuel.liters" required>
                         <input  type="text" class="form-control custom-margin" name="price" placeholder="price" ng-model="fuel.price" required>
                         <input  type="text" class="form-control custom-margin" name="fillingStation" placeholder="filling station" ng-model="fuel.filling_station" required>
+                        <div class="row">
+                            <div class="col-md-6">
+                               <label>Date: </label>
+                                <p class="input-group">
+                                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="fuel.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                    <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                                </p>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <label>Filled Tank:</label> <select class="form-control custom-margin"data-ng-options="o.name for o in options" data-ng-model="selectedOption" required><option></option></select>
