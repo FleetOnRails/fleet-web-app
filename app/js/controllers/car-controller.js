@@ -108,7 +108,6 @@ angular.module('fleetonrails.controllers.car-controller', [])
             };
 
             $scope.stopInterval = function(){
-                console.log("Inside stop interval method")
                 $interval.cancel(timeInterval);
             }
 

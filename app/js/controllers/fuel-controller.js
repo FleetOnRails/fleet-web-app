@@ -24,7 +24,6 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
 
         getCar = function (id) {
             CarsService.show(id, function (data) {
-                console.log('Insdie get car function')
                 $scope.car = data['car'];
             });
         };
@@ -50,7 +49,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                     count = count + 1;
                 }
                 $scope.gauge_data.push(
-                    {label: "Fuel", value:total/count, color: "#5398f1", suffix: "L"}
+                    {label: "Fuel", value:(total/count).toFixed(2), color: "#5398f1", suffix: "L"}
                 )
             });
         };
@@ -104,10 +103,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
             $scope.dt = null;
         };
 
-        // Disable weekend selection
-        $scope.disabled = function(date, mode) {
-            return ( mode === 'day' && ( date.getDay() === 0 || date.getDay() === 6 ) );
-        };
+
 
         $scope.toggleMin = function() {
             $scope.minDate = ( $scope.minDate ) ? null : new Date();

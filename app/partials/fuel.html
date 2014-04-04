@@ -10,7 +10,7 @@
     </div>
 </nav>
 <div class="container" ng-controller="fuelController">
-        <div class="panel panel-default col-md-5 custom-panel">
+        <div class="panel panel-default col-md-4 custom-panel">
             <div class="panel-heading">Add a fuel entry</div>
             <div class="panel-body">
                     <form ng-submit="addFuel(car.id)" name="form" novalidate>
@@ -19,10 +19,10 @@
                         <input  type="text" class="form-control custom-margin" name="price" placeholder="price" ng-model="fuel.price" required>
                         <input  type="text" class="form-control custom-margin" name="fillingStation" placeholder="filling station" ng-model="fuel.filling_station" required>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                <label>Date: </label>
                                 <p class="input-group">
-                                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="fuel.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="fuel.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
                                  <span class="input-group-btn">
                                     <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                                  </span>
@@ -30,17 +30,17 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
-                                <label>Filled Tank:</label> <select class="form-control custom-margin"data-ng-options="o.name for o in options" data-ng-model="selectedOption" required><option></option></select>
+                            <div class="col-md-12">
+                                <label>Filled Tank:</label> <select class="form-control custom-margin "data-ng-options="o.name for o in options" data-ng-model="selectedOption" required><option></option></select>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <label>Fuel Type:</label> <select class="form-control custom-margin"data-ng-options="o.name for o in optionsFuel" data-ng-model="selectedOptionFuel" required><option></option></select>
                             </div>
                         </div>
                         <div class="row" >
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add location</button>
                                 <hr>
                                 <div collapse="!isCollapsed">
@@ -52,7 +52,7 @@
                     </form>
             </div>
         </div>
-    <div class="panel panel-default col-md-5 custom-panel col-md-offset-1" ng-controller="fuelController">
+    <div class="panel panel-default col-md-6 custom-panel col-md-offset-1" ng-controller="fuelController">
         <div class="panel-heading"><input placeholder="Filter fuel entries" ng-model="searchText"></div>
         <table class="table table-hover">
             <thead>
@@ -79,7 +79,7 @@
             </tr>
         </table>
     </div>
-    <div class="panel panel-default col-md-5 custom-panel col-md-offset-1">
+    <div class="panel panel-default col-md-6 custom-panel col-md-offset-1">
         <div class="panel-heading">Average litres per Entry</div>
         <div class=" gauge">
             <pie-chart data="gauge_data" options="fuel_options"></pie-chart>
