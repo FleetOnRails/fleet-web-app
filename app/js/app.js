@@ -13,5 +13,6 @@ angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart', 'n3-pie-ch
             when('/car/:id/fuel',{templateUrl:'partials/fuel.html',controller:'fuelController'}).
             when('/car/:id/edit',{templateUrl:'partials/editcar.html',controller:'carController'}).
             when('/car/:id/service',{templateUrl:'partials/service.html',controller:'serviceController'}).
+            when('/car/:id/reminders',{templateUrl:'partials/reminders.html',controller:'remindersController'}).
             otherwise({redirectTo: '/'});
     }]);

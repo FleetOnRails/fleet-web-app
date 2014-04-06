@@ -1,0 +1,54 @@
+<navbar></navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner ">
+        <ul class="nav nav-justified">
+            <li><a href="#/car/{{car.id}}">Dashboard</a></li>
+            <li><a href="#/car/{{car.id}}/edit">Settings</a></li>
+            <li><a href="#/car/{{car.id}}/fuel">Fuel Entry</a></li>
+            <li><a href="">Documents</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+    <div class="panel panel-default col-md-5 custom-panel">
+        <div class="panel-heading">Add a Reminder</div>
+        <div class="panel-body">
+            <form ng-submit="addReminder()" name="form" novalidate>
+                <input  type="text" class="form-control custom-margin" name="odometer" placeholder="Odometer" ng-model="reminders.odometer" required>
+                <input  type="text" class="form-control custom-margin" name="technician" placeholder="Reminder Type" ng-model="reminders.reminder_type" required>
+                <input  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="reminders.description" required>                <div class="row">
+                    <div class="col-md-12">
+                        <label>Date: </label>
+                        <p class="input-group">
+                            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="reminders.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                    <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                        </p>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default col-md-5 custom-panel col-md-offset-1">
+        <div class="panel-heading"><input placeholder="Filter Reminders" ng-model="searchText"></div>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Odometer</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tr ng-repeat="reminder in reminders | filter:searchText" class="my-repeat-animation">
+                <td> {{reminder.odometer}} </td>
+                <td> {{reminder.description}} </td>
+                <td> {{reminder.reminder_type}} </td>
+                <td> {{reminder.date}} </td>
+            </tr>
+        </table>
+    </div>
+</div>

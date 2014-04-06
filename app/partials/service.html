@@ -9,7 +9,7 @@
         </ul>
     </div>
 </nav>
-<div class="container" ng-controller="serviceController">
+<div class="container">
     <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
     <div class="panel panel-default col-md-5 custom-panel">
         <div class="panel-heading">Add an expenses entry</div>
