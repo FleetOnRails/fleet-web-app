@@ -10,12 +10,13 @@
     </div>
 </nav>
 <div class="container" ng-controller="serviceController">
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
     <div class="panel panel-default col-md-5 custom-panel">
         <div class="panel-heading">Add an expenses entry</div>
         <div class="panel-body">
             <form ng-submit="addRecord(car.id)" name="form" novalidate>
                 <input  type="text" class="form-control custom-margin" name="odometer" placeholder="Odometer" ng-model="expenses.odometer" required>
-                <input  type="text" class="form-control custom-margin" name="technician" placeholder="Expense Type" ng-model="expenses.expenses_type" required>
+                <input  type="text" class="form-control custom-margin" name="technician" placeholder="Expense Type" ng-model="expenses.expense_type" required>
                 <input  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="expenses.description" required>
                 <input  type="text" class="form-control custom-margin" name="price" placeholder="Price" ng-model="expenses.price" required>
 
@@ -55,10 +56,10 @@
             </tr>
             </thead>
             <tr ng-repeat="expense in expenses | filter:searchText" class="my-repeat-animation">
-                <td> {{service_record.odometer_reading}} </td>
-                <td> {{service_record.technician}} </td>
-                <td> {{service_record.description}} </td>
-                <td> {{service_record.location.city}} </td>
+                <td> {{expense.odometer}} </td>
+                <td> {{expense.expense_type}} </td>
+                <td> {{expense.description}} </td>
+                <td> {{expense.location.city}} </td>
             </tr>
         </table>
     </div>

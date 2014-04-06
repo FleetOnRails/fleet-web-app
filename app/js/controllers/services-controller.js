@@ -7,10 +7,16 @@ angular.module('fleetonrails.controllers.services-controller', [])
 
         $scope.expenses = [];
 
+        $scope.alerts = [];
+
         $scope.CollapseDemoCtrl = function(){
             $scope.isCollapsed = false;
 
         }
+
+        $scope.closeAlert = function(index) {
+            $scope.alerts.splice(index, 1);
+        };
 
         getCar = function (id) {
             CarsService.show(id, function (data) {
@@ -31,9 +37,9 @@ angular.module('fleetonrails.controllers.services-controller', [])
 
         $scope.addRecord = function(){
             var attributes = {
-                service_record: {
+                expense: {
                     odometer: $scope.expenses.odometer,
-                    expenses_type: $scope.expenses.expenses_type,
+                    expense_type: $scope.expenses.expense_type,
                     description: $scope.expenses.description,
                     price : $scope.expenses.price,
                     date: $scope.expenses.date,
@@ -44,6 +50,7 @@ angular.module('fleetonrails.controllers.services-controller', [])
             };
             console.log(attributes)
             ServicesService.create($routeParams.id,attributes, function (expsenses) {
+                $scope.alerts.push({msg: 'Expense successfully created! ', type: 'success'});
                 console.log(expsenses)
             })
 
