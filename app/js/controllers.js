@@ -7,5 +7,7 @@ angular.module('fleetonrails.controllers', [
     'fleetonrails.controllers.fuel-controller',
     'fleetonrails.controllers.users-controller',
     'fleetonrails.controllers.services-controller',
-    'fleetonrails.controllers.reminders-controller'
+    'fleetonrails.controllers.reminders-controller',
+    'fleetonrails.controllers.car_diagnostic_faults-controller',
+    'fleetonrails.controllers.car_diagnostic_statistics-controller'
 ]);
