@@ -114,6 +114,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                 $scope.pending = false
 
             })
+            $scope.apply
 
         }
 

@@ -11,18 +11,31 @@
 </nav>
 <div class="container" ng-controller="serviceController">
     <div class="panel panel-default col-md-5 custom-panel">
-        <div class="panel-heading">Add a service record</div>
+        <div class="panel-heading">Add an expenses entry</div>
         <div class="panel-body">
             <form ng-submit="addRecord(car.id)" name="form" novalidate>
-                <input  type="text" class="form-control custom-margin" name="odometer" placeholder="Odometer" ng-model="service_record.odometer_reading" required>
-                <input  type="text" class="form-control custom-margin" name="technician" placeholder="Technician" ng-model="service_record.technician" required>
-                <input  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="service_record.description" required>
+                <input  type="text" class="form-control custom-margin" name="odometer" placeholder="Odometer" ng-model="expenses.odometer" required>
+                <input  type="text" class="form-control custom-margin" name="technician" placeholder="Expense Type" ng-model="expenses.expenses_type" required>
+                <input  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="expenses.description" required>
+                <input  type="text" class="form-control custom-margin" name="price" placeholder="Price" ng-model="expenses.price" required>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <label>Date: </label>
+                        <p class="input-group">
+                            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="expenses.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+                                 <span class="input-group-btn">
+                                    <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                                 </span>
+                        </p>
+                    </div>
+                </div>
                 <div class="row" >
                     <div class="col-md-6">
                         <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add location</button>
                         <hr>
                         <div collapse="!isCollapsed">
-                            <input  type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="service_record.location_attributes.address">
+                            <input  type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="expenses.location_attributes.address">
                         </div>
                     </div>
                 </div>
@@ -31,7 +44,7 @@
         </div>
     </div>
     <div class="panel panel-default col-md-5 custom-panel col-md-offset-1">
-        <div class="panel-heading"><input placeholder="Filter service records" ng-model="searchText"></div>
+        <div class="panel-heading"><input placeholder="Filter expenses" ng-model="searchText"></div>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -41,7 +54,7 @@
                 <th>Location</th>
             </tr>
             </thead>
-            <tr ng-repeat="service_record in service_records | filter:searchText" class="my-repeat-animation">
+            <tr ng-repeat="expense in expenses | filter:searchText" class="my-repeat-animation">
                 <td> {{service_record.odometer_reading}} </td>
                 <td> {{service_record.technician}} </td>
                 <td> {{service_record.description}} </td>
