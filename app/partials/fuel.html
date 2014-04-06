@@ -10,6 +10,7 @@
     </div>
 </nav>
 <div class="container">
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
         <div class="panel panel-default col-md-4 custom-panel">
             <div class="panel-heading">Add a fuel entry</div>
             <div class="panel-body">

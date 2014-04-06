@@ -8,6 +8,8 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
         $scope.optionsFuel = [{ name: "Petrol", id: 1 }, { name: "Diesel", id: 2 }];
         $scope.selectedOptionFuel = $scope.optionsFuel[1];
 
+        $scope.alerts = [];
+
         $scope.fuel_entries = [];
 
         $scope.fuel_data = [] ;
@@ -34,6 +36,9 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
             tension: 0.7
         }
 
+        $scope.closeAlert = function(index) {
+            $scope.alerts.splice(index, 1);
+        };
 
         $scope.CollapseDemoCtrl = function(){
             $scope.isCollapsed = false;
@@ -105,6 +110,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
             console.log(attributes)
             FuelService.create($routeParams.id,attributes, function (fuel_entry) {
                 console.log(fuel_entry)
+                $scope.alerts.push({msg: 'Fuel entry successfully created! ', type: 'success'});
                 $scope.pending = false
 
             })
