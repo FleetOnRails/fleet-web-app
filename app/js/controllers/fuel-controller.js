@@ -14,8 +14,26 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
 
         $scope.gauge_data = [];
 
+        $scope.dataLine = [];
+
         $scope.total_fuel_price = [];
         $scope.pending = true;
+
+
+        $scope.optionsLine = {
+            axes: {
+                x: {key: 'x', labelFunction: function(value) {return value;}, type: 'linear', tooltipFormatter: function(x) {return x;}},
+                y: {type: 'linear'},
+
+            },
+            series: [
+                {y: 'value', color: 'steelblue', thickness: '2px', striped: true, label: 'Price'},
+                {y: 'otherValue', axis: 'y2', color: 'lightsteelblue'}
+            ],
+            lineMode: 'linear',
+            tension: 0.7
+        }
+
 
         $scope.CollapseDemoCtrl = function(){
             $scope.isCollapsed = false;
@@ -35,10 +53,13 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                 var count = 0;
                 var total_fuel = 0;
                 $scope.gauge_data = [];
+                $scope.dataLine = [];
                 angular.forEach(data, function (fuel_entries, index) {
                     angular.forEach(fuel_entries, function(value, index) {
                         $scope.fuel_entries.push(value.fuel_entry)
                         $scope.fuel_data.push(value.fuel_entry.liters)
+                        $scope.dataLine.push({x: index, value: value.fuel_entry.liters * value.fuel_entry.price})
+
                         total += value.fuel_entry.liters;
                         total_fuel = total_fuel+(value.fuel_entry.liters * value.fuel_entry.price);
                         count = count + 1;
@@ -52,6 +73,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                     {label: "Fuel", value:(total/count).toFixed(2), color: "#5398f1", suffix: "L"}
                 )
             });
+            $scope.apply
         };
 
         $scope.deleteEntry = function( fuel_id){
@@ -133,7 +155,5 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
         } else {
             console.log('something wrong')
         }
-
-
 
     }]);

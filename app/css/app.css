@@ -114,6 +114,7 @@ body {
     background-color: #efefef;
     color:#000000;
     min-height: 40px;
+    box-shadow: 1px 0px 10px; @gray-light;
 }
 
 /*.navbar-custom .navbar-nav > li > a {*/
@@ -143,6 +144,7 @@ body {
 .navbar .nav a:hover {
     background: #ffffff;
 }
+
 
 .custom-margin{
     margin-bottom: 10px;
@@ -231,4 +233,5 @@ body {
     top:-600px;
     opacity:0;
 }
+
 

@@ -9,7 +9,7 @@
         </ul>
     </div>
 </nav>
-<div class="container" ng-controller="fuelController">
+<div class="container">
         <div class="panel panel-default col-md-4 custom-panel">
             <div class="panel-heading">Add a fuel entry</div>
             <div class="panel-body">
@@ -44,7 +44,7 @@
                                 <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add location</button>
                                 <hr>
                                 <div collapse="!isCollapsed">
-                                    <input  type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="fuel.location_attributes.address">
+                                    <input value="Null" type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="fuel.location_attributes.address">
                                 </div>
                             </div>
                         </div>
@@ -83,6 +83,12 @@
         <div class="panel-heading">Average litres per Entry</div>
         <div class=" gauge">
             <pie-chart data="gauge_data" options="fuel_options"></pie-chart>
+        </div>
+    </div>
+    <div class="panel panel-default col-md-6 custom-panel col-md-offset-1">
+        <div class="panel-heading">Price of stock </div>
+        <div class=" gauge">
+            <linechart data="dataLine" options="optionsLine"></linechart>
         </div>
     </div>
 

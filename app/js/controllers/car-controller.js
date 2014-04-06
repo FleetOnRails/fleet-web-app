@@ -33,6 +33,7 @@ angular.module('fleetonrails.controllers.car-controller', [])
                 }
             });
 
+
             $scope.getCars = function () {
                 CarsService.get(function (data) {
                     angular.forEach(data, function (cars) {
@@ -63,8 +64,6 @@ angular.module('fleetonrails.controllers.car-controller', [])
                     else {
                         dynamicMarkers = [];
                     }
-
-
 
                 });
             };
@@ -115,6 +114,9 @@ angular.module('fleetonrails.controllers.car-controller', [])
                 $scope.getCar($routeParams.id)
                 var timeInterval = $interval(function() {
                     $scope.getCar($routeParams.id)
+                    $scope.map.dynamicMarkers = dynamicMarkers;
+                    $scope.map.center = center;
+                    $scope.apply
                 }, 5000)
                 $scope.$on('$destroy', function () { $interval.cancel(timeInterval); });
             } else {

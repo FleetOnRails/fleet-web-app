@@ -46,8 +46,5 @@ angular.module('fleetonrails.controllers.main-controller', [])
             })
         };
 
-//        if(localStorage.isEmpty('access_token')){
-//            $location.path('/');
-//        }
 
     }]);

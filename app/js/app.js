@@ -1,4 +1,4 @@
-angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart', 'ui.bootstrap' , 'fleetonrails.services',
+angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart', 'n3-pie-chart',,'ui.bootstrap' , 'fleetonrails.services',
         'fleetonrails.controllers', 'fleetonrails.factories', 'fleetonrails.directives','google-maps']).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
