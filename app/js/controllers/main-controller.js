@@ -1,16 +1,20 @@
 angular.module('fleetonrails.controllers.main-controller', [])
 
-    .controller('MainCtrl', [ '$scope', 'MeService', '$location', 'loginService', function ($scope, MeService, $location, loginService) {
+    .controller('MainCtrl', [ '$scope', 'MeService', 'CarsService','$location', 'loginService', function ($scope, MeService, CarsService,$location, loginService) {
 
         var attributes = []
+
+        $scope.cars = [];
+
 
         $scope.pending = true
 
         MeService.get(function (user) {
             $scope.user = user;
             $scope.pending = false
+            $scope.getCars()
         }, function(data) {
-            alert('Fuck off')
+            alert('Not authorized')
             $location.path('/')
         });
 
@@ -30,6 +34,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
             })
         };
 
+
         $scope.changePassword = function(){
           attributes = {
               me:{
@@ -44,6 +49,16 @@ angular.module('fleetonrails.controllers.main-controller', [])
             }, function(data) {
 
             })
+        };
+
+        $scope.getCars = function () {
+            CarsService.get(function (data) {
+                angular.forEach(data, function (cars) {
+                    angular.forEach(cars, function (value) {
+                        $scope.cars.push(value.car)
+                    })
+                });
+            });
         };
 
 
