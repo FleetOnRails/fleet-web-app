@@ -8,5 +8,6 @@ angular.module('fleetonrails.services', [
     'fleetonrails.services.services-service',
     'fleetonrails.services.reminders-service',
     'fleetonrails.services.cars_diagnostic_faults-service',
-    'fleetonrails.services.cars_diagnostic_statistics-service'
+    'fleetonrails.services.cars_diagnostic_statistics-service',
+    'fleetonrails.services.cars_documents-service'
 ]);
