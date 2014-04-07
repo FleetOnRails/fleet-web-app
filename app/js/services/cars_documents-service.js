@@ -21,7 +21,7 @@ angular.module('fleetonrails.services.cars_documents-service', [])
                         console.log(data);
                     })
             },
-            create: function (id,success,attributes) {
+            create: function (id,attributes,success) {
                 $http({
                     method: 'POST',
                     url: globalSettings.api_base_url + '/v1/cars/' + id + '/documents',

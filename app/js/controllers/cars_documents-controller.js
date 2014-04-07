@@ -1,7 +1,7 @@
 angular.module('fleetonrails.controllers.car_documents-controller', [])
 
-    .controller('carDocumentsController', ['$scope', 'CarsDocumentsService','CarsService', '$location',  '$routeParams',
-        function ($scope, CarsDocumentsService, CarsService,$location, $routeParams) {
+    .controller('carDocumentsController', ['$scope', 'CarsDocumentsService','CarsService', '$location',  '$routeParams','$base64',
+        function ($scope, CarsDocumentsService, CarsService,$location, $routeParams,$base64) {
 
 
             $scope.documents = [];
@@ -38,11 +38,14 @@ angular.module('fleetonrails.controllers.car_documents-controller', [])
             }
 
             $scope.createDocument = function(){
+                var selected_file = document.getElementById('input').files[0];
+                $scope.encoded = $base64.encode(selected_file);
+                console.log($scope.encoded4)
                 var attributes = {
                     document:{
                         name: $scope.document.name,
                         document_extension : $scope.document.document_extension,
-                        document_data : $scope.document_data
+                        document_data : $scope.encoded
                     }
                 }
                 CarsDocumentsService.create($routeParams.id,attributes,function(document){
