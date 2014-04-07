@@ -11,7 +11,7 @@
 </nav>
 <div class="container">
     <div class="container col-md-7">
-        <div class="panel panel-default col-md-10 custom-panel col-md-offset-1">
+        <div class="panel panel-default col-md-11 custom-panel col-md-offset-1">
             <div class="panel-heading">Reminders</div>
             <div class="panel-body">
                 <div class="text-center" ng-if="pending">
@@ -35,7 +35,7 @@
                             <td>{{car.registration}}</td>
                             <td> {{reminder.description}} </td>
                             <td> {{reminder.reminder_type}} </td>
-                            <td> {{reminder.date}} </td>
+                            <td> {{reminder.date | date:'yyyy-MM-dd'}} </td>
 
                         </tr>
                     </table>
