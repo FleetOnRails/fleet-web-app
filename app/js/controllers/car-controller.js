@@ -100,7 +100,7 @@ angular.module('fleetonrails.controllers.car-controller', [])
             };
 
             $scope.deleteCar = function (id) {
-                CarsService.delete($routeParams.id, function (car) {
+                CarsService.delete(id, function (car) {
                     console.log(car);
                     $scope.cars.splice($scope.cars.indexOf(id), 1);
                 })

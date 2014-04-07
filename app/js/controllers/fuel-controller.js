@@ -24,13 +24,11 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
 
         $scope.optionsLine = {
             axes: {
-                x: {key: 'x', labelFunction: function(value) {return value;}, type: 'linear', tooltipFormatter: function(x) {return x;}},
-                y: {type: 'linear'},
+                x: {key: 'x', labelFunction: function(value) {return value;}, type: 'linear', tooltipFormatter: function(x) {return x;}}
 
             },
             series: [
-                {y: 'value', color: 'steelblue', thickness: '2px', striped: true, label: 'Price'},
-                {y: 'otherValue', axis: 'y2', color: 'lightsteelblue'}
+                {y: 'value', color: 'steelblue', thickness: '2px', striped: true, label: 'Total Price'}
             ],
             lineMode: 'linear',
             tension: 0.7
@@ -63,7 +61,8 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                     angular.forEach(fuel_entries, function(value, index) {
                         $scope.fuel_entries.push(value.fuel_entry)
                         $scope.fuel_data.push(value.fuel_entry.liters)
-                        $scope.dataLine.push({x: index, value: value.fuel_entry.liters * value.fuel_entry.price})
+
+                        $scope.dataLine.push({x: count, value: value.fuel_entry.liters * value.fuel_entry.price})
 
                         total += value.fuel_entry.liters;
                         total_fuel = total_fuel+(value.fuel_entry.liters * value.fuel_entry.price);

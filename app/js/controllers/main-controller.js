@@ -31,6 +31,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
             });
             MeService.change(attributes, function (user) {
                 console.log(user);
+                $location.path('#/main');
             })
         };
 

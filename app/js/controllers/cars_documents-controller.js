@@ -38,9 +38,11 @@ angular.module('fleetonrails.controllers.car_documents-controller', [])
             }
 
             $scope.createDocument = function(){
-                var selected_file = document.getElementById('input').files[0];
+                var selected_file = new FileReader();
+                selected_file.onload=function(e){
+                    console.log(e.target.result);
+                }
                 $scope.encoded = $base64.encode(selected_file);
-                console.log($scope.encoded4)
                 var attributes = {
                     document:{
                         name: $scope.document.name,
