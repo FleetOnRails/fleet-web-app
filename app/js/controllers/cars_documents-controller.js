@@ -5,6 +5,13 @@ angular.module('fleetonrails.controllers.car_documents-controller', [])
 
 
             $scope.documents = [];
+            $scope.alerts = [];
+
+
+            $scope.closeAlert = function(index) {
+                $scope.alerts.splice(index, 1);
+            };
+
 
 
             $scope.getDocuments = function (id) {
@@ -28,6 +35,20 @@ angular.module('fleetonrails.controllers.car_documents-controller', [])
                 getCar($routeParams.id)
             } else {
                 console.log('something wrong')
+            }
+
+            $scope.createDocument = function(){
+                var attributes = {
+                    document:{
+                        name: $scope.document.name,
+                        document_extension : $scope.document.document_extension,
+                        document_data : $scope.document_data
+                    }
+                }
+                CarsDocumentsService.create($routeParams.id,attributes,function(document){
+                    console.log(document)
+                    $scope.alerts.push({msg: 'Fuel entry successfully created! ', type: 'success'});
+                })
             }
 
         }]);

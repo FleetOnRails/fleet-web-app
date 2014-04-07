@@ -1,11 +1,25 @@
 <navbar></navbar>
 <nav class="navbar navbar-custom">
-    <div class="navbar-inner ">
-        <ul class="nav nav-justified">
-            <li><a href="#/car/{{car.id}}">Dashboard</a></li>
-            <li><a href="#/car/{{car.id}}/edit">Settings</a></li>
-            <li><a href="#/car/{{car.id}}/reminders">Reminders</a></li>
-            <li><a href="#/car/{{car.id}}/service">Expenses</a></li>
-        </ul>
-    </div>
+<div class="navbar-inner ">
+    <ul class="nav nav-justified">
+        <li><a href="#/car/{{car.id}}">Dashboard</a></li>
+        <li><a href="#/car/{{car.id}}/edit">Settings</a></li>
+        <li><a href="#/car/{{car.id}}/reminders">Reminders</a></li>
+        <li><a href="#/car/{{car.id}}/service">Expenses</a></li>
+    </ul>
+</div>
 </nav>
+<div class="container">
+<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+<div class="panel panel-default col-md-5 custom-panel col-md-offset-1">
+    <div class="panel-heading">Upload Document</div>
+    <div class="panel-body">
+        <form ng-submit="createDocument()" name="form" novalidate>
+            <input  type="text" class="form-control custom-margin" name="name" placeholder="Name" ng-model="document.name" required>
+            <input  type="text" class="form-control custom-margin" name="extension" placeholder="Document extension" ng-model="document.document_extension" required>
+            <input  type="file" class="form-control custom-margin" name="File" placeholder="File" ng-model="document_data" required>
+            <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+        </form>
+    </div>
+    </div>
+</div>
