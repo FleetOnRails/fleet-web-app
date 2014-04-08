@@ -26,6 +26,7 @@ angular.module('fleetonrails.controllers.services-controller', [])
 
 
         getExpenses = function(id) {
+            $scope.expenses = [];
             ServicesService.get(id,function (data) {
                 angular.forEach(data, function (expenses, index) {
                     angular.forEach(expenses, function(value, index) {
@@ -51,6 +52,8 @@ angular.module('fleetonrails.controllers.services-controller', [])
             console.log(attributes)
             ServicesService.create($routeParams.id,attributes, function (expsenses) {
                 $scope.alerts.push({msg: 'Expense successfully created! ', type: 'success'});
+                getExpenses($routeParams.id)
+                $scope.apply
                 console.log(expsenses)
             })
 
