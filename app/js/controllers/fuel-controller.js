@@ -57,6 +57,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                 var total_fuel = 0;
                 $scope.gauge_data = [];
                 $scope.dataLine = [];
+                $scope.fuel_entries = [];
                 angular.forEach(data, function (fuel_entries, index) {
                     angular.forEach(fuel_entries, function(value, index) {
                         $scope.fuel_entries.push(value.fuel_entry)
@@ -80,12 +81,11 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
             $scope.apply
         };
 
-        $scope.deleteEntry = function( fuel_id){
-
+        $scope.deleteEntry = function( fuel_id,id){
             FuelService.delete($routeParams.id,fuel_id ,function(fuel_entries){
-                // TODO fixed the table update after deletion
-                //console.log(fuel_entries);
-                //$scope.fuel_entries($scope.fuel_entries.indexOf(fuel_id),1);
+                $scope.alerts = [];
+                $scope.alerts.push({msg: 'Fuel entry successfully deleted! ', type: 'success'});
+                $scope.fuel_entries.splice(id, 1);
             })
         };
 
@@ -110,6 +110,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
             FuelService.create($routeParams.id,attributes, function (fuel_entry) {
                 console.log(fuel_entry)
                 $scope.alerts.push({msg: 'Fuel entry successfully created! ', type: 'success'});
+                getFuelEntries($routeParams.id)
                 $scope.pending = false
 
             })

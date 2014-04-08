@@ -33,7 +33,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
             }
             else if(due < recent){
                 //$scope.alerts.push({msg: '' + discription + ' is Overdue for car ' + reg , type: 'danger'});
-                $scope.alerts.push({msg:discription +'is Overdue' + ' for car ' + reg + '. Go to' + '<a href="#/car/{{carID}}/reminders"> Reminders </a>' + ' for more details', type: 'danger'});
+                $scope.alerts.push({msg:discription +'is Overdue' + ' for car ' + reg + '. Go to' + '<a href="#/car/carID/reminders"> Reminders </a>' + ' for more details', type: 'danger'});
 
 
             }
