@@ -24,7 +24,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
 
         $scope.optionsLine = {
             axes: {
-                x: {key: 'x', labelFunction: function(value) {return value;}, type: 'linear', tooltipFormatter: function(x) {return x;}}
+                x: {key: 'x', labelFunction: function(value) {return value;}, type: 'area', tooltipFormatter: function(x) {return x;}}
 
             },
             series: [

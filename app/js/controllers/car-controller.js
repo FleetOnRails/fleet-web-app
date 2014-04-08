@@ -5,6 +5,8 @@ angular.module('fleetonrails.controllers.car-controller', [])
             $scope.cars = [];
 
             $scope.pending = true
+            $scope.gauge_data = [];
+            $scope.fuel_options = {thickness: 5, mode: "gauge", total: 200};
 
             var dynamicMarkers = [];
             var center = {
@@ -46,6 +48,7 @@ angular.module('fleetonrails.controllers.car-controller', [])
 
             $scope.getCar = function (id) {
                 CarsService.show(id, function (data) {
+                    $scope.gauge_data = [];
                     $scope.car = data['car'];
                     if ($scope.car.current_gps_statistic) {
                         dynamicMarkers = [
@@ -64,6 +67,9 @@ angular.module('fleetonrails.controllers.car-controller', [])
                     else {
                         dynamicMarkers = [];
                     }
+                    $scope.gauge_data.push(
+                        {label: "Speed", value:$scope.car.current_gps_statistic.kmh, color: "#5398f1", suffix: "Km/h"}
+                    )
 
                 });
             };
