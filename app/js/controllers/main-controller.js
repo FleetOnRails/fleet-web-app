@@ -17,7 +17,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
             $scope.alerts.splice(index, 1);
         };
 
-        $scope.differenceInDays = function (date,discription,reg) {
+        $scope.differenceInDays = function (date,discription,reg,carID) {
 
             var minutes=1000*60;
             var hours=minutes*60;
@@ -27,14 +27,14 @@ angular.module('fleetonrails.controllers.main-controller', [])
 
             var recent = Math.round(today/hours)
             var due = Math.round(tmp/hours)
-            console.log('Recent date', recent)
-            console.log('Due date', due)
             if(recent - due == 1 || recent == due){
                 $scope.alerts.push({msg: '' + discription + ' is due for car ' + reg + ' today', type: 'warning'});
 
             }
             else if(due < recent){
-                $scope.alerts.push({msg: '' + discription + ' is Overdue for car ' + reg , type: 'danger'});
+                //$scope.alerts.push({msg: '' + discription + ' is Overdue for car ' + reg , type: 'danger'});
+                $scope.alerts.push({msg:discription +'is Overdue' + ' for car ' + reg + '. Go to' + '<a href="#/car/{{carID}}/reminders"> Reminders </a>' + ' for more details', type: 'danger'});
+
 
             }
 
@@ -97,7 +97,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
                             angular.forEach(data, function (reminders, index) {
                                 angular.forEach(reminders, function(reminder, index) {
                                     value.car.reminders.push(reminder.reminder);
-                                    $scope.differenceInDays(reminder.reminder.date,reminder.reminder.description,value.car.registration)
+                                    $scope.differenceInDays(reminder.reminder.date,reminder.reminder.description,value.car.registration,value.car.id)
                                 })
                             });
                             console.log('car', value.car);

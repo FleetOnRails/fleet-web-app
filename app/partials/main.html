@@ -12,7 +12,9 @@
 <div class="container">
     <div class="row">
         <div class="container col-md-7">
-            <alert  class="col-md-11 col-md-offset-1" ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+            <alert  class="col-md-11 col-md-offset-1" ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
+                <span ng-bind-html="alert.msg"></span>
+            </alert>
             <div class="panel panel-default col-md-11 custom-panel col-md-offset-1">
                 <div class="panel-heading">Reminders</div>
                 <div class="panel-body">
@@ -77,7 +79,7 @@
     <div class="row">
         <div class="col-md-7">
             <div class="panel panel-default custom-panel col-md-offset-1">
-                <div class="panel-heading">Average litres per Entry</div>
+                <div class="panel-heading">Fuel cost over time</div>
                 <div class=" gauge">
                     <pie-chart data="gauge_data" options="fuel_options"></pie-chart>
                 </div>
