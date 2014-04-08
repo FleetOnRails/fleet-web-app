@@ -59,6 +59,15 @@ angular.module('fleetonrails.controllers.services-controller', [])
 
         }
 
+        $scope.deleteExpense = function(expenseId,id){
+            ServicesService.delete($routeParams.id,expenseId ,function(expenses){
+                $scope.alerts = [];
+                $scope.alerts.push({msg: 'Expense successfully deleted! ', type: 'success'});
+
+                $scope.expenses.splice(id, 1);
+            })
+        };
+
         $scope.today = function() {
             $scope.dt = new Date();
         };

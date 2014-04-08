@@ -36,6 +36,24 @@ angular.module('fleetonrails.services.services-service', [])
                     }).error(function (data) {
                         console.log(data);
                     })
+            },
+            delete: function(id,expenseID,succes){
+                console.log(globalSettings.api_base_url);
+                $http({
+                    method: 'DELETE',
+                    url: globalSettings.api_base_url + '/v1/cars/' + id + '/expenses/' + expenseID,
+                    headers:{
+                        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+
+                }).success(function(expenses){
+                        succes(expenses);
+                    })
+                    .error(function(expenses){
+                        console.log(expenses);
+                    })
             }
         }
     }]);
