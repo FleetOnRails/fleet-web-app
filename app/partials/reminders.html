@@ -41,6 +41,7 @@
                 <th>Description</th>
                 <th>Type</th>
                 <th>Date</th>
+                <th></th>
             </tr>
             </thead>
             <tr ng-repeat="reminder in reminders | filter:searchText" class="my-repeat-animation">
@@ -48,6 +49,13 @@
                 <td> {{reminder.description}} </td>
                 <td> {{reminder.reminder_type}} </td>
                 <td> {{reminder.date}} </td>
+                <td class="dropdown">
+
+                    <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a><i class="fa fa-trash-o" ng-click="deleteReminders(reminder.id,$index)"> Delete</i></a></li>
+                    </ul>
+                </td>
             </tr>
         </table>
     </div>

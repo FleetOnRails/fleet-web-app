@@ -99,10 +99,10 @@ angular.module('fleetonrails.controllers.car-controller', [])
                 })
             };
 
-            $scope.deleteCar = function (id) {
-                CarsService.delete(id, function (car) {
+            $scope.deleteCar = function (carID,id) {
+                CarsService.delete(carID, function (car) {
                     console.log(car);
-                    $scope.cars.splice($scope.cars.indexOf(id), 1);
+                    $scope.cars.splice(id, 1);
                 })
             };
 

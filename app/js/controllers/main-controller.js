@@ -21,7 +21,6 @@ angular.module('fleetonrails.controllers.main-controller', [])
 
             var minutes=1000*60;
             var hours=minutes*60;
-            //var days=hours*24;
             var today = new Date().getTime()
             var past = new Date(date)
             var tmp = past.getTime()
@@ -30,12 +29,12 @@ angular.module('fleetonrails.controllers.main-controller', [])
             var due = Math.round(tmp/hours)
             console.log('Recent date', recent)
             console.log('Due date', due)
-            if(recent == due){
-                $scope.alerts.push({msg: '' + discription + ' is due for car ' + reg + ' today', type: 'danger'});
+            if(recent - due == 1 || recent == due){
+                $scope.alerts.push({msg: '' + discription + ' is due for car ' + reg + ' today', type: 'warning'});
 
             }
             else if(due < recent){
-                $scope.alerts.push({msg: '' + discription + ' is Overdue for car ' + reg , type: 'success'});
+                $scope.alerts.push({msg: '' + discription + ' is Overdue for car ' + reg , type: 'danger'});
 
             }
 

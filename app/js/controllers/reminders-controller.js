@@ -32,6 +32,8 @@ angular.module('fleetonrails.controllers.reminders-controller', [])
             console.log(attributes)
             RemindersService.create($routeParams.id,attributes, function (reminders) {
                 $scope.alerts.push({msg: 'Reminder successfully created! ', type: 'success'});
+                getReminders($routeParams.id)
+                $scope.apply
                 console.log(reminders)
             })
         };
@@ -39,12 +41,22 @@ angular.module('fleetonrails.controllers.reminders-controller', [])
 
         getReminders = function(id) {
             RemindersService.get(id,function (data) {
+                $scope.reminders = [];
                 angular.forEach(data, function (reminders, index) {
                     angular.forEach(reminders, function(value, index) {
                         $scope.reminders.push(value.reminder)
                     })
                 });
             });
+        };
+
+        $scope.deleteReminders = function(reminderid,id){
+            RemindersService.delete($routeParams.id,reminderid ,function(fuel_entries){
+                $scope.alerts = [];
+                $scope.alerts.push({msg: 'Reminder successfully deleted! ', type: 'success'});
+
+                $scope.reminders.splice(id, 1);
+            })
         };
 
 
