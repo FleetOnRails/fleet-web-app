@@ -10,7 +10,9 @@ angular.module('fleetonrails.controllers.main-controller', [])
         $scope.alerts = [];
         $scope.gauge_data = [];
         $scope.pending = true;
-        $scope.fuel_options = {thickness: 5, mode: "gauge", total: 100};
+        $scope.href=[];
+
+            $scope.fuel_options = {thickness: 5, mode: "gauge", total: 100};
 
 
             $scope.closeAlert = function(index) {
@@ -28,17 +30,16 @@ angular.module('fleetonrails.controllers.main-controller', [])
             var recent = Math.round(today/hours)
             var due = Math.round(tmp/hours)
             if(recent - due == 1 || recent == due){
-                $scope.alerts.push({msg: '' + discription + ' is due for car ' + reg + ' today', type: 'warning'});
+                $scope.alerts.push({msg: '' + discription + ' is due for car ' + reg + ' today', type: 'warning',link: '#/car/'+ carID + '/reminders'});
+
 
             }
             else if(due < recent){
-                //$scope.alerts.push({msg: '' + discription + ' is Overdue for car ' + reg , type: 'danger'});
-                $scope.alerts.push({msg:discription +'is Overdue' + ' for car ' + reg + '. Go to' + '<a href="#/car/carID/reminders"> Reminders </a>' + ' for more details', type: 'danger'});
+                $scope.alerts.push({msg:discription +'is Overdue' + ' for car ' + reg + '. Click to go to reminders page', type: 'danger',link: '#/car/'+ carID + '/reminders'});
 
 
             }
-
-
+            console.log('Link',$scope.alerts.link)
         };
 
         MeService.get(function (user) {
