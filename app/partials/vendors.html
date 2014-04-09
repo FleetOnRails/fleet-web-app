@@ -1,0 +1,22 @@
+<navbar></navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner ">
+        <ul class="nav nav-justified">
+            <li><a href="#/vendors">Vendors</a></li>
+            <li><a href="">Products</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="panel panel-default col-md-5 custom-panel">
+        <div class="panel-heading">Add Vendor</div>
+        <div class="panel-body">
+            <form ng-submit="addVendor()" name="form" novalidate>
+                <input  type="text" class="form-control custom-margin" name="name" placeholder="Name" ng-model="vendor.name" required>
+                <input  type="text" class="form-control custom-margin" name="supplies" placeholder="Supplies Type" ng-model="vendor.supplies" required>
+                <input  type="text" class="form-control custom-margin" name="location" placeholder="Location" ng-model="vendor.location_attributes" required>
+                <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+            </form>
+        </div>
+    </div>
+</div>

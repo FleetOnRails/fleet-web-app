@@ -39,7 +39,6 @@ angular.module('fleetonrails.controllers.main-controller', [])
 
 
             }
-            console.log('Link',$scope.alerts.link)
         };
 
         MeService.get(function (user) {
