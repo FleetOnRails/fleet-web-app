@@ -29,7 +29,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
 
             var recent = Math.round(today/hours)
             var due = Math.round(tmp/hours)
-            if(recent - due == 1 || recent == due){
+            if(due - recent <= 24 && due - recent>=0){
                 $scope.alerts.push({msg: '' + discription + ' is due for car ' + reg + ' today', type: 'warning',link: '#/car/'+ carID + '/reminders'});
 
 
