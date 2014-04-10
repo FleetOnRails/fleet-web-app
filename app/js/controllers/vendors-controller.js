@@ -6,7 +6,12 @@ angular.module('fleetonrails.controllers.vendors-controller', [])
     .controller('vendorsController', ['$scope', 'VendorsService','$location', '$routeParams', function ($scope,VendorsService,$location, $routeParams) {
 
         $scope.vendors = [];
+        $scope.alerts = [];
         $scope.pending = true
+
+        $scope.closeAlert = function(index) {
+            $scope.alerts.splice(index, 1);
+        };
 
         $scope.addVendor = function(){
             var attributes = {
@@ -18,9 +23,9 @@ angular.module('fleetonrails.controllers.vendors-controller', [])
                     }
                 }
             };
-            console.log(attributes);
             VendorsService.create(attributes,function(vendors){
-                console.log(vendors)
+                $scope.alerts.push({msg: 'Vendor successfully created! ', type: 'success'});
+                getVenodors();
             })
         }
 
@@ -33,6 +38,26 @@ angular.module('fleetonrails.controllers.vendors-controller', [])
             });
             $scope.pending = false;
         });
+
+        getVenodors = function(){
+            VendorsService.get(function (data) {
+                $scope.vendors = [];
+                angular.forEach(data, function (vendors, index) {
+                    angular.forEach(vendors, function(value, index) {
+                        $scope.vendors.push(value.vendor)
+                    })
+                });
+                $scope.pending = false;
+            });
+        }
+
+        $scope.deleteVendor = function(vendorID,id){
+            VendorsService.delete(vendorID,function(){
+                $scope.alerts = [];
+                $scope.alerts.push({msg: 'Vendor successfully deleted! ', type: 'success'});
+                $scope.vendors.splice(id, 1);
+            })
+        }
 
 
     }]);

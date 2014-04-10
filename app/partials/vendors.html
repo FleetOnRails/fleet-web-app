@@ -8,6 +8,7 @@
     </div>
 </nav>
 <div class="container">
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
     <div class="panel panel-default col-md-5 custom-panel">
         <div class="panel-heading">Add Vendor</div>
         <div class="panel-body">
@@ -31,12 +32,20 @@
                     <th>Name</th>
                     <th>Supplies</th>
                     <th>Address</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tr ng-repeat="vendor in vendors | filter:searchText" class="my-repeat-animation">
                     <td> {{vendor.name}} </td>
                     <td> {{vendor.supplies}} </td>
                     <td> {{vendor.location.address}} </td>
+                    <td class="dropdown">
+
+                        <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a><i class="fa fa-trash-o" ng-click="deleteVendor(vendor.id,$index)"> Delete</i></a></li>
+                        </ul>
+                    </td>
                 </tr>
             </table>
         </div>
