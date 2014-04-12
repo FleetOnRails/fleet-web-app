@@ -4,8 +4,10 @@
         <ul class="nav nav-justified">
             <li><a href="#/car/{{car.id}}">Dashboard</a></li>
             <li><a href="#/car/{{car.id}}/edit">Settings</a></li>
-            <li><a href="">Documents</a></li>
-            <li><a href="#/car/{{car.id}}/service">Expenses</a></li>
+            <li><a href="#/car/{{car.id}}/fuel">Fuel Entry</a></li>
+            <li><a href="#/car/{{car.id}}/documents">Documents</a></li>
+            <li><a href="#/car/{{car.id}}/service" ng-click="stopInterval()">Expenses</a></li>
+            <li><a href="#/car/{{car.id}}/reminders">Reminders</a></li>
         </ul>
     </div>
 </nav>
