@@ -10,5 +10,6 @@ angular.module('fleetonrails.services', [
     'fleetonrails.services.cars_diagnostic_faults-service',
     'fleetonrails.services.cars_diagnostic_statistics-service',
     'fleetonrails.services.cars_documents-service',
-    'fleetonrails.services.vendors-service'
+    'fleetonrails.services.vendors-service',
+    'fleetonrails.services.vendors_products-service'
 ]);
