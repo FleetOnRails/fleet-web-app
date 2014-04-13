@@ -2,10 +2,8 @@
 <nav class="navbar navbar-custom">
     <div class="navbar-inner ">
         <ul class="nav nav-justified">
-            <li><a href="">Service Remainders</a></li>
-            <li><a href="">Faults</a></li>
-            <li><a href="">Docs</a></li>
-            <li><a href="">Diagnostics Statistics</a></li>
+            <li><a href="">Vehicles</a></li>
+            <li><a href="">Groups</a></li>
         </ul>
     </div>
 </nav>
@@ -49,32 +47,41 @@
                 </div>
             </div>
         </div>
-        <div class="panel panel-default col-md-4 custom-panel col-md-offset-1" ng-controller="carController">
-            <div class="panel-heading"><input placeholder="Filter Cars" ng-model="searchText"><a href="#/addcar"><i class="fa fa-plus pull-right custom-icon-pos" tooltip-placement="bottom" tooltip="Add Car"></i></a></div>
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>Make</th>
-                    <th>Model</th>
-                    <th>Reg. Num</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tr ng-repeat="car in cars | filter:searchText" class="my-repeat-animation">
-                    <td><a href="#/car/{{car.id}}">{{car.make}} </a></td>
-                    <td> {{car.model}} </td>
-                    <td> {{car.registration}} </td>
-                    <td class="dropdown">
+            <div class="col-md-5">
+                <div class="panel panel-default  custom-panel  col-md-offset-1 ">
+                    <div class="panel-body">
+                        <tabset>
+                            <tab heading="Cars" >
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Make</th>
+                                        <th>Model</th>
+                                        <th>Reg. Num</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tr ng-repeat="car in cars | filter:searchText" class="my-repeat-animation">
+                                        <td><a href="#/car/{{car.id}}">{{car.make}} </a></td>
+                                        <td> {{car.model}} </td>
+                                        <td> {{car.registration}} </td>
+                                        <td class="dropdown">
 
-                        <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#/car/{{car.id}}"><i class="fa fa-bar-chart-o"> Dashboard</i></a></li>
-                            <li><a><i class="fa fa-trash-o" ng-click="deleteCar(car.id,$index)"> Delete</i></a></li>
-                        </ul>
-                    </td>
-                </tr>
-            </table>
-        </div>
+                                            <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#/car/{{car.id}}"><i class="fa fa-bar-chart-o"> Dashboard</i></a></li>
+                                                <li><a><i class="fa fa-trash-o" ng-click="deleteCar(car.id,$index)"> Delete</i></a></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </tab>
+                            <tab heading="Groups">
+                            </tab>
+                        </tabset>
+                    </div>
+                </div>
+            </div>
     </div>
     <div class="row">
         <div class="col-md-7">
@@ -87,4 +94,5 @@
         </div>
     </div>
 </div>
+
 

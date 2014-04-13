@@ -68,7 +68,7 @@ angular.module('fleetonrails.controllers.car-controller', [])
                         dynamicMarkers = [];
                     }
                     $scope.gauge_data.push(
-                        {label: "Speed", value:$scope.car.current_gps_statistic.kmh.toFixed(1), color: "#5398f1", suffix: "Km/h"}
+                        {label: "Speed", value:$scope.car.current_gps_statistic.kmh.toFixed(0), color: "#5398f1", suffix: "Km/h"}
                     )
 
                 });
