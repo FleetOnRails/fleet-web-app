@@ -14,6 +14,7 @@ angular.module('fleetonrails.controllers.groups-controller', [])
                };
                GroupsService.create(attributes,function(groups){
                    console.log(groups)
+                   $location.path('/groups')
                },function(data){
                    console.log(data)
                })
@@ -28,6 +29,10 @@ angular.module('fleetonrails.controllers.groups-controller', [])
                     })
                 });
             })
+
+            $scope.changeToAdd = function(){
+                $location.path('/addgroup')
+            }
 
 
 

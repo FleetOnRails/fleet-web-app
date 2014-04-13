@@ -58,6 +58,14 @@ angular.module('fleetonrails.controllers.main-controller', [])
             $location.path('/');
         };
 
+        $scope.changeToAddGroup = function(){
+            $location.path('/addgroup')
+        }
+        $scope.changeToAddcar = function(){
+            $location.path('/addcar')
+        }
+
+
         $scope.changeProfile = function () {
             var attributes = {};
             angular.forEach($scope.user.me, function (value, key) {
@@ -97,6 +105,13 @@ angular.module('fleetonrails.controllers.main-controller', [])
                 });
             })
         }
+
+        $scope.deleteCar = function (carID,id) {
+            CarsService.delete(carID, function (car) {
+                console.log(car);
+                $scope.cars.splice(id, 1);
+            })
+        };
 
         $scope.getCars = function () {
             CarsService.get(function (data) {

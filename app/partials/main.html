@@ -76,7 +76,7 @@
                                         </td>
                                     </tr>
                                 </table>
-                                <button class="btn btn-default"><a href="#/addcar">Add Car</a></button>
+                                <button class="btn btn-default" ng-click="changeToAddcar()">Add car</button>
                             </tab>
                             <tab heading="Groups">
                                 <input type="text" class="input-cutom form-control" placeholder="Filter Groups" ng-model="searchGroups" >
@@ -90,7 +90,7 @@
                                         <td><a href="#/group/{{group.id}}">{{group.name}} </a></td>
                                     </tr>
                                 </table>
-                                <button class="btn btn-default"><a href="#/addgroup">Add Group</a></button>
+                                <button class="btn btn-default" ng-click="changeToAddGroup()">Add Group</button>
                             </tab>
                         </tabset>
                     </div>
