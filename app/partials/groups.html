@@ -2,10 +2,7 @@
 <nav class="navbar navbar-custom">
     <div class="navbar-inner">
         <ul class="nav nav-justified">
-            <li><a href="">Users</a></li>
-            <li><a href="">Cars</a></li>
-            <li><a href="">Vendors</a></li>
-            <li><a href="">Destinations</a></li>
+            <li><a href="#/main">Main Dashboard</a></li>
         </ul>
     </div>
 </nav>
@@ -19,7 +16,7 @@
         </tr>
         </thead>
         <tr ng-repeat="group in groups" class="my-repeat-animation">
-            <td><a href="">{{group.name}} </a></td>
+            <td><a href="#/group/{{group.id}}">{{group.name}} </a></td>
             <td>{{group.location.address}}</td>
             <td>{{group.created_at | date:'yyyy-MM-dd'}}</td>
         </tr>

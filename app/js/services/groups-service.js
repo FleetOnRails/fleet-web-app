@@ -18,6 +18,22 @@ angular.module('fleetonrails.services.groups-service', [])
                         console.log(groups);
                     })
             },
+            show: function(id,success, error) {
+                $http({
+                    method: 'GET',
+                    url: globalSettings.api_base_url + '/v1/groups/' + id,
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                }).success(function(group){
+                        success(group);
+                    }).error(function(group) {
+                        error(group)
+                        console.log(group);
+                    })
+            },
 
             create: function(data, success, error) {
                 $http({

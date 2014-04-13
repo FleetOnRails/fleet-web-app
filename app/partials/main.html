@@ -87,10 +87,10 @@
                                     </tr>
                                     </thead>
                                     <tr ng-repeat="group in groups| filter:searchGroups" class="my-repeat-animation">
-                                        <td><a href="">{{group.name}} </a></td>
+                                        <td><a href="#/group/{{group.id}}">{{group.name}} </a></td>
                                     </tr>
                                 </table>
-                                <button class="btn btn-default"><a href="#/group">Add Group</a></button>
+                                <button class="btn btn-default"><a href="#/addgroup">Add Group</a></button>
                             </tab>
                         </tabset>
                     </div>
