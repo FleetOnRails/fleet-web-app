@@ -14,5 +14,6 @@ angular.module('fleetonrails.services', [
     'fleetonrails.services.vendors_products-service',
     'fleetonrails.services.expenses_documents-service',
     'fleetonrails.services.groups-service',
-    'fleetonrails.services.groups_users-service'
+    'fleetonrails.services.groups_users-service',
+    'fleetonrails.services.groups_cars-service'
 ]);
