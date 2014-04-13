@@ -11,5 +11,6 @@ angular.module('fleetonrails.controllers', [
     'fleetonrails.controllers.car_diagnostic_faults-controller',
     'fleetonrails.controllers.car_diagnostic_statistics-controller',
     'fleetonrails.controllers.car_documents-controller',
-    'fleetonrails.controllers.vendors-controller'
+    'fleetonrails.controllers.vendors-controller',
+    'fleetonrails.controllers.groups-controller'
 ]);

@@ -17,5 +17,6 @@ angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart','base64', '
             when('/car/:id/documents',{templateUrl:'partials/documents.html',controller:'carDocumentsController'}).
             when('/vendors',{templateUrl:'partials/vendors.html',controller:'vendorsController'}).
             when('/vendors/:id/products',{templateUrl:'partials/products.html',controller:'MainCtrl'}).
+            when('/groups',{templateUrl:'partials/groups.html',controller:'GroupsCtrl'}).
             otherwise({redirectTo: '/'});
     }]);

@@ -105,8 +105,6 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                     }
                 }
             };
-            console.log($scope.selectedOption.name)
-            console.log(attributes)
             FuelService.create($routeParams.id,attributes, function (fuel_entry) {
                 console.log(fuel_entry)
                 $scope.alerts.push({msg: 'Fuel entry successfully created! ', type: 'success'});

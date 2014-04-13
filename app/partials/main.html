@@ -1,9 +1,9 @@
 <navbar></navbar>
 <nav class="navbar navbar-custom">
-    <div class="navbar-inner ">
+    <div class="navbar-inner">
         <ul class="nav nav-justified">
             <li><a href="">Vehicles</a></li>
-            <li><a href="">Groups</a></li>
+            <li><a href="#/groups">Groups</a></li>
         </ul>
     </div>
 </nav>
@@ -49,9 +49,9 @@
         </div>
             <div class="col-md-5">
                 <div class="panel panel-default  custom-panel  col-md-offset-1 ">
-                    <div class="panel-body">
+                    <div class="tab-content tab-custom">
                         <tabset>
-                            <tab heading="Cars" >
+                            <tab heading="Cars">
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
@@ -77,6 +77,16 @@
                                 </table>
                             </tab>
                             <tab heading="Groups">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                    </tr>
+                                    </thead>
+                                    <tr ng-repeat="group in groups" class="my-repeat-animation">
+                                        <td>{{group.name}}</td>
+                                    </tr>
+                                </table>
                             </tab>
                         </tabset>
                     </div>

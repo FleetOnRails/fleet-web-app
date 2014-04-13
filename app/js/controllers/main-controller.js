@@ -1,7 +1,7 @@
 angular.module('fleetonrails.controllers.main-controller', [])
 
-    .controller('MainCtrl', [ '$scope', 'MeService', 'CarsService','RemindersService','FuelService','$location', 'loginService',
-        function ($scope, MeService, CarsService,RemindersService,FuelService,$location, loginService) {
+    .controller('MainCtrl', [ '$scope', 'MeService', 'CarsService','RemindersService','FuelService','$location', 'loginService','GroupsService',
+        function ($scope, MeService, CarsService,RemindersService,FuelService,$location, loginService,GroupsService) {
 
         var attributes = []
 
@@ -11,11 +11,13 @@ angular.module('fleetonrails.controllers.main-controller', [])
         $scope.gauge_data = [];
         $scope.pending = true;
         $scope.href=[];
+        $scope.groups = []
 
-            $scope.fuel_options = {thickness: 5, mode: "gauge", total: 100};
+
+        $scope.fuel_options = {thickness: 5, mode: "gauge", total: 100};
 
 
-            $scope.closeAlert = function(index) {
+        $scope.closeAlert = function(index) {
             $scope.alerts.splice(index, 1);
         };
 
@@ -45,6 +47,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
             $scope.user = user;
             $scope.pending = false
             $scope.getCars()
+            getGroups()
         }, function(data) {
             alert('Not authorized')
             $location.path('/')
@@ -83,6 +86,17 @@ angular.module('fleetonrails.controllers.main-controller', [])
 
             })
         };
+
+        getGroups = function(){
+            GroupsService.get(function(groups){
+                $scope.groups = []
+                angular.forEach(groups, function (groups, index) {
+                    angular.forEach(groups, function(value, index) {
+                       $scope.groups.push(value.group)
+                    })
+                });
+            })
+        }
 
         $scope.getCars = function () {
             CarsService.get(function (data) {
