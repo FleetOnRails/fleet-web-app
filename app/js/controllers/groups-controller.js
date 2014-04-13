@@ -12,7 +12,6 @@ angular.module('fleetonrails.controllers.groups-controller', [])
                        }
                    }
                };
-
                GroupsService.create(attributes,function(groups){
                    console.log(groups)
                },function(data){
@@ -20,11 +19,16 @@ angular.module('fleetonrails.controllers.groups-controller', [])
                })
            }
 
-            getGroups = function(){
-                GroupsService.get(function(groups){
-                    console.log('gorups',groups)
-                })
-            }
+            GroupsService.get(function(groups){
+                $scope.groups = []
+                angular.forEach(groups, function (groups, index) {
+                    angular.forEach(groups, function(value, index) {
+                        $scope.groups.push(value.group)
+                        console.log(value.group)
+                    })
+                });
+            })
+
 
 
 

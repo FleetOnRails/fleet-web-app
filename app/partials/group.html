@@ -1,0 +1,29 @@
+<style>
+    form[novalidate] input{
+        border-left-width:8px ;
+        border-color: #3498db;
+        border-style: solid;
+    }
+
+    input[required].ng-pristine{
+        border-color: #e74c3c;
+    }
+
+    input.ng-invalid.ng-dirty{
+        border-color: #e74c3c;
+    }
+
+    input.ng-valid.ng-dirty{
+        border-color: #2ecc71;
+    }
+</style>
+<navbar></navbar>
+<div class=" col-md-3 col-md-offset-1">
+    <h4>Create group:</h4>
+    <form ng-submit="addGroup()" name="form" novalidate>
+        <input  type="text" class="form-control custom-margin" name="Name" placeholder="Name of group" ng-model="group.name" required>
+
+        <input type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="group.location_attributes.address" required>
+        <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+    </form>
+</div>

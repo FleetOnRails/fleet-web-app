@@ -75,6 +75,7 @@
                                         </td>
                                     </tr>
                                 </table>
+                                <button class="btn btn-default"><a href="#/addcar">Add Car</a></button>
                             </tab>
                             <tab heading="Groups">
                                 <table class="table table-hover">
@@ -84,9 +85,10 @@
                                     </tr>
                                     </thead>
                                     <tr ng-repeat="group in groups" class="my-repeat-animation">
-                                        <td>{{group.name}}</td>
+                                        <td><a href="">{{group.name}} </a></td>
                                     </tr>
                                 </table>
+                                <button class="btn btn-default"><a href="#/group">Add Group</a></button>
                             </tab>
                         </tabset>
                     </div>
