@@ -36,11 +36,10 @@ angular.module('fleetonrails.services.groups-service', [])
                         console.log(groups);
                     })
             },
-            delete: function(id,data, success, error) {
+            delete: function(id,success, error) {
                 $http({
                     method: 'DELETE',
                     url: globalSettings.api_base_url + '/v1/groups/' + id,
-                    data: data,
                     headers: {
                         'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
                         'Content-Type': 'application/json',
