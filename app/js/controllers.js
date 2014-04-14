@@ -13,5 +13,6 @@ angular.module('fleetonrails.controllers', [
     'fleetonrails.controllers.car_documents-controller',
     'fleetonrails.controllers.vendors-controller',
     'fleetonrails.controllers.groups-controller',
-    'fleetonrails.controllers.group-controller'
+    'fleetonrails.controllers.group-controller',
+    'fleetonrails.controllers.groups_users-controller'
 ]);

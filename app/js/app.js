@@ -20,6 +20,7 @@ angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart','base64', '
             when('/addgroup',{templateUrl:'partials/addgroup.html',controller:'GroupsCtrl'}).
             when('/groups',{templateUrl:'partials/groups.html',controller:'GroupsCtrl'}).
             when('/group/:id',{templateUrl:'partials/group.html',controller:'GroupCtrl'}).
+            when('/group/:id/users',{templateUrl:'partials/groupsusers.html',controller:'GroupsUsersCtrl'}).
 
             otherwise({redirectTo: '/'});
     }]);

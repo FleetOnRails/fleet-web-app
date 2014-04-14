@@ -1,0 +1,33 @@
+<navbar>
+</navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner">
+        <ul class="nav nav-justified">
+            <li><a href="">Users</a></li>
+            <li><a href="">Cars</a></li>
+            <li><a href="">Vendors</a></li>
+            <li><a href="">Destinations</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <button class="btn btn-default" ng-click="addUser()">Add User</button>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone number</th>
+            <th>Created at</th>
+            <th>Email</th>
+        </tr>
+        </thead>
+        <tr ng-repeat="user in users" class="my-repeat-animation">
+            <td>{{user.first_name}}</td>
+            <td>{{user.last_name}}</td>
+            <td>{{user.phone_no}}</td>
+            <td>{{user.created_at | date:'yyyy-MM-dd'}}</td>
+            <td>{{user.email}}</td>
+        </tr>
+    </table>
+</div>
