@@ -13,19 +13,20 @@
 <div class="container">
     <div class="panel panel-default col-md-4 custom-panel">
         <div class="panel-body">
-            <form  name="form" novalidate>
+            <form  name="form">
                 <pre>Name: {{form.user.first_name | json}} Id: {{form.user.id | json}}</pre>
                 <input type="text" ng-model="form.user" typeahead="user as user.first_name for user in systemUsers | filter:$viewValue" class="form-control">
 
                 <pre style="margin-top: 10px">Model: {{perForm.product.id | json}}</pre>
                 <input type="text" class="form-control" ng-model="perForm.product" typeahead="option as option.name for option in p.options | filter:$viewValue" />
 
-                <button class="btn btn-default input-cutom" ng-click="addUser()">Add User</button>
+                <button class="btn btn-default input-cutom" ng-click="addUserToGroup()">Add User</button>
             </form>
         </div>
     </div>
     <div class="col-md-7 col-md-offset-1">
         <div class="row">
+            <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
             <table class="table table-hover">
                 <thead>
                 <tr>
