@@ -35,6 +35,7 @@
                     <th>Phone number</th>
                     <th>Created at</th>
                     <th>Email</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tr ng-repeat="user in users" class="my-repeat-animation">
@@ -43,6 +44,13 @@
                     <td>{{user.phone_no}}</td>
                     <td>{{user.created_at | date:'yyyy-MM-dd'}}</td>
                     <td>{{user.email}}</td>
+                    <td class="dropdown">
+
+                        <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a><i class="fa fa-trash-o" ng-click="deleteUser(user.id,$index)"> Delete</i></a></li>
+                        </ul>
+                    </td>
                 </tr>
             </table>
         </div>

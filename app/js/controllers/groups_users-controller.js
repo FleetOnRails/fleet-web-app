@@ -58,6 +58,14 @@ angular.module('fleetonrails.controllers.groups_users-controller', [])
                 })
             }
 
+            $scope.deleteUser = function( user_id,id){
+                GroupsUsersService.delete($routeParams.id,user_id ,function(users){
+                    $scope.alerts = [];
+                    $scope.alerts.push({msg: 'User successfully deleted from group! ', type: 'success'});
+                    $scope.users.splice(id, 1);
+                })
+            };
+
             $scope.getSystemUsers = function(){
                 $scope.systemUsers = [];
                 UsersService.get(function(data){
