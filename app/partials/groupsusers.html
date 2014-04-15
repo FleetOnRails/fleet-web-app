@@ -11,23 +11,39 @@
     </div>
 </nav>
 <div class="container">
-    <button class="btn btn-default" ng-click="addUser()">Add User</button>
-    <table class="table table-hover">
-        <thead>
-        <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Phone number</th>
-            <th>Created at</th>
-            <th>Email</th>
-        </tr>
-        </thead>
-        <tr ng-repeat="user in users" class="my-repeat-animation">
-            <td>{{user.first_name}}</td>
-            <td>{{user.last_name}}</td>
-            <td>{{user.phone_no}}</td>
-            <td>{{user.created_at | date:'yyyy-MM-dd'}}</td>
-            <td>{{user.email}}</td>
-        </tr>
-    </table>
+    <div class="panel panel-default col-md-4 custom-panel">
+        <div class="panel-body">
+            <form  name="form" novalidate>
+                <pre>Name: {{form.user.first_name | json}} Id: {{form.user.id | json}}</pre>
+                <input type="text" ng-model="form.user" typeahead="user as user.first_name for user in systemUsers | filter:$viewValue" class="form-control">
+
+                <pre style="margin-top: 10px">Model: {{perForm.product.id | json}}</pre>
+                <input type="text" class="form-control" ng-model="perForm.product" typeahead="option as option.name for option in p.options | filter:$viewValue" />
+
+                <button class="btn btn-default input-cutom" ng-click="addUser()">Add User</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-7 col-md-offset-1">
+        <div class="row">
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone number</th>
+                    <th>Created at</th>
+                    <th>Email</th>
+                </tr>
+                </thead>
+                <tr ng-repeat="user in users" class="my-repeat-animation">
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.phone_no}}</td>
+                    <td>{{user.created_at | date:'yyyy-MM-dd'}}</td>
+                    <td>{{user.email}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
