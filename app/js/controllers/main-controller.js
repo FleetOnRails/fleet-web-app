@@ -12,6 +12,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
         $scope.pending = true;
         $scope.href=[];
         $scope.groups = []
+        $scope.count = 0;
 
 
         $scope.fuel_options = {thickness: 5, mode: "gauge", total: 100};
@@ -115,10 +116,12 @@ angular.module('fleetonrails.controllers.main-controller', [])
 
         $scope.getCars = function () {
             CarsService.get(function (data) {
+                var countCars = 0;
                 angular.forEach(data, function (cars) {
                     var total=0;
                     var count = 0;
                     angular.forEach(cars, function (value) {
+                        countCars++
                         value.car.reminders = [];
                         $scope.gauge_data = [];
                         $scope.cars.push(value.car)
@@ -143,6 +146,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
                             }
                         });
                     })
+                    $scope.count = countCars
 //                    $scope.gauge_data.push(
 //                        {label: "Fuel", value:(total/count).toFixed(2), color: "#5398f1", suffix: "L"}
 //                    )
