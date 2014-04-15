@@ -13,6 +13,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
         $scope.href=[];
         $scope.groups = []
         $scope.count = 0;
+        $scope.countGroups = 0;
 
 
         $scope.fuel_options = {thickness: 5, mode: "gauge", total: 100};
@@ -98,12 +99,15 @@ angular.module('fleetonrails.controllers.main-controller', [])
 
         getGroups = function(){
             GroupsService.get(function(groups){
+                var count = 0;
                 $scope.groups = []
                 angular.forEach(groups, function (groups, index) {
                     angular.forEach(groups, function(value, index) {
                        $scope.groups.push(value.group)
+                        count++
                     })
                 });
+                $scope.countGroups = count;
             })
         }
 
