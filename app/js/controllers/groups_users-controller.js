@@ -50,12 +50,12 @@ angular.module('fleetonrails.controllers.groups_users-controller', [])
             $scope.addUserToGroup = function(){
                 var attributes = {
                     user: {
-                        group_access:$scope.perForm.product.id,
-                        user_id: $scope.form.user.id
+                        group_access:$scope.perForm.product.id
                     }
                 };
+                var user_id = $scope.form.user.id
                 console.log(attributes)
-                GroupsUsersService.create($routeParams.id,attributes,function(user){
+                GroupsUsersService.create($routeParams.id,user_id,attributes,function(user){
                     console.log(user)
                     $scope.alerts.push({msg: 'User added to group successfully', type: 'success'});
                     $scope.getGroupUsers($routeParams.id)

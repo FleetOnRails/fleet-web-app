@@ -19,10 +19,10 @@ angular.module('fleetonrails.services.groups_users-service', [])
                     })
             },
 
-            create: function(id,data, success, error) {
+            create: function(id,user_id,data, success, error) {
                 $http({
-                    method: 'POST',
-                    url: globalSettings.api_base_url + '/v1/groups/' + id + '/users',
+                    method: 'PUT',
+                    url: globalSettings.api_base_url + '/v1/groups/' + id + '/users/' + user_id,
                     data: data,
                     headers: {
                         'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
