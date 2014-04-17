@@ -1,0 +1,46 @@
+<navbar>
+
+</navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner">
+        <ul class="nav nav-justified">
+            <li><a href="#/groups">Groups</a></li>
+            <li><a href="">Users</a></li>
+            <li><a href="">Cars</a></li>
+            <li><a href="">Vendors</a></li>
+            <li><a href="">Destinations</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+    <div>
+        <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add Car</button>
+        <hr>
+        <div class="col-md-4" collapse="!isCollapsed">
+            <form ng-submit="addCar()" name="form" novalidate>
+                <input  type="text" class="form-control custom-margin" name="Name" placeholder="Car make" ng-model="car.make" required>
+
+                <input  type="text" class="form-control custom-margin" name="Surname" placeholder="Car model" ng-model="car.model" required>
+
+                <input  type="text" class="form-control custom-margin" name="username" placeholder="Car registration" ng-model="car.registration" required>
+
+                <button type="submit" class="btn btn-primary pull-right" ng-disabled="form.$invalid">Create</button>
+            </form>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Make</th>
+            <th>Model</th>
+            <th>registration</th>
+        </tr>
+        </thead>
+        <tr ng-repeat="car in cars" class="my-repeat-animation">
+            <td>{{car.make}}</td>
+            <td>{{car.model}}</td>
+            <td>{{car.registration}}</td>
+        </tr>
+    </table>
+</div>

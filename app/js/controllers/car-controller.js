@@ -1,7 +1,7 @@
 angular.module('fleetonrails.controllers.car-controller', [])
 
-    .controller('carController', ['$scope', 'CarsService', '$location', '$timeout', '$interval', '$routeParams',
-        function ($scope, CarsService, $location, $timeout, $interval, $routeParams) {
+    .controller('carController', ['$scope', 'CarsService', '$location', '$timeout', '$interval', 'MeService','$routeParams',
+        function ($scope, CarsService, $location, $timeout, $interval,MeService, $routeParams) {
             $scope.cars = [];
 
             $scope.pending = true
@@ -128,6 +128,13 @@ angular.module('fleetonrails.controllers.car-controller', [])
             } else {
                 $scope.getCars();
             }
+
+            MeService.get(function (user) {
+                $scope.user = user;
+            }, function(data) {
+                alert('Not authorized')
+                $location.path('/')
+            });
 
 
             $timeout(function () {

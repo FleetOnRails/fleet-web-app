@@ -1,7 +1,7 @@
 angular.module('fleetonrails.controllers.groups_users-controller', [])
 
-    .controller('GroupsUsersCtrl', [ '$scope', 'MeService', '$location', '$routeParams','loginService','GroupsUsersService','UsersService',
-        function ($scope, MeService,$location,$routeParams, loginService,GroupsUsersService,UsersService) {
+    .controller('GroupsUsersCtrl', [ '$scope', 'MeService', '$location', '$routeParams','loginService','GroupsUsersService','UsersService','GroupsService',
+        function ($scope, MeService,$location,$routeParams, loginService,GroupsUsersService,UsersService,GroupsService) {
 
             $scope.form={};
             $scope.alerts = [];
@@ -29,6 +29,13 @@ angular.module('fleetonrails.controllers.groups_users-controller', [])
                 $scope.alerts.splice(index, 1);
             };
 
+            MeService.get(function (user) {
+                $scope.user = user;
+            }, function(data) {
+                alert('Not authorized')
+                $location.path('/')
+            });
+
             $scope.getGroupUsers = function(id){
                 GroupsUsersService.get(id,function(data){
                     $scope.users = [];
@@ -39,7 +46,6 @@ angular.module('fleetonrails.controllers.groups_users-controller', [])
                     });
                 })
             }
-            //TODO ADD user
 
             $scope.addUserToGroup = function(){
                 var attributes = {
@@ -60,6 +66,7 @@ angular.module('fleetonrails.controllers.groups_users-controller', [])
 
             $scope.deleteUser = function( user_id,id){
                 GroupsUsersService.delete($routeParams.id,user_id ,function(users){
+                    console.log(users)
                     $scope.alerts = [];
                     $scope.alerts.push({msg: 'User successfully deleted from group! ', type: 'success'});
                     $scope.users.splice(id, 1);
@@ -78,8 +85,15 @@ angular.module('fleetonrails.controllers.groups_users-controller', [])
                 })
             }
 
+            $scope.getGroup = function(id){
+                GroupsService.show(id,function(data){
+                    $scope.group = data['group'];
+                })
+            }
+
             if ($routeParams && $routeParams.id) {
                 $scope.getGroupUsers($routeParams.id)
+                $scope.getGroup($routeParams.id)
                 $scope.getSystemUsers()
 
             }

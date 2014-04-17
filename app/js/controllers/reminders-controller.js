@@ -3,7 +3,8 @@
  */
 angular.module('fleetonrails.controllers.reminders-controller', [])
 
-    .controller('remindersController', ['$scope', 'RemindersService', 'CarsService','$location', '$routeParams', function ($scope,RemindersService, CarsService ,$location, $routeParams) {
+    .controller('remindersController', ['$scope', 'RemindersService', 'CarsService','$location', '$routeParams', 'MeService',
+        function ($scope,RemindersService, CarsService ,$location, $routeParams,MeService) {
 
         $scope.reminders = [];
 
@@ -19,6 +20,13 @@ angular.module('fleetonrails.controllers.reminders-controller', [])
                 $scope.car = data['car'];
             });
         };
+
+        MeService.get(function (user) {
+            $scope.user = user;
+        }, function(data) {
+            alert('Not authorized')
+            $location.path('/')
+        });
 
         $scope.addReminder = function(){
             var attributes = {

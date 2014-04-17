@@ -35,6 +35,8 @@ angular.module('fleetonrails.services.login-service', [])
         var logout = function () {
             localStorage.setItem('access_token', '');
             localStorage.setItem('refresh_token', '');
+            localStorage.clear()
+            console.log(localStorage)
         }
 
         return {

@@ -3,7 +3,7 @@
  */
 angular.module('fleetonrails.controllers.users-controller', [])
 
-    .controller('usersController', ['$scope', 'UsersService', '$location', function ($scope, UsersService, $location) {
+    .controller('usersController', ['$scope', 'UsersService', '$location','MeService', function ($scope, UsersService, $location,MeService) {
         $scope.registerUser = function () {
             var attributes = {
                 user: {
@@ -15,6 +15,13 @@ angular.module('fleetonrails.controllers.users-controller', [])
                     password_confirmation : $scope.user.password_confirmation
                 }
             };
+
+            MeService.get(function (user) {
+                $scope.user = user;
+            }, function(data) {
+                alert('Not authorized')
+                $location.path('/')
+            });
             UsersService.create(attributes, function(user){
                 console.log( user)
             })

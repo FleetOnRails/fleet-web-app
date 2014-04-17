@@ -3,8 +3,9 @@
 <nav class="navbar navbar-custom">
     <div class="navbar-inner">
         <ul class="nav nav-justified">
-            <li><a href="">Users</a></li>
-            <li><a href="">Cars</a></li>
+            <li><a href="#/groups">Groups</a></li>
+            <li><a href="#/group/{{group.id}}/users">Users</a></li>
+            <li><a href="#/group/{{group.id}}/cars">Cars</a></li>
             <li><a href="">Vendors</a></li>
             <li><a href="">Destinations</a></li>
         </ul>
@@ -17,7 +18,7 @@
                 <pre>Name: {{form.user.first_name | json}} Id: {{form.user.id | json}}</pre>
                 <input type="text" ng-model="form.user" typeahead="user as user.first_name for user in systemUsers | filter:$viewValue" class="form-control">
 
-                <pre style="margin-top: 10px">Model: {{perForm.product.id | json}}</pre>
+                <pre style="margin-top: 10px">Type: {{perForm.product.id | json}}</pre>
                 <input type="text" class="form-control" ng-model="perForm.product" typeahead="option as option.name for option in p.options | filter:$viewValue" />
 
                 <button class="btn btn-default input-cutom" ng-click="addUserToGroup()">Add User</button>
@@ -48,7 +49,7 @@
 
                         <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a><i class="fa fa-trash-o" ng-click="deleteUser(user.id,$index)"> Delete</i></a></li>
+                            <li><a><i class="fa fa-trash-o" ng-click="deleteEntry(fuel_entry.id,$index)"> Delete</i></a></li>
                         </ul>
                     </td>
                 </tr>

@@ -12,6 +12,7 @@ angular.module('fleetonrails.services.groups_cars-service', [])
                         'Accept': 'application/json'
                     }
                 }).success(function(cars){
+                        console.log(cars)
                         success(cars);
                     }).error(function(cars) {
                         error(cars)

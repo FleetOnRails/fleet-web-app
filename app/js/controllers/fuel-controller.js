@@ -1,6 +1,7 @@
 angular.module('fleetonrails.controllers.fuel-controller', [])
 
-    .controller('fuelController', ['$scope', 'FuelService', 'CarsService','$location', '$routeParams', function ($scope, FuelService,CarsService, $location, $routeParams) {
+    .controller('fuelController', ['$scope', 'FuelService', 'CarsService','$location', '$routeParams','MeService',
+        function ($scope, FuelService,CarsService, $location, $routeParams,MeService) {
 
         $scope.options = [{ name: "True", id: 1 }, { name: "False", id: 2 }];
         $scope.selectedOption = $scope.options[1];
@@ -88,6 +89,12 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                 $scope.fuel_entries.splice(id, 1);
             })
         };
+        MeService.get(function (user) {
+            $scope.user = user;
+        }, function(data) {
+            alert('Not authorized')
+            $location.path('/')
+        });
 
 
         $scope.addFuel = function(){

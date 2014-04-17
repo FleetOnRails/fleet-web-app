@@ -21,6 +21,7 @@ angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart','base64', '
             when('/groups',{templateUrl:'partials/groups.html',controller:'GroupsCtrl'}).
             when('/group/:id',{templateUrl:'partials/group.html',controller:'GroupCtrl'}).
             when('/group/:id/users',{templateUrl:'partials/groupsusers.html',controller:'GroupsUsersCtrl'}).
+            when('/group/:id/cars',{templateUrl:'partials/groupcars.html',controller:'GroupsCarsCtrl'}).
 
             otherwise({redirectTo: '/'});
     }]);

@@ -3,7 +3,8 @@
  */
 angular.module('fleetonrails.controllers.services-controller', [])
 
-    .controller('serviceController', ['$scope', 'ServicesService', 'CarsService','$location', '$routeParams', function ($scope,ServicesService, CarsService ,$location, $routeParams) {
+    .controller('serviceController', ['$scope', 'ServicesService', 'CarsService','$location', '$routeParams','MeService',
+        function ($scope,ServicesService, CarsService ,$location, $routeParams,MeService) {
 
         $scope.expenses = [];
 
@@ -110,6 +111,13 @@ angular.module('fleetonrails.controllers.services-controller', [])
         } else {
             console.log('something wrong')
         }
+
+        MeService.get(function (user) {
+            $scope.user = user;
+        }, function(data) {
+            alert('Not authorized')
+            $location.path('/')
+        });
 
 
 

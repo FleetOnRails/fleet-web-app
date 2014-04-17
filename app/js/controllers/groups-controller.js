@@ -83,6 +83,13 @@ angular.module('fleetonrails.controllers.groups-controller', [])
             }
 
 
+            MeService.get(function (user) {
+                $scope.user = user;
+            }, function(data) {
+                alert('Not authorized')
+                $location.path('/')
+            });
+
 
 
 
