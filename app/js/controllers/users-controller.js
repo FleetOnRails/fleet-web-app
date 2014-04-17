@@ -18,6 +18,7 @@ angular.module('fleetonrails.controllers.users-controller', [])
 
             UsersService.create(attributes, function(user){
                 console.log( user)
+                $location.path('/');
             })
 
         }

@@ -30,6 +30,16 @@ angular.module('fleetonrails.controllers.groups_cars-controller', [])
                 })
             }
 
+            $scope.deleteCar = function(car_id,id){
+                GroupsCarsService.delete($routeParams.id,car_id,function(cars){
+                    $scope.alerts.push({msg:'Car deleted!', type:'success'})
+                    $scope.cars.splice(id, 1);
+
+                },function(data){
+                    console.log(data)
+                })
+            }
+
             $scope.addCar = function () {
                 var attributes = {
                     car: {
