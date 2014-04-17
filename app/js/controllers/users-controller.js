@@ -16,12 +16,6 @@ angular.module('fleetonrails.controllers.users-controller', [])
                 }
             };
 
-            MeService.get(function (user) {
-                $scope.user = user;
-            }, function(data) {
-                alert('Not authorized')
-                $location.path('/')
-            });
             UsersService.create(attributes, function(user){
                 console.log( user)
             })

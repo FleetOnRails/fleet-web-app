@@ -35,12 +35,20 @@
             <th>Make</th>
             <th>Model</th>
             <th>registration</th>
+            <th></th>
         </tr>
         </thead>
         <tr ng-repeat="car in cars" class="my-repeat-animation">
             <td>{{car.make}}</td>
             <td>{{car.model}}</td>
             <td>{{car.registration}}</td>
+            <td class="dropdown">
+
+                <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a><i class="fa fa-trash-o" ng-click="deleteCar(fuel_entry.id,$index)"> Delete</i></a></li>
+                </ul>
+            </td>
         </tr>
     </table>
 </div>
