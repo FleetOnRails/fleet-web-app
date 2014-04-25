@@ -22,7 +22,7 @@ angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart','base64', '
             when('/group/:id',{templateUrl:'partials/group.html',controller:'GroupCtrl'}).
             when('/group/:id/users',{templateUrl:'partials/groupsusers.html',controller:'GroupsUsersCtrl'}).
             when('/group/:id/cars',{templateUrl:'partials/groupcars.html',controller:'GroupsCarsCtrl'}).
-            when('/group/:id/vendors',{templateUrl:'partials/groupvendors.html',controller:'GroupsCarsCtrl'}).
+            when('/group/:id/vendors',{templateUrl:'partials/groupvendors.html',controller:'GroupsVendorsCtrl'}).
 
 
             otherwise({redirectTo: '/'});
