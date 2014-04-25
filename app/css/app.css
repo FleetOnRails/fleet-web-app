@@ -122,7 +122,7 @@ body {
     background-color: #efefef;
     color:#000000;
     min-height: 40px;
-    box-shadow: 1px 0px 10px; @gray-light;
+    box-shadow: 1px 0px 3px;
 }
 
 /*.navbar-custom .navbar-nav > li > a {*/

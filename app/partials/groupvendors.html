@@ -13,6 +13,7 @@
     </div>
 </nav>
 <div class="container">
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
     <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add Vendor</button>
     <hr>
     <div class="col-md-4" collapse="!isCollapsed">

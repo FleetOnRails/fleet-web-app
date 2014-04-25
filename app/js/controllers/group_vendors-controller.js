@@ -3,6 +3,12 @@ angular.module('fleetonrails.controllers.groups_vendors-controller', [])
     .controller('GroupsVendorsCtrl', [ '$scope', 'MeService', '$location', '$routeParams','loginService','GroupsService','GroupsVendorsService',
         function ($scope, MeService,$location,$routeParams,loginService,GroupsService,GroupsVendorsService) {
 
+            $scope.alerts =[]
+
+            $scope.closeAlert = function(index) {
+                $scope.alerts.splice(index, 1);
+            };
+
             $scope.addVendor = function(){
                 var attributes= {
                     vendor:{
@@ -13,9 +19,8 @@ angular.module('fleetonrails.controllers.groups_vendors-controller', [])
                         }
                     }
                 }
-                console.log(attributes)
                 GroupsVendorsService.create($routeParams.id,attributes,function(vendor){
-                    console.log('Vendor added ',vendor)
+                    $scope.alerts.push({msg: 'Vendor added to group successfully', type: 'success'});
                 })
 
             }
