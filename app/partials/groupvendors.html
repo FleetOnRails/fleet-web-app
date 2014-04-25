@@ -12,3 +12,19 @@
         </ul>
     </div>
 </nav>
+<div class="container">
+    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add Vendor</button>
+    <hr>
+    <div class="col-md-4" collapse="!isCollapsed">
+        <form ng-submit="addVendor()" name="form" novalidate>
+            <input  type="text" class="form-control custom-margin" name="Name" placeholder="Vendor name" ng-model="vendor.name" required>
+
+            <input  type="text" class="form-control custom-margin" name="Supplies" placeholder="Supplies" ng-model="vendor.supplies" required>
+
+            <input  type="text" class="form-control custom-margin" name="Address" placeholder="Vendors address" ng-model="vendor.address" required>
+
+            <button type="submit" class="btn btn-primary pull-right" ng-disabled="form.$invalid">Create</button>
+        </form>
+    </div>
+</div>
+</div>
