@@ -2,8 +2,7 @@
 <nav class="navbar navbar-custom">
     <div class="navbar-inner ">
         <ul class="nav nav-justified">
-            <li><a href="#/vendors">Vendors</a></li>
-            <li><a href="">Products</a></li>
+            <li><a href="#/main">Main Dashboard</a></li>
         </ul>
     </div>
 </nav>
@@ -21,7 +20,7 @@
         </div>
     </div>
     <div class="panel panel-default col-md-5 custom-panel col-md-offset-1">
-        <div class="panel-heading"><input placeholder="Filter Vendors" ng-model="searchText"></div>
+        <div class="panel-heading"><input class="form-control" placeholder="Filter vendors" ng-model="searchText"></div>
         <div class="panel-body text-center" ng-if="pending">
             <i class="fa fa-spinner fa-spin fa-2x"></i>
         </div>
@@ -36,7 +35,7 @@
                 </tr>
                 </thead>
                 <tr ng-repeat="vendor in vendors | filter:searchText" class="my-repeat-animation">
-                    <td> {{vendor.name}} </td>
+                    <td><a href="#/vendors/{{vendor.id}}">{{vendor.name}} </a></td>
                     <td> {{vendor.supplies}} </td>
                     <td> {{vendor.location.address}} </td>
                     <td class="dropdown">
