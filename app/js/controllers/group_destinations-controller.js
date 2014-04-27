@@ -1,10 +1,37 @@
 angular.module('fleetonrails.controllers.groups_destinations-controller', [])
 
-    .controller('GroupsDestCtrl', [ '$scope', 'MeService', '$location', '$routeParams','loginService','GroupsService','GroupsDestinationsService',
-        function ($scope, MeService,$location,$routeParams,loginService,GroupsService,GroupsDestinationsService) {
+    .controller('GroupsDestCtrl', [ '$scope', '$timeout', '$location', '$routeParams','loginService','GroupsService','GroupsDestinationsService',
+        function ($scope, $timeout,$location,$routeParams,loginService,GroupsService,GroupsDestinationsService) {
 
             $scope.alerts =[]
             $scope.destinations = []
+
+            var dynamicMarkers = [];
+            var center = {
+                latitude: 54,
+                longitude: -7
+            }
+
+            angular.extend($scope, {
+                map: {
+                    control: {},
+                    showTraffic: true,
+                    showBicycling: false,
+                    showWeather: false,
+                    showHeat: false,
+                    center: center,
+                    options: {
+                        streetViewControl: true,
+                        panControl: false,
+                        maxZoom: 20,
+                        minZoom: 3
+                    },
+                    zoom: 5,
+                    dragging: false,
+                    bounds: {},
+                    dynamicMarkers: []
+                }
+            });
 
             $scope.closeAlert = function(index) {
                 $scope.alerts.splice(index, 1);
@@ -51,6 +78,14 @@ angular.module('fleetonrails.controllers.groups_destinations-controller', [])
                     angular.forEach(data, function (destinations) {
                         angular.forEach(destinations, function(value) {
                             $scope.destinations.push(value.destination)
+                            dynamicMarkers = [
+                                {
+                                    latitude: value.destination.location.latitude,
+                                    longitude: value.destination.location.longitude,
+                                    showWindow: false
+                                }
+                            ];
+                            console.log(dynamicMarkers)
                         })
                     });
                 })
@@ -58,5 +93,11 @@ angular.module('fleetonrails.controllers.groups_destinations-controller', [])
 
             if($routeParams && $routeParams.id){
                 $scope.getDestinations()
+                $scope.apply
+                $timeout(function () {
+                    $scope.map.dynamicMarkers = dynamicMarkers;
+                    $scope.map.center = center;
+                    $scope.pending = false
+                }, 2000);
             }
         }]);
