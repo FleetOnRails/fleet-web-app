@@ -11,17 +11,59 @@
         </ul>
     </div>
 </nav>
-<div class="container">
-<alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-<div class="panel panel-default col-md-5 custom-panel col-md-offset-1">
-    <div class="panel-heading">Upload Document</div>
-    <div class="panel-body">
-        <form ng-submit="createDocument()" name="form" novalidate>
-            <input  type="text" class="form-control custom-margin" name="name" placeholder="Name" ng-model="document.name" required>
-            <input  type="text" class="form-control custom-margin" name="extension" placeholder="Document extension" ng-model="document.document_extension" required>
-            <input  type="file" class="form-control custom-margin" name="File" placeholder="File" ng-model="document_data" required>
-            <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
-        </form>
+<div class="container" ng-controller="docCtrl">
+    <div class="row">
+        <div class="col-md-3">
+            <h3>Select files</h3>
+            <div ng-show="uploader.isHTML5">
+                <div class="well my-drop-zone" ng-file-over>
+                    Base drop zone
+                </div>
+            </div>
+            Single
+            <input ng-file-select type="file" />
+        </div>
     </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th width="50%">Name</th>
+                    <th ng-show="uploader.isHTML5">Size</th>
+                    <th ng-show="uploader.isHTML5">Progress</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="item in uploader.queue">
+                    <td><strong>{{ item.file.name }}</strong></td>
+                    <td ng-show="uploader.isHTML5" nowrap>{{ item.file.size/1024/1024|number:2 }} MB</td>
+                    <td ng-show="uploader.isHTML5">
+                        <div class="progress" style="margin-bottom: 0;">
+                            <div class="progress-bar" role="progressbar" ng-style="{ 'width': item.progress + '%' }"></div>
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <span ng-show="item.isSuccess"><i class="glyphicon glyphicon-ok"></i></span>
+                        <span ng-show="item.isCancel"><i class="glyphicon glyphicon-ban-circle"></i></span>
+                        <span ng-show="item.isError"><i class="glyphicon glyphicon-remove"></i></span>
+                    </td>
+                    <td nowrap>
+                        <button type="button" class="btn btn-success btn-xs" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                            <span class="glyphicon glyphicon-upload"></span> Upload
+                        </button>
+                        <button type="button" class="btn btn-warning btn-xs" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                            <span class="glyphicon glyphicon-ban-circle"></span> Cancel
+                        </button>
+                        <button type="button" class="btn btn-danger btn-xs" ng-click="item.remove()">
+                            <span class="glyphicon glyphicon-trash"></span> Remove
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

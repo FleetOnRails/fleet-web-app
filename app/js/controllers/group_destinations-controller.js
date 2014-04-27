@@ -15,7 +15,7 @@ angular.module('fleetonrails.controllers.groups_destinations-controller', [])
             angular.extend($scope, {
                 map: {
                     control: {},
-                    showTraffic: true,
+                    showTraffic: false,
                     showBicycling: false,
                     showWeather: false,
                     showHeat: false,

@@ -17,5 +17,6 @@ angular.module('fleetonrails.controllers', [
     'fleetonrails.controllers.groups_users-controller',
     'fleetonrails.controllers.groups_cars-controller',
     'fleetonrails.controllers.groups_vendors-controller',
-    'fleetonrails.controllers.groups_destinations-controller'
+    'fleetonrails.controllers.groups_destinations-controller',
+    'fleetonrails.controllers.doc_upload-controller'
 ]);
