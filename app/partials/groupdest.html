@@ -13,5 +13,37 @@
     </div>
 </nav>
 <div class="container">
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add Destination</button>
+    <hr>
+    <div class="col-md-4" collapse="!isCollapsed">
+        <form ng-submit="addDestination()" name="form" novalidate>
+            <input  type="text" class="form-control custom-margin" name="Name" placeholder="Name" ng-model="destination.name" required>
 
+            <input  type="text" class="form-control custom-margin" name="Address" placeholder="Destination address" ng-model="destination.address" required>
+
+            <button type="submit" class="btn btn-primary pull-right" ng-disabled="form.$invalid">Create</button>
+        </form>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Created at</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tr ng-repeat="destination in destinations" class="my-repeat-animation">
+            <td>{{destination.name}}</td>
+            <td>{{destination.location.address}}</td>
+            <td>{{destination.created_at | date:'yyyy-MM-dd'}}</td>
+            <td class="dropdown">
+                <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a><i class="fa fa-trash-o" ng-click="deleteDestination(destination.id,$index)"> Delete</i></a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
 </div>

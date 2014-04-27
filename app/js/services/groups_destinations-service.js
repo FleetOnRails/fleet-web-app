@@ -49,7 +49,7 @@ angular.module('fleetonrails.services.groups_destinations-service', [])
                         success(destinations);
                     }).error(function(destinations) {
                         error(destinations);
-                        console.log(destinations);
+                        console.log('Error',destinations);
                     })
             }
         }
