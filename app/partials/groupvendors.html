@@ -27,5 +27,28 @@
             <button type="submit" class="btn btn-primary pull-right" ng-disabled="form.$invalid">Create</button>
         </form>
     </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Supplies</th>
+                <th>Address</th>
+                <th>Created at</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr ng-repeat="vendor in vendors" class="my-repeat-animation">
+            <td>{{vendor.name}}</td>
+            <td>{{vendor.supplies}}</td>
+            <td>{{vendor.location.address}}</td>
+            <td>{{vendor.created_at | date:'yyyy-MM-dd'}}</td>
+            <td class="dropdown">
+                <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a><i class="fa fa-trash-o" ng-click="deleteVendor(vendor.id,$index)"> Delete</i></a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
 </div>
 </div>
