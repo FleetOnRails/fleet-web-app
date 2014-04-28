@@ -15,7 +15,6 @@ angular.module('fleetonrails.services.reminders-service', [])
                         'Accept': 'application/json'
                     }
                 }).success(function (reminders) {
-                        console.log('success', reminders);
                         success(reminders);
                     }).error(function (data) {
                         console.log(data);

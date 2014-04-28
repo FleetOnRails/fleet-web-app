@@ -14,7 +14,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
         $scope.groups = []
         $scope.count = 0;
         $scope.countGroups = 0;
-
+        $scope.totalFuel = 0
 
         $scope.fuel_options = {thickness: 5, mode: "gauge", total: 100};
 
@@ -121,14 +121,17 @@ angular.module('fleetonrails.controllers.main-controller', [])
         $scope.getCars = function () {
             CarsService.get(function (data) {
                 var countCars = 0;
+                var total=0;
+                $scope.dataLine = [];
+                $scope.gauge_data = [];
                 angular.forEach(data, function (cars) {
-                    var total=0;
                     var count = 0;
                     angular.forEach(cars, function (value) {
+                        console.log('Inside a car loop', value.car.make)
                         countCars++
                         value.car.reminders = [];
-                        $scope.gauge_data = [];
                         $scope.cars.push(value.car)
+
                         RemindersService.get(value.car.id,function (data) {
                             angular.forEach(data, function (reminders, index) {
                                 angular.forEach(reminders, function(reminder, index) {
@@ -136,13 +139,17 @@ angular.module('fleetonrails.controllers.main-controller', [])
                                     $scope.differenceInDays(reminder.reminder.date,reminder.reminder.description,value.car.registration,value.car.id)
                                 })
                             });
-                            console.log('car', value.car);
                         });
+
                         FuelService.get(value.car.id,function (data) {
                             angular.forEach(data, function (fuel_entries, index) {
                                 angular.forEach(fuel_entries, function(value, index) {
                                     total += value.fuel_entry.liters;
                                     count = count + 1;
+                                    $scope.chartConfig.series[0].data.push([
+                                        Date.parse(value.fuel_entry.created_at),
+                                        value.fuel_entry.liters
+                                    ]);
                                 })
                             });
                             if(count == 0){
@@ -150,12 +157,60 @@ angular.module('fleetonrails.controllers.main-controller', [])
                             }
                         });
                     })
-                    $scope.count = countCars
-//                    $scope.gauge_data.push(
-//                        {label: "Fuel", value:(total/count).toFixed(2), color: "#5398f1", suffix: "L"}
-//                    )
                 });
+
             });
+        };
+
+        $scope.chartConfig = {
+            //This is not a highcharts object. It just looks a little like one!
+
+            options: {
+                //This is the Main Highcharts chart config. Any Highchart options are valid here.
+                //will be overriden by values specified below.
+                chart: {
+                    type: 'line',
+                    zoomType: 'x'
+                },
+                rangeSelector: {enabled: true},
+                tooltip: {
+                    style: {
+                        padding: 10,
+                        fontWeight: 'bold'
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        stacking: ''
+                    }
+                }
+            },
+
+            //The below properties are watched separately for changes.
+
+            //Series object - a list of series using normal highcharts series options.
+            series: [
+                {
+                    name: 'Diesel',
+                    type: 'spline',
+                    color: '#0A000A',
+                    data: []
+                }
+            ],
+            //Title configuration
+            title: {
+                text: 'Fuel over time'
+            },
+            //Boolean to control showing loading status on chart
+            loading: false,
+            //Configuration for the xAxis. Currently only one x axis can be dynamically controlled.
+            //properties currentMin and currentMax provided 2-way binding to the chart's maximum and minimum
+            xAxis: {
+                type: 'datetime',
+                maxZoom: 2 * 3600000 // 2 hours
+            },
+            //Whether to use HighStocks instead of HighCharts. Defaults to false.
+            useHighStocks: false
         };
 
 

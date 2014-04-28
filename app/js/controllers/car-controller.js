@@ -6,8 +6,8 @@ angular.module('fleetonrails.controllers.car-controller', [])
 
             $scope.pending = true
             $scope.gauge_data = [];
-            $scope.haveDiagnosticData = true
-            $scope.haveGpsData = true
+            $scope.haveDiagnosticData = false
+            $scope.haveGpsData = false
             $scope.fuel_options = {thickness: 5, mode: "gauge", total: 200};
 
             var dynamicMarkers = [];
@@ -65,6 +65,7 @@ angular.module('fleetonrails.controllers.car-controller', [])
                             latitude: $scope.car.current_gps_statistic.latitude,
                             longitude: $scope.car.current_gps_statistic.longitude
                         };
+                        $scope.haveGpsData = true
                     }
                     else {
                         dynamicMarkers = [];

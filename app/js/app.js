@@ -1,6 +1,6 @@
 angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart','base64',
         'n3-charts.linechart','ui.bootstrap' ,'angularFileUpload', 'fleetonrails.services',
-        'fleetonrails.controllers', 'fleetonrails.factories', 'fleetonrails.directives','google-maps']).
+        'fleetonrails.controllers', 'fleetonrails.factories', 'highcharts-ng','fleetonrails.directives','google-maps']).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
             when('/', {templateUrl: 'partials/login.html'}).
