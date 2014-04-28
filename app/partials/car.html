@@ -60,7 +60,7 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" ng-if="haveDiagnosticData">
         <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading"><h3 class="panel-title">Speed</h3></div>
@@ -85,6 +85,18 @@
                 <div class="panel-heading"><h3 class="panel-title">MPG</h3></div>
                 <div class="panel-body">
                     something else
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-if="haveGpsData">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Speed</h3></div>
+                <div class="gauge">
+                    <pie-chart data="gauge_data" options="fuel_options"></pie-chart>
+
                 </div>
             </div>
         </div>
