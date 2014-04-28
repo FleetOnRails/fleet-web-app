@@ -79,11 +79,11 @@ angular.module('fleetonrails.controllers.groups_destinations-controller', [])
                         angular.forEach(destinations, function (value) {
                             $scope.destinations.push(value.destination)
                             dynamicMarkers.push(
-                                {
-                                    latitude: value.destination.location.latitude,
-                                    longitude: value.destination.location.longitude,
-                                    showWindow: false
-                                })
+                            {
+                                latitude: value.destination.location.latitude,
+                                longitude: value.destination.location.longitude,
+                                showWindow: false
+                            })
 
                             console.log(dynamicMarkers)
                         })

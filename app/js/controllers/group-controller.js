@@ -7,12 +7,13 @@ angular.module('fleetonrails.controllers.group-controller', [])
                 GroupsService.show(id,function(data){
                     $scope.group = data['group'];
                 })
-            }
+            };
 
             MeService.get(function (user) {
                 $scope.user = user;
             }, function(data) {
-                alert('Not authorized')
+                console.log(data);
+                alert('Not authorized');
                 $location.path('/')
             });
 

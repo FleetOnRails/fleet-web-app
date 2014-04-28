@@ -65,7 +65,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
         }
         $scope.changeToAddcar = function(){
             $location.path('/addcar')
-        }
+        };
 
 
         $scope.changeProfile = function () {
@@ -109,7 +109,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
                 });
                 $scope.countGroups = count;
             })
-        }
+        };
 
         $scope.deleteCar = function (carID,id) {
             CarsService.delete(carID, function (car) {
@@ -127,8 +127,9 @@ angular.module('fleetonrails.controllers.main-controller', [])
                 angular.forEach(data, function (cars) {
                     var count = 0;
                     angular.forEach(cars, function (value) {
-                        console.log('Inside a car loop', value.car.make)
-                        countCars++
+                        console.log('Inside a car loop', value.car.make);
+                        countCars++;
+                        $scope.count++;
                         value.car.reminders = [];
                         $scope.cars.push(value.car)
 
@@ -191,7 +192,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
             //Series object - a list of series using normal highcharts series options.
             series: [
                 {
-                    name: 'Diesel',
+                    name: 'Fuel',
                     type: 'spline',
                     color: '#0A000A',
                     data: []
