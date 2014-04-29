@@ -22,6 +22,9 @@ angular.module('fleetonrails.controllers.group-car-fuel_controller', [])
             $scope.total_fuel_price = [];
             $scope.pending = true;
 
+            $scope.personalNav = false;
+            $scope.groupNav = true;
+
 
             $scope.optionsLine = {
                 axes: {
@@ -90,7 +93,7 @@ angular.module('fleetonrails.controllers.group-car-fuel_controller', [])
             };
 
             $scope.deleteEntry = function( fuel_id,id){
-                FuelService.delete($routeParams.id,fuel_id ,function(fuel_entries){
+                FuelService.delete($routeParams.car_id,fuel_id ,function(fuel_entries){
                     $scope.alerts.push({msg: 'Fuel entry successfully deleted! ', type: 'success'});
                     $scope.fuel_entries.splice(id, 1);
                     $scope.removeAlerts();

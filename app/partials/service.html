@@ -1,13 +1,25 @@
 <navbar></navbar>
-<nav class="navbar navbar-custom">
+<nav class="navbar navbar-custom" ng-if="personalNav">
     <div class="navbar-inner ">
         <ul class="nav nav-justified">
             <li><a href="#/car/{{car.id}}">Dashboard</a></li>
             <li><a href="#/car/{{car.id}}/edit">Settings</a></li>
             <li><a href="#/car/{{car.id}}/fuel">Fuel Entry</a></li>
             <li><a href="#/car/{{car.id}}/documents">Documents</a></li>
-            <li><a href="#/car/{{car.id}}/service">Expenses</a></li>
+            <li><a href="#/car/{{car.id}}/service" ng-click="stopInterval()">Expenses</a></li>
             <li><a href="#/car/{{car.id}}/reminders">Reminders</a></li>
+        </ul>
+    </div>
+</nav>
+<nav class="navbar navbar-custom" ng-if="groupNav">
+    <div class="navbar-inner ">
+        <ul class="nav nav-justified">
+            <li><a href="#/group/{{group.id}}/car/{{carId}}">Dashboard</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{carId}}/edit" ng-click="stopInterval()">Settings</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{carId}}/fuel" ng-click="stopInterval()">Fuel Entry</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{carId}}/documents">Documents</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{carId}}/service" ng-click="stopInterval()">Expenses</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{carId}}/reminders">Reminders</a></li>
         </ul>
     </div>
 </nav>

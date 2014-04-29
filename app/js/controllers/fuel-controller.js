@@ -22,6 +22,9 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
         $scope.total_fuel_price = [];
         $scope.pending = true;
 
+        $scope.personalNav = true;
+        $scope.groupNav = false;
+
 
         $scope.optionsLine = {
             axes: {

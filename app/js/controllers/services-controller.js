@@ -7,8 +7,10 @@ angular.module('fleetonrails.controllers.services-controller', [])
         function ($scope,ServicesService, CarsService ,$location, $routeParams,MeService) {
 
         $scope.expenses = [];
-
         $scope.alerts = [];
+
+        $scope.personalNav = true;
+        $scope.groupNav = false;
 
         $scope.CollapseDemoCtrl = function(){
             $scope.isCollapsed = false;
