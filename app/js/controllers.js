@@ -20,5 +20,6 @@ angular.module('fleetonrails.controllers', [
     'fleetonrails.controllers.groups_destinations-controller',
     'fleetonrails.controllers.doc_upload-controller',
     'fleetonrails.controllers.vendors_products-controller',
-    'fleetonrails.controllers.group_car_dash-controller'
+    'fleetonrails.controllers.group_car_dash-controller',
+    'fleetonrails.controllers.group-car-fuel_controller'
 ]);

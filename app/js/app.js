@@ -28,7 +28,7 @@ angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart','base64',
             when('/group/:id/destinations',{templateUrl:'partials/groupdest.html',controller:'GroupsDestCtrl'}).
 
             when('/group/:id/car/:car_id',{templateUrl:'partials/groupcarDash.html',controller:'groupCarDashController'}).
-            when('/group/:id/car/:car_id/fuel',{templateUrl:'partials/fuel.html',controller:''}).
+            when('/group/:id/car/:car_id/fuel',{templateUrl:'partials/fuel.html',controller:'groupCarFuelCtrl'}).
             when('/group/:id/car/:car_id/edit',{templateUrl:'partials/editcar.html',controller:''}).
             when('/group/:id/car/:car_id/service',{templateUrl:'partials/service.html',controller:''}).
             when('/group/:id/car/:car_id/reminders',{templateUrl:'partials/reminders.html',controller:''}).
