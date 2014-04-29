@@ -1,7 +1,7 @@
 angular.module('fleetonrails.controllers.fuel-controller', [])
 
-    .controller('fuelController', ['$scope', 'FuelService', 'CarsService','$location', '$routeParams','MeService',
-        function ($scope, FuelService,CarsService, $location, $routeParams,MeService) {
+    .controller('fuelController', ['$scope', 'FuelService', 'CarsService','$location', '$routeParams','MeService', '$timeout',
+        function ($scope, FuelService,CarsService, $location, $routeParams,MeService,$timeout) {
 
         $scope.options = [{ name: "True", id: 1 }, { name: "False", id: 2 }];
         $scope.selectedOption = $scope.options[1];
@@ -84,17 +84,25 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
 
         $scope.deleteEntry = function( fuel_id,id){
             FuelService.delete($routeParams.id,fuel_id ,function(fuel_entries){
-                $scope.alerts = [];
                 $scope.alerts.push({msg: 'Fuel entry successfully deleted! ', type: 'success'});
                 $scope.fuel_entries.splice(id, 1);
+                $scope.removeAlerts();
             })
+            $scope.apply
         };
+
         MeService.get(function (user) {
             $scope.user = user;
         }, function(data) {
             alert('Not authorized')
             $location.path('/')
         });
+
+        $scope.removeAlerts = function () {
+            $timeout(function () {
+                $scope.alerts = [];
+            }, 4000);
+        };
 
 
         $scope.addFuel = function(){
@@ -113,10 +121,11 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                 }
             };
             FuelService.create($routeParams.id,attributes, function (fuel_entry) {
-                console.log(fuel_entry)
+                console.log(fuel_entry);
                 $scope.alerts.push({msg: 'Fuel entry successfully created! ', type: 'success'});
-                getFuelEntries($routeParams.id)
-                $scope.pending = false
+                getFuelEntries($routeParams.id);
+                $scope.removeAlerts();
+                $scope.pending = false;
 
             })
             $scope.apply

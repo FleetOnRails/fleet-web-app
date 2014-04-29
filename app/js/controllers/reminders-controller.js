@@ -3,8 +3,8 @@
  */
 angular.module('fleetonrails.controllers.reminders-controller', [])
 
-    .controller('remindersController', ['$scope', 'RemindersService', 'CarsService','$location', '$routeParams', 'MeService',
-        function ($scope,RemindersService, CarsService ,$location, $routeParams,MeService) {
+    .controller('remindersController', ['$scope', 'RemindersService', 'CarsService','$location', '$routeParams', 'MeService','$timeout',
+        function ($scope,RemindersService, CarsService ,$location, $routeParams,MeService,$timeout) {
 
         $scope.reminders = [];
 
@@ -13,6 +13,12 @@ angular.module('fleetonrails.controllers.reminders-controller', [])
 
         $scope.closeAlert = function(index) {
             $scope.alerts.splice(index, 1);
+        };
+
+        $scope.removeAlerts = function () {
+            $timeout(function () {
+                $scope.alerts = [];
+            }, 4000);
         };
 
         getCar = function (id) {
@@ -43,6 +49,7 @@ angular.module('fleetonrails.controllers.reminders-controller', [])
                 getReminders($routeParams.id)
                 $scope.apply
                 console.log(reminders)
+                $scope.removeAlerts()
             })
         };
 
@@ -62,7 +69,7 @@ angular.module('fleetonrails.controllers.reminders-controller', [])
             RemindersService.delete($routeParams.id,reminderid ,function(fuel_entries){
                 $scope.alerts = [];
                 $scope.alerts.push({msg: 'Reminder successfully deleted! ', type: 'success'});
-
+                $scope.removeAlerts()
                 $scope.reminders.splice(id, 1);
             })
         };

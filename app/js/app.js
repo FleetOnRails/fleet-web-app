@@ -20,11 +20,19 @@ angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart','base64',
             when('/vendors/:id',{templateUrl:'partials/products.html',controller:'vendorProductsCtrl'}).
             when('/addgroup',{templateUrl:'partials/addgroup.html',controller:'GroupsCtrl'}).
             when('/groups',{templateUrl:'partials/groups.html',controller:'GroupsCtrl'}).
+
             when('/group/:id',{templateUrl:'partials/group.html',controller:'GroupCtrl'}).
             when('/group/:id/users',{templateUrl:'partials/groupsusers.html',controller:'GroupsUsersCtrl'}).
             when('/group/:id/cars',{templateUrl:'partials/groupcars.html',controller:'GroupsCarsCtrl'}).
             when('/group/:id/vendors',{templateUrl:'partials/groupvendors.html',controller:'GroupsVendorsCtrl'}).
             when('/group/:id/destinations',{templateUrl:'partials/groupdest.html',controller:'GroupsDestCtrl'}).
+
+            when('/group/:id/car/:car_id',{templateUrl:'partials/groupcarDash.html',controller:'groupCarDashController'}).
+            when('/group/:id/car/:car_id/fuel',{templateUrl:'partials/fuel.html',controller:''}).
+            when('/group/:id/car/:car_id/edit',{templateUrl:'partials/editcar.html',controller:''}).
+            when('/group/:id/car/:car_id/service',{templateUrl:'partials/service.html',controller:''}).
+            when('/group/:id/car/:car_id/reminders',{templateUrl:'partials/reminders.html',controller:''}).
+            when('/group/:id/car/:car_id/documents',{templateUrl:'partials/documents.html',controller:''}).
 
             otherwise({redirectTo: '/'});
     }]);
