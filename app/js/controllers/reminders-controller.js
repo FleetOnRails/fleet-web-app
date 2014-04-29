@@ -7,8 +7,9 @@ angular.module('fleetonrails.controllers.reminders-controller', [])
         function ($scope,RemindersService, CarsService ,$location, $routeParams,MeService,$timeout) {
 
         $scope.reminders = [];
-
         $scope.alerts = [];
+        $scope.personalNav = true;
+        $scope.groupNav = false;
 
 
         $scope.closeAlert = function(index) {
