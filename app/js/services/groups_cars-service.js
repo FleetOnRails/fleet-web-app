@@ -36,6 +36,24 @@ angular.module('fleetonrails.services.groups_cars-service', [])
                         console.log(car);
                     })
             },
+            update: function(id,car_id,attributes,success, error) {
+                $http({
+                    method: 'PUT',
+                    url: globalSettings.api_base_url + '/v1/groups/' + id + '/cars/' + car_id,
+                    data: attributes,
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                }).success(function(car){
+                        console.log(car)
+                        success(car);
+                    }).error(function(car) {
+                        error(car)
+                        console.log(car);
+                    })
+            },
 
             create: function(id,data, success, error) {
                 $http({

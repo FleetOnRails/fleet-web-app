@@ -23,5 +23,6 @@ angular.module('fleetonrails.controllers', [
     'fleetonrails.controllers.group_car_dash-controller',
     'fleetonrails.controllers.group-car-fuel_controller',
     'fleetonrails.controllers.group_car_services-controller',
-    'fleetonrails.controllers.group_car_reminders-controller'
+    'fleetonrails.controllers.group_car_reminders-controller',
+    'fleetonrails.controllers.group_car_edit-controller'
 ]);
