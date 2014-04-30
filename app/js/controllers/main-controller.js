@@ -31,14 +31,15 @@ angular.module('fleetonrails.controllers.main-controller', [])
             var past = new Date(date)
             var tmp = past.getTime()
 
-            var recent = Math.round(today/hours)
-            var due = Math.round(tmp/hours)
+            var recent =(today/hours)
+            var due = (tmp/hours) + 24
             if(due - recent <= 24 && due - recent>=0){
-                $scope.alerts.push({msg: '' + discription + ' is due for car ' + reg + ' today', type: 'warning',link: '#/car/'+ carID + '/reminders'});
+                $scope.alerts.push({msg: '' + discription + ' is due for car ' + reg + ' within next 24 hours', type: 'warning',link: '#/car/'+ carID + '/reminders'});
 
 
             }
             else if(due < recent){
+                console.log('Date com', due , recent)
                 $scope.alerts.push({msg:discription +'is Overdue' + ' for car ' + reg + '. Click to go to reminders page', type: 'danger',link: '#/car/'+ carID + '/reminders'});
 
 
