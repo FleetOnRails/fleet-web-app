@@ -127,9 +127,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
                 angular.forEach(data, function (cars) {
                     var count = 0;
                     angular.forEach(cars, function (value) {
-                        console.log('Inside a car loop', value.car.make);
-                        countCars++;
-                        $scope.count++;
+                        countCars++
                         value.car.reminders = [];
                         $scope.cars.push(value.car)
 
@@ -192,7 +190,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
             //Series object - a list of series using normal highcharts series options.
             series: [
                 {
-                    name: 'Fuel',
+                    name: 'Diesel',
                     type: 'spline',
                     color: '#0A000A',
                     data: []

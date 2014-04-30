@@ -149,13 +149,6 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
             $scope.dt = null;
         };
 
-
-
-        $scope.toggleMin = function() {
-            $scope.minDate = ( $scope.minDate ) ? null : new Date();
-        };
-        $scope.toggleMin();
-
         $scope.open = function($event) {
             $event.preventDefault();
             $event.stopPropagation();
