@@ -44,14 +44,25 @@
     </div>
     <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add Destination</button>
     <hr>
-    <div class="col-md-4" collapse="!isCollapsed">
-        <form ng-submit="addDestination()" name="form" novalidate>
-            <input  type="text" class="form-control custom-margin" name="Name" placeholder="Name" ng-model="destination.name" required>
+    <div class="col-md-12" collapse="!isCollapsed">
+        <div class="col-md-4">
+            <form ng-submit="addDestination()" name="form" novalidate>
+                <input  type="text" class="form-control custom-margin" name="Name" placeholder="Name" ng-model="destination.name" required>
 
-            <input  type="text" class="form-control custom-margin" name="Address" placeholder="Destination address" ng-model="destination.address" required>
+                <input  type="text" class="form-control custom-margin" name="Address" placeholder="Destination address" ng-model="destination.address" required>
 
-            <button type="submit" class="btn btn-primary pull-right" ng-disabled="form.$invalid">Create</button>
-        </form>
+                <button type="submit" class="btn btn-primary pull-right" ng-disabled="form.$invalid">Create</button>
+            </form>
+        </div>
+        <div class="col-md-8">
+            <div class="bs-callout bs-callout-info">
+                <div>
+                    <p>To add a destination to a group type destination name and address</p>
+                    <p>Example of address Street/House Number, Street Name, Town/City, County </p>
+                    <p>Destination will be added to a group and displayed on above map</p>
+                </div>
+            </div>
+        </div>
     </div>
     <table class="table table-hover">
         <thead>

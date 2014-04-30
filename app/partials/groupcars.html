@@ -17,16 +17,26 @@
     <div>
         <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add Car</button>
         <hr>
-        <div class="col-md-4" collapse="!isCollapsed">
-            <form ng-submit="addCar()" name="form" novalidate>
-                <input  type="text" class="form-control custom-margin" name="Name" placeholder="Car make" ng-model="car.make" required>
+        <div class="col-md-12" collapse="!isCollapsed">
+            <div class="col-md-4">
+                <form ng-submit="addCar()" name="form" novalidate>
+                    <input  type="text" class="form-control custom-margin" name="Name" placeholder="Car make" ng-model="car.make" required>
 
-                <input  type="text" class="form-control custom-margin" name="Surname" placeholder="Car model" ng-model="car.model" required>
+                    <input  type="text" class="form-control custom-margin" name="Surname" placeholder="Car model" ng-model="car.model" required>
 
-                <input  type="text" class="form-control custom-margin" name="username" placeholder="Car registration" ng-model="car.registration" required>
+                    <input  type="text" class="form-control custom-margin" name="username" placeholder="Car registration" ng-model="car.registration" required>
 
-                <button type="submit" class="btn btn-primary pull-right" ng-disabled="form.$invalid">Create</button>
-            </form>
+                    <button type="submit" class="btn btn-primary pull-right" ng-disabled="form.$invalid">Create</button>
+                </form>
+            </div>
+            <div class="col-md-8">
+                <div class="bs-callout bs-callout-info">
+                    <div>
+                        <p>To add a vehicle to a group type in Cars Model, Make and Registration number </p>
+                        <p>Example of car details: Toyota, Corolla, 01D01</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <table class="table table-hover">
