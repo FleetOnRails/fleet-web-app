@@ -25,13 +25,15 @@
 </nav>
 <div class="container">
     <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-    <div class="panel panel-default col-md-5 custom-panel">
-        <div class="panel-heading">Add a Reminder</div>
-        <div class="panel-body">
-            <form ng-submit="addReminder()" name="form" novalidate>
-                <input  type="text" class="form-control custom-margin" name="odometer" placeholder="Odometer" ng-model="reminders.odometer" required>
-                <input  type="text" class="form-control custom-margin" name="technician" placeholder="Reminder Type" ng-model="reminders.reminder_type" required>
-                <input  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="reminders.description" required>                <div class="row">
+    <div>
+        <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add Reminder</button>
+        <hr>
+        <div class="col-md-12" collapse="!isCollapsed">
+            <div class="col-md-4">
+                <form ng-submit="addReminder()" name="form" novalidate>
+                    <input  type="text" class="form-control custom-margin" name="odometer" placeholder="Odometer" ng-model="reminders.odometer" required>
+                    <input  type="text" class="form-control custom-margin" name="technician" placeholder="Reminder Type" ng-model="reminders.reminder_type" required>
+                    <input  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="reminders.description" required>                <div class="row">
                     <div class="col-md-12">
                         <label>Date: </label>
                         <p class="input-group">
@@ -42,11 +44,20 @@
                         </p>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
-            </form>
+                    <button type="submit" class="btn btn-primary pull-right" ng-disabled="form.$invalid">Create</button>
+                </form>
+            </div>
+            <div class="col-md-8">
+                <div class="bs-callout bs-callout-info">
+                    <div>
+                        <p>To add a reminder to a car, type current odometer reading and type of the reminder</p>
+                        <p>As well as that add description to the type of the reminder and choose date when the reminder is due</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="panel panel-default col-md-5 custom-panel col-md-offset-1">
+    <div class="panel panel-default col-md-12 custom-panel custom-panel-top ">
         <div class="panel-heading"><input class="form-control" placeholder="Filter Reminders" ng-model="searchText"></div>
         <table class="table table-hover">
             <thead>

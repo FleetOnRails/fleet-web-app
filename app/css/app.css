@@ -166,6 +166,9 @@ body {
 .custom-panel{
     padding: 0px;
 }
+.custom-panel-top{
+    margin-top: 30px;
+}
 .custom-panel-profile{
     margin-top: 20px;
 }
