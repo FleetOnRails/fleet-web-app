@@ -42,7 +42,7 @@ angular.module('fleetonrails.controllers.gps-controller', [])
                             {
                                 latitude: value.car.current_gps_statistic.latitude,
                                 longitude: value.car.current_gps_statistic.longitude,
-                                showWindow: true
+                                showWindow: false
                             })
                     }
                 })
