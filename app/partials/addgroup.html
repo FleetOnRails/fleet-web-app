@@ -1,11 +1,30 @@
-
 <navbar></navbar>
-<div class=" col-md-3 col-md-offset-1">
-    <h4>Create group:</h4>
-    <form ng-submit="addGroup()" name="form" novalidate>
-        <input  type="text" class="form-control custom-margin" name="Name" placeholder="Name of group" ng-model="group.name" required>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner">
+        <ul class="nav nav-justified">
+            <li><a href="#/main">Home</a></li>
+            <li><a href="#/gps">Vehicles</a></li>
+            <li><a href="#/groups">Groups</a></li>
+            <li><a href="#/vendors">Vendors</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="col-md-4">
+        <h4>Create group:</h4>
+        <form ng-submit="addGroup()" name="form" novalidate>
+            <input  type="text" class="form-control custom-margin" name="Name" placeholder="Name of group" ng-model="group.name" required>
 
-        <input type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="group.location_attributes.address" required>
-        <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
-    </form>
+            <input type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="group.location_attributes.address" required>
+            <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+        </form>
+    </div>
+    <div class="col-md-8 custom-panel-top">
+        <div class="bs-callout bs-callout-info">
+            <div>
+                <p>To create a group, type group's name and address</p>
+                <p>Example of address Street/House Number, Street Name, Town/City, County</p>
+            </div>
+        </div>
+    </div>
 </div>

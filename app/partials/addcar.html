@@ -2,21 +2,32 @@
 <nav class="navbar navbar-custom">
     <div class="navbar-inner">
         <ul class="nav nav-justified">
+            <li><a href="#/main">Home</a></li>
             <li><a href="#/gps">Vehicles</a></li>
             <li><a href="#/groups">Groups</a></li>
             <li><a href="#/vendors">Vendors</a></li>
         </ul>
     </div>
 </nav>
-<div class=" col-md-3 col-md-offset-4 text-center">
-    <h4>Create car:</h4>
-    <form ng-submit="addCar()" name="form" novalidate>
-        <input  type="text" class="form-control custom-margin" name="Name" placeholder="Car make" ng-model="car.make" required>
+<div class="col-md-12">
+    <div class="col-md-4" >
+        <h4>Create car:</h4>
+        <form ng-submit="addCar()" name="form" novalidate>
+            <input  type="text" class="form-control custom-margin" name="Name" placeholder="Car make" ng-model="car.make" required>
 
-        <input  type="text" class="form-control custom-margin" name="Surname" placeholder="Car model" ng-model="car.model" required>
+            <input  type="text" class="form-control custom-margin" name="Surname" placeholder="Car model" ng-model="car.model" required>
 
-        <input  type="text" class="form-control custom-margin" name="username" placeholder="Car registration" ng-model="car.registration" required>
+            <input  type="text" class="form-control custom-margin" name="username" placeholder="Car registration" ng-model="car.registration" required>
 
-        <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
-    </form>
+            <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+        </form>
+    </div>
+    <div class="col-md-8 custom-panel-top">
+        <div class="bs-callout bs-callout-info">
+            <div>
+                <p>To add a vehicle type in Cars Model, Make and Registration number </p>
+                <p>Example of car details: Toyota, Corolla, 01D01</p>
+            </div>
+        </div>
+    </div>
 </div>
