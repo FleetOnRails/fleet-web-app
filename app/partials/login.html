@@ -132,7 +132,7 @@
             <form ng-submit="login()">
                 <h6>Fleet on Rails</h6>
                 <h6>Log in</h6>
-
+                <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
                 <input id="login-username" type="text" class="form-control" name="username"
                        placeholder="username or email" ng-model="user.email">
                 <input id="login-password" type="password" class="form-control" name="password"
