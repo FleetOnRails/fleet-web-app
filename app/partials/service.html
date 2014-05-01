@@ -24,65 +24,62 @@
     </div>
 </nav>
 <div class="container">
-    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-    <div class="panel panel-default col-md-5 custom-panel">
-        <div class="panel-heading">Add an expenses entry</div>
-        <div class="panel-body">
-            <form ng-submit="addRecord(car.id)" name="form" novalidate>
-                <input  type="text" class="form-control custom-margin" name="odometer" placeholder="Odometer" ng-model="expenses.odometer" required>
-                <input  type="text" class="form-control custom-margin" name="technician" placeholder="Expense Type" ng-model="expenses.expense_type" required>
-                <input  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="expenses.description" required>
-                <input  type="text" class="form-control custom-margin" name="price" placeholder="Price" ng-model="expenses.price" required>
+    <div class="col-md-7">
+        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+        <div class="panel panel-default col-md-12 custom-panel">
+            <div class="panel-heading"><input class="form-control" placeholder="Filter expenses" ng-model="searchText"></div>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Odometer</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Location</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tr ng-repeat="expense in expenses | filter:searchText" class="my-repeat-animation">
+                    <td> {{expense.odometer}} </td>
+                    <td> {{expense.expense_type}} </td>
+                    <td> {{expense.description}} </td>
+                    <td> {{expense.price}} </td>
+                    <td> {{expense.location.city}} </td>
+                    <td class="dropdown">
 
-                <div class="row">
-                    <div class="col-md-12">
-                        <label>Date: </label>
-                        <p class="input-group">
-                            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="expenses.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+                        <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a><i class="fa fa-trash-o" ng-click="deleteExpense(expense.id,$index)"> Delete</i></a></li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-5">
+        <div class="panel panel-default col-md-12 custom-panel col-md-offset-1">
+            <div class="panel-heading">Add an expenses entry</div>
+            <div class="panel-body">
+                <form ng-submit="addRecord(car.id)" name="form" novalidate>
+                    <input  type="text" class="form-control custom-margin" name="odometer" placeholder="Odometer" ng-model="expenses.odometer" required>
+                    <input  type="text" class="form-control custom-margin" name="technician" placeholder="Expense Type" ng-model="expenses.expense_type" required>
+                    <input  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="expenses.description" required>
+                    <input  type="text" class="form-control custom-margin" name="price" placeholder="Price" ng-model="expenses.price" required>
+                    <input  type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="expenses.location_attributes.address" required>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Date: </label>
+                            <p class="input-group">
+                                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="expenses.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
                                  <span class="input-group-btn">
                                     <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                                  </span>
-                        </p>
-                    </div>
-                </div>
-                <div class="row" >
-                    <div class="col-md-6">
-                        <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add location</button>
-                        <hr>
-                        <div collapse="!isCollapsed">
-                            <input  type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="expenses.location_attributes.address">
+                            </p>
                         </div>
                     </div>
-                </div>
-                <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
-            </form>
+                    <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+                </form>
+            </div>
         </div>
-    </div>
-    <div class="panel panel-default col-md-5 custom-panel col-md-offset-1">
-        <div class="panel-heading"><input class="form-control" placeholder="Filter expenses" ng-model="searchText"></div>
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>Odometer</th>
-                <th>Technician</th>
-                <th>Description</th>
-                <th>Location</th>
-                <th></th>
-            </tr>
-            </thead>
-            <tr ng-repeat="expense in expenses | filter:searchText" class="my-repeat-animation">
-                <td> {{expense.odometer}} </td>
-                <td> {{expense.expense_type}} </td>
-                <td> {{expense.description}} </td>
-                <td> {{expense.location.city}} </td>
-                <td class="dropdown">
-
-                    <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
-                    <ul class="dropdown-menu">
-                        <li><a><i class="fa fa-trash-o" ng-click="deleteExpense(expense.id,$index)"> Delete</i></a></li>
-                    </ul>
-                </td>
-            </tr>
-        </table>
     </div>
 </div>

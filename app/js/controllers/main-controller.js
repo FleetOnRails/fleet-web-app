@@ -147,7 +147,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
                                     total += value.fuel_entry.liters;
                                     count = count + 1;
                                     $scope.chartConfig.series[0].data.push([
-                                        Date.parse(value.fuel_entry.created_at),
+                                        Date.parse(value.fuel_entry.date),
                                         value.fuel_entry.liters
                                     ]);
                                 })
@@ -158,7 +158,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
                         });
                     })
                 });
-
+                $scope.countCars = countCars;
             });
         };
 
