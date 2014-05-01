@@ -7,46 +7,50 @@
     </div>
 </nav>
 <div class="container">
-    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-    <div class="panel panel-default col-md-5 custom-panel">
-        <div class="panel-heading">Add Product</div>
-        <div class="panel-body">
-            <form ng-submit="addProduct()" name="form" novalidate>
-                <input  type="text" class="form-control custom-margin" name="name" placeholder="Name" ng-model="product.name" required>
-                <input  type="text" class="form-control custom-margin" name="price" placeholder="Price" ng-model="product.price" required>
-                <input  type="text" class="form-control custom-margin" name="part_num" placeholder="Part Number" ng-model="product.part_no" required>
-                <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
-            </form>
+    <div class="col-md-8">
+        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+        <div class="panel panel-default col-md-12 custom-panel ">
+            <div class="panel-heading"><input class="form-control" placeholder="Filter products" ng-model="searchText"></div>
+            <div class="panel-body text-center" ng-if="pending">
+                <i class="fa fa-spinner fa-spin fa-2x"></i>
+            </div>
+            <div ng-if="!pending">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Part Number</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tr ng-repeat="product in products | filter:searchText" class="my-repeat-animation">
+                        <td>{{product.name}}</td>
+                        <td> {{product.price}} </td>
+                        <td> {{product.part_no}} </td>
+                        <td class="dropdown">
+
+                            <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a><i class="fa fa-trash-o" ng-click="deleteProduct(product .id,$index)"> Delete</i></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
-    <div class="panel panel-default col-md-5 custom-panel col-md-offset-1">
-        <div class="panel-heading"><input class="form-control" placeholder="Filter products" ng-model="searchText"></div>
-        <div class="panel-body text-center" ng-if="pending">
-            <i class="fa fa-spinner fa-spin fa-2x"></i>
-        </div>
-        <div ng-if="!pending">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Price</th>
-                    <th>Part Number</th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tr ng-repeat="product in products | filter:searchText" class="my-repeat-animation">
-                    <td>{{product.name}}</td>
-                    <td> {{product.price}} </td>
-                    <td> {{product.part_no}} </td>
-                    <td class="dropdown">
-
-                        <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a><i class="fa fa-trash-o" ng-click="deleteProduct(product .id,$index)"> Delete</i></a></li>
-                        </ul>
-                    </td>
-                </tr>
-            </table>
+    <div class="col-md-4">
+        <div class="panel panel-default col-md-12 custom-panel col-md-offset-1">
+            <div class="panel-heading">Add Product</div>
+            <div class="panel-body">
+                <form ng-submit="addProduct()" name="form" novalidate>
+                    <input  type="text" class="form-control custom-margin" name="name" placeholder="Name" ng-model="product.name" required>
+                    <input  type="text" class="form-control custom-margin" name="price" placeholder="Price" ng-model="product.price" required>
+                    <input  type="text" class="form-control custom-margin" name="part_num" placeholder="Part Number" ng-model="product.part_no" required>
+                    <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
