@@ -1,6 +1,7 @@
 body {
     padding-bottom: 40px;
     padding-top: 50px;
+    font-family: "Open Sans",serif;
 }
 .left-inner-addon {
     position: relative;
@@ -124,29 +125,11 @@ body {
 .navbar-custom {
     background-color: #efefef;
     color:#000000;
+    margin-top: 0px;
     min-height: 40px;
     box-shadow: 1px 0px 3px;
 }
 
-/*.navbar-custom .navbar-nav > li > a {*/
-    /*color: #525252;*/
-    /*float:none;*/
-    /*display:inline-block;*/
-    /*vertical-align: top;*/
-/*}*/
-/*.navbar-custom .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {*/
-    /*color: #ffffff;*/
-    /*background-color:transparent;*/
-    /*display:inline-block;*/
-    /*vertical-align: top;*/
-/*}*/
-/*.navbar-custom .navbar-brand {*/
-    /*color:#eeeeee;*/
-/*}*/
-
-/*.navbar-custom .navbar-inner{*/
-    /*text-align: left;*/
-/*}*/
 
 .navbar .nav a {
     color: #525252;

@@ -47,7 +47,6 @@ angular.module('fleetonrails.controllers.main-controller', [])
         };
 
         MeService.get(function (user) {
-            $scope.user = user;
             $scope.pending = false
             $scope.getCars()
             getGroups()
