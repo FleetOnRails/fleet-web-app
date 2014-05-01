@@ -1,5 +1,5 @@
 <navbar></navbar>
-<nav class="navbar navbar-custom">
+<nav class="navbar navbar-custom" ng-if="personalNav">
     <div class="navbar-inner ">
         <ul class="nav nav-justified">
             <li><a href="#/car/{{car.id}}">Dashboard</a></li>
@@ -8,6 +8,18 @@
             <li><a href="#/car/{{car.id}}/documents">Documents</a></li>
             <li><a href="#/car/{{car.id}}/service" ng-click="stopInterval()">Expenses</a></li>
             <li><a href="#/car/{{car.id}}/reminders">Reminders</a></li>
+        </ul>
+    </div>
+</nav>
+<nav class="navbar navbar-custom" ng-if="groupNav">
+    <div class="navbar-inner ">
+        <ul class="nav nav-justified">
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}">Dashboard</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/edit" ng-click="stopInterval()">Settings</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/fuel" ng-click="stopInterval()">Fuel Entry</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/documents">Documents</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/service" ng-click="stopInterval()">Expenses</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/reminders">Reminders</a></li>
         </ul>
     </div>
 </nav>

@@ -3,6 +3,7 @@ angular.module('fleetonrails.controllers.doc_upload-controller', [])
     .controller('docCtrl', [ '$scope', '$fileUploader', 'globalSettings', 'CarsService', '$routeParams',
         function ($scope, $fileUploader, globalSettings, CarsService, $routeParams) {
 
+            $scope.groupNav= false;
 
             getCar = function (id) {
                 CarsService.show(id, function (data) {

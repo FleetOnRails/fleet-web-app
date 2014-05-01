@@ -10,6 +10,9 @@ angular.module('fleetonrails.controllers.car-controller', [])
             $scope.haveGpsData = false
             $scope.fuel_options = {thickness: 5, mode: "gauge", total: 200};
 
+            $scope.personalNav= true;
+            $scope.groupNav = false;
+
             var dynamicMarkers = [];
             var center = {
                 latitude: 54,
