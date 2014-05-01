@@ -17,7 +17,7 @@
     <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add Vendor</button>
     <hr>
     <div class="col-md-12" collapse="!isCollapsed">
-        <div class="col-md-4">
+        <div class="col-md-4 custom-toggle">
             <form ng-submit="addVendor()" name="form" novalidate>
                 <input  type="text" class="form-control custom-margin" name="Name" placeholder="Vendor name" ng-model="vendor.name" required>
 

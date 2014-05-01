@@ -18,7 +18,7 @@
         <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add Car</button>
         <hr>
         <div class="col-md-12" collapse="!isCollapsed">
-            <div class="col-md-4">
+            <div class="col-md-4 custom-toggle">
                 <form ng-submit="addCar()" name="form" novalidate>
                     <input  type="text" class="form-control custom-margin" name="Name" placeholder="Car make" ng-model="car.make" required>
 
@@ -39,7 +39,7 @@
             </div>
         </div>
     </div>
-    <table class="table table-hover">
+    <table class="table table-hover ">
         <thead>
         <tr>
             <th>Make</th>

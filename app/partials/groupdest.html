@@ -45,7 +45,7 @@
     <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add Destination</button>
     <hr>
     <div class="col-md-12" collapse="!isCollapsed">
-        <div class="col-md-4">
+        <div class="col-md-4 custom-toggle">
             <form ng-submit="addDestination()" name="form" novalidate>
                 <input  type="text" class="form-control custom-margin" name="Name" placeholder="Name" ng-model="destination.name" required>
 
