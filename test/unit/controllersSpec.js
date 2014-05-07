@@ -5,8 +5,8 @@
 describe('Unit Testing controllers', function(){
   beforeEach(module('fleetonrails.controllers'));
 
-    it('should have a car-controller controller', function() {
+    it('should have a car-controller controller', inject(function() {
         expect(car-controller).not.to.equal(null);
-    });
+    }));
 
 });

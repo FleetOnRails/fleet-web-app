@@ -299,4 +299,9 @@ input.ng-valid.ng-dirty{
     color: #3c763d
 }
 
+.avatar{
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+}
 

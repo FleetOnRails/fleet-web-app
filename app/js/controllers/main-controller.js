@@ -141,16 +141,16 @@ angular.module('fleetonrails.controllers.main-controller', [])
                         });
 
                         FuelService.get(value.car.id,function (data) {
-                            angular.forEach(data, function (fuel_entries, index) {
-                                angular.forEach(fuel_entries, function(value, index) {
-                                    total += value.fuel_entry.liters;
-                                    count = count + 1;
-                                    $scope.chartConfig.series[0].data.push([
-                                        Date.parse(value.fuel_entry.date),
-                                        value.fuel_entry.liters
-                                    ]);
-                                })
-                            });
+                            var graphData = []
+                            angular.forEach(data.fuel_entries, function(value, index) {
+                                total += value.fuel_entry.liters;
+                                count = count + 1;
+                                graphData.push([
+                                    Date.parse(value.fuel_entry.date),
+                                    value.fuel_entry.liters
+                                ]);
+                            })
+                            $scope.chartConfig.series.push({name: value.car.make, type: 'spline', color: '#0A000A', data: graphData})
                             if(count == 0){
                                 count = count + 1;
                             }
@@ -188,14 +188,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
             //The below properties are watched separately for changes.
 
             //Series object - a list of series using normal highcharts series options.
-            series: [
-                {
-                    name: 'Diesel',
-                    type: 'spline',
-                    color: '#0A000A',
-                    data: []
-                }
-            ],
+            series: [ ],
             //Title configuration
             title: {
                 text: 'Fuel over time'
