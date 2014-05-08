@@ -150,7 +150,9 @@ angular.module('fleetonrails.controllers.main-controller', [])
                                     value.fuel_entry.liters
                                 ]);
                             })
-                            $scope.chartConfig.series.push({name: value.car.make, type: 'spline', color: '#0A000A', data: graphData})
+                            var randomColour = Math.floor((Math.abs(Math.sin(Math.random()) * 16777215)) % 16777215).toString(16);
+                            console.log('colour ' + randomColour)
+                            $scope.chartConfig.series.push({name: value.car.make, type: 'spline', color: '#' + randomColour, data: graphData})
                             if(count == 0){
                                 count = count + 1;
                             }
