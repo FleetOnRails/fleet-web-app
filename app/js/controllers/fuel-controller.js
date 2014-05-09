@@ -17,26 +17,18 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
 
         $scope.gauge_data = [];
 
-        $scope.dataLine = [];
-
         $scope.total_fuel_price = [];
         $scope.pending = true;
 
         $scope.personalNav = true;
         $scope.groupNav = false;
 
+        $scope.modalShown = false;
+        $scope.toggleModal = function() {
+            console.log('inside togggle modal')
+            $scope.modalShown = !$scope.modalShown;
+        };
 
-        $scope.optionsLine = {
-            axes: {
-                x: {key: 'x', labelFunction: function(value) {return value;}, type: 'area', tooltipFormatter: function(x) {return x;}}
-
-            },
-            series: [
-                {y: 'value', color: 'steelblue', thickness: '2px', striped: true, label: 'Total Price'}
-            ],
-            lineMode: 'linear',
-            tension: 0.7
-        }
 
         $scope.closeAlert = function(index) {
             $scope.alerts.splice(index, 1);
@@ -53,12 +45,57 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
             });
         };
 
+        $scope.chartConfig = {
+            //This is not a highcharts object. It just looks a little like one!
+
+            options: {
+                //This is the Main Highcharts chart config. Any Highchart options are valid here.
+                //will be overriden by values specified below.
+                chart: {
+                    type: 'line',
+                    zoomType: 'x'
+                },
+                rangeSelector: {enabled: true},
+                tooltip: {
+                    style: {
+                        padding: 10,
+                        fontWeight: 'bold'
+                    }
+                },
+                plotOptions: {
+                    series: {
+                        stacking: ''
+                    }
+                }
+            },
+
+            //The below properties are watched separately for changes.
+
+            //Series object - a list of series using normal highcharts series options.
+            series: [ ],
+            //Title configuration
+            title: {
+                text: 'Fuel over time'
+            },
+            //Boolean to control showing loading status on chart
+            loading: false,
+            //Configuration for the xAxis. Currently only one x axis can be dynamically controlled.
+            //properties currentMin and currentMax provided 2-way binding to the chart's maximum and minimum
+            xAxis: {
+                type: 'datetime',
+                maxZoom: 2 * 3600000 // 2 hours
+            },
+            //Whether to use HighStocks instead of HighCharts. Defaults to false.
+            useHighStocks: false
+        };
+
 
         getFuelEntries = function(id) {
             FuelService.get(id,function (data) {
                 var total=0;
                 var count = 0;
                 var total_fuel = 0;
+                var graphData = [];
                 $scope.gauge_data = [];
                 $scope.dataLine = [];
                 $scope.fuel_entries = [];
@@ -66,14 +103,16 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                     angular.forEach(fuel_entries, function(value, index) {
                         $scope.fuel_entries.push(value.fuel_entry)
                         $scope.fuel_data.push(value.fuel_entry.liters)
-
-                        $scope.dataLine.push({x: count, value: value.fuel_entry.liters * value.fuel_entry.price})
-
+                        graphData.push([
+                            Date.parse(value.fuel_entry.date),
+                            value.fuel_entry.liters
+                        ]);
                         total += value.fuel_entry.liters;
                         total_fuel = total_fuel+(value.fuel_entry.liters * value.fuel_entry.price);
                         count = count + 1;
                     })
                 });
+                $scope.chartConfig.series.push({name: 'Fuel', type: 'spline', color: '#000000', data: graphData})
                 $scope.total_fuel_price.push(total_fuel)
                 if(count == 0){
                     count = count + 1;

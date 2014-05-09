@@ -24,6 +24,7 @@
     </div>
 </nav>
 <div class="container">
+
     <div class="col-md-8">
         <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
         <div class="panel panel-default col-md-11 custom-panel ">
@@ -48,15 +49,17 @@
                         <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
                         <ul class="dropdown-menu">
                             <li><a><i class="fa fa-trash-o" ng-click="deleteEntry(fuel_entry.id,$index)"> Delete</i></a></li>
+                            <li><a><i class="fa fa-trash-o" ng-click='toggleModal()'> Update</i></a></li>
+                            <modal-dialog show='modalShown' width='750px' height='60%'>
+                            </modal-dialog>
                         </ul>
                     </td>
                 </tr>
             </table>
         </div>
         <div class="panel panel-default col-md-11 custom-panel ">
-            <div class="panel-heading">Line chart  </div>
-            <div style="height: 250px">
-                <linechart data="dataLine" options="optionsLine"></linechart>
+            <div class="row">
+                <highchart id="chart1" config="chartConfig"></highchart>
             </div>
         </div>
         <div class="panel panel-default col-md-11 custom-panel ">
