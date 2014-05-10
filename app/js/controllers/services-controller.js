@@ -83,9 +83,9 @@ angular.module('fleetonrails.controllers.services-controller', [])
                             Date.parse(value.expense.date),
                             value.expense.price
                         ]);
-                    })
+                    });
                 });
-                $scope.chartConfig.series.push({name: 'Epense', type: 'spline', color: '#000000', data: graphData})
+                $scope.chartConfig.series.push({name: 'Expense', type: 'spline', color: '#000000', data: graphData})
             });
 
         };

@@ -12,6 +12,51 @@ angular.module('fleetonrails.controllers.group_car_services-controller', [])
             $scope.groupNav = true;
             $scope.carId = $routeParams.car_id;
 
+
+            $scope.chartConfig = {
+                //This is not a highcharts object. It just looks a little like one!
+
+                options: {
+                    //This is the Main Highcharts chart config. Any Highchart options are valid here.
+                    //will be overriden by values specified below.
+                    chart: {
+                        type: 'line',
+                        zoomType: 'x'
+                    },
+                    rangeSelector: {enabled: true},
+                    tooltip: {
+                        style: {
+                            padding: 10,
+                            fontWeight: 'bold'
+                        }
+                    },
+                    plotOptions: {
+                        series: {
+                            stacking: ''
+                        }
+                    }
+                },
+
+                //The below properties are watched separately for changes.
+
+                //Series object - a list of series using normal highcharts series options.
+                series: [ ],
+                //Title configuration
+                title: {
+                    text: 'Expenses over time'
+                },
+                //Boolean to control showing loading status on chart
+                loading: false,
+                //Configuration for the xAxis. Currently only one x axis can be dynamically controlled.
+                //properties currentMin and currentMax provided 2-way binding to the chart's maximum and minimum
+                xAxis: {
+                    type: 'datetime',
+                    maxZoom: 2 * 3600000 // 2 hours
+                },
+                //Whether to use HighStocks instead of HighCharts. Defaults to false.
+                useHighStocks: false
+            };
+
             $scope.CollapseDemoCtrl = function(){
                 $scope.isCollapsed = false;
 
@@ -32,12 +77,18 @@ angular.module('fleetonrails.controllers.group_car_services-controller', [])
 
             getExpenses = function(id) {
                 $scope.expenses = [];
+                var graphData = [];
                 ServicesService.get(id,function (data) {
                     angular.forEach(data, function (expenses, index) {
                         angular.forEach(expenses, function(value, index) {
-                            $scope.expenses.push(value.expense)
-                        })
+                            $scope.expenses.push(value.expense);
+                            graphData.push([
+                                Date.parse(value.expense.date),
+                                value.expense.price
+                            ]);
+                        });
                     });
+                    $scope.chartConfig.series.push({name: 'Expense', type: 'spline', color: '#000000', data: graphData});
                 });
             };
 
