@@ -30,7 +30,8 @@ angular.module('fleetonrails.controllers.doc_upload-controller', [])
                 },
                 formData: [
                     { document: {
-                        title: 'hello'
+                        title: 'hello',
+                        file : 'doc'
                     } }
                 ]
             });

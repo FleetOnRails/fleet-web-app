@@ -151,7 +151,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
                                 ]);
                             })
                             var randomColour = Math.floor((Math.abs(Math.sin(Math.random()+10) * 16777215)) % 16777215).toString(16);
-                            $scope.chartConfig.series.push({name: value.car.make, type: 'spline', color: '#' + randomColour, data: graphData})
+                            $scope.chartConfig.series.push({name: value.car.registration, type: 'spline', color: '#' + randomColour, data: graphData})
                             if(count == 0){
                                 count = count + 1;
                             }
