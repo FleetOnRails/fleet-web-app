@@ -174,6 +174,26 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
 
         }
 
+        $scope.updateFuel = function() {
+            var attributes = {
+                fuel_entry: {
+                    odometer: $scope.fuel.odometer,
+                    liters: $scope.fuel.liters,
+                    price: $scope.fuel.price,
+                    fuel_type: $scope.selectedOptionFuel.name,
+                    filling_station: $scope.fuel.filling_station,
+                    date: $scope.fuel.date,
+                    filled_tank: $scope.selectedOption.name.toLocaleUpperCase(),
+                    location_attributes:{
+                        address: $scope.fuel.location_attributes.address
+                    }
+                }
+            };
+            FuelService.update($routeParams.id,$routeParams.fuel_id,attributes,function(data){
+                console.log('Succes',data)
+            })
+        }
+
         $scope.today = function() {
             $scope.dt = new Date();
         };

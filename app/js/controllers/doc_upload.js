@@ -24,16 +24,18 @@ angular.module('fleetonrails.controllers.doc_upload-controller', [])
                 scope: $scope,
                 url: globalSettings.api_base_url + '/v1/cars/' + 2 + '/documents',
                 headers: {
-                    'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
+                    'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+//                    'Content-Type': 'application/json',
+//                    'Accept': 'application/json'
                 },
                 formData: [
                     { document: {
-                        title: 'hello',
-                        file : 'doc'
+                        title: 'hello'
                     } }
                 ]
+//                formData: [
+//                    { title: 'value' }
+//                ]
             });
 
             var item = {};

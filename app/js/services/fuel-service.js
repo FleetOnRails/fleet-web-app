@@ -21,6 +21,39 @@ angular.module('fleetonrails.services.fuel-service', [])
                         console.log(data);
                     })
             },
+            show: function (id,fuel_id,success) {
+                $http({
+                    method: 'GET',
+                    url: globalSettings.api_base_url + '/v1/cars/'+ id + '/fuel_entries/' + fuel_id,
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                }).success(function (fuel_entry) {
+                    console.log('success', fuel_entry);
+                    success(fuel_entry);
+                }).error(function (data) {
+                    console.log(data);
+                })
+            },
+            update: function (id,fuel_id,attributes,success) {
+                $http({
+                    method: 'PUT',
+                    url: globalSettings.api_base_url + '/v1/cars/'+ id + '/fuel_entries/' + fuel_id,
+                    data: attributes,
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                }).success(function (fuel_entries) {
+                    console.log('success', fuel_entries);
+                    success(fuel_entries);
+                }).error(function (data) {
+                    console.log(data);
+                })
+            },
             create: function (id,attributes, success) {
                 $http({
                     method: 'POST',

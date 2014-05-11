@@ -1,6 +1,6 @@
 angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart','base64',
         'n3-charts.linechart','ui.bootstrap' ,'angularFileUpload', 'fleetonrails.services',
-        'fleetonrails.controllers', 'fleetonrails.factories', 'highcharts-ng','fleetonrails.directives','google-maps']).
+        'fleetonrails.controllers', 'fleetonrails.factories', 'highcharts-ng','fleetonrails.directives.navbar','google-maps']).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
             when('/', {templateUrl: 'partials/login.html'}).
@@ -10,12 +10,16 @@ angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart','base64',
             when('/gps',{templateUrl:'partials/gps.html', controller: 'gpsController'}).
             when('/car',{templateUrl:'partials/car.html',controller:'carController'}).
             when('/addcar',{templateUrl:'partials/addcar.html',controller:'carController'}).
+
             when('/car/:id',{templateUrl:'partials/car.html',controller:'carController' }).
             when('/car/:id/fuel',{templateUrl:'partials/fuel.html',controller:'fuelController'}).
+            when('/cars/:id/fuel_entries/:fuel_id',{templateUrl:'partials/fueledit.html',controller:'fuelEditCtrl'}).
+
             when('/car/:id/edit',{templateUrl:'partials/editcar.html',controller:'carEditController'}).
             when('/car/:id/service',{templateUrl:'partials/service.html',controller:'serviceController'}).
             when('/car/:id/reminders',{templateUrl:'partials/reminders.html',controller:'remindersController'}).
             when('/car/:id/documents',{templateUrl:'partials/documents.html',controller:'carDocumentsController'}).
+
             when('/vendors',{templateUrl:'partials/vendors.html',controller:'vendorsController'}).
             when('/vendors/:id',{templateUrl:'partials/products.html',controller:'vendorProductsCtrl'}).
             when('/addgroup',{templateUrl:'partials/addgroup.html',controller:'GroupsCtrl'}).

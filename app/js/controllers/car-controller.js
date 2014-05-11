@@ -136,14 +136,6 @@ angular.module('fleetonrails.controllers.car-controller', [])
                 $scope.getCars();
             }
 
-            MeService.get(function (user) {
-                $scope.user = user;
-            }, function(data) {
-                alert('Not authorized')
-                $location.path('/')
-            });
-
-
             $timeout(function () {
                 $scope.map.dynamicMarkers = dynamicMarkers;
                 $scope.map.center = center;

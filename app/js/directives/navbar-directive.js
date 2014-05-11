@@ -1,9 +1,10 @@
-angular.module('fleetonrails.directives', [])
+angular.module('fleetonrails.directives.navbar', [])
 
     .directive('navbar',function() {
         return {
             restrict: 'E',
             templateUrl: 'partials/navbar.html',
+            transclude:true,
             controller: function($scope,MeService,$location,loginService){
                 MeService.get(function (user) {
                     $scope.user = user;

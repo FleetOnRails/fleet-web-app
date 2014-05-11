@@ -12,6 +12,7 @@ angular.module('fleetonrails.controllers.services-controller', [])
         $scope.personalNav = true;
         $scope.groupNav = false;
 
+
         $scope.CollapseDemoCtrl = function(){
             $scope.isCollapsed = false;
 
