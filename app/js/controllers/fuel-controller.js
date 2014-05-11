@@ -153,7 +153,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                     odometer: $scope.fuel.odometer,
                     liters: $scope.fuel.liters,
                     price: $scope.fuel.price,
-                    fuel_type: $scope.selectedOptionFuel.name,
+                    fuel_type: $scope.selectedOptionFuel.name.toLocaleUpperCase(),
                     filling_station: $scope.fuel.filling_station,
                     date: $scope.fuel.date,
                     filled_tank: $scope.selectedOption.name.toLocaleUpperCase(),

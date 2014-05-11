@@ -17,23 +17,27 @@ angular.module('fleetonrails.controllers.fuel_edit-controller', [])
                 });
             };
 
-
+            $scope.closeAlert = function(index) {
+                $scope.alerts.splice(index, 1);
+            };
 
             getFuelEntry = function(id) {
                 FuelService.show(id,$routeParams.fuel_id,function (data) {
-                    console.log('Got the fuel entry', data)
+                    console.log('Got the fuel entry ', data)
                     $scope.fuel = data;
                 });
 
             };
 
             $scope.updateFuel = function() {
+                console.log('Tank filled' + $scope.selectedOption.name.toLocaleUpperCase())
+                console.log('Fuel type' + $scope.selectedOptionFuel.name.toLocaleUpperCase())
                 var attributes = {
                     fuel_entry: {
                         odometer: $scope.fuel.fuel_entry.odometer,
                         liters: $scope.fuel.fuel_entry.liters,
                         price: $scope.fuel.fuel_entry.price,
-                        fuel_type: $scope.selectedOptionFuel.name,
+                        fuel_type: $scope.selectedOptionFuel.name.toLocaleUpperCase(),
                         filling_station: $scope.fuel.fuel_entry.filling_station,
                         date: $scope.fuel.fuel_entry.date,
                         filled_tank: $scope.selectedOption.name.toLocaleUpperCase(),
@@ -45,6 +49,8 @@ angular.module('fleetonrails.controllers.fuel_edit-controller', [])
                 FuelService.update($routeParams.id,$routeParams.fuel_id,attributes,function(data){
                     console.log('Succes',data)
                     $location.path('/car/' + $routeParams.id + '/fuel')
+                },function(data){
+                    $scope.alerts.push({msg: 'Missing values', type: 'danger'});
                 })
             }
 

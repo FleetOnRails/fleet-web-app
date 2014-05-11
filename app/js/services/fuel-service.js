@@ -37,7 +37,7 @@ angular.module('fleetonrails.services.fuel-service', [])
                     console.log(data);
                 })
             },
-            update: function (id,fuel_id,attributes,success) {
+            update: function (id,fuel_id,attributes,success,error) {
                 $http({
                     method: 'PUT',
                     url: globalSettings.api_base_url + '/v1/cars/'+ id + '/fuel_entries/' + fuel_id,
@@ -52,6 +52,7 @@ angular.module('fleetonrails.services.fuel-service', [])
                     success(fuel_entries);
                 }).error(function (data) {
                     console.log(data);
+                    error(data)
                 })
             },
             create: function (id,attributes, success) {
