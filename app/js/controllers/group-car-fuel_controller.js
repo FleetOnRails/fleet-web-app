@@ -216,8 +216,6 @@ angular.module('fleetonrails.controllers.group-car-fuel_controller', [])
                 getFuelEntries($routeParams.car_id)
                 getCar($routeParams.id)
                 $scope.getGroup($routeParams.id)
-            } else {
-                console.log('something wrong')
             }
 
         }]);

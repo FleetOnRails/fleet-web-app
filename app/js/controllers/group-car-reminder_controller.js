@@ -123,8 +123,6 @@ angular.module('fleetonrails.controllers.group_car_reminders-controller', [])
                 getReminders($routeParams.car_id)
                 getCar($routeParams.id)
                 $scope.getGroup($routeParams.id)
-            } else {
-                console.log('something wrong')
             }
 
 

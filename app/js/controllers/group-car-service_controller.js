@@ -164,8 +164,6 @@ angular.module('fleetonrails.controllers.group_car_services-controller', [])
                 getExpenses($routeParams.car_id);
                 //getCar($routeParams.id);
                 $scope.getGroup($routeParams.id);
-            } else {
-                console.log('something wrong');
             }
 
             MeService.get(function (user) {
