@@ -155,8 +155,6 @@ angular.module('fleetonrails.controllers.services-controller', [])
         if ($routeParams && $routeParams.id) {
             getExpenses($routeParams.id)
             getCar($routeParams.id)
-        } else {
-            console.log('something wrong')
         }
 
         MeService.get(function (user) {

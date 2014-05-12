@@ -126,6 +126,41 @@ describe('Unit Testing controllers', function(){
         expect(ctrl).toBeTruthy;
     }));
 
+    it('should have a main controller ', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('MainCtrl', {$scope:scope});
+        expect(ctrl).toBeTruthy;
+    }));
+
+    it('should have a reminders controller ', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('remindersController', {$scope:scope});
+        expect(ctrl).toBeTruthy;
+    }));
+
+    it('should have a expenses controller ', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('serviceController', {$scope:scope});
+        expect(ctrl).toBeTruthy;
+    }));
+
+    it('should have a users controller ', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('usersController', {$scope:scope});
+        expect(ctrl).toBeTruthy;
+    }));
+
+    it('should have a vendors product controller ', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('vendorProductsCtrl', {$scope:scope});
+        expect(ctrl).toBeTruthy;
+    }));
+
+    it('should have a vendors controller ', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('vendorsController', {$scope:scope});
+        expect(ctrl).toBeTruthy;
+    }));
 
 
     it('carController#getCars', inject(function($controller, CarsService) {

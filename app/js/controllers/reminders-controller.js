@@ -115,8 +115,6 @@ angular.module('fleetonrails.controllers.reminders-controller', [])
         if ($routeParams && $routeParams.id) {
             getReminders($routeParams.id)
             getCar($routeParams.id)
-        } else {
-            console.log('something wrong')
         }
 
 
