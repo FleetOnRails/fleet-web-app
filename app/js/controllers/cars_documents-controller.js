@@ -33,8 +33,6 @@ angular.module('fleetonrails.controllers.car_documents-controller', [])
             if ($routeParams && $routeParams.id) {
                 $scope.getDocuments($routeParams.id)
                 getCar($routeParams.id)
-            } else {
-                console.log('something wrong')
             }
 
             $scope.createDocument = function(){

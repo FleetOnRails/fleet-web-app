@@ -87,8 +87,6 @@ angular.module('fleetonrails.controllers.group_car_dash-controller', [])
                     $scope.apply
                 }, 5000)
                 $scope.$on('$destroy', function () { $interval.cancel(timeInterval); });
-            } else {
-                $scope.getCars();
             }
 
             MeService.get(function (user) {

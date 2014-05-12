@@ -88,8 +88,6 @@ angular.module('fleetonrails.controllers.fuel_edit-controller', [])
             if ($routeParams && $routeParams.id) {
                 getFuelEntry($routeParams.id)
                 getCar($routeParams.id)
-            } else {
-                console.log('something wrong')
             }
 
         }]);/**
