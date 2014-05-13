@@ -101,6 +101,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                 $scope.fuel_entries = [];
                 angular.forEach(data, function (fuel_entries, index) {
                     angular.forEach(fuel_entries, function(value, index) {
+                        console.log('Fuel entry', value.fuel_entry)
                         $scope.fuel_entries.push(value.fuel_entry)
                         $scope.fuel_data.push(value.fuel_entry.liters)
                         graphData.push([
@@ -153,15 +154,16 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                     odometer: $scope.fuel.odometer,
                     liters: $scope.fuel.liters,
                     price: $scope.fuel.price,
-                    fuel_type: $scope.selectedOptionFuel.name.toLocaleUpperCase(),
+                    fuel_type: $scope.selectedOptionFuel.name.toLocaleLowerCase(),
                     filling_station: $scope.fuel.filling_station,
                     date: $scope.fuel.date,
-                    filled_tank: $scope.selectedOption.name.toLocaleUpperCase(),
+                    filled_tank: $scope.selectedOption.name.toLocaleLowerCase(),
                     location_attributes:{
                         address: $scope.fuel.location_attributes.address
                     }
                 }
             };
+            console.log('attrubites', attributes)
             FuelService.create($routeParams.id,attributes, function (fuel_entry) {
                 console.log(fuel_entry);
                 $scope.alerts.push({msg: 'Fuel entry successfully created! ', type: 'success'});

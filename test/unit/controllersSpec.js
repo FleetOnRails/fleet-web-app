@@ -162,6 +162,12 @@ describe('Unit Testing controllers', function(){
         expect(ctrl).toBeTruthy;
     }));
 
+    it('should have a expenses edit  controller ', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('expensesEditCtrl', {$scope:scope});
+        expect(ctrl).toBeTruthy;
+    }));
+
 
     it('carController#getCars', inject(function($controller, CarsService) {
         var scope = {},
