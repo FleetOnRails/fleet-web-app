@@ -86,7 +86,7 @@ angular.module('fleetonrails.controllers.services-controller', [])
                         ]);
                     });
                 });
-                $scope.chartConfig.series.push({name: 'Expense', type: 'spline', color: '#000000', data: graphData})
+                $scope.chartConfig.series.push({name: 'Expense', type: 'spline', color: '#3276b1', data: graphData})
             });
 
         };

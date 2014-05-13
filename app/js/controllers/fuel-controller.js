@@ -113,13 +113,13 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                         count = count + 1;
                     })
                 });
-                $scope.chartConfig.series.push({name: 'Fuel', type: 'spline', color: '#000000', data: graphData})
+                $scope.chartConfig.series.push({name: 'Fuel', type: 'spline', color: '#3276b1', data: graphData})
                 $scope.total_fuel_price.push(total_fuel)
                 if(count == 0){
                     count = count + 1;
                 }
                 $scope.gauge_data.push(
-                    {label: "Fuel", value:(total/count).toFixed(2), color: "#5398f1", suffix: "L"}
+                    {label: "Fuel", value:(total/count).toFixed(2), color: "#3276b1", suffix: "L"}
                 )
             });
             $scope.apply

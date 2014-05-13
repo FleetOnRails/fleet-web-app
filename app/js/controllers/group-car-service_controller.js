@@ -88,7 +88,7 @@ angular.module('fleetonrails.controllers.group_car_services-controller', [])
                             ]);
                         });
                     });
-                    $scope.chartConfig.series.push({name: 'Expense', type: 'spline', color: '#000000', data: graphData});
+                    $scope.chartConfig.series.push({name: 'Expense', type: 'spline', color: '#3276b1', data: graphData});
                 });
             };
 
