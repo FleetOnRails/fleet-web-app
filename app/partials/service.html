@@ -72,20 +72,19 @@
                     <form ng-submit="addRecord(car.id)" name="form" novalidate>
                         <input  type="text" class="form-control custom-margin" name="odometer" placeholder="Odometer" ng-model="expenses.odometer" required>
                         <input  type="text" class="form-control custom-margin" name="technician" placeholder="Expense Type" ng-model="expenses.expense_type" required>
-                        <input  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="expenses.description" required>
                         <input  type="text" class="form-control custom-margin" name="price" placeholder="Price" ng-model="expenses.price" required>
                         <input  type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="expenses.location_attributes.address" required>
                         <div class="row">
                             <div class="col-md-12">
-                                <label>Date: </label>
                                 <p class="input-group">
-                                    <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="expenses.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+                                    <input placeholder="Date" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="expenses.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
                                  <span class="input-group-btn">
                                     <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                                  </span>
                                 </p>
                             </div>
                         </div>
+                        <textarea rows="2"  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="expenses.description" required></textarea>
                         <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
                     </form>
                 </div>

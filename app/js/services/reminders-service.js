@@ -20,6 +20,37 @@ angular.module('fleetonrails.services.reminders-service', [])
                         console.log(data);
                     })
             },
+            show: function (id,reminder_id,success) {
+                $http({
+                    method: 'GET',
+                    url: globalSettings.api_base_url + '/v1/cars/'+ id + '/reminders/' + reminder_id,
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                }).success(function (reminders) {
+                    success(reminders);
+                }).error(function (data) {
+                    console.log(data);
+                })
+            },
+            update: function(id,reminder_id,data,success){
+                $http({
+                    method: 'PUT',
+                    url: globalSettings.api_base_url + '/v1/cars/'+ id + '/reminders/' + reminder_id,
+                    data: data,
+                    headers: {
+                        'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    }
+                }).success(function (reminders) {
+                    success(reminders);
+                }).error(function (data) {
+                    console.log(data);
+                })
+            },
             create: function (id,attributes, success) {
                 $http({
                     method: 'POST',

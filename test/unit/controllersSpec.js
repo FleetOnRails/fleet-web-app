@@ -77,6 +77,11 @@ describe('Unit Testing controllers', function(){
             ctrl = $controller('groupCarRemindersCtrl', {$scope:scope});
         expect(ctrl).toBeTruthy;
     }));
+    it('should have a group car reminder edit controller ', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('remindersEditCtrl', {$scope:scope});
+        expect(ctrl).toBeTruthy;
+    }));
 
     it('should have a group car expenses controller ', inject(function($controller) {
         var scope = {},

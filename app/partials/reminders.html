@@ -33,17 +33,17 @@
                 <form ng-submit="addReminder()" name="form" novalidate>
                     <input  type="text" class="form-control custom-margin" name="odometer" placeholder="Odometer" ng-model="reminders.odometer" required>
                     <input  type="text" class="form-control custom-margin" name="technician" placeholder="Reminder Type" ng-model="reminders.reminder_type" required>
-                    <input  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="reminders.description" required>                <div class="row">
+                <div class="row">
                     <div class="col-md-12">
-                        <label>Date: </label>
                         <p class="input-group">
-                            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="reminders.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
-                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                                 </span>
+                            <input  placeholder="Date" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="reminders.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
                         </p>
                     </div>
                 </div>
+                    <textarea  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="reminders.description" required></textarea>
                     <button type="submit" class="btn btn-primary pull-right" ng-disabled="form.$invalid">Create</button>
                 </form>
             </div>
@@ -79,6 +79,7 @@
                     <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
                     <ul class="dropdown-menu">
                         <li><a><i class="fa fa-trash-o" ng-click="deleteReminders(reminder.id,$index)"> Delete</i></a></li>
+                        <li><a href="#/car/{{car.id}}/reminders/{{reminder.id}}"><i class="fa fa-pencil"> Update</i></a></li>
                     </ul>
                 </td>
             </tr>

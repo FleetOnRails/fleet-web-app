@@ -1,0 +1,37 @@
+<navbar></navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner ">
+        <ul class="nav nav-justified">
+            <li><a href="#/car/{{car.id}}">Dashboard</a></li>
+            <li><a href="#/car/{{car.id}}/edit">Settings</a></li>
+            <li><a href="#/car/{{car.id}}/fuel">Fuel Entry</a></li>
+            <li><a href="#/car/{{car.id}}/documents">Documents</a></li>
+            <li><a href="#/car/{{car.id}}/service" ng-click="stopInterval()">Expenses</a></li>
+            <li><a href="#/car/{{car.id}}/reminders">Reminders</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="panel panel-default col-md-5 custom-panel col-md-offset-3">
+        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+        <div class="panel-heading">Update fuel entry<a href="#/car/{{car.id}}/reminders" class="pull-right"><i class="fa fa-arrow-circle-left"></i>Back</a></div>
+        <div class="panel-body">
+            <form ng-submit="updateReminder()" name="form" novalidate>
+                <input  type="text" class="form-control custom-margin" name="odometer" placeholder="Odometer" ng-model="reminder.reminder.odometer" required>
+                <input  type="text" class="form-control custom-margin" name="technician" placeholder="Reminder Type" ng-model="reminder.reminder.reminder_type" required>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p class="input-group">
+                            <input  placeholder="Date" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="reminder.reminder.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <textarea  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="reminder.reminder.description" required></textarea>
+                <button type="submit" class="btn btn-primary pull-right" ng-disabled="form.$invalid">Update</button>
+            </form>
+        </div>
+    </div>
+</div>

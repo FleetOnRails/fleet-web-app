@@ -44,7 +44,6 @@ angular.module('fleetonrails.controllers.reminders-controller', [])
                     date: $scope.reminders.date
                 }
             };
-            console.log(attributes)
             RemindersService.create($routeParams.id,attributes, function (reminders) {
                 $scope.alerts.push({msg: 'Reminder successfully created! ', type: 'success'});
                 getReminders($routeParams.id)
