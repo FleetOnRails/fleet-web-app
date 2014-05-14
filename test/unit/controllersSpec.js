@@ -169,11 +169,96 @@ describe('Unit Testing controllers', function(){
     }));
 
 
-    it('carController#getCars', inject(function($controller, CarsService) {
+    it('carController#getCar', inject(function($controller, CarsService) {
         var scope = {},
             ctrl = $controller('carController', {$scope:scope});
         CarsService.show = function(id, callback) { callback({car: {make:'reno',model:'clio',registration:'02d01', current_gps_statistic:{kmh:50.0,latitude:50.5,longitude:50}}}) }
         scope.getCar(1);
+        expect(scope.car).toBeTruthy;
+    }))
+
+    it('carController#getCars', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('MainCtrl', {$scope:scope});
+        scope.differenceInDays(new Date(),'Service','01d01',2)
+        expect(scope.alerts.length).toEqual(1)
+
+    }))
+
+    it('should clear the date field ', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('expensesEditCtrl', {$scope:scope});
+        scope.clear()
+        expect(scope.dt).toEqual(null)
+
+    }))
+    it('should create todays date ', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('expensesEditCtrl', {$scope:scope});
+        scope.today()
+        expect(scope.dt).toEqual(new Date())
+
+    }))
+
+    it('should have date options defined', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('expensesEditCtrl', {$scope:scope});
+        expect(scope.dateOptions).toBeTruthy()
+
+    }))
+    it('should have formats defined', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('expensesEditCtrl', {$scope:scope});
+        expect(scope.formats).toBeTruthy()
+
+    }))
+    it('should have defined scope variables', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('carController', {$scope:scope});
+        expect(scope.haveDiagnosticData).toBe(false)
+        expect(scope.haveGpsData).toBe(false)
+    }))
+
+    it('should have collapsed set to false', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('fuelController', {$scope:scope});
+        scope.CollapseDemoCtrl();
+        expect(scope.isCollapsed).toBe(false)
+    }))
+
+    it('should get a car in fuelCtrl', inject(function($controller, CarsService) {
+        var scope = {},
+            ctrl = $controller('fuelController', {$scope:scope});
+        CarsService.show = function(id, callback) { callback({car: {make:'reno',model:'clio',registration:'02d01', current_gps_statistic:{kmh:50.0,latitude:50.5,longitude:50}}}) }
+        getCar(1);
+        expect(scope.car).toBeTruthy;
+    }))
+
+    it('should have chart config data', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('fuelController', {$scope:scope});
+        expect(scope.chartConfig).toBeTruthy()
+    }))
+
+    it('should remove alerts', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('fuelController', {$scope:scope});
+        scope.removeAlerts();
+        expect(scope.alerts.length).toBe(0)
+    }))
+
+    it('should have defined options for lists', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('fuelController', {$scope:scope});
+        expect(scope.options).toBeTruthy()
+        expect(scope.optionsFuel).toBeTruthy()
+    }))
+
+    it('should get a car for fuel edit page', inject(function($controller, CarsService) {
+        var scope = {},
+            ctrl = $controller('fuelEditCtrl', {$scope:scope});
+        CarsService.show = function(id, callback) { callback({car: {make:'reno',model:'clio',registration:'02d01', current_gps_statistic:{kmh:50.0,latitude:50.5,longitude:50}}}) }
+        getCar(1);
         expect(scope.car).toBeTruthy;
     }))
 

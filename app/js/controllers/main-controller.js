@@ -39,7 +39,6 @@ angular.module('fleetonrails.controllers.main-controller', [])
 
             }
             else if(due < recent){
-                console.log('Date com', due , recent)
                 $scope.alerts.push({msg:discription +'is Overdue' + ' for car ' + reg + '. Click to go to reminders page', type: 'danger',link: '#/car/'+ carID + '/reminders'});
 
 

@@ -31,14 +31,7 @@ angular.module('fleetonrails.controllers.car_edit-controller', [])
 
             if ($routeParams && $routeParams.id) {
                 $scope.getCar($routeParams.id)
-            } else {
             }
 
-            MeService.get(function (user) {
-                $scope.user = user;
-            }, function(data) {
-                alert('Not authorized')
-                $location.path('/')
-            });
 
         }]);

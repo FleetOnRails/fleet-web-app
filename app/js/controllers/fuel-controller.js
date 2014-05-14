@@ -23,12 +23,6 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
         $scope.personalNav = true;
         $scope.groupNav = false;
 
-        $scope.modalShown = false;
-        $scope.toggleModal = function() {
-            console.log('inside togggle modal')
-            $scope.modalShown = !$scope.modalShown;
-        };
-
 
         $scope.closeAlert = function(index) {
             $scope.alerts.splice(index, 1);
@@ -134,12 +128,6 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
             $scope.apply
         };
 
-        MeService.get(function (user) {
-            $scope.user = user;
-        }, function(data) {
-            alert('Not authorized')
-            $location.path('/')
-        });
 
         $scope.removeAlerts = function () {
             $timeout(function () {
@@ -192,7 +180,6 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                 }
             };
             FuelService.update($routeParams.id,$routeParams.fuel_id,attributes,function(data){
-                console.log('Succes',data)
             })
         }
 
