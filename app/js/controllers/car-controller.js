@@ -81,17 +81,9 @@ angular.module('fleetonrails.controllers.car-controller', [])
             };
 
             $scope.addCar = function () {
-                var attributes = {
-                    car: {
-                        make: $scope.car.make,
-                        model: $scope.car.model,
-                        registration: $scope.car.registration
-                    }
-                };
-                console.log(attributes);
-                CarsService.create(attributes, function (car) {
+                CarsService.create({car: $scope.car}, function (car) {
                     $location.path('/main')
-                    console.log(car);
+                    console.log('Success',car);
                 })
 
             };
