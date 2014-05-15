@@ -15,15 +15,7 @@ angular.module('fleetonrails.controllers.car_edit-controller', [])
 
 
             $scope.updateCar = function () {
-                var attributes = {
-                    car: {
-                        make: $scope.car.make,
-                        model: $scope.car.model,
-                        registration: $scope.car.registration
-                    }
-                };
-
-                CarsService.change($routeParams.id, attributes, function (car) {
+                CarsService.change($routeParams.id, {car: $scope.car}, function (car) {
                     console.log(car);
                     $location.path('/car/' + $routeParams.id)
                 })

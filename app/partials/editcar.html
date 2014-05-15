@@ -24,20 +24,95 @@
     </div>
 </nav>
 <div class="container">
-    <div class="panel panel-default col-md-5 custom-panel col-md-offset-3">
-        <div class="panel-heading">Edit car information<a href="#/car/{{car.id}}" class="pull-right"><i class="fa fa-arrow-circle-left"></i>Back</a></div>
-        <div class="panel-body">
-                    <form ng-submit="updateCar()" name="form">
-                        <h4>Make:</h4>
-                        <input  type="text" class="form-control custom-margin" name="Make" placeholder="Make" ng-model="car.make">
-                        <h4>Model:</h4>
-                        <input  type="text" class="form-control custom-margin" name="Surname" placeholder="Model" ng-model="car.model" >
-                        <h4>Registration number:</h4>
-                        <input  type="text" class="form-control custom-margin" name="Registration" placeholder="registration" ng-model="car.registration" >
-                        <button type="submit" class="btn btn-primary">Update</button>
-                   </form>
+    <div class="col-md-12">
+        <h1><i class="fa fa-truck fa-1x icon-padding"></i>Update Vehicle</h1>
+        <hr>
+    </div>
+    <div class="col-md-8" >
+        <form ng-submit="updateCar()" name="form" novalidate>
+            <div class="well well-lg">
+                <fieldset>
+                    <legend>
+                        <span>Basic information</span>
+                    </legend>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <span class="help-block"> Enter a car make </span>
+                            <input  type="text" class="form-control custom-margin"  placeholder="Car make" ng-model="car.make" required>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="help-block"> Enter a car model </span>
+                            <input  type="text" class="form-control custom-margin"  placeholder="Car model" ng-model="car.model" required>
+
+                        </div>
+                        <div class="col-md-6">
+                            <span class="help-block"> Enter a car registration number </span>
+                            <input  type="text" class="form-control custom-margin" placeholder="Car registration" ng-model="car.registration" required>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="form-horizontal">
+                <fieldset>
+                    <legend>
+                        <span>Settings</span>
+                    </legend>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="help-block"> Enter color of the car </span>
+                            <input  type="text" class="form-control custom-margin" placeholder="Car color" ng-model="car.color">
+                        </div>
+                        <div class="col-md-6">
+                            <span class="help-block"> Enter car's year </span>
+                            <input  type="text" class="form-control custom-margin"  placeholder="Car year" ng-model="car.year">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="help-block"> Enter engine size</span>
+                            <input  type="text" class="form-control custom-margin" placeholder="Car engine size" ng-model="car.engine_size" >
+                        </div>
+                        <div class="col-md-6">
+                            <span class="help-block"> Enter transmission type </span>
+                            <input  type="text" class="form-control custom-margin" placeholder="Transmission" ng-model="car.transmission" >
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="form-horizontal">
+                <fieldset>
+                    <legend>
+                        <span>Description</span>
+                    </legend>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <textarea rows="5" type="text" class="form-control custom-margin" placeholder="Description" ng-model="car.description"></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="well">
+                <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Update Vehicle</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4 ">
+        <div class="bs-callout bs-callout-info">
+            <div>
+                <p>To add a vehicle type in Cars Model, Make and Registration number </p>
+                <p>These fields are required to add a vehicle to a fleet</p>
+                <p>Example of car details: Toyota, Corolla, 01D01</p>
+                <hr>
+                <p>Under Settings enter car's color, year, engine size and transmission</p>
+                <p>Example: Blue, 2013, 1.9 TDI, Manual</p>
+                <hr>
+                <p>Under Description type any comments associated with the vehicle</p>
+            </div>
         </div>
     </div>
 </div>
-
 
