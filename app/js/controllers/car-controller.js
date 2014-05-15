@@ -13,6 +13,11 @@ angular.module('fleetonrails.controllers.car-controller', [])
             $scope.personalNav= true;
             $scope.groupNav = false;
 
+            $scope.fuelCost = 0;
+            $scope.serviceCost = 0;
+            $scope.costKm = 0;
+            $scope.MPG = 0;
+
             var dynamicMarkers = [];
             var center = {
                 latitude: 54,
@@ -68,9 +73,10 @@ angular.module('fleetonrails.controllers.car-controller', [])
                             latitude: $scope.car.current_gps_statistic.latitude,
                             longitude: $scope.car.current_gps_statistic.longitude
                         };
-                        $scope.haveGpsData = true
+                        $scope.haveGpsData = true;
                     }
                     else {
+                        $scope.haveGpsData = true;
                         dynamicMarkers = [];
                     }
                     $scope.gauge_data.push(

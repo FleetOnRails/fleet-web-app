@@ -95,41 +95,53 @@
     </div>
 
     <div class="row" ng-if="haveGpsData">
-        <div class="col-md-12">
+        <div class="col-md-4">
+            <div class="well well-lg">
+                <fieldset>
+                    <legend>
+                        {{car.make}} Information
+                        <a href="#/car/{{car.id}}/edit" class="pull-right"><i class="fa fa-pencil fa-1x">Edit</i></a>
+                    </legend>
+                    <h4>Make: <span>{{car.make}}</span></h4>
+                    <h4>Model: <span>{{car.model}}</span></h4>
+                    <h4>Registration: <span>{{car.registration}}</span></h4>
+                    <hr>
+                    <h4>Color: <span>{{car.color}}</span></h4>
+                    <h4>Year: <span>{{car.year}}</span></h4>
+                    <h4>Engine Size: <span>{{car.engine_size}}</span></h4>
+                    <h4>Transmission: <span>{{car.transmission}}</span></h4>
+                    <h4>Description: <span>{{car.description}}</span></h4>
+                </fieldset>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Stats</h3></div>
+                <div class="panel-body" style="padding-bottom: 0px">
+                    <div class="row">
+                        <div class="col-md-11 well stats-box">
+                            <i class="fa fa-tint icon-padding"></i><span>Fuel cost: ${{fuelCost}}</span>
+                        </div>
+                        <div class="col-md-11  well stats-box">
+                            <i class="fa fa-wrench icon-padding"></i><span>Service Cost: ${{serviceCost}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-11  well stats-box">
+                            <i class="fa fa-money icon-padding"></i><span>Cost/Km : {{costKm}}</span>
+                        </div>
+                        <div class="col-md-11 well stats-box">
+                            <i class="fa fa-tint icon-padding"></i><span>MPG: {{MPG}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading"><h3 class="panel-title">Speed</h3></div>
                 <div class="gauge">
                     <pie-chart data="gauge_data" options="fuel_options"></pie-chart>
-
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h3 class="panel-title">Service Reminders</h3></div>
-                <div class="panel-body">
-                    something
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h3 class="panel-title">Fault Codes</h3></div>
-                <div class="panel-body">
-                    something else
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading"><h3 class="panel-title">Something</h3></div>
-                <div class="panel-body">
-                    something else else
                 </div>
             </div>
         </div>

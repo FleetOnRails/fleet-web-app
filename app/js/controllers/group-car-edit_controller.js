@@ -22,16 +22,8 @@ angular.module('fleetonrails.controllers.group_car_edit-controller', [])
             };
 
             $scope.updateCar = function () {
-                var attributes = {
-                    car: {
-                        make: $scope.car.make,
-                        model: $scope.car.model,
-                        registration: $scope.car.registration
-                    }
-                };
-                console.log(attributes)
-                GroupsCarsService.update($routeParams.id,$routeParams.car_id, attributes, function (car) {
-                    console.log(car);
+                GroupsCarsService.update($routeParams.id,$routeParams.car_id, {car: $scope.car}, function (car) {
+                    $location.path('/group/'+$routeParams.id + '/car/' + $routeParams.car_id )
                 })
             };
 
