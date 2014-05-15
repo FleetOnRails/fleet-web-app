@@ -24,39 +24,41 @@
     </div>
 </nav>
 <div class="container">
+    <div class="col-md-12">
+        <h1><i class="fa fa-bar-chart-o fa-1x icon-padding"></i>Expense Dashboard</h1>
+        <hr>
+    </div>
     <div class="col-md-7">
-        <div class="col-md-12">
-            <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-            <div class="panel panel-default col-md-12 custom-panel">
-                <div class="panel-heading"><input class="form-control" placeholder="Filter expenses" ng-model="searchText"></div>
-                <table class="table table-hover">
-                    <thead>
-                    <tr>
-                        <th>Odometer</th>
-                        <th>Type</th>
-                        <th>Description</th>
-                        <th>Price</th>
-                        <th>Location</th>
-                        <th></th>
-                    </tr>
-                    </thead>
-                    <tr ng-repeat="expense in expenses | filter:searchText" class="my-repeat-animation">
-                        <td> {{expense.odometer}} </td>
-                        <td> {{expense.expense_type}} </td>
-                        <td> {{expense.description}} </td>
-                        <td> {{expense.price}} </td>
-                        <td> {{expense.location.city}} </td>
-                        <td class="dropdown">
+        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+        <div class="panel panel-default col-md-12 custom-panel">
+            <div class="panel-heading"><input class="form-control" placeholder="Filter expenses" ng-model="searchText"></div>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Odometer</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Location</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tr ng-repeat="expense in expenses | filter:searchText" class="my-repeat-animation">
+                    <td> {{expense.odometer}} </td>
+                    <td> {{expense.expense_type}} </td>
+                    <td> {{expense.description}} </td>
+                    <td> {{expense.price}} </td>
+                    <td> {{expense.location.city}} </td>
+                    <td class="dropdown">
 
-                            <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
-                            <ul class="dropdown-menu">
-                                <li><a><i class="fa fa-trash-o" ng-click="deleteExpense(expense.id,$index)"> Delete</i></a></li>
-                                <li><a href="#/cars/{{car.id}}/expenses/{{expense.id}}"><i class="fa fa-pencil"> Update</i></a></li>
-                            </ul>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+                        <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a><i class="fa fa-trash-o" ng-click="deleteExpense(expense.id,$index)"> Delete</i></a></li>
+                            <li><a href="#/cars/{{car.id}}/expenses/{{expense.id}}"><i class="fa fa-pencil"> Update</i></a></li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
         </div>
         <div class="panel panel-default col-md-11 custom-panel ">
             <div class="row">

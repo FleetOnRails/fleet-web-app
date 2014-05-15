@@ -25,6 +25,10 @@
 </nav>
 <div class="container">
     <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+    <div class="col-md-12">
+        <h1><i class="fa fa-calendar fa-1x icon-padding"></i>Reminders Dashboard</h1>
+        <hr>
+    </div>
     <div>
         <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add Reminder</button>
         <hr>
