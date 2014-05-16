@@ -33,12 +33,23 @@
         <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add Reminder</button>
         <hr>
         <div class="col-md-12" collapse="!isCollapsed">
-            <div class="col-md-4">
+            <div class="col-md-8 well">
+                <legend>Enter Reminder Information</legend>
                 <form ng-submit="addReminder()" name="form" novalidate>
-                    <input  type="text" class="form-control custom-margin" name="odometer" placeholder="Odometer" ng-model="reminders.odometer" required>
-                    <input  type="text" class="form-control custom-margin" name="technician" placeholder="Reminder Type" ng-model="reminders.reminder_type" required>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="help-block"> Enter odometer reading </span>
+                            <input  type="text" class="form-control custom-margin" name="odometer" placeholder="Odometer" ng-model="reminders.odometer" required>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="help-block"> Enter reminder type </span>
+                            <input  type="text" class="form-control custom-margin" name="technician" placeholder="Reminder Type" ng-model="reminders.reminder_type" required>
+                        </div>
+                    </div>
+                    <hr>
                 <div class="row">
                     <div class="col-md-12">
+                        <span class="help-block"> Enter date to be reminded </span>
                         <p class="input-group">
                             <input  placeholder="Date" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="reminders.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
                             <span class="input-group-btn">
@@ -47,11 +58,12 @@
                         </p>
                     </div>
                 </div>
-                    <textarea  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="reminders.description" required></textarea>
-                    <button type="submit" class="btn btn-primary pull-right" ng-disabled="form.$invalid">Create</button>
+                <hr>
+                <textarea  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="reminders.description" required></textarea>
+                <button type="submit" class="btn btn-primary pull-right" ng-disabled="form.$invalid">Create</button>
                 </form>
             </div>
-            <div class="col-md-8">
+            <div class="col-md-4">
                 <div class="bs-callout bs-callout-info">
                     <div>
                         <p>To add a reminder to a car, type current odometer reading and type of the reminder</p>
