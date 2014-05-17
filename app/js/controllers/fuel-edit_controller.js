@@ -30,8 +30,6 @@ angular.module('fleetonrails.controllers.fuel_edit-controller', [])
             };
 
             $scope.updateFuel = function() {
-                console.log('Tank filled' + $scope.selectedOption.name.toLocaleUpperCase())
-                console.log('Fuel type' + $scope.selectedOptionFuel.name.toLocaleUpperCase())
                 var attributes = {
                     fuel_entry: {
                         odometer: $scope.fuel.fuel_entry.odometer,
@@ -47,7 +45,6 @@ angular.module('fleetonrails.controllers.fuel_edit-controller', [])
                     }
                 };
                 FuelService.update($routeParams.id,$routeParams.fuel_id,attributes,function(data){
-                    console.log('Succes',data)
                     $location.path('/car/' + $routeParams.id + '/fuel')
                 },function(data){
                     $scope.alerts.push({msg: 'Missing values', type: 'danger'});

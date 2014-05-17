@@ -11,40 +11,85 @@
         </ul>
     </div>
 </nav>
-<div class="container">
-    <div class="panel panel-default col-md-5 custom-panel col-md-offset-3">
-        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-        <div class="panel-heading">Update fuel entry<a href="#/car/{{car.id}}/fuel" class="pull-right"><i class="fa fa-arrow-circle-left"></i>Back</a></div>
-        <div class="panel-body">
-            <form ng-submit="updateFuel()" name="form-edit-fuel">
-                <input  type="text" class="form-control custom-margin" name="fuel_Name" placeholder="Odometer" ng-model="fuel.fuel_entry.odometer" required>
-                <input  type="text" class="form-control custom-margin" name="fuel_liters" placeholder="liters" ng-model="fuel.fuel_entry.liters" required>
-                <input  type="text" class="form-control custom-margin" name="fuel_price" placeholder="price" ng-model="fuel.fuel_entry.price" required>
-                <input  type="text" class="form-control custom-margin" name="fuel_fillingStation" placeholder="filling station" ng-model="fuel.fuel_entry.filling_station" required>
-                <input value="Null" type="text" class="form-control custom-margin" name="fuel_address" placeholder="address" ng-model="fuel.fuel_entry.location.address" required="">
-                <div class="row">
-                    <div class="col-md-12">
-                        <label>Date: </label>
-                        <p class="input-group">
-                            <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="fuel.fuel_entry.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
-                             <span class="input-group-btn">
+<div class="col-md-12">
+    <div class="col-md-12">
+        <h1><i class="fa fa-tint fa-1x icon-padding"></i>Update Fuel Entryy</h1>
+        <hr>
+    </div>
+    <div class="col-md-8" >
+        <form ng-submit="updateFuel()" name="form" novalidate>
+            <div class="well well-lg">
+                <fieldset>
+                    <legend>
+                        <span>Fuel entry information</span>
+                    </legend>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <span class="help-block">Enter Odometer</span>
+                            <input  type="text" class="form-control custom-margin" name="Name" placeholder="Odometer" ng-model="fuel.fuel_entry.odometer" required>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="help-block">Enter price per litre</span>
+                            <input  type="text" class="form-control custom-margin" name="Name" placeholder="Price" ng-model="fuel.fuel_entry.price" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="help-block"> Enter amount of liters </span>
+                            <input  type="text" class="form-control custom-margin" name="liters" placeholder="liters" ng-model="fuel.fuel_entry.liters" required>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="help-block"> Enter filling station name </span>
+                            <input  type="text" class="form-control custom-margin" name="fillingStation" placeholder="filling station" ng-model="fuel.fuel_entry.filling_station" required>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="help-block"> Enter address of station </span>
+                            <input value="Null" type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="fuel.fuel_entry.location.address" required="">
+
+                        </div>
+                        <div class="col-md-6">
+                            <span class="help-block">Enter date</span>
+                            <p class="input-group">
+                                <input  placeholder="Date" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="fuel.fuel_entry.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+                            <span class="input-group-btn">
                                 <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                             </span>
-                        </p>
+                            </span>
+                            </p>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <label>Filled Tank:</label> <select class="form-control custom-margin "data-ng-options="o.name for o in options" data-ng-model="selectedOption" required><option></option></select>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="help-block">Filled tank </span>
+                            <select class="form-control custom-margin "data-ng-options="o.name for o in options" data-ng-model="selectedOption" required><option></option></select>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="help-block">Choose fuel type</span>
+                            <select class="form-control custom-margin"data-ng-options="o.name for o in optionsFuel" data-ng-model="selectedOptionFuel" required><option></option></select>
+                        </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <label>Fuel Type:</label> <select class="form-control custom-margin"data-ng-options="o.name for o in optionsFuel" data-ng-model="selectedOptionFuel" required><option></option></select>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Update</button>
-            </form>
+                </fieldset>
+            </div>
+            <div class="well">
+                <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4 ">
+        <div class="bs-callout bs-callout-info">
+            <div>
+                <p>To add a vehicle type in Cars Model, Make and Registration number </p>
+                <p>These fields are required to add a vehicle to a fleet</p>
+                <p>Example of car details: Toyota, Corolla, 01D01</p>
+                <hr>
+                <p>Under Settings enter car's color, year, engine size and transmission</p>
+                <p>Example: Blue, 2013, 1.9 TDI, Manual</p>
+                <hr>
+                <p>Under Description type any comments associated with the vehicle</p>
+            </div>
         </div>
     </div>
 </div>
