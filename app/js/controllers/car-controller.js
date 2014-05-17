@@ -1,7 +1,7 @@
 angular.module('fleetonrails.controllers.car-controller', [])
 
-    .controller('carController', ['$scope', 'CarsService', '$location', '$timeout', '$interval', 'MeService','$routeParams','FuelService',
-        function ($scope, CarsService, $location, $timeout, $interval,MeService, $routeParams,FuelService) {
+    .controller('carController', ['$scope', 'CarsService', '$location', '$timeout', '$interval', 'MeService','$routeParams','FuelService','ServicesService',
+        function ($scope, CarsService, $location, $timeout, $interval,MeService, $routeParams,FuelService,ServicesService) {
             $scope.cars = [];
 
             $scope.pending = true
@@ -98,6 +98,19 @@ angular.module('fleetonrails.controllers.car-controller', [])
                 });
             };
 
+            $scope.calcExpensecost = function() {
+                ServicesService.get($routeParams.id,function (data) {
+                    var cost = 0;
+                    angular.forEach(data, function (expenses, index) {
+                        angular.forEach(expenses, function(value, index) {
+                            cost = cost + value.expense.price
+                        });
+                    });
+                    $scope.serviceCost = cost;
+                });
+
+            };
+
             $scope.addCar = function () {
                 CarsService.create({car: $scope.car}, function (car) {
                     $location.path('/main')
@@ -128,6 +141,7 @@ angular.module('fleetonrails.controllers.car-controller', [])
             if ($routeParams && $routeParams.id) {
                 $scope.getCar($routeParams.id);
                 $scope.calcFuelCost();
+                $scope.calcExpensecost();
                 var timeInterval = $interval(function() {
                     $scope.getCar($routeParams.id)
                     $scope.map.dynamicMarkers = dynamicMarkers;
