@@ -1,6 +1,7 @@
 angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart','base64',
         'n3-charts.linechart','ui.bootstrap' ,'angularFileUpload', 'fleetonrails.services',
-        'fleetonrails.controllers', 'fleetonrails.factories', 'highcharts-ng','fleetonrails.directives.navbar','google-maps']).
+        'fleetonrails.controllers', 'fleetonrails.factories', 'highcharts-ng','fleetonrails.directives.navbar','google-maps',
+        'angularFileUpload']).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.
             when('/', {templateUrl: 'partials/login.html'}).
@@ -20,7 +21,7 @@ angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart','base64',
             when('/cars/:id/expenses/:expense_id',{templateUrl:'partials/expenseedit.html',controller:'expensesEditCtrl'}).
             when('/car/:id/reminders',{templateUrl:'partials/reminders.html',controller:'remindersController'}).
             when('/car/:id/reminders/:reminder_id',{templateUrl:'partials/remindersedit.html',controller:'remindersEditCtrl'}).
-            when('/car/:id/documents',{templateUrl:'partials/documents.html',controller:'carDocumentsController'}).
+            when('/car/:id/documents',{templateUrl:'partials/documents.html',controller:'docCtrl'}).
             when('/car/:id/add_fuel',{templateUrl:'partials/addFuel.html',controller:'fuelController'}).
             when('/car/:id/add_expense',{templateUrl:'partials/addExpense.html',controller:'serviceController'}).
             when('/car/:id/add_reminder',{templateUrl:'partials/addReminder.html',controller:'remindersController'}).

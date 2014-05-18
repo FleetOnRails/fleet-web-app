@@ -87,6 +87,17 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
             useHighStocks: false
         };
 
+        var sort_by = function(field, reverse, primer){
+            console.log('inside sort_by');
+            var key = function (x) {return primer ? primer(x[field]) : x[field]};
+
+            return function (a,b) {
+                var A = key(a), B = key(b);
+                console.log('Value of a ' , A)
+                return ( (A < B) ? -1 : ((A > B) ? 1 : 0) ) * [-1,1][+!!reverse];
+            }
+        }
+
 
         getFuelEntries = function(id) {
             FuelService.get(id,function (data) {
@@ -119,6 +130,9 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                     {label: "Fuel", value:(total/count).toFixed(2), color: "#3276b1", suffix: "L"}
                 )
             });
+            console.log($scope.fuel_entries);
+            $scope.fuel_entries.sort(sort_by('odometer',true,parseInt));
+            console.log($scope.fuel_entries);
             $scope.apply
         };
 
@@ -155,7 +169,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                 }
             };
             FuelService.create($routeParams.id,attributes, function (fuel_entry) {
-                $location.path('/car/' + $routeParams.id + '/fuel')
+                $location.path('/car/' + $routeParams.id + '/fuel');
 
             })
             $scope.apply
