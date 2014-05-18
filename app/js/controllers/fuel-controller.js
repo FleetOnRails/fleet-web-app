@@ -1,7 +1,7 @@
 angular.module('fleetonrails.controllers.fuel-controller', [])
 
-    .controller('fuelController', ['$scope', 'FuelService', 'CarsService','$location', '$routeParams','MeService', '$timeout',
-        function ($scope, FuelService,CarsService, $location, $routeParams,MeService,$timeout) {
+    .controller('fuelController', ['$scope', 'FuelService', 'CarsService','$location', '$routeParams','MeService', '$timeout', '$filter',
+        function ($scope, FuelService,CarsService, $location, $routeParams,MeService,$timeout,$filter) {
 
         $scope.options = [{ name: "True", id: 1 }, { name: "False", id: 2 }];
         $scope.selectedOption = $scope.options[1];
@@ -87,17 +87,21 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
             useHighStocks: false
         };
 
-        var sort_by = function(field, reverse, primer){
-            console.log('inside sort_by');
-            var key = function (x) {return primer ? primer(x[field]) : x[field]};
+//        var sort = function(array, callback){
+//            var sorted = [ ];
+//            angular.forEach(array, function(object, index) {
+//                var temp = sorted.slice(0);
+//                angular.forEach(sorted, function(sortedObject, nestedIndex) {
+//                    if (sorted[nestedIndex+1] && )
+//                    temp.splice(nestedIndex)
+//                })
+//                sorted = temp
+//            })
+//        }
 
-            return function (a,b) {
-                var A = key(a), B = key(b);
-                console.log('Value of a ' , A)
-                return ( (A < B) ? -1 : ((A > B) ? 1 : 0) ) * [-1,1][+!!reverse];
-            }
-        }
 
+            var array = [{age: 12}, {age: 1}, {age: 3}, {age: -4}]
+            console.log(_.sortBy(array, 'age'));
 
         getFuelEntries = function(id) {
             FuelService.get(id,function (data) {
@@ -121,6 +125,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                         count = count + 1;
                     })
                 });
+                graphData = $filter('orderBy')(graphData, function(data) { return data[0]; })
                 $scope.chartConfig.series.push({name: 'Fuel', type: 'spline', color: '#3276b1', data: graphData})
                 $scope.total_fuel_price.push(total_fuel)
                 if(count == 0){
@@ -129,10 +134,8 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                 $scope.gauge_data.push(
                     {label: "Fuel", value:(total/count).toFixed(2), color: "#3276b1", suffix: "L"}
                 )
+                $scope.fuel_entries = $filter('orderBy')($scope.fuel_entries, 'odometer')
             });
-            console.log($scope.fuel_entries);
-            $scope.fuel_entries.sort(sort_by('odometer',true,parseInt));
-            console.log($scope.fuel_entries);
             $scope.apply
         };
 

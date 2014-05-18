@@ -1,7 +1,7 @@
 angular.module('fleetonrails.controllers.main-controller', [])
 
-    .controller('MainCtrl', [ '$scope', 'MeService', 'CarsService','RemindersService','FuelService','$location', 'loginService','GroupsService',
-        function ($scope, MeService, CarsService,RemindersService,FuelService,$location, loginService,GroupsService) {
+    .controller('MainCtrl', [ '$scope', 'MeService', 'CarsService','RemindersService','FuelService','$location', 'loginService','GroupsService','$filter',
+        function ($scope, MeService, CarsService,RemindersService,FuelService,$location, loginService,GroupsService,$filter) {
 
         var attributes = []
 
@@ -149,6 +149,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
                                     value.fuel_entry.liters
                                 ]);
                             })
+                            graphData = $filter('orderBy')(graphData, function(data) { return data[0]; });
                             var randomColour = Math.floor((Math.abs(Math.sin(Math.random()+10) * 16777215)) % 16777215).toString(16);
                             $scope.chartConfig.series.push({name: value.car.registration, type: 'spline', color: '#' + randomColour, data: graphData})
                             if(count == 0){

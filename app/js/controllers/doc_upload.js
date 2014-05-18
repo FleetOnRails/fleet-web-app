@@ -43,8 +43,10 @@ angular.module('fleetonrails.controllers.doc_upload-controller', [])
                     }).success(function(data, status, headers, config) {
                         // file is uploaded successfully
                         console.log(data);
+                    })
+                    .error(function(data){
+                        console.log(data);
                     });
-                    //.error(...)
                     //.then(success, error, progress);
                     //.xhr(function(xhr){xhr.upload.addEventListener(...)})// access and attach any event listener to XMLHttpRequest.
                 }
