@@ -91,7 +91,7 @@ angular.module('fleetonrails.controllers.services-controller', [])
 
         };
 
-        $scope.addRecord = function(){
+        $scope.addExpense = function(){
             var attributes = {
                 expense: {
                     odometer: $scope.expenses.odometer,
@@ -106,10 +106,7 @@ angular.module('fleetonrails.controllers.services-controller', [])
             };
             console.log(attributes)
             ServicesService.create($routeParams.id,attributes, function (expsenses) {
-                $scope.alerts.push({msg: 'Expense successfully created! ', type: 'success'});
-                getExpenses($routeParams.id)
-                $scope.apply
-                console.log(expsenses)
+                $location.path('/car/' + $routeParams.id + '/service');
             })
 
         }
@@ -121,6 +118,10 @@ angular.module('fleetonrails.controllers.services-controller', [])
 
                 $scope.expenses.splice(id, 1);
             })
+        };
+
+        $scope.changeToAddExpense = function(){
+            $location.path('/car/' + $routeParams.id + '/add_expense');
         };
 
         $scope.today = function() {
@@ -156,14 +157,5 @@ angular.module('fleetonrails.controllers.services-controller', [])
             getExpenses($routeParams.id)
             getCar($routeParams.id)
         }
-
-        MeService.get(function (user) {
-            $scope.user = user;
-        }, function(data) {
-            alert('Not authorized')
-            $location.path('/')
-        });
-
-
 
     }]);

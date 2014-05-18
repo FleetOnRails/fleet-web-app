@@ -34,7 +34,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
         }
 
         $scope.changeToAddFuel = function(){
-            $location.path('/car/' + $routeParams.id + '/add_fuel')
+            $location.path('/car/' + $routeParams.id + '/add_fuel');
         }
 
         getCar = function (id) {

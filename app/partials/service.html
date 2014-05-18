@@ -24,11 +24,14 @@
     </div>
 </nav>
 <div class="container">
-    <div class="col-md-12">
+    <div class="col-md-10">
         <h1><i class="fa fa-bar-chart-o fa-1x icon-padding"></i>Expense Dashboard</h1>
-        <hr>
     </div>
-    <div class="col-md-7">
+    <div class="col-md-1" style="padding-left: 75px;">
+        <button  class="btn btn-primary" ng-click="changeToAddExpense()">Add Expense</button>
+    </div>
+    <div class="col-md-12">
+        <hr>
         <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
         <div class="panel panel-default col-md-12 custom-panel">
             <div class="panel-heading"><input class="form-control" placeholder="Filter expenses" ng-model="searchText"></div>
@@ -60,36 +63,9 @@
                 </tr>
             </table>
         </div>
-        <div class="panel panel-default col-md-11 custom-panel ">
+        <div class="panel panel-default col-md-12 custom-panel ">
             <div class="row">
                 <highchart id="chart3" config="chartConfig"></highchart>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-5">
-        <div class="col-md-12">
-            <div class="panel panel-default col-md-12 custom-panel col-md-offset-1">
-                <div class="panel-heading">Add an expenses entry</div>
-                <div class="panel-body">
-                    <form ng-submit="addRecord(car.id)" name="form" novalidate>
-                        <input  type="text" class="form-control custom-margin" name="odometer" placeholder="Odometer" ng-model="expenses.odometer" required>
-                        <input  type="text" class="form-control custom-margin" name="technician" placeholder="Expense Type" ng-model="expenses.expense_type" required>
-                        <input  type="text" class="form-control custom-margin" name="price" placeholder="Price" ng-model="expenses.price" required>
-                        <input  type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="expenses.location_attributes.address" required>
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p class="input-group">
-                                    <input placeholder="Date" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="expenses.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
-                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                                 </span>
-                                </p>
-                            </div>
-                        </div>
-                        <textarea rows="2"  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="expenses.description" required></textarea>
-                        <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
-                    </form>
-                </div>
             </div>
         </div>
     </div>
