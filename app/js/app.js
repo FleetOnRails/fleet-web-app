@@ -23,6 +23,7 @@ angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart','base64',
             when('/car/:id/documents',{templateUrl:'partials/documents.html',controller:'carDocumentsController'}).
             when('/car/:id/add_fuel',{templateUrl:'partials/addFuel.html',controller:'fuelController'}).
             when('/car/:id/add_expense',{templateUrl:'partials/addExpense.html',controller:'serviceController'}).
+            when('/car/:id/add_reminder',{templateUrl:'partials/addReminder.html',controller:'remindersController'}).
 
             when('/vendors',{templateUrl:'partials/vendors.html',controller:'vendorsController'}).
             when('/vendors/:id',{templateUrl:'partials/products.html',controller:'vendorProductsCtrl'}).

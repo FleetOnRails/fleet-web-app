@@ -22,18 +22,15 @@ angular.module('fleetonrails.controllers.reminders-controller', [])
             }, 4000);
         };
 
+        $scope.changeToAddReminder = function(){
+            $location.path('/car/' + $routeParams.id + '/add_reminder');
+        }
+
         getCar = function (id) {
             CarsService.show(id, function (data) {
                 $scope.car = data['car'];
             });
         };
-
-        MeService.get(function (user) {
-            $scope.user = user;
-        }, function(data) {
-            alert('Not authorized')
-            $location.path('/')
-        });
 
         $scope.addReminder = function(){
             var attributes = {
@@ -45,11 +42,7 @@ angular.module('fleetonrails.controllers.reminders-controller', [])
                 }
             };
             RemindersService.create($routeParams.id,attributes, function (reminders) {
-                $scope.alerts.push({msg: 'Reminder successfully created! ', type: 'success'});
-                getReminders($routeParams.id)
-                $scope.apply
-                console.log(reminders)
-                $scope.removeAlerts()
+                $location.path('/car/' + $routeParams.id + '/reminders')
             })
         };
 
