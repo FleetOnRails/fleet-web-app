@@ -22,7 +22,7 @@ angular.module('fleetonrails.services.users-service', [])
                     })
             },
 
-            create: function(data, success) {
+            create: function(data, success,error) {
                 $http({
                     method: 'POST',
                     url: globalSettings.api_base_url + '/v1/users',
@@ -35,6 +35,7 @@ angular.module('fleetonrails.services.users-service', [])
                         success(user);
                     }).error(function (data) {
                         console.log(data);
+                        error(data)
                     })
             }
         }

@@ -3,8 +3,8 @@
  */
 angular.module('fleetonrails.controllers.services-controller', [])
 
-    .controller('serviceController', ['$scope', 'ServicesService', 'CarsService','$location', '$routeParams','MeService',
-        function ($scope,ServicesService, CarsService ,$location, $routeParams,MeService) {
+    .controller('serviceController', ['$scope', 'ServicesService', 'CarsService','$location', '$routeParams','$filter',
+        function ($scope,ServicesService, CarsService ,$location, $routeParams,$filter) {
 
         $scope.expenses = [];
         $scope.alerts = [];
@@ -86,7 +86,9 @@ angular.module('fleetonrails.controllers.services-controller', [])
                         ]);
                     });
                 });
+                graphData = $filter('orderBy')(graphData, function(data) { return data[0]; });
                 $scope.chartConfig.series.push({name: 'Expense', type: 'spline', color: '#3276b1', data: graphData})
+                $scope.expenses = $filter('orderBy')($scope.expenses,'odometer');
             });
 
         };
