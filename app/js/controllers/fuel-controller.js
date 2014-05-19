@@ -87,21 +87,6 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
             useHighStocks: false
         };
 
-//        var sort = function(array, callback){
-//            var sorted = [ ];
-//            angular.forEach(array, function(object, index) {
-//                var temp = sorted.slice(0);
-//                angular.forEach(sorted, function(sortedObject, nestedIndex) {
-//                    if (sorted[nestedIndex+1] && )
-//                    temp.splice(nestedIndex)
-//                })
-//                sorted = temp
-//            })
-//        }
-
-
-            var array = [{age: 12}, {age: 1}, {age: 3}, {age: -4}]
-            console.log(_.sortBy(array, 'age'));
 
         getFuelEntries = function(id) {
             FuelService.get(id,function (data) {

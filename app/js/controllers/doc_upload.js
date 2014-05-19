@@ -75,7 +75,8 @@ angular.module('fleetonrails.controllers.doc_upload-controller', [])
                         console.log(data);
                     })
                     .error(function(data){
-                        console.log(data);
+                            console.log(data);
+                        $scope.alerts.push({msg: data.error.messages[0], type: 'danger'});
                     });
                     //.then(success, error, progress);
                     //.xhr(function(xhr){xhr.upload.addEventListener(...)})// access and attach any event listener to XMLHttpRequest.
