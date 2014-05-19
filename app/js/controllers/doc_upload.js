@@ -1,9 +1,15 @@
 angular.module('fleetonrails.controllers.doc_upload-controller', [])
 
-    .controller('docCtrl', [ '$scope', '$upload', 'globalSettings', 'CarsService', '$routeParams',
-        function ($scope, $upload, globalSettings, CarsService, $routeParams) {
+    .controller('docCtrl', [ '$scope', '$upload', 'globalSettings', 'CarsService', '$routeParams','CarsDocumentsService','$timeout',
+        function ($scope, $upload, globalSettings, CarsService, $routeParams,CarsDocumentsService,$timeout) {
 
             $scope.groupNav= false;
+            $scope.documents = [];
+            $scope.alerts = [];
+
+            $scope.closeAlert = function(index) {
+                $scope.alerts.splice(index, 1);
+            };
 
             getCar = function (id) {
                 CarsService.show(id, function (data) {
@@ -11,10 +17,34 @@ angular.module('fleetonrails.controllers.doc_upload-controller', [])
                 });
             };
 
+            getDocuments = function(){
+                $scope.documents = [];
+                CarsDocumentsService.get($routeParams.id,function(data){
+                    angular.forEach(data, function (documents, index) {
+                        angular.forEach(documents, function(value, index) {
+                            $scope.documents.push(value.document);
+                        })
+                    });
+                });
+            }
+
+            $scope.deleteDocument = function(doc_id,id){
+                CarsDocumentsService.delete($routeParams.id,doc_id,function(){
+                    $scope.alerts.push({msg: 'Document successfully deleted! ', type: 'success'});
+                    $scope.documents.splice(id, 1);
+                    $scope.removeAlerts();
+                });
+            }
+
+            $scope.removeAlerts = function () {
+                $timeout(function () {
+                    $scope.alerts = [];
+                }, 4000);
+            };
+
             if ($routeParams && $routeParams.id) {
-                getCar($routeParams.id)
-            } else {
-                console.log('something wrong')
+                getCar($routeParams.id);
+                getDocuments();
             }
 
             $scope.onFileSelect = function($files) {
@@ -41,7 +71,7 @@ angular.module('fleetonrails.controllers.doc_upload-controller', [])
                     }).progress(function(evt) {
                         console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
                     }).success(function(data, status, headers, config) {
-                        // file is uploaded successfully
+                        getDocuments();
                         console.log(data);
                     })
                     .error(function(data){
