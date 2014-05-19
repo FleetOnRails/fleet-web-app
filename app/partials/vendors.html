@@ -10,8 +10,12 @@
     </div>
 </nav>
 <div class="container custom-panel-top">
-    <div class="col-md-8">
-        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+    <div class="col-md-12">
+        <h1><i class="fa fa-users fa-1x"></i> Vendors<button class="btn btn-primary pull-right" ng-click="changeToAddVendor()">Add Vendor</button></h1>
+        <hr>
+    </div>
+    <div class="col-md-12">
         <div class="panel panel-default col-md-12 custom-panel">
             <div class="panel-heading"><input class="form-control" placeholder="Filter vendors" ng-model="searchText"></div>
             <div class="panel-body text-center" ng-if="pending">
@@ -40,19 +44,6 @@
                         </td>
                     </tr>
                 </table>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-4">
-        <div class="panel panel-default col-md-12 custom-panel col-md-offset-1">
-            <div class="panel-heading">Add Vendor</div>
-            <div class="panel-body">
-                <form ng-submit="addVendor()" name="form" novalidate>
-                    <input  type="text" class="form-control custom-margin" name="name" placeholder="Name" ng-model="vendor.name" required>
-                    <input  type="text" class="form-control custom-margin" name="supplies" placeholder="Supplies Type" ng-model="vendor.supplies" required>
-                    <input  type="text" class="form-control custom-margin" name="location" placeholder="Location" ng-model="vendor.location_attributes" required>
-                    <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
-                </form>
             </div>
         </div>
     </div>

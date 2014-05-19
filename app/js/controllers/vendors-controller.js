@@ -3,8 +3,8 @@
  */
 angular.module('fleetonrails.controllers.vendors-controller', [])
 
-    .controller('vendorsController', ['$scope', 'VendorsService','$location', '$routeParams','MeService',
-        function ($scope,VendorsService,$location, $routeParams,MeService) {
+    .controller('vendorsController', ['$scope', 'VendorsService','$location', '$routeParams',
+        function ($scope,VendorsService,$location, $routeParams) {
 
         $scope.vendors = [];
         $scope.alerts = [];
@@ -25,9 +25,11 @@ angular.module('fleetonrails.controllers.vendors-controller', [])
                 }
             };
             VendorsService.create(attributes,function(vendors){
-                $scope.alerts.push({msg: 'Vendor successfully created! ', type: 'success'});
-                getVenodors();
+                $location.path('/vendors');
             })
+        }
+        $scope.changeToAddVendor = function(){
+            $location.path('/vendors/add_vendor');
         }
 
         VendorsService.get(function (data) {
@@ -51,13 +53,6 @@ angular.module('fleetonrails.controllers.vendors-controller', [])
                 $scope.pending = false;
             });
         }
-
-        MeService.get(function (user) {
-            $scope.user = user;
-        }, function(data) {
-            alert('Not authorized')
-            $location.path('/')
-        });
 
         $scope.deleteVendor = function(vendorID,id){
             VendorsService.delete(vendorID,function(){

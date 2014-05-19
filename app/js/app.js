@@ -27,6 +27,7 @@ angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart','base64',
             when('/car/:id/add_reminder',{templateUrl:'partials/addReminder.html',controller:'remindersController'}).
 
             when('/vendors',{templateUrl:'partials/vendors.html',controller:'vendorsController'}).
+            when('/vendors/add_vendor',{templateUrl:'partials/addVendor.html',controller:'vendorsController'}).
             when('/vendors/:id',{templateUrl:'partials/products.html',controller:'vendorProductsCtrl'}).
             when('/addgroup',{templateUrl:'partials/addgroup.html',controller:'GroupsCtrl'}).
             when('/groups',{templateUrl:'partials/groups.html',controller:'GroupsCtrl'}).

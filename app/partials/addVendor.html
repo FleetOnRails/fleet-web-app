@@ -1,0 +1,54 @@
+<navbar></navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner">
+        <ul class="nav nav-justified">
+            <li><a href="#/main">Home</a></li>
+            <li><a href="#/gps">Vehicles</a></li>
+            <li><a href="#/groups">Groups</a></li>
+            <li><a href="#/vendors">Vendors</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container custom-panel-top">
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+    <div class="col-md-12">
+        <h1><i class="fa fa-users fa-1x"></i> Vendors</h1>
+        <hr>
+    </div>
+    <div class="col-md-8 well well-lg">
+        <legend>
+            <span>Create new vendor</span>
+        </legend>
+        <form ng-submit="addVendor()" name="form" novalidate>
+            <div class="row">
+                <div class="col-md-6">
+                    <span class="help-block">Enter vendor's name</span>
+                    <input  type="text" class="form-control custom-margin" name="name" placeholder="Name" ng-model="vendor.name" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <span class="help-block">Enter supplies type</span>
+                    <input  type="text" class="form-control custom-margin" name="supplies" placeholder="Supplies Type" ng-model="vendor.supplies" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <span class="help-block">Enter vendors's address</span>
+                    <input  type="text" class="form-control custom-margin" name="location" placeholder="Location" ng-model="vendor.location_attributes" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+        </form>
+    </div>
+    <div class="col-md-4 ">
+        <div class="bs-callout bs-callout-info">
+            <div>
+                <p>To create a new vendor type in vendor's name</p>
+                <p>As well as supplies type eg.tyres</p>
+                <hr>
+                <p>Also enter vendor's address e.g Dublin 1 </p>
+            </div>
+        </div>
+    </div>
+</div>
