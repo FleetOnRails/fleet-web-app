@@ -73,7 +73,8 @@ angular.module('fleetonrails.controllers.groups-controller', [])
 
             $scope.changeToAdd = function(){
                 $location.path('/addgroup')
-            }
+            };
+
 
             $scope.deleteGroup = function(id,index){
                 GroupsService.delete(id,function(){

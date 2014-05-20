@@ -11,27 +11,9 @@
 </nav>
 <div class="container container-custom">
     <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-    <div>
-        <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add group</button>
+    <div class="col-md-12">
+        <h1><i class="fa fa-users fa-1x icon-padding"></i>Groups<button class="btn btn-primary pull-right" ng-click="changeToAdd()">Add Group</button></h1>
         <hr>
-        <div class="col-md-12" collapse="!isCollapsed">
-            <div class="col-md-4 custom-toggle">
-                <form ng-submit="add()" name="form" novalidate>
-                    <input  type="text" class="form-control custom-margin" name="Name" placeholder="Name of group" ng-model="group.name" required>
-
-                    <input type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="group.location_attributes.address" required>
-                    <button type="submit" class="btn btn-primary pull-right" ng-disabled="form.$invalid">Create</button>
-                </form>
-            </div>
-            <div class="col-md-8">
-                <div class="bs-callout bs-callout-info">
-                    <div>
-                        <p>To create a group, type group's name and address</p>
-                        <p>Example of address Street/House Number, Street Name, Town/City, County</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
     <table class="table table-hover">
         <thead>

@@ -10,16 +10,35 @@
     </div>
 </nav>
 <div class="container">
-    <div class="col-md-4">
-        <h4>Create group:</h4>
+    <div class="col-md-12">
+        <h1><i class="fa fa-users fa-1x icon-padding"></i>Create new group</h1>
+        <hr>
+    </div>
+    <div class="col-md-6">
         <form ng-submit="addGroup()" name="form" novalidate>
-            <input  type="text" class="form-control custom-margin" name="Name" placeholder="Name of group" ng-model="group.name" required>
-
-            <input type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="group.location_attributes.address" required>
-            <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+            <div class="well well-lg">
+                <fieldset>
+                    <legend>
+                        Group Information
+                    </legend>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="help-block">Enter name for group</span>
+                            <input  type="text" class="form-control custom-margin" name="Name" placeholder="Name of group" ng-model="group.name" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="help-block">Enter address for group</span>
+                            <input type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="group.location_attributes.address" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+                </fieldset>
+            </div>
         </form>
     </div>
-    <div class="col-md-8 custom-panel-top">
+    <div class="col-md-6">
         <div class="bs-callout bs-callout-info">
             <div>
                 <p>To create a group, type group's name and address</p>
