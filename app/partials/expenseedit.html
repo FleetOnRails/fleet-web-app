@@ -11,30 +11,74 @@
         </ul>
     </div>
 </nav>
-<div class="container">
+<div class="col-md-12">
     <div class="col-md-12">
-        <div class="panel panel-default col-md-5 custom-panel col-md-offset-3">
-            <div class="panel-heading">Update expense entry<a href="#/car/{{car.id}}/service" class="pull-right"><i class="fa fa-arrow-circle-left"></i>Back</a></div>
-            <div class="panel-body">
-                <form ng-submit="updateExpense()" name="form" novalidate>
-                    <input  type="text" class="form-control custom-margin" name="odometer" placeholder="Odometer" ng-model="expense.expense.odometer" required>
-                    <input  type="text" class="form-control custom-margin" name="technician" placeholder="Expense Type" ng-model="expense.expense.expense_type" required>
-                    <input  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="expense.expense.description" required>
-                    <input  type="text" class="form-control custom-margin" name="price" placeholder="Price" ng-model="expense.expense.price" required>
-                    <input  type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="expense.expense.location.address" required>
+        <h1><i class="fa fa-bar-chart-o fa-1x icon-padding"></i>Edit expense entry</h1>
+        <hr>
+    </div>
+    <div class="col-md-8" >
+        <form ng-submit="updateExpense()" name="form" novalidate>
+            <div class="well well-lg">
+                <fieldset>
+                    <legend>
+                        <span>Expense entry information</span>
+                    </legend>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <span class="help-block">Enter odometer reading</span>
+                            <input  type="text" class="form-control custom-margin" name="odometer" placeholder="Odometer" ng-model="expense.expense.odometer" required>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="help-block">Enter type of expense</span>
+                            <input  type="text" class="form-control custom-margin" name="technician" placeholder="Type" ng-model="expense.expense.expense_type" required>
+                        </div>
+                    </div>
                     <div class="row">
-                        <div class="col-md-12">
-                            <label>Date: </label>
+                        <div class="col-md-6">
+                            <span class="help-block"> Enter cost of expense</span>
+                            <input  type="text" class="form-control custom-margin" name="price" placeholder="Price" ng-model="expense.expense.price" required>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="help-block"> Enter address  </span>
+                            <input  type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="expense.expense.location.address" required>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="help-block">Enter date</span>
                             <p class="input-group">
-                                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="expense.expense.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
-                                 <span class="input-group-btn">
-                                    <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                                 </span>
+                                <input placeholder="Date" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="expense.expense.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
                             </p>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Update</button>
-                </form>
+                    <div class="row">
+                        <fieldset>
+                            <legend>
+                                <span>Description</span>
+                            </legend>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea rows="5"  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="expense.expense.description" required></textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="well">
+                <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4 ">
+        <div class="bs-callout bs-callout-info">
+            <div>
+
             </div>
         </div>
     </div>
