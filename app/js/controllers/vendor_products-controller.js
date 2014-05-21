@@ -13,15 +13,6 @@ angular.module('fleetonrails.controllers.vendors_products-controller', [])
                 $scope.alerts.splice(index, 1);
             };
 
-
-
-            MeService.get(function (user) {
-                $scope.user = user;
-            }, function(data) {
-                alert('Not authorized')
-                $location.path('/')
-            });
-
             $scope.addProduct = function(){
                 var attributes= {
                     product:{
@@ -31,10 +22,13 @@ angular.module('fleetonrails.controllers.vendors_products-controller', [])
                     }
                 }
                 VendorsProductsService.create($routeParams.id,attributes,function(product){
-                    $scope.alerts.push({msg: 'Product added to vendor successfully', type: 'success'});
-                    $scope.getProducts()
+                    $location.path('/vendors/' + $routeParams.id);
                 })
             }
+
+            $scope.changeToAddProduct = function(){
+                $location.path('/vendors/' + $routeParams.id + '/add_product');
+            };
 
             $scope.deleteProduct = function(product_id,id){
                 VendorsProductsService.delete($routeParams.id,product_id,function(product){
