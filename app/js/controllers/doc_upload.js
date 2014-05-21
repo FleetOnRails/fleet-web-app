@@ -61,7 +61,8 @@ angular.module('fleetonrails.controllers.doc_upload-controller', [])
                         },
                         // withCredentials: true,
                         data: {
-                            title: $scope.document.title
+                            title: $scope.document.title,
+                            file_size: file.size
                         },
                         file: file// or list of files: $files for html5 only
                         /* set the file formData name ('Content-Desposition'). Default is 'file' */
