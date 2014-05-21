@@ -76,15 +76,17 @@
             <thead>
             <tr>
                 <th>Title</th>
-                <th>Date</th>
                 <th>Document</th>
+                <th>File Size</th>
+                <th>Uploaded</th>
                 <th></th>
             </tr>
             </thead>
             <tr ng-repeat="document in documents | filter:searchText" class="my-repeat-animation">
                 <td> {{document.title}} </td>
+                <td> <a href="http://fleet-api.raven.com{{document.document.document.url}}">Open</a></td>
+                <td> {{document.file_size}} </td>
                 <td> {{document.created_at | date:'yyyy-MM-dd'}} </td>
-                <td> <a href="http://fleet-api.raven.com{{document.document.document.url}}">Open Doc</a></td>
                 <td class="dropdown">
 
                     <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
