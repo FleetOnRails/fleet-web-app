@@ -1,7 +1,7 @@
-angular.module('fleetonrails.controllers.fuel_edit-controller', [])
+angular.module('fleetonrails.controllers.group_car_fuel_edit-controller', [])
 
-    .controller('fuelEditCtrl', ['$scope', 'FuelService', 'CarsService','$location', '$routeParams','MeService', '$timeout',
-        function ($scope, FuelService,CarsService, $location, $routeParams,MeService,$timeout) {
+    .controller('groupFuelEditCtrl', ['$scope', 'FuelService', 'GroupsCarsService','$location', '$routeParams','GroupsService', '$timeout',
+        function ($scope, FuelService,GroupsCarsService, $location, $routeParams,GroupsService,$timeout) {
 
             $scope.options = [{ name: "True", id: 1 }, { name: "False", id: 2 }];
             $scope.selectedOption = $scope.options[1];
@@ -12,7 +12,7 @@ angular.module('fleetonrails.controllers.fuel_edit-controller', [])
             $scope.alerts = [];
 
             getCar = function (id) {
-                CarsService.show(id, function (data) {
+                GroupsCarsService.show(id, $routeParams.car_id,function (data) {
                     $scope.car = data['car'];
                 });
             };
@@ -27,6 +27,13 @@ angular.module('fleetonrails.controllers.fuel_edit-controller', [])
                     $scope.fuel = data;
                 });
 
+            };
+
+            $scope.getGroup = function(id){
+                GroupsService.show(id,function(data){
+                    console.log(data)
+                    $scope.group = data['group'];
+                })
             };
 
             $scope.updateFuel = function() {
@@ -44,8 +51,8 @@ angular.module('fleetonrails.controllers.fuel_edit-controller', [])
                         }
                     }
                 };
-                FuelService.update($routeParams.id,$routeParams.fuel_id,attributes,function(data){
-                    $location.path('/car/' + $routeParams.id + '/fuel');
+                FuelService.update($routeParams.car_id,$routeParams.fuel_id,attributes,function(data){
+                    $location.path('/group/' + $routeParams.id + '/car/' + $routeParams.car_id +'/fuel');
                 },function(data){
                     $scope.alerts.push({msg: 'Missing values', type: 'danger'});
                 })
@@ -83,10 +90,13 @@ angular.module('fleetonrails.controllers.fuel_edit-controller', [])
             $scope.fuel_options = {thickness: 5, mode: "gauge", total: 100};
 
             if ($routeParams && $routeParams.id) {
-                getFuelEntry($routeParams.id)
-                getCar($routeParams.id)
+                getFuelEntry($routeParams.car_id);
+                getCar($routeParams.id);
+                $scope.getGroup($routeParams.id)
             }
 
         }]);/**
- * Created by krystian on 11/05/2014.
+
+/**
+ * Created by krystian on 23/05/2014.
  */

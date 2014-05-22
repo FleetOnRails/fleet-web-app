@@ -55,7 +55,6 @@ angular.module('fleetonrails.controllers.group_car_dash-controller', [])
                             latitude: $scope.car.current_gps_statistic.latitude,
                             longitude: $scope.car.current_gps_statistic.longitude
                         };
-                        $scope.haveGpsData = true
                         $scope.gauge_data.push(
                             {label: "Speed", value:$scope.car.current_gps_statistic.kmh.toFixed(0), color: "#5398f1", suffix: "Km/h"}
                         )
@@ -67,6 +66,7 @@ angular.module('fleetonrails.controllers.group_car_dash-controller', [])
                             longitude: -7.3401
                         };
                     }
+                    $scope.haveGpsData = true;
                 });
             };
 

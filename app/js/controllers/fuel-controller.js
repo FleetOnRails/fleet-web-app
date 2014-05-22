@@ -22,6 +22,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
 
         $scope.personalNav = true;
         $scope.groupNav = false;
+        $scope.groupDash = false;
 
 
         $scope.closeAlert = function(index) {
@@ -110,7 +111,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                         count = count + 1;
                     })
                 });
-                graphData = $filter('orderBy')(graphData, function(data) { return data[0]; })
+                graphData = $filter('orderBy')(graphData, function(data) { return data[0]; });
                 $scope.chartConfig.series.push({name: 'Fuel', type: 'spline', color: '#3276b1', data: graphData})
                 $scope.total_fuel_price.push(total_fuel)
                 if(count == 0){
@@ -181,7 +182,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
             };
             FuelService.update($routeParams.id,$routeParams.fuel_id,attributes,function(data){
             })
-        }
+        };
 
         $scope.today = function() {
             $scope.dt = new Date();

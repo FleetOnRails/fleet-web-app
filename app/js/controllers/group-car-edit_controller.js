@@ -32,11 +32,4 @@ angular.module('fleetonrails.controllers.group_car_edit-controller', [])
                 $scope.getGroup($routeParams.id)
             }
 
-            MeService.get(function (user) {
-                $scope.user = user;
-            }, function(data) {
-                alert('Not authorized')
-                $location.path('/')
-            });
-
         }]);

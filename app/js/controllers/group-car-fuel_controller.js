@@ -1,7 +1,8 @@
 angular.module('fleetonrails.controllers.group-car-fuel_controller', [])
 
-    .controller('groupCarFuelCtrl', ['$scope', 'FuelService', 'GroupsService','$location', '$routeParams','MeService', '$timeout','GroupsCarsService',
-        function ($scope, FuelService,GroupsService, $location, $routeParams,MeService,$timeout,GroupsCarsService) {
+    .controller('groupCarFuelCtrl', ['$scope', 'FuelService', 'GroupsService','$location', '$routeParams','MeService',
+        '$timeout','GroupsCarsService','$filter',
+        function ($scope, FuelService,GroupsService, $location, $routeParams,MeService,$timeout,GroupsCarsService,$filter) {
 
             $scope.options = [{ name: "True", id: 1 }, { name: "False", id: 2 }];
             $scope.selectedOption = $scope.options[1];
@@ -22,6 +23,7 @@ angular.module('fleetonrails.controllers.group-car-fuel_controller', [])
 
             $scope.personalNav = false;
             $scope.groupNav = true;
+            $scope.groupDash = true;
 
             $scope.chartConfig = {
                 //This is not a highcharts object. It just looks a little like one!
@@ -74,6 +76,9 @@ angular.module('fleetonrails.controllers.group-car-fuel_controller', [])
             $scope.CollapseDemoCtrl = function(){
                 $scope.isCollapsed = false;
 
+            };
+            $scope.changeToAddFuel = function(){
+                $location.path('/group/' + $routeParams.id +'/car/'+ $routeParams.car_id +'/add_fuel');
             }
 
             getCar = function (id) {
@@ -87,7 +92,7 @@ angular.module('fleetonrails.controllers.group-car-fuel_controller', [])
                     console.log(data)
                     $scope.group = data['group'];
                 })
-            }
+            };
 
 
             getFuelEntries = function(id) {
@@ -112,6 +117,7 @@ angular.module('fleetonrails.controllers.group-car-fuel_controller', [])
                             count = count + 1;
                         })
                     });
+                    graphData = $filter('orderBy')(graphData, function(data) { return data[0]; });
                     $scope.chartConfig.series.push({name: 'Fuel', type: 'spline', color: '#3276b1', data: graphData})
                     $scope.total_fuel_price.push(total_fuel)
                     if(count == 0){
@@ -133,13 +139,6 @@ angular.module('fleetonrails.controllers.group-car-fuel_controller', [])
                 $scope.apply
             };
 
-            MeService.get(function (user) {
-                $scope.user = user;
-            }, function(data) {
-                alert('Not authorized')
-                $location.path('/')
-            });
-
             $scope.removeAlerts = function () {
                 $timeout(function () {
                     $scope.alerts = [];
@@ -148,6 +147,27 @@ angular.module('fleetonrails.controllers.group-car-fuel_controller', [])
 
 
             $scope.addFuel = function(){
+                var attributes = {
+                    fuel_entry: {
+                        odometer: $scope.fuel.odometer,
+                        liters: $scope.fuel.liters,
+                        price: $scope.fuel.price,
+                        fuel_type: $scope.selectedOptionFuel.name.toLocaleLowerCase(),
+                        filling_station: $scope.fuel.filling_station,
+                        date: $scope.fuel.date,
+                        filled_tank: $scope.selectedOption.name.toLocaleLowerCase(),
+                        location_attributes:{
+                            address: $scope.fuel.location_attributes.address
+                        }
+                    }
+                };
+                FuelService.create($routeParams.car_id,attributes, function (fuel_entry) {
+                    $location.path('/group/' + $routeParams.id + '/car/' + $routeParams.car_id + '/fuel');
+                })
+                $scope.apply
+
+            };
+            $scope.updateFuel = function() {
                 var attributes = {
                     fuel_entry: {
                         odometer: $scope.fuel.odometer,
@@ -162,17 +182,9 @@ angular.module('fleetonrails.controllers.group-car-fuel_controller', [])
                         }
                     }
                 };
-                FuelService.create($routeParams.car_id,attributes, function (fuel_entry) {
-                    console.log(fuel_entry);
-                    $scope.alerts.push({msg: 'Fuel entry successfully created! ', type: 'success'});
-                    getFuelEntries($routeParams.car_id);
-                    $scope.removeAlerts();
-                    $scope.pending = false;
-
+                FuelService.update($routeParams.car_id,$routeParams.fuel_id,attributes,function(data){
                 })
-                $scope.apply
-
-            }
+            };
 
             $scope.today = function() {
                 $scope.dt = new Date();
@@ -187,13 +199,6 @@ angular.module('fleetonrails.controllers.group-car-fuel_controller', [])
             $scope.clear = function () {
                 $scope.dt = null;
             };
-
-
-
-            $scope.toggleMin = function() {
-                $scope.minDate = ( $scope.minDate ) ? null : new Date();
-            };
-            $scope.toggleMin();
 
             $scope.open = function($event) {
                 $event.preventDefault();

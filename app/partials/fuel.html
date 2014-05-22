@@ -52,7 +52,8 @@
                         <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
                         <ul class="dropdown-menu">
                             <li><a><i class="fa fa-trash-o" ng-click="deleteEntry(fuel_entry.id,$index)"> Delete</i></a></li>
-                            <li><a href="#/cars/{{car.id}}/fuel_entries/{{fuel_entry.id}}"><i class="fa fa-pencil"> Update</i></a></li>
+                            <li ng-if="personalNav"><a href="#/cars/{{car.id}}/fuel_entries/{{fuel_entry.id}}"><i class="fa fa-pencil"> Update</i></a></li>
+                            <li ng-if="groupDash"><a href="#/group/{{group.id}}/car/{{car.id}}/fuel/{{fuel_entry.id}}"><i class="fa fa-pencil"> Update gprup</i></a></li>
                             <modal-dialog show='modalShown' width='750px' height='60%'>
                             </modal-dialog>
                         </ul>
