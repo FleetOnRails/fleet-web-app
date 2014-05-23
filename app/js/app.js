@@ -52,8 +52,5 @@ angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart','base64',
             when('/group/:id/car/:car_id/reminder/:reminder_id',{templateUrl:'partials/remindersedit.html',controller:'groupCarReminderEditCtrl'}).
 
             otherwise({redirectTo: '/'});
-    }])
+    }]);
 
-    .factory('_', function() {
-        return window._;
-    });
