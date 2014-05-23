@@ -3,8 +3,8 @@
  */
 angular.module('fleetonrails.controllers.group_car_services-controller', [])
 
-    .controller('groupCarServiceCtrl', ['$scope', 'ServicesService','GroupsCarsService','$location', 'GroupsService','$routeParams','MeService',
-        function ($scope,ServicesService ,$location, GroupsCarsService,GroupsService,$routeParams,MeService) {
+    .controller('groupCarServiceCtrl', ['$scope', 'ServicesService','$location', 'GroupsService','GroupsCarsService','$routeParams',
+        function ($scope,ServicesService ,$location,GroupsService,GroupsCarsService,$routeParams) {
 
             $scope.expenses = [];
             $scope.alerts = [];
@@ -60,7 +60,19 @@ angular.module('fleetonrails.controllers.group_car_services-controller', [])
             $scope.CollapseDemoCtrl = function(){
                 $scope.isCollapsed = false;
 
-            }
+            };
+
+            getCar = function (id) {
+                GroupsCarsService.show(id, $routeParams.car_id,function (data) {
+                    $scope.car = data['car'];
+                });
+            };
+
+            $scope.changeToAddExpense = function(){
+                console.log($routeParams.id)
+                $location.path('/group/' + $routeParams.id +'/car/'+ $routeParams.car_id +'/add_expense');
+            };
+
 
             $scope.closeAlert = function(index) {
                 $scope.alerts.splice(index, 1);
@@ -69,10 +81,10 @@ angular.module('fleetonrails.controllers.group_car_services-controller', [])
 
             $scope.getGroup = function(id){
                 GroupsService.show(id,function(data){
-                    console.log(data)
+                    console.log(data);
                     $scope.group = data['group'];
                 })
-            }
+            };
 
 
             getExpenses = function(id) {
@@ -92,7 +104,7 @@ angular.module('fleetonrails.controllers.group_car_services-controller', [])
                 });
             };
 
-            $scope.addRecord = function(){
+            $scope.addExpense = function(){
                 var attributes = {
                     expense: {
                         odometer: $scope.expenses.odometer,
@@ -107,10 +119,7 @@ angular.module('fleetonrails.controllers.group_car_services-controller', [])
                 };
                 console.log(attributes)
                 ServicesService.create($routeParams.car_id,attributes, function (expsenses) {
-                    $scope.alerts.push({msg: 'Expense successfully created! ', type: 'success'});
-                    getExpenses($routeParams.car_id)
-                    $scope.apply
-                    console.log(expsenses)
+                    $location.path('/group/' + $routeParams.id +'/car/'+ $routeParams.car_id +'/service');
                 })
 
             }
@@ -162,17 +171,8 @@ angular.module('fleetonrails.controllers.group_car_services-controller', [])
 
             if ($routeParams && $routeParams.id) {
                 getExpenses($routeParams.car_id);
-                //getCar($routeParams.id);
+                getCar($routeParams.id);
                 $scope.getGroup($routeParams.id);
             }
-
-            MeService.get(function (user) {
-                $scope.user = user;
-            }, function(data) {
-                alert('Not authorized')
-                $location.path('/')
-            });
-
-
 
         }]);

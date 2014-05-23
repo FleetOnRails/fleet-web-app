@@ -79,7 +79,7 @@ angular.module('fleetonrails.controllers.group-car-fuel_controller', [])
             };
             $scope.changeToAddFuel = function(){
                 $location.path('/group/' + $routeParams.id +'/car/'+ $routeParams.car_id +'/add_fuel');
-            }
+            };
 
             getCar = function (id) {
                 GroupsCarsService.show(id, $routeParams.car_id,function (data) {
@@ -221,6 +221,8 @@ angular.module('fleetonrails.controllers.group-car-fuel_controller', [])
                 getFuelEntries($routeParams.car_id)
                 getCar($routeParams.id)
                 $scope.getGroup($routeParams.id)
+            }else{
+                console.log('something wrong');
             }
 
         }]);
