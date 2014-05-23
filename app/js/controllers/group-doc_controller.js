@@ -1,10 +1,11 @@
-angular.module('fleetonrails.controllers.doc_upload-controller', [])
+angular.module('fleetonrails.controllers.group_doc-controller', [])
 
-    .controller('docCtrl', [ '$scope', '$upload', 'globalSettings', 'CarsService', '$routeParams','CarsDocumentsService','$timeout',
-        function ($scope, $upload, globalSettings, CarsService, $routeParams,CarsDocumentsService,$timeout) {
+    .controller('groupDocCtrl', [ '$scope', '$upload', 'globalSettings', 'GroupsCarsService', '$routeParams','CarsDocumentsService',
+        '$timeout','GroupsService',
+        function ($scope, $upload, globalSettings, GroupsCarsService, $routeParams,CarsDocumentsService,$timeout,GroupsService) {
 
-            $scope.groupNav= false;
-            $scope.personalNav = true;
+            $scope.groupNav= true;
+            $scope.personalNav = false;
             $scope.documents = [];
             $scope.alerts = [];
 
@@ -13,14 +14,21 @@ angular.module('fleetonrails.controllers.doc_upload-controller', [])
             };
 
             getCar = function (id) {
-                CarsService.show(id, function (data) {
+                GroupsCarsService.show(id, $routeParams.car_id,function (data) {
                     $scope.car = data['car'];
                 });
             };
 
+            $scope.getGroup = function(id){
+                GroupsService.show(id,function(data){
+                    console.log(data)
+                    $scope.group = data['group'];
+                })
+            };
+
             getDocuments = function(){
                 $scope.documents = [];
-                CarsDocumentsService.get($routeParams.id,function(data){
+                CarsDocumentsService.get($routeParams.car_id,function(data){
                     angular.forEach(data, function (documents, index) {
                         angular.forEach(documents, function(value, index) {
                             $scope.documents.push(value.document);
@@ -30,7 +38,7 @@ angular.module('fleetonrails.controllers.doc_upload-controller', [])
             }
 
             $scope.deleteDocument = function(doc_id,id){
-                CarsDocumentsService.delete($routeParams.id,doc_id,function(){
+                CarsDocumentsService.delete($routeParams.car_id,doc_id,function(){
                     $scope.alerts.push({msg: 'Document successfully deleted! ', type: 'success'});
                     $scope.documents.splice(id, 1);
                     $scope.removeAlerts();
@@ -44,8 +52,10 @@ angular.module('fleetonrails.controllers.doc_upload-controller', [])
             };
 
             if ($routeParams && $routeParams.id) {
-                getCar($routeParams.id);
-                getDocuments();
+                console.log('Inside group doc controller');
+                getDocuments($routeParams.car_id)
+                getCar($routeParams.id)
+                $scope.getGroup($routeParams.id)
             }
 
             $scope.onFileSelect = function($files) {
@@ -53,7 +63,7 @@ angular.module('fleetonrails.controllers.doc_upload-controller', [])
                 for (var i = 0; i < $files.length; i++) {
                     var file = $files[i];
                     $scope.upload = $upload.upload({
-                        url: globalSettings.api_base_url + '/v1/cars/'+ $routeParams.id + '/documents',
+                        url: globalSettings.api_base_url + '/v1/cars/'+ $routeParams.car_id + '/documents',
                         method: 'POST',
                         headers: {
                             'Authorization': 'Bearer ' + localStorage.getItem('access_token'),
@@ -76,10 +86,10 @@ angular.module('fleetonrails.controllers.doc_upload-controller', [])
                         getDocuments();
                         console.log(data);
                     })
-                    .error(function(data){
+                        .error(function(data){
                             console.log(data);
-                        $scope.alerts.push({msg: data.error.messages[0], type: 'danger'});
-                    });
+                            $scope.alerts.push({msg: data.error.messages[0], type: 'danger'});
+                        });
                     //.then(success, error, progress);
                     //.xhr(function(xhr){xhr.upload.addEventListener(...)})// access and attach any event listener to XMLHttpRequest.
                 }
