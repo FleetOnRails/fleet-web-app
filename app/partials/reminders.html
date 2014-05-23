@@ -51,7 +51,8 @@
                     <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
                     <ul class="dropdown-menu">
                         <li><a><i class="fa fa-trash-o" ng-click="deleteReminders(reminder.id,$index)"> Delete</i></a></li>
-                        <li><a href="#/car/{{car.id}}/reminders/{{reminder.id}}"><i class="fa fa-pencil"> Update</i></a></li>
+                        <li ng-if="personalNav"><a href="#/car/{{car.id}}/reminders/{{reminder.id}}"><i class="fa fa-pencil"> Update</i></a></li>
+                        <li ng-if="groupNav"><a href="#/group/{{group.id}}/car/{{car.id}}/reminder/{{reminder.id}}"><i class="fa fa-pencil"> Update gprup</i></a></li>
                     </ul>
                 </td>
             </tr>

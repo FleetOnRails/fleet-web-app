@@ -1,9 +1,9 @@
 /**
  * Created by krystian on 23/03/2014.
  */
-angular.module('fleetonrails.controllers.group_car_reminders-controller', [])
+angular.module('fleetonrails.controllers.group_car_reminder_edit-controller', [])
 
-    .controller('groupCarRemindersCtrl', ['$scope', 'RemindersService','GroupsService','$location', '$routeParams', 'MeService','$timeout','GroupsCarsService',
+    .controller('groupCarReminderEditCtrl', ['$scope', 'RemindersService','GroupsService','$location', '$routeParams', 'MeService','$timeout','GroupsCarsService',
         function ($scope,RemindersService ,GroupsService,$location, $routeParams,MeService,$timeout,GroupsCarsService) {
 
             $scope.reminders = [];
@@ -39,39 +39,26 @@ angular.module('fleetonrails.controllers.group_car_reminders-controller', [])
                 })
             }
 
-            $scope.addReminder = function(){
+            $scope.updateReminder = function(){
                 var attributes = {
                     reminder: {
-                        odometer: $scope.reminders.odometer,
-                        reminder_type: $scope.reminders.reminder_type,
-                        description: $scope.reminders.description,
-                        date: $scope.reminders.date
+                        odometer: $scope.reminder.reminder.odometer,
+                        reminder_type: $scope.reminder.reminder.reminder_type,
+                        description: $scope.reminder.reminder.description,
+                        date: $scope.reminder.reminder.date
                     }
                 };
-                console.log(attributes,'car id ', $routeParams.car_id)
-                RemindersService.create($routeParams.car_id,attributes, function (reminders) {
+                console.log('attr', attributes)
+                RemindersService.update($routeParams.car_id,$routeParams.reminder_id,attributes,function(data){
+                    console.log('succes update', data)
                     $location.path('/group/' + $routeParams.id + '/car/' + $routeParams.car_id + '/reminders');
-                })
-            };
-
-
-            getReminders = function(id) {
-                RemindersService.get(id,function (data) {
-                    $scope.reminders = [];
-                    angular.forEach(data, function (reminders, index) {
-                        angular.forEach(reminders, function(value, index) {
-                            $scope.reminders.push(value.reminder)
-                        })
-                    });
                 });
             };
 
-            $scope.deleteReminders = function(reminderid,id){
-                RemindersService.delete($routeParams.car_id,reminderid ,function(fuel_entries){
-                    $scope.alerts = [];
-                    $scope.alerts.push({msg: 'Reminder successfully deleted! ', type: 'success'});
-                    $scope.removeAlerts()
-                    $scope.reminders.splice(id, 1);
+
+            $scope.getReminder = function(){
+                RemindersService.show($routeParams.car_id,$routeParams.reminder_id,function(reminder){
+                    $scope.reminder = reminder;
                 })
             };
 
@@ -91,12 +78,6 @@ angular.module('fleetonrails.controllers.group_car_reminders-controller', [])
             };
 
 
-
-            $scope.toggleMin = function() {
-                $scope.minDate = ( $scope.minDate ) ? null : new Date();
-            };
-            $scope.toggleMin();
-
             $scope.open = function($event) {
                 $event.preventDefault();
                 $event.stopPropagation();
@@ -113,9 +94,9 @@ angular.module('fleetonrails.controllers.group_car_reminders-controller', [])
             $scope.format = $scope.formats[0];
 
             if ($routeParams && $routeParams.id) {
-                getReminders($routeParams.car_id)
-                getCar($routeParams.id)
-                $scope.getGroup($routeParams.id)
+                $scope.getReminder();
+                getCar($routeParams.id);
+                $scope.getGroup($routeParams.id);
             }
 
 

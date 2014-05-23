@@ -7,6 +7,8 @@ angular.module('fleetonrails.controllers.doc_upload-controller', [])
             $scope.personalNav = true;
             $scope.documents = [];
             $scope.alerts = [];
+            $scope.max = 100;
+            $scope.dynamic = 0;
 
             $scope.closeAlert = function(index) {
                 $scope.alerts.splice(index, 1);
@@ -71,7 +73,7 @@ angular.module('fleetonrails.controllers.doc_upload-controller', [])
                         /* customize how data is added to formData. See #40#issuecomment-28612000 for sample code */
                         //formDataAppender: function(formData, key, val){}
                     }).progress(function(evt) {
-                        console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
+                        $scope.dynamic = parseInt(100.0 * evt.loaded / evt.total);
                     }).success(function(data, status, headers, config) {
                         getDocuments();
                         console.log(data);

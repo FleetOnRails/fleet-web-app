@@ -37,21 +37,27 @@
             <form name="form">
                 <div class="row">
                     <div class="col-md-12">
-            <span>
-                <span class="help-block">Enter name of file</span>
-                <input  class="form-control custom-margin" type="text" placeholder="Name of file" ng-model="document.title" required>
-            </span>
+                        <span>
+                            <span class="help-block">Enter name of file</span>
+                            <input  class="form-control custom-margin" type="text" placeholder="Name of file" ng-model="document.title" required>
+                        </span>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <span class="help-block">Choose file to upload</span>
-            <span class="btn btn-sm btn-block btn-default btn-file">
-                <i class="fa fa-paperclip">
-                    Choose file
-                </i>
-                <input ng-file-select="onFileSelect($files)" type="file"  ng-disabled="form.$invalid">
-            </span>
+                    <span class="help-block">Choose file to upload</span>
+                    <span class="btn btn-sm btn-block btn-default btn-file">
+                        <i class="fa fa-paperclip">
+                            Choose file
+                        </i>
+                        <input ng-file-select="onFileSelect($files)" type="file"  ng-disabled="form.$invalid">
+                    </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="help-block">Progress</span>
+                        <progressbar max="max" value="dynamic"><span style="color:black; white-space:nowrap;">{{dynamic}}%</span></progressbar>
                     </div>
                 </div>
                 <button class="btn btn-primary custom-panel-profile" ng-click="upload.abort()">Cancel Upload</button>

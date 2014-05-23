@@ -11,6 +11,7 @@ describe('Unit Testing controllers', function(){
         expect(ctrl).toBeTruthy;
     }));
 
+
     it('should have a car-edit-controller controller', inject(function($controller) {
         var scope = {},
             ctrl = $controller('carEditController', {$scope:scope});
@@ -26,12 +27,6 @@ describe('Unit Testing controllers', function(){
     it('should have a car diagonstic statistics controller  controller', inject(function($controller) {
         var scope = {},
             ctrl = $controller('carDiagnosticStatisticsController', {$scope:scope});
-        expect(ctrl).toBeTruthy;
-    }));
-
-    it('should have a car-documents controller  controller', inject(function($controller) {
-        var scope = {},
-            ctrl = $controller('carDocumentsController', {$scope:scope});
         expect(ctrl).toBeTruthy;
     }));
 
@@ -72,16 +67,31 @@ describe('Unit Testing controllers', function(){
         expect(ctrl).toBeTruthy;
     }));
 
+    it('should have a group car fuel edit controller ', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('groupFuelEditCtrl', {$scope:scope});
+        expect(ctrl).toBeTruthy;
+    }));
+
     it('should have a group car reminder controller ', inject(function($controller) {
         var scope = {},
             ctrl = $controller('groupCarRemindersCtrl', {$scope:scope});
         expect(ctrl).toBeTruthy;
     }));
+
     it('should have a group car reminder edit controller ', inject(function($controller) {
         var scope = {},
             ctrl = $controller('remindersEditCtrl', {$scope:scope});
         expect(ctrl).toBeTruthy;
     }));
+
+    it('should have a group car reminder edit controller ', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('groupCarReminderEditCtrl', {$scope:scope});
+        expect(ctrl).toBeTruthy;
+    }));
+
+
 
     it('should have a group car expenses controller ', inject(function($controller) {
         var scope = {},
@@ -124,6 +134,7 @@ describe('Unit Testing controllers', function(){
             ctrl = $controller('GroupsUsersCtrl', {$scope:scope});
         expect(ctrl).toBeTruthy;
     }));
+
 
     it('should have a login controller ', inject(function($controller) {
         var scope = {},
