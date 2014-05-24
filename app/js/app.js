@@ -40,7 +40,7 @@ angular.module('fleetonrails', ['ngRoute','ngAnimate','n3-pie-chart','base64',
             when('/group/:id/car/:car_id',{templateUrl:'partials/groupcarDash.html',controller:'groupCarDashController'}).
 
             when('/group/:id/car/:car_id/fuel',{templateUrl:'partials/fuel.html',controller:'groupCarFuelCtrl'}).
-            when('/group/:id/car/:car_id/add_fuel',{templateUrl:'partials/addfuel.html',controller:'groupCarFuelCtrl'}).
+            when('/group/:id/car/:car_id/add_fuel',{templateUrl:'partials/addFuel.html',controller:'groupCarFuelCtrl'}).
             when('/group/:id/car/:car_id/fuel/:fuel_id',{templateUrl:'partials/fueledit.html',controller:'groupFuelEditCtrl'}).
 
             when('/group/:id/car/:car_id/documents',{templateUrl:'partials/documents.html',controller:'groupDocCtrl'}).
