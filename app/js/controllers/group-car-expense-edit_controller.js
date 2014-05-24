@@ -1,26 +1,45 @@
 /**
  * Created by krystian on 23/03/2014.
  */
-angular.module('fleetonrails.controllers.expenses_edit-controller', [])
+angular.module('fleetonrails.controllers.group_car_expense_edit-controller', [])
 
-    .controller('expensesEditCtrl', ['$scope', 'ServicesService', 'CarsService','$location', '$routeParams',
-        function ($scope,ServicesService, CarsService ,$location, $routeParams) {
+    .controller('groupCarExpenseEditCtrl', ['$scope', 'ServicesService','$location', 'GroupsService','GroupsCarsService','$routeParams',
+        function ($scope,ServicesService ,$location,GroupsService,GroupsCarsService,$routeParams) {
 
             $scope.expenses = [];
             $scope.alerts = [];
+            $scope.personalNav = false;
+            $scope.groupNav = true;
+            $scope.carId = $routeParams.car_id;
+
+
+            $scope.CollapseDemoCtrl = function(){
+                $scope.isCollapsed = false;
+
+            };
+
+            getCar = function (id) {
+                GroupsCarsService.show(id, $routeParams.car_id,function (data) {
+                    $scope.car = data['car'];
+                });
+            };
+
 
             $scope.closeAlert = function(index) {
                 $scope.alerts.splice(index, 1);
             };
 
-            getCar = function (id) {
-                CarsService.show(id, function (data) {
-                    $scope.car = data['car'];
-                });
+
+            $scope.getGroup = function(id){
+                GroupsService.show(id,function(data){
+                    console.log(data);
+                    $scope.group = data['group'];
+                })
             };
 
+
             getExpense = function(){
-                ServicesService.show($routeParams.id,$routeParams.expense_id,function(data){
+                ServicesService.show($routeParams.car_id,$routeParams.expense_id,function(data){
                     $scope.expense = data;
                 });
             }
@@ -39,13 +58,12 @@ angular.module('fleetonrails.controllers.expenses_edit-controller', [])
                     }
                 };
                 console.log(attributes)
-                ServicesService.update($routeParams.id,$routeParams.expense_id,attributes,function(data){
+                ServicesService.update($routeParams.car_id,$routeParams.expense_id,attributes,function(data){
                     console.log('succes update' + data)
-                    $location.path('/car/' + $routeParams.id + '/service')
+                    $location.path('/group/' + $routeParams.id +'/car/'+ $routeParams.car_id +'/service');
 
                 })
             };
-
 
 
             $scope.today = function() {
@@ -61,6 +79,7 @@ angular.module('fleetonrails.controllers.expenses_edit-controller', [])
             $scope.clear = function () {
                 $scope.dt = null;
             };
+
 
             $scope.open = function($event) {
                 $event.preventDefault();
@@ -78,8 +97,9 @@ angular.module('fleetonrails.controllers.expenses_edit-controller', [])
             $scope.format = $scope.formats[0];
 
             if ($routeParams && $routeParams.id) {
-                getCar($routeParams.id);
                 getExpense();
+                getCar($routeParams.id);
+                $scope.getGroup($routeParams.id);
             }
 
         }]);

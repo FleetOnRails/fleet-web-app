@@ -99,6 +99,12 @@ describe('Unit Testing controllers', function(){
         expect(ctrl).toBeTruthy;
     }));
 
+    it('should have a group car expenses edit controller ', inject(function($controller) {
+        var scope = {},
+            ctrl = $controller('groupCarExpenseEditCtrl', {$scope:scope});
+        expect(ctrl).toBeTruthy;
+    }));
+
     it('should have a group controller ', inject(function($controller) {
         var scope = {},
             ctrl = $controller('GroupCtrl', {$scope:scope});
