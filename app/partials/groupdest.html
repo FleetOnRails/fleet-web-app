@@ -14,7 +14,10 @@
 </nav>
 <div class="container">
     <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-
+    <div class="col-md-12">
+        <h1><i class="fa fa-map-marker fa-1x icon-padding"></i>{{group.name}}'s Destinations</h1>
+        <hr>
+    </div>
     <div class="panel panel-default col-md-12 custom-panel custom-panel-profile ">
         <div class="panel-body">
             <google-map
