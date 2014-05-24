@@ -14,51 +14,32 @@
 </nav>
 <div class="container">
     <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
-    <div>
-        <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add Car</button>
+    <div class="col-md-12">
+        <h1><i class="fa fa-truck fa-1x icon-padding"></i>{{group.name}} Vehicles<button class="btn btn-primary pull-right" ng-click="changeToAddCar()">Add Car</button></h1>
         <hr>
-        <div class="col-md-12" collapse="!isCollapsed">
-            <div class="col-md-4 custom-toggle">
-                <form ng-submit="addCar()" name="form" novalidate>
-                    <input  type="text" class="form-control custom-margin" name="Name" placeholder="Car make" ng-model="car.make" required>
-
-                    <input  type="text" class="form-control custom-margin" name="Surname" placeholder="Car model" ng-model="car.model" required>
-
-                    <input  type="text" class="form-control custom-margin" name="username" placeholder="Car registration" ng-model="car.registration" required>
-
-                    <button type="submit" class="btn btn-primary pull-right" ng-disabled="form.$invalid">Create</button>
-                </form>
-            </div>
-            <div class="col-md-8">
-                <div class="bs-callout bs-callout-info">
-                    <div>
-                        <p>To add a vehicle to a group type in Cars Model, Make and Registration number </p>
-                        <p>Example of car details: Toyota, Corolla, 01D01</p>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
-    <table class="table table-hover ">
-        <thead>
-        <tr>
-            <th>Make</th>
-            <th>Model</th>
-            <th>registration</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tr ng-repeat="car in cars" class="my-repeat-animation">
-            <td><a href="#/group/{{group.id}}/car/{{car.id}}">{{car.make}} </a></td>
-            <td>{{car.model}}</td>
-            <td>{{car.registration}}</td>
-            <td class="dropdown">
+    <div class="col-md-12">
+        <table class="table table-hover ">
+            <thead>
+            <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>registration</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tr ng-repeat="car in cars" class="my-repeat-animation">
+                <td><a href="#/group/{{group.id}}/car/{{car.id}}">{{car.make}} </a></td>
+                <td>{{car.model}}</td>
+                <td>{{car.registration}}</td>
+                <td class="dropdown">
 
-                <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a><i class="fa fa-trash-o" ng-click="deleteCar(car.id,$index)"> Delete</i></a></li>
-                </ul>
-            </td>
-        </tr>
-    </table>
+                    <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a><i class="fa fa-trash-o" ng-click="deleteCar(car.id,$index)"> Delete</i></a></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
 </div>

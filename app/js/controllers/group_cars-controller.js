@@ -28,7 +28,12 @@ angular.module('fleetonrails.controllers.groups_cars-controller', [])
                         })
                     });
                 })
-            }
+            };
+
+            $scope.changeToAddCar = function(){
+                $location.path('/group/' + $routeParams.id + '/add_car')
+
+            };
 
             $scope.deleteCar = function(car_id,id){
                 GroupsCarsService.delete($routeParams.id,car_id,function(cars){
@@ -41,17 +46,8 @@ angular.module('fleetonrails.controllers.groups_cars-controller', [])
             }
 
             $scope.addCar = function () {
-                var attributes = {
-                    car: {
-                        make: $scope.car.make,
-                        model: $scope.car.model,
-                        registration: $scope.car.registration
-                    }
-                };
-                console.log(attributes);
-                GroupsCarsService.create($routeParams.id,attributes, function (car) {
-                    $scope.alerts.push({msg: 'Car added to group successfully', type: 'success'});
-                    $scope.getCars($routeParams.id)
+                GroupsCarsService.create($routeParams.id,{car: $scope.car}, function (car) {
+                    $location.path('/group/' + $routeParams.id + '/cars')
                 })
 
             };
