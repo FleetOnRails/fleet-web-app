@@ -4,10 +4,10 @@ angular.module('fleetonrails.controllers.car-controller', [])
         function ($scope, CarsService, $location, $timeout, $interval,MeService, $routeParams,FuelService,ServicesService) {
             $scope.cars = [];
 
-            $scope.pending = true
+            $scope.pending = true;
             $scope.gauge_data = [];
-            $scope.haveDiagnosticData = false
-            $scope.haveGpsData = false
+            $scope.haveDiagnosticData = false;
+            $scope.haveGpsData = false;
             $scope.fuel_options = {thickness: 5, mode: "gauge", total: 200};
 
             $scope.personalNav= true;
@@ -156,6 +156,6 @@ angular.module('fleetonrails.controllers.car-controller', [])
             $timeout(function () {
                 $scope.map.dynamicMarkers = dynamicMarkers;
                 $scope.map.center = center;
-                $scope.pending = false
+                $scope.pending = false;
             }, 2000);
         }]);

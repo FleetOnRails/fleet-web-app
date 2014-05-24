@@ -12,12 +12,54 @@
     </div>
 </nav>
 <div class="container">
-    <div class="panel panel-default custom-panel col-md-3 ">
-        <div class="panel-heading">Group Information</div>
-            <div class="panel-body">
-                <h4>Name: {{group.name}}</h4>
-                <h4>Created at: {{group.created_at | date:'yyyy-MM-dd'}}</h4>
-                <h4>Address: {{group.location.address}}</h4>
+    <div class="col-md-12">
+        <h1><i class="fa fa-users fa-1x icon-padding"></i>{{group.name}} Group</h1>
+        <hr>
+    </div>
+    <div class="col-md-4 well well-lg" style="height: 475px;">
+        <fieldset>
+            <legend>
+                <span>{{group.name}} basic information</span>
+            </legend>
+            <h4><span>Name: {{group.name}}</span></h4>
+            <h4><span>Created: {{group.created_at | date:'yyyy-MM-dd'}}</span></h4>
+            <h4><span>Last updated: {{group.updated_at | date:'yyyy-MM-dd'}}</span></h4>
+            <h4><span>Address: {{group.location.address}}</span></h4>
+        </fieldset>
+    </div>
+    <div class="col-md-8">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <b>{{group.name}}'s location</b>
+                <div class="clearfix"></div>
             </div>
+            <div class="panel-body text-center" ng-if="pending">
+                <i class="fa fa-spinner fa-spin fa-4x"></i>
+            </div>
+            <div class="panel-body" ng-if="!pending">
+                <google-map
+                        center="map.center"
+                        zoom="map.zoom"
+                        draggable="true"
+                        dragging="map.dragging"
+                        bounds="map.bounds"
+                        events="map.events"
+                        options="map.options"
+                        pan="true"
+                        control="map.control"
+                        >
+
+                    <layer type="TrafficLayer" show="map.showTraffic"></layer>
+
+                    <markers models="map.dynamicMarkers" coords="'self'">
+                        <windows show="'showWindow'" ng-cloak>
+                            <p ng-non-bindable>
+                                {{ latitude | number:4 }}, {{ longitude | number:4}}
+                            </p>
+                        </windows>
+                    </markers>
+                </google-map>
+            </div>
+        </div>
     </div>
 </div>
