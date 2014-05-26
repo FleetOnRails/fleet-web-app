@@ -1,7 +1,8 @@
 angular.module('fleetonrails.controllers.groups_users-controller', [])
 
-    .controller('GroupsUsersCtrl', [ '$scope', 'MeService', '$location', '$routeParams','loginService','GroupsUsersService','UsersService','GroupsService',
-        function ($scope, MeService,$location,$routeParams, loginService,GroupsUsersService,UsersService,GroupsService) {
+    .controller('GroupsUsersCtrl', [ '$scope', 'MeService', '$location', '$routeParams','loginService',
+        'GroupsUsersService','UsersService','GroupsService', '$timeout',
+        function ($scope, MeService,$location,$routeParams, loginService,GroupsUsersService,UsersService,GroupsService,$timeout) {
 
             $scope.form={};
             $scope.alerts = [];
@@ -29,13 +30,6 @@ angular.module('fleetonrails.controllers.groups_users-controller', [])
                 $scope.alerts.splice(index, 1);
             };
 
-            MeService.get(function (user) {
-                $scope.user = user;
-            }, function(data) {
-                alert('Not authorized')
-                $location.path('/')
-            });
-
             $scope.getGroupUsers = function(id){
                 GroupsUsersService.get(id,function(data){
                     $scope.users = [];
@@ -56,9 +50,11 @@ angular.module('fleetonrails.controllers.groups_users-controller', [])
                 var user_id = $scope.form.user.id
                 console.log(attributes)
                 GroupsUsersService.create($routeParams.id,user_id,attributes,function(user){
-                    console.log(user)
                     $scope.alerts.push({msg: 'User added to group successfully', type: 'success'});
-                    $scope.getGroupUsers($routeParams.id)
+                    $scope.perForm.product = [];
+                    $scope.form.user = [];
+                    $scope.getGroupUsers($routeParams.id);
+                    $scope.removeAlerts();
                 },function(error){
                     console.log('error',error)
                 })
@@ -70,7 +66,14 @@ angular.module('fleetonrails.controllers.groups_users-controller', [])
                     $scope.alerts = [];
                     $scope.alerts.push({msg: 'User successfully deleted from group! ', type: 'success'});
                     $scope.users.splice(id, 1);
+                    $scope.removeAlerts();
                 })
+            };
+
+            $scope.removeAlerts = function () {
+                $timeout(function () {
+                    $scope.alerts = [];
+                }, 4000);
             };
 
             $scope.getSystemUsers = function(){

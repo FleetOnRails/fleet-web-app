@@ -33,6 +33,16 @@
                             <input type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="group.location_attributes.address" required>
                         </div>
                     </div>
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <span class="help-block">Enter description for a group</span>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea rows="5" type="text" class="form-control custom-margin" placeholder="Description" ng-model="group.description"></textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
                     <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
                 </fieldset>
             </div>

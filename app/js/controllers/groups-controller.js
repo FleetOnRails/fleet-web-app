@@ -15,13 +15,13 @@ angular.module('fleetonrails.controllers.groups-controller', [])
                var attributes = {
                    group: {
                        name: $scope.group.name,
+                       description: $scope.group.description,
                        location_attributes:{
                            address: $scope.group.location_attributes.address
                        }
                    }
                };
                GroupsService.create(attributes,function(groups){
-                   console.log(groups)
                    $location.path('/groups')
                },function(data){
                    console.log(data)
@@ -32,6 +32,7 @@ angular.module('fleetonrails.controllers.groups-controller', [])
                 var attributes = {
                     group: {
                         name: $scope.group.name,
+                        description: $scope.group.description,
                         location_attributes:{
                             address: $scope.group.location_attributes.address
                         }
@@ -54,18 +55,16 @@ angular.module('fleetonrails.controllers.groups-controller', [])
                 angular.forEach(groups, function (groups, index) {
                     angular.forEach(groups, function(value, index) {
                         $scope.groups.push(value.group)
-                        console.log(value.group)
                     })
                 });
             })
 
             $scope.refreshGroups = function(){
                 GroupsService.get(function(groups){
-                    $scope.groups = []
+                    $scope.groups = [];
                     angular.forEach(groups, function (groups, index) {
                         angular.forEach(groups, function(value, index) {
-                            $scope.groups.push(value.group)
-                            console.log(value.group)
+                            $scope.groups.push(value.group);
                         })
                     });
                 })

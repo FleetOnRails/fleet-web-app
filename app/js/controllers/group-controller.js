@@ -42,9 +42,8 @@ angular.module('fleetonrails.controllers.group-controller', [])
             $scope.getGroup = function(id){
                 GroupsService.show(id,function(data){
                     $scope.group = data['group'];
-                    console.log('got group');
+                    console.log(data);
                     if ($scope.group.location) {
-                        console.log('true if');
                         dynamicMarkers = [
                             {
                                 latitude: $scope.group.location.latitude,
@@ -62,7 +61,6 @@ angular.module('fleetonrails.controllers.group-controller', [])
                         $scope.map.dynamicMarkers = dynamicMarkers;
                     }
                     else {
-                        console.log('false if');
                         $scope.haveGpsData = true;
                         dynamicMarkers = [];
                     }

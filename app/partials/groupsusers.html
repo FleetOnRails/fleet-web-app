@@ -12,13 +12,17 @@
     </div>
 </nav>
 <div class="container">
+    <div class="col-md-12">
+        <h1><i class="fa fa-user fa-1x icon-padding"></i>{{group.name}}'s users</h1>
+        <hr>
+    </div>
     <div class="panel panel-default col-md-4 custom-panel">
         <div class="panel-body">
             <form  name="form">
-                <pre>Name: {{form.user.first_name | json}} Id: {{form.user.id | json}}</pre>
+                <span>Select user to add to a group</span>
                 <input type="text" ng-model="form.user" typeahead="user as user.first_name for user in systemUsers | filter:$viewValue" class="form-control">
 
-                <pre style="margin-top: 10px">Type: {{perForm.product.id | json}}</pre>
+                <span>Select role for the user</span>
                 <input type="text" class="form-control" ng-model="perForm.product" typeahead="option as option.name for option in p.options | filter:$viewValue" />
 
                 <button class="btn btn-default input-cutom" ng-click="addUserToGroup()">Add User</button>
