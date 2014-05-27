@@ -19,13 +19,17 @@
     <div class="panel panel-default col-md-4 custom-panel">
         <div class="panel-body">
             <form  name="form">
-                <span>Select user to add to a group</span>
+                <legend>
+                    <span>Select user to add to {{group.name}} group</span>
+                </legend>
                 <input type="text" ng-model="form.user" typeahead="user as user.first_name for user in systemUsers | filter:$viewValue" class="form-control">
 
-                <span>Select role for the user</span>
+                <legend>
+                    <span>Select role for the user</span>
+                </legend>
                 <input type="text" class="form-control" ng-model="perForm.product" typeahead="option as option.name for option in p.options | filter:$viewValue" />
 
-                <button class="btn btn-default input-cutom" ng-click="addUserToGroup()">Add User</button>
+                <button class="btn btn-primary input-cutom" ng-click="addUserToGroup()">Add User</button>
             </form>
         </div>
     </div>

@@ -37,6 +37,10 @@ angular.module('fleetonrails.controllers.groups_destinations-controller', [])
                 $scope.alerts.splice(index, 1);
             };
 
+            $scope.changeToAddDestination = function(){
+                $location.path('/group/' + $routeParams.id + '/destinations/add_destination');
+            };
+
             $scope.getGroup = function (id) {
                 GroupsService.show(id, function (data) {
                     $scope.group = data['group'];
@@ -55,12 +59,11 @@ angular.module('fleetonrails.controllers.groups_destinations-controller', [])
                             address: $scope.destination.address
                         }
                     }
-                }
+                };
                 GroupsDestinationsService.create($routeParams.id, attributes, function (destination) {
-                    $scope.alerts.push({msg: 'Destination added to group successfully', type: 'success'});
-                    $scope.getDestinations()
-                })
-            }
+                    $location.path('/group/' + $routeParams.id + '/destinations');
+                });
+            };
 
             $scope.deleteDestination = function (destination_id, id) {
                 GroupsDestinationsService.delete($routeParams.id, destination_id, function (destination) {
@@ -70,7 +73,7 @@ angular.module('fleetonrails.controllers.groups_destinations-controller', [])
                 }, function (data) {
                     console.log(data)
                 })
-            }
+            };
 
             $scope.getDestinations = function () {
                 GroupsDestinationsService.get($routeParams.id, function (data) {

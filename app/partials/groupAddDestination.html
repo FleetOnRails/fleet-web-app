@@ -1,0 +1,48 @@
+<navbar></navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner">
+        <ul class="nav nav-justified">
+            <li><a href="#/group/{{group.id}}">Group</a></li>
+            <li><a href="#/group/{{group.id}}/users">Users</a></li>
+            <li><a href="#/group/{{group.id}}/cars">Cars</a></li>
+            <li><a href="#/group/{{group.id}}/vendors">Vendors</a></li>
+            <li><a href="#/group/{{group.id}}/destinations">Destinations</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container custom-panel-top">
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+    <div class="col-md-12">
+        <h1><i class="fa fa-map-marker fa-1x"></i> Destinations</h1>
+        <hr>
+    </div>
+    <div class="col-md-8 well well-lg">
+        <legend>
+            <span>Create new destination</span>
+        </legend>
+        <form ng-submit="addDestination()" name="form" novalidate>
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="help-block">Enter destination name</span>
+                    <input  type="text" class="form-control custom-margin" name="Name" placeholder="Name" ng-model="destination.name" required>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="help-block">Enter address</span>
+                    <input  type="text" class="form-control custom-margin" name="Address" placeholder="Destination address" ng-model="destination.address" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+        </form>
+    </div>
+    <div class="col-md-4 ">
+        <div class="bs-callout bs-callout-info">
+            <div>
+                <p>To add a destination to a group type destination name and address</p>
+                <p>Example of address Street/House Number, Street Name, Town/City, County </p>
+                <p>Destination will be added to a group and displayed on above map</p>
+            </div>
+        </div>
+    </div>
+</div>
