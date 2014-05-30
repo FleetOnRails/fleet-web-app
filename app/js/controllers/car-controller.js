@@ -1,7 +1,8 @@
 angular.module('fleetonrails.controllers.car-controller', [])
 
-    .controller('carController', ['$scope', 'CarsService', '$location', '$timeout', '$interval', 'MeService','$routeParams','FuelService','ServicesService',
-        function ($scope, CarsService, $location, $timeout, $interval,MeService, $routeParams,FuelService,ServicesService) {
+    .controller('carController', ['$scope', 'CarsService', '$location', '$timeout', '$interval', 'MeService','$routeParams',
+        'FuelService','ServicesService','$filter',
+        function ($scope, CarsService, $location, $timeout, $interval,MeService, $routeParams,FuelService,ServicesService,$filter) {
             $scope.cars = [];
 
             $scope.pending = true;
@@ -89,12 +90,16 @@ angular.module('fleetonrails.controllers.car-controller', [])
             $scope.calcFuelCost = function(){
                 FuelService.get($routeParams.id,function(data){
                     var cost = 0;
+                    $scope.fuel_entries = [];
                     angular.forEach(data, function (fuel_entries, index) {
                         angular.forEach(fuel_entries, function(value, index) {
+                            $scope.fuel_entries.push(value.fuel_entry)
                             cost = cost+(value.fuel_entry.liters * value.fuel_entry.price);
                         })
                     });
                     $scope.fuelCost= cost;
+                    $scope.calcMPG();
+
                 });
             };
 
@@ -109,6 +114,35 @@ angular.module('fleetonrails.controllers.car-controller', [])
                     $scope.serviceCost = cost;
                 });
 
+            };
+
+            $scope.calcMPG = function(){
+                var odometerEnd = 0;
+                var odometerStart =0;
+                var countFilled = 0;
+                var countFuel = 0;
+                $scope.fuel_entries = $filter('orderBy')($scope.fuel_entries, 'odometer');
+                console.log($scope.fuel_entries);
+                angular.forEach($scope.fuel_entries,function(fuel_entry){
+                    countFuel = countFuel + fuel_entry.liters;
+                    if(fuel_entry.filled_tank==true && odometerStart==0){
+                        countFilled++;
+                        odometerStart = fuel_entry.odometer;
+                    }
+                    if(fuel_entry.filled_tank==true && countFilled >= 1){
+                        countFilled++;
+                        odometerEnd = fuel_entry.odometer;
+                    }
+                    if(odometerStart < odometerEnd && countFilled >= 1){
+                        var tmp = odometerEnd - odometerStart;
+                        console.log('TMP ' + tmp + ' Count filled ' + countFilled);
+                    }
+                });
+                console.log('Start: ' + odometerStart + ' End: ' + odometerEnd + '  liters ' + countFuel);
+                var MPG = odometerEnd - odometerStart;
+                var gallon = countFuel/4.54609;
+                console.log('Actuall mpg is ' + MPG/gallon);
+                $scope.MPG = MPG/gallon;
             };
 
             $scope.addCar = function () {
@@ -134,7 +168,6 @@ angular.module('fleetonrails.controllers.car-controller', [])
             };
 
             $scope.stopInterval = function(){
-                console.log('Stope interval')
                 $interval.cancel(timeInterval);
             }
 
@@ -143,11 +176,11 @@ angular.module('fleetonrails.controllers.car-controller', [])
                 $scope.calcFuelCost();
                 $scope.calcExpensecost();
                 var timeInterval = $interval(function() {
-                    $scope.getCar($routeParams.id)
+                    $scope.getCar($routeParams.id);
                     $scope.map.dynamicMarkers = dynamicMarkers;
                     $scope.map.center = center;
                     $scope.apply
-                }, 5000)
+                }, 5000);
                 $scope.$on('$destroy', function () { $interval.cancel(timeInterval); });
             } else {
                 $scope.getCars();

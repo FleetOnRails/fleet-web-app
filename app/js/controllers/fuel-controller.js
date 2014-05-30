@@ -120,7 +120,7 @@ angular.module('fleetonrails.controllers.fuel-controller', [])
                 $scope.gauge_data.push(
                     {label: "Fuel", value:(total/count).toFixed(2), color: "#3276b1", suffix: "L"}
                 )
-                $scope.fuel_entries = $filter('orderBy')($scope.fuel_entries, 'odometer')
+                $scope.fuel_entries = $filter('orderBy')($scope.fuel_entries, 'odometer');
             });
             $scope.apply
         };
