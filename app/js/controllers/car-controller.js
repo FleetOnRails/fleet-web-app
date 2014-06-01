@@ -142,7 +142,7 @@ angular.module('fleetonrails.controllers.car-controller', [])
                 var MPG = odometerEnd - odometerStart;
                 var gallon = countFuel/4.54609;
                 console.log('Actuall mpg is ' + MPG/gallon);
-                $scope.MPG = MPG/gallon;
+                $scope.MPG = (MPG/gallon).toFixed(2);
             };
 
             $scope.addCar = function () {
@@ -180,7 +180,7 @@ angular.module('fleetonrails.controllers.car-controller', [])
                     $scope.map.dynamicMarkers = dynamicMarkers;
                     $scope.map.center = center;
                     $scope.apply
-                }, 5000);
+                }, 3000);
                 $scope.$on('$destroy', function () { $interval.cancel(timeInterval); });
             } else {
                 $scope.getCars();
