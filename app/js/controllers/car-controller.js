@@ -75,14 +75,18 @@ angular.module('fleetonrails.controllers.car-controller', [])
                             longitude: $scope.car.current_gps_statistic.longitude
                         };
                         $scope.haveGpsData = true;
+                        $scope.gauge_data.push(
+                            {label: "Speed", value:$scope.car.current_gps_statistic.kmh.toFixed(0), color: "#5398f1", suffix: "Km/h"}
+                        )
                     }
                     else {
                         $scope.haveGpsData = true;
                         dynamicMarkers = [];
+                        $scope.gauge_data.push(
+                            {label: "Speed", value:0, color: "#5398f1", suffix: "Km/h"}
+                        )
                     }
-                    $scope.gauge_data.push(
-                        {label: "Speed", value:$scope.car.current_gps_statistic.kmh.toFixed(0), color: "#5398f1", suffix: "Km/h"}
-                    )
+
 
                 });
             };
@@ -125,13 +129,16 @@ angular.module('fleetonrails.controllers.car-controller', [])
                 console.log($scope.fuel_entries);
                 angular.forEach($scope.fuel_entries,function(fuel_entry){
                     countFuel = countFuel + fuel_entry.liters;
+
                     if(fuel_entry.filled_tank==true && odometerStart==0){
                         countFilled++;
                         odometerStart = fuel_entry.odometer;
+                        console.log('Start' + odometerStart);
                     }
                     if(fuel_entry.filled_tank==true && countFilled >= 1){
                         countFilled++;
                         odometerEnd = fuel_entry.odometer;
+                        console.log('end' + odometerEnd);
                     }
                     if(odometerStart < odometerEnd && countFilled >= 1){
                         var tmp = odometerEnd - odometerStart;

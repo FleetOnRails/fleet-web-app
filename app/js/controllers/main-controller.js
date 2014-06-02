@@ -126,9 +126,10 @@ angular.module('fleetonrails.controllers.main-controller', [])
                 angular.forEach(data, function (cars) {
                     var count = 0;
                     angular.forEach(cars, function (value) {
-                        countCars++
+                        countCars++;
                         value.car.reminders = [];
-                        $scope.cars.push(value.car)
+                        $scope.cars.push(value.car);
+                        var randomColour = randomColor({luminosity: 'dark', count: 1});
 
                         RemindersService.get(value.car.id,function (data) {
                             angular.forEach(data, function (reminders, index) {
@@ -140,7 +141,7 @@ angular.module('fleetonrails.controllers.main-controller', [])
                         });
 
                         FuelService.get(value.car.id,function (data) {
-                            var graphData = []
+                            var graphData = [];
                             angular.forEach(data.fuel_entries, function(value, index) {
                                 total += value.fuel_entry.liters;
                                 count = count + 1;
@@ -148,10 +149,9 @@ angular.module('fleetonrails.controllers.main-controller', [])
                                     Date.parse(value.fuel_entry.date),
                                     value.fuel_entry.liters
                                 ]);
-                            })
+                            });
                             graphData = $filter('orderBy')(graphData, function(data) { return data[0]; });
-                            var randomColour = Math.floor((Math.abs(Math.sin(Math.random()+10) * 16777215)) % 16777215).toString(16);
-                            $scope.chartConfig.series.push({name: value.car.registration, type: 'spline', color: '#' + randomColour, data: graphData})
+                            $scope.chartConfig.series.push({name: value.car.registration, type: 'spline', color: randomColour, data: graphData})
                             if(count == 0){
                                 count = count + 1;
                             }

@@ -25,6 +25,12 @@ angular.module('fleetonrails.controllers.fuel_edit-controller', [])
                 FuelService.show(id,$routeParams.fuel_id,function (data) {
                     console.log('Got the fuel entry ', data)
                     $scope.fuel = data;
+                    if($scope.fuel.fuel_entry.filled_tank==true){
+                        $scope.selectedOption = $scope.options[0];
+                    }
+                    else if($scope.fuel.fuel_entry.filled_tank==false){
+                        $scope.selectedOption = $scope.options[1];
+                    }
                 });
 
             };

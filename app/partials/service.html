@@ -27,8 +27,12 @@
     <div class="col-md-12">
         <h1><i class="fa fa-bar-chart-o fa-1x icon-padding"></i>Expense Dashboard<button  class="btn btn-primary pull-right" ng-click="changeToAddExpense()">Add Expense</button></h1>
     </div>
+    <div class="panel panel-default col-md-12 custom-panel ">
+        <div class="row">
+            <highchart id="chart3" config="chartConfig"></highchart>
+        </div>
+    </div>
     <div class="col-md-12">
-        <hr>
         <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
         <div class="panel panel-default col-md-12 custom-panel">
             <div class="panel-heading"><input class="form-control" placeholder="Filter expenses" ng-model="searchText"></div>
@@ -60,11 +64,6 @@
                     </td>
                 </tr>
             </table>
-        </div>
-        <div class="panel panel-default col-md-12 custom-panel ">
-            <div class="row">
-                <highchart id="chart3" config="chartConfig"></highchart>
-            </div>
         </div>
     </div>
 </div>

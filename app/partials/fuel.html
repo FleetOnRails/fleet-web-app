@@ -27,8 +27,12 @@
     <div class="col-md-12">
         <h1><i class="fa fa-tint fa-1x icon-padding"></i>Fuel Dashboard<button class="btn btn-primary pull-right" ng-click="changeToAddFuel()">Add Fuel</button></h1>
     </div>
+    <div class="panel panel-default col-md-12 custom-panel ">
+        <div class="row">
+            <highchart id="chart1" config="chartConfig"></highchart>
+        </div>
+    </div>
     <div class="col-md-12">
-        <hr>
         <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
         <div class="panel panel-default col-md-12 custom-panel ">
             <div class="panel-heading"><input class="form-control" placeholder="Filter fuel entries" ng-model="searchText"></div>
@@ -38,6 +42,7 @@
                     <th>Odometer</th>
                     <th>Liters</th>
                     <th>Price</th>
+                    <th>Filled Tank</th>
                     <th>Location</th>
                     <th></th>
                 </tr>
@@ -46,6 +51,7 @@
                     <td> {{fuel_entry.odometer}} </td>
                     <td> {{fuel_entry.liters}} </td>
                     <td> {{fuel_entry.price}} </td>
+                    <td>{{fuel_entry.filled_tank}}</td>
                     <td> {{fuel_entry.location.city}} </td>
                     <td class="dropdown">
 
@@ -60,11 +66,6 @@
                     </td>
                 </tr>
             </table>
-        </div>
-        <div class="panel panel-default col-md-12 custom-panel ">
-            <div class="row">
-                <highchart id="chart1" config="chartConfig"></highchart>
-            </div>
         </div>
         <div class="panel panel-default col-md-12 custom-panel ">
             <div class="panel-heading">Average litres per Entry</div>
