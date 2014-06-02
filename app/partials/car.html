@@ -1,0 +1,151 @@
+<navbar></navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner ">
+        <ul class="nav nav-justified">
+            <li><a href="#/car/{{car.id}}">Dashboard</a></li>
+            <li><a href="#/car/{{car.id}}/edit" ng-click="stopInterval()">Settings</a></li>
+            <li><a href="#/car/{{car.id}}/fuel" ng-click="stopInterval()">Fuel Entry</a></li>
+            <li><a href="#/car/{{car.id}}/documents">Documents</a></li>
+            <li><a href="#/car/{{car.id}}/service" ng-click="stopInterval()">Expenses</a></li>
+            <li><a href="#/car/{{car.id}}/reminders">Reminders</a></li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container" >
+    <div class="row">
+        <div class="col-md-12">
+            <h1><i class="fa fa-truck fa-1x icon-padding"></i>{{car.make}} Dashboard</h1>
+            <hr>
+        </div>
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <b>GPS Tracking</b>
+                    <div class="btn-group pull-right">
+                        Traffic: <input type="checkbox" text="TrafficLayer On/Off" ng-model="map.showTraffic">
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="panel-body text-center" ng-if="pending">
+                    <i class="fa fa-spinner fa-spin fa-4x"></i>
+                </div>
+                <div class="panel-body" ng-if="!pending">
+                    <google-map
+                            center="map.center"
+                            zoom="map.zoom"
+                            draggable="true"
+                            dragging="map.dragging"
+                            bounds="map.bounds"
+                            events="map.events"
+                            options="map.options"
+                            pan="true"
+                            control="map.control"
+                            >
+
+                        <layer type="TrafficLayer" show="map.showTraffic"></layer>
+
+                        <markers models="map.dynamicMarkers" coords="'self'">
+                            <windows show="'showWindow'" ng-cloak>
+                                <p>Make: {{car.make}}</p>
+                                <p>Model: {{car.model}}</p>
+                                <p>Reg: {{car.registration}} Kmh</p>
+                                <p>Last seen speed of the car {{car.current_gps_statistic.kmh}} Kmh</p>
+
+                                <p ng-non-bindable>
+                                    {{ latitude | number:4 }}, {{ longitude | number:4}}
+                                </p>
+                            </windows>
+                        </markers>
+                    </google-map>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-if="haveDiagnosticData">
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Speed</h3></div>
+                <div class="gauge">
+                    <pie-chart data="gauge_data" options="fuel_options"></pie-chart>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">RPM</h3></div>
+                <div class="panel-body">
+                    something
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">MPG</h3></div>
+                <div class="panel-body">
+                    something else
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" ng-if="haveGpsData">
+        <div class="col-md-4">
+            <div class="well well-lg">
+                <fieldset>
+                    <legend>
+                        {{car.make}} Information
+                        <a href="#/car/{{car.id}}/edit" class="pull-right"><i class="fa fa-pencil fa-1x">Edit</i></a>
+                    </legend>
+                    <h4>Make: <span>{{car.make}}</span></h4>
+                    <h4>Model: <span>{{car.model}}</span></h4>
+                    <h4>Registration: <span>{{car.registration}}</span></h4>
+                    <hr>
+                    <h4>Color: <span>{{car.color}}</span></h4>
+                    <h4>Year: <span>{{car.year}}</span></h4>
+                    <h4>Engine Size: <span>{{car.engine_size}}</span></h4>
+                    <h4>Transmission: <span>{{car.transmission}}</span></h4>
+                    <h4>Description: <span>{{car.description}}</span></h4>
+                </fieldset>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Stats</h3></div>
+                <div class="panel-body" style="padding-bottom: 0px">
+                    <div class="row">
+                        <div class="col-md-11 well stats-box">
+                            <i class="fa fa-tint icon-padding"></i><span>Fuel cost: €{{fuelCost}}</span>
+                        </div>
+                        <div class="col-md-11  well stats-box">
+                            <i class="fa fa-wrench icon-padding"></i><span>Expenses Cost:€{{serviceCost}}</span>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-11  well stats-box">
+                            <i class="fa fa-money icon-padding"></i><span>Cost/Km : {{costKm}}</span>
+                        </div>
+                        <div class="col-md-11 well stats-box">
+                            <i class="fa fa-tint icon-padding"></i><span>MPG: {{MPG}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading"><h3 class="panel-title">Speed</h3></div>
+                <div class="gauge">
+                    <pie-chart data="gauge_data" options="fuel_options"></pie-chart>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,69 @@
+<navbar></navbar>
+<nav class="navbar navbar-custom" ng-if="personalNav">
+    <div class="navbar-inner ">
+        <ul class="nav nav-justified">
+            <li><a href="#/car/{{car.id}}">Dashboard</a></li>
+            <li><a href="#/car/{{car.id}}/edit">Settings</a></li>
+            <li><a href="#/car/{{car.id}}/fuel">Fuel Entry</a></li>
+            <li><a href="#/car/{{car.id}}/documents">Documents</a></li>
+            <li><a href="#/car/{{car.id}}/service" ng-click="stopInterval()">Expenses</a></li>
+            <li><a href="#/car/{{car.id}}/reminders">Reminders</a></li>
+        </ul>
+    </div>
+</nav>
+<nav class="navbar navbar-custom" ng-if="groupNav">
+    <div class="navbar-inner ">
+        <ul class="nav nav-justified">
+            <li><a href="#/group/{{group.id}}/car/{{carId}}">Dashboard</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{carId}}/edit" ng-click="stopInterval()">Settings</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{carId}}/fuel" ng-click="stopInterval()">Fuel Entry</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{carId}}/documents">Documents</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{carId}}/service" ng-click="stopInterval()">Expenses</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{carId}}/reminders">Reminders</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="col-md-12">
+        <h1><i class="fa fa-bar-chart-o fa-1x icon-padding"></i>Expense Dashboard<button  class="btn btn-primary pull-right" ng-click="changeToAddExpense()">Add Expense</button></h1>
+    </div>
+    <div class="panel panel-default col-md-12 custom-panel ">
+        <div class="row">
+            <highchart id="chart3" config="chartConfig"></highchart>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+        <div class="panel panel-default col-md-12 custom-panel">
+            <div class="panel-heading"><input class="form-control" placeholder="Filter expenses" ng-model="searchText"></div>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Odometer</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Location</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tr ng-repeat="expense in expenses | filter:searchText" class="my-repeat-animation">
+                    <td> {{expense.odometer}} </td>
+                    <td> {{expense.expense_type}} </td>
+                    <td> {{expense.description}} </td>
+                    <td> {{expense.price}} </td>
+                    <td> {{expense.location.city}} </td>
+                    <td class="dropdown">
+
+                        <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a><i class="fa fa-trash-o" ng-click="deleteExpense(expense.id,$index)"> Delete</i></a></li>
+                            <li ng-if="personalNav"><a href="#/cars/{{car.id}}/expenses/{{expense.id}}"><i class="fa fa-pencil"> Update</i></a></li>
+                            <li ng-if="groupNav"><a href="#/group/{{group.id}}/car/{{car.id}}/expense/{{expense.id}}"><i class="fa fa-pencil"> Update gprup</i></a></li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+<navbar>
+
+</navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner">
+        <ul class="nav nav-justified">
+            <li><a href="#/group/{{group.id}}">Group</a></li>
+            <li><a href="#/group/{{group.id}}/users">Users</a></li>
+            <li><a href="#/group/{{group.id}}/cars">Cars</a></li>
+            <li><a href="#/group/{{group.id}}/vendors">Vendors</a></li>
+            <li><a href="#/group/{{group.id}}/destinations">Destinations</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+    <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Add Vendor</button>
+    <hr>
+    <div class="col-md-12" collapse="!isCollapsed">
+        <div class="col-md-4 custom-toggle">
+            <form ng-submit="addVendor()" name="form" novalidate>
+                <input  type="text" class="form-control custom-margin" name="Name" placeholder="Vendor name" ng-model="vendor.name" required>
+
+                <input  type="text" class="form-control custom-margin" name="Supplies" placeholder="Supplies" ng-model="vendor.supplies" required>
+
+                <input  type="text" class="form-control custom-margin" name="Address" placeholder="Vendors address" ng-model="vendor.address" required>
+
+                <button type="submit" class="btn btn-primary pull-right" ng-disabled="form.$invalid">Create</button>
+            </form>
+        </div>
+        <div class="col-md-8">
+            <div class="bs-callout bs-callout-info">
+                <div>
+                    <p>To add a vendor to a group type Vendors Name and what products are being supplied</p>
+                    <p>The address is also required, example of address Street/House Number, Street Name, Town/City, County  </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Supplies</th>
+                <th>Address</th>
+                <th>Created at</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tr ng-repeat="vendor in vendors" class="my-repeat-animation">
+            <td>{{vendor.name}}</td>
+            <td>{{vendor.supplies}}</td>
+            <td>{{vendor.location.address}}</td>
+            <td>{{vendor.created_at | date:'yyyy-MM-dd'}}</td>
+            <td class="dropdown">
+                <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a><i class="fa fa-trash-o" ng-click="deleteVendor(vendor.id,$index)"> Delete</i></a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>

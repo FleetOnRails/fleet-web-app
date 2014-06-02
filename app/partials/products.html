@@ -1,0 +1,50 @@
+<navbar></navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner">
+        <ul class="nav nav-justified">
+            <li><a href="#/main">Home</a></li>
+            <li><a href="#/gps">Vehicles</a></li>
+            <li><a href="#/groups">Groups</a></li>
+            <li><a href="#/vendors">Vendors</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="col-md-12">
+        <h1><i class="fa fa-barcode fa-1x icon-padding"></i> Products<button class="btn btn-primary pull-right" ng-click="changeToAddProduct()">Add Product</button></h1>
+        <hr>
+    </div>
+    <div class="col-md-12">
+        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+        <div class="panel panel-default col-md-12 custom-panel ">
+            <div class="panel-heading"><input class="form-control" placeholder="Filter products" ng-model="searchText"></div>
+            <div class="panel-body text-center" ng-if="pending">
+                <i class="fa fa-spinner fa-spin fa-2x"></i>
+            </div>
+            <div ng-if="!pending">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Part Number</th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tr ng-repeat="product in products | filter:searchText" class="my-repeat-animation">
+                        <td>{{product.name}}</td>
+                        <td> {{product.price}} </td>
+                        <td> {{product.part_no}} </td>
+                        <td class="dropdown">
+
+                            <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                            <ul class="dropdown-menu">
+                                <li><a><i class="fa fa-trash-o" ng-click="deleteProduct(product .id,$index)"> Delete</i></a></li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

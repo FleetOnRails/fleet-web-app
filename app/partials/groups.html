@@ -1,0 +1,39 @@
+<navbar></navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner">
+        <ul class="nav nav-justified">
+            <li><a href="#/main">Home</a></li>
+            <li><a href="#/gps">Vehicles</a></li>
+            <li><a href="#/groups">Groups</a></li>
+            <li><a href="#/vendors">Vendors</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container container-custom">
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+    <div class="col-md-12">
+        <h1><i class="fa fa-users fa-1x icon-padding"></i>Groups<button class="btn btn-primary pull-right" ng-click="changeToAdd()">Add Group</button></h1>
+        <hr>
+    </div>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Created</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tr ng-repeat="group in groups" class="my-repeat-animation">
+            <td><a href="#/group/{{group.id}}">{{group.name}} </a></td>
+            <td>{{group.location.address}}</td>
+            <td>{{group.created_at | date:'yyyy-MM-dd'}}</td>
+            <td class="dropdown">
+                <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a><i class="fa fa-trash-o" ng-click="deleteGroup(group.id,$index)"> Delete</i></a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>

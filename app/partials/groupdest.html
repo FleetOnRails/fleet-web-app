@@ -1,0 +1,70 @@
+<navbar>
+
+</navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner">
+        <ul class="nav nav-justified">
+            <li><a href="#/group/{{group.id}}">Group</a></li>
+            <li><a href="#/group/{{group.id}}/users">Users</a></li>
+            <li><a href="#/group/{{group.id}}/cars">Cars</a></li>
+            <li><a href="#/group/{{group.id}}/vendors">Vendors</a></li>
+            <li><a href="#/group/{{group.id}}/destinations">Destinations</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+    <div class="col-md-12">
+        <h1><i class="fa fa-map-marker fa-1x icon-padding"></i>{{group.name}}'s Destinations<button class="btn btn-primary pull-right" ng-click="changeToAddDestination()">Add Destination</button></h1>
+        <hr>
+    </div>
+    <div class="panel panel-default col-md-12 custom-panel custom-panel-profile ">
+        <div class="panel-body">
+            <google-map
+                    center="map.center"
+                    zoom="map.zoom"
+                    draggable="true"
+                    dragging="map.dragging"
+                    bounds="map.bounds"
+                    events="map.events"
+                    options="map.options"
+                    pan="true"
+                    control="map.control"
+                    >
+
+                <layer type="TrafficLayer" show="map.showTraffic"></layer>
+
+                <markers  models="map.dynamicMarkers" coords="'self'">
+                    <windows show="'showWindow'" ng-cloak>
+                        <p>Name: {{make}}</p>
+                        <p ng-non-bindable>
+                            {{ latitude | number:4 }}, {{ longitude | number:4}}
+                        </p>
+                    </windows>
+                </markers>
+            </google-map>
+        </div>
+    </div>
+    <hr>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Created at</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tr ng-repeat="destination in destinations" class="my-repeat-animation">
+            <td>{{destination.name}}</td>
+            <td>{{destination.location.address}}</td>
+            <td>{{destination.created_at | date:'yyyy-MM-dd'}}</td>
+            <td class="dropdown">
+                <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a><i class="fa fa-trash-o" ng-click="deleteDestination(destination.id,$index)"> Delete</i></a></li>
+                </ul>
+            </td>
+        </tr>
+    </table>
+</div>

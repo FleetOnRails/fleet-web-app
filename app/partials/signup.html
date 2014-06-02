@@ -1,0 +1,171 @@
+<style>
+    html {
+        background: url(../img/background.jpg) no-repeat center center fixed;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    body {
+        padding-top: 20px;
+        font-size: 16px;
+        font-family: "Open Sans",serif;
+        background: transparent;
+    }
+
+    /* Override B3 .panel adding a subtly transparent background */
+    .panel {
+        background-color: rgba(255, 255, 255, 0.9);
+    }
+
+    .margin-base-vertical {
+        margin: 40px 0;
+    }
+
+    .login-wrapper {
+        position: absolute;
+        top: 90px;
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
+    .login-wrapper .logo {
+        margin-bottom: 45px;
+        position: relative;
+        left: -2px;
+    }
+    .login-wrapper .box {
+        margin: 0 auto;
+        padding: 35px 0 30px;
+        float: none;
+        width: 400px;
+        box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.1);
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.65);
+    }
+    .login-wrapper .box .content-wrap {
+        width: 82%;
+        margin: 0 auto;
+    }
+    .login-wrapper .box h6 {
+        text-transform: uppercase;
+        margin: 0 0 30px 0;
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .login-wrapper .box input[type="text"],
+    .login-wrapper .box input[type="email"],
+    .login-wrapper .box input[type="password"] {
+        font-size: 15px;
+        height: 40px;
+        margin-bottom: 18px;
+        padding-left: 12px;
+    }
+    .login-wrapper .box input[type="password"] {
+        margin-bottom: 10px;
+    }
+
+    .login-wrapper .box a.forgot {
+        display: block;
+        text-align: right;
+        font-style: italic;
+        text-decoration: underline;
+        color: #3d88ba;
+        font-size: 13px;
+        margin-bottom: 6px;
+    }
+    .login-wrapper .box .remember {
+        display: block;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+    .login-wrapper .box .remember input[type="checkbox"] {
+        float: left;
+        margin-right: 8px;
+    }
+    .login-wrapper .box .remember label {
+        float: left;
+        color: #4a576a;
+        font-size: 13px;
+        font-weight: 600;
+    }
+    .login-wrapper .box .login {
+        text-transform: uppercase;
+        font-size: 13px;
+        padding: 8px 30px;
+    }
+    .login-wrapper .no-account {
+        margin: 0 auto;
+        float: none;
+        text-align: center;
+        font-size: 14px;
+        margin-top: 25px;
+    }
+    .login-wrapper .no-account p {
+        display: inline-block;
+        color: #aaaaaa;
+    }
+
+    .login-wrapper .no-account a:hover {
+        text-decoration: none;
+        color: #fff;
+        border-bottom-color: #fff;
+    }
+
+    /* responsive */
+    @media (max-width: 767px) {
+        .login-wrapper .box {
+            width: 350px;
+        }
+    }
+    @media (max-width: 480px) {
+        .login-wrapper .box {
+            width: 90%;
+        }
+    }
+
+    form[novalidate] input{
+        border-left-width:1px ;
+        border-color: #3498db;
+        border-style: solid;
+    }
+
+    input[required].ng-pristine{
+        border-color: #e7827c;
+    }
+
+    input.ng-invalid.ng-dirty{
+        border-color: #e7827c;
+    }
+
+    input.ng-valid.ng-dirty{
+        border-color: #4dcc99;
+    }
+
+</style>
+<div class="login-wrapper">
+    <div class="box">
+        <div class="content-wrap">
+            <form ng-submit="registerUser()" name="form" novalidate>
+                <h6>Fleet on Rails</h6>
+                <h6>Create Account</h6>
+                <input  type="text" class="form-control" name="Name" placeholder="First Name" ng-model="user.name" required>
+
+                <input  type="text" class="form-control" name="Surname" placeholder="Second Name" ng-model="user.surname" required>
+
+                <input  type="text" class="form-control" name="username" placeholder="Username" ng-model="user.username" required>
+
+                <input  autocomplete='off' type="password" class="form-control" name="password" placeholder="Password" ng-model="user.password" required ng-minlength="8">
+
+                <input  autocomplete='off' type="password" class="form-control" name="password_confirmation" placeholder="Password confirmation" ng-model="user.password_confirmation" required ng-minlength="8">
+
+                <input autocomplete='off' type="email" class="form-control"  placeholder="Email Address" ng-model="user.email" required>
+
+                <p class="help-block" ng-show="form.password.$error.minlength || form.password.$invalid">Password must be at least 8 characters.</p>
+
+                <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+            </form>
+        </div>
+    </div>
+</div>

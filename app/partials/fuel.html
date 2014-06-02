@@ -1,0 +1,79 @@
+<navbar></navbar>
+<nav class="navbar navbar-custom" ng-if="personalNav">
+    <div class="navbar-inner ">
+        <ul class="nav nav-justified">
+            <li><a href="#/car/{{car.id}}">Dashboard</a></li>
+            <li><a href="#/car/{{car.id}}/edit">Settings</a></li>
+            <li><a href="#/car/{{car.id}}/fuel">Fuel Entry</a></li>
+            <li><a href="#/car/{{car.id}}/documents">Documents</a></li>
+            <li><a href="#/car/{{car.id}}/service" ng-click="stopInterval()">Expenses</a></li>
+            <li><a href="#/car/{{car.id}}/reminders">Reminders</a></li>
+        </ul>
+    </div>
+</nav>
+<nav class="navbar navbar-custom" ng-if="groupNav">
+    <div class="navbar-inner ">
+        <ul class="nav nav-justified">
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}">Dashboard</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/edit" ng-click="stopInterval()">Settings</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/fuel" ng-click="stopInterval()">Fuel Entry</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/documents">Documents</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/service" ng-click="stopInterval()">Expenses</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/reminders">Reminders</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="col-md-12">
+        <h1><i class="fa fa-tint fa-1x icon-padding"></i>Fuel Dashboard<button class="btn btn-primary pull-right" ng-click="changeToAddFuel()">Add Fuel</button></h1>
+    </div>
+    <div class="panel panel-default col-md-12 custom-panel ">
+        <div class="row">
+            <highchart id="chart1" config="chartConfig"></highchart>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+        <div class="panel panel-default col-md-12 custom-panel ">
+            <div class="panel-heading"><input class="form-control" placeholder="Filter fuel entries" ng-model="searchText"></div>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>Odometer</th>
+                    <th>Liters</th>
+                    <th>Price</th>
+                    <th>Filled Tank</th>
+                    <th>Location</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tr ng-repeat="fuel_entry in fuel_entries | filter:searchText" class="my-repeat-animation">
+                    <td> {{fuel_entry.odometer}} </td>
+                    <td> {{fuel_entry.liters}} </td>
+                    <td> {{fuel_entry.price}} </td>
+                    <td>{{fuel_entry.filled_tank}}</td>
+                    <td> {{fuel_entry.location.city}} </td>
+                    <td class="dropdown">
+
+                        <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a><i class="fa fa-trash-o" ng-click="deleteEntry(fuel_entry.id,$index)"> Delete</i></a></li>
+                            <li ng-if="personalNav"><a href="#/cars/{{car.id}}/fuel_entries/{{fuel_entry.id}}"><i class="fa fa-pencil"> Update</i></a></li>
+                            <li ng-if="groupDash"><a href="#/group/{{group.id}}/car/{{car.id}}/fuel/{{fuel_entry.id}}"><i class="fa fa-pencil"> Update gprup</i></a></li>
+                            <modal-dialog show='modalShown' width='750px' height='60%'>
+                            </modal-dialog>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="panel panel-default col-md-12 custom-panel ">
+            <div class="panel-heading">Average litres per Entry</div>
+            <div class=" gauge">
+                <pie-chart data="gauge_data" options="fuel_options"></pie-chart>
+            </div>
+        </div>
+    </div>
+
+</div>
+

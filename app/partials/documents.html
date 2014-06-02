@@ -1,0 +1,106 @@
+<navbar></navbar>
+<nav class="navbar navbar-custom" ng-if="personalNav">
+    <div class="navbar-inner ">
+        <ul class="nav nav-justified">
+            <li><a href="#/car/{{car.id}}">Dashboard</a></li>
+            <li><a href="#/car/{{car.id}}/edit">Settings</a></li>
+            <li><a href="#/car/{{car.id}}/fuel">Fuel Entry</a></li>
+            <li><a href="#/car/{{car.id}}/documents">Documents</a></li>
+            <li><a href="#/car/{{car.id}}/service">Expenses</a></li>
+            <li><a href="#/car/{{car.id}}/reminders">Reminders</a></li>
+        </ul>
+    </div>
+</nav>
+<nav class="navbar navbar-custom" ng-if="groupNav">
+    <div class="navbar-inner ">
+        <ul class="nav nav-justified">
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}">Dashboard</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/edit" ng-click="stopInterval()">Settings</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/fuel" ng-click="stopInterval()">Fuel Entry</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/documents">Documents</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/service" ng-click="stopInterval()">Expenses</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/reminders">Reminders</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+    <div class="col-md-12">
+        <h1><i class="fa fa-file fa-1x" ></i> Documents</h1>
+        <hr>
+    </div>
+    <div class="col-md-6 well well-lg ">
+        <legend>
+            <span>New Document</span>
+        </legend>
+        <div class="col-md-12">
+            <form name="form">
+                <div class="row">
+                    <div class="col-md-12">
+                        <span>
+                            <span class="help-block">Enter name of file</span>
+                            <input  class="form-control custom-margin" type="text" placeholder="Name of file" ng-model="document.title" required>
+                        </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                    <span class="help-block">Choose file to upload</span>
+                    <span class="btn btn-sm btn-block btn-default btn-file">
+                        <i class="fa fa-paperclip">
+                            Choose file
+                        </i>
+                        <input ng-file-select="onFileSelect($files)" type="file"  ng-disabled="form.$invalid">
+                    </span>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <span class="help-block">Progress</span>
+                        <progressbar max="max" value="dynamic"><span style="color:black; white-space:nowrap;">{{dynamic}}%</span></progressbar>
+                    </div>
+                </div>
+                <button class="btn btn-primary custom-panel-profile" ng-click="upload.abort()">Cancel Upload</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="bs-callout bs-callout-info">
+            <div>
+                <p>To add a document input title for the document</p>
+                <p>Then click on choose file and select file to upload</p>
+                <hr>
+                <p>Allowed file extension are:</p>
+                <p>txt, pdf, doc, docx, xls, xlsx, csv, pages, keynote, numbers, jpeg, jpg, png</p>
+                <hr>
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-default col-md-12 custom-panel custom-panel-top ">
+        <div class="panel-heading"><input class="form-control" placeholder="Filter Documents" ng-model="searchText"></div>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Title</th>
+                <th>Document</th>
+                <th>File Size</th>
+                <th>Uploaded</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tr ng-repeat="document in documents | filter:searchText" class="my-repeat-animation">
+                <td> {{document.title}} </td>
+                <td> <a href="http://fleet-api.raven.com{{document.document.document.url}}">Open</a></td>
+                <td> {{document.file_size}} </td>
+                <td> {{document.created_at | date:'yyyy-MM-dd'}} </td>
+                <td class="dropdown">
+
+                    <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a><i class="fa fa-trash-o" ng-click="deleteDocument(document.id,$index)"> Delete</i></a></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

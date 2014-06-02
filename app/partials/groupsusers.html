@@ -1,0 +1,67 @@
+<navbar>
+</navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner">
+        <ul class="nav nav-justified">
+            <li><a href="#/group/{{group.id}}">Group</a></li>
+            <li><a href="#/group/{{group.id}}/users">Users</a></li>
+            <li><a href="#/group/{{group.id}}/cars">Cars</a></li>
+            <li><a href="#/group/{{group.id}}/vendors">Vendors</a></li>
+            <li><a href="#/group/{{group.id}}/destinations">Destinations</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="col-md-12">
+        <h1><i class="fa fa-user fa-1x icon-padding"></i>{{group.name}}'s users</h1>
+        <hr>
+    </div>
+    <div class="panel panel-default col-md-4 custom-panel">
+        <div class="panel-body">
+            <form  name="form">
+                <legend>
+                    <span>Select user to add to {{group.name}} group</span>
+                </legend>
+                <input type="text" ng-model="form.user" typeahead="user as user.first_name for user in systemUsers | filter:$viewValue" class="form-control">
+
+                <legend>
+                    <span>Select role for the user</span>
+                </legend>
+                <input type="text" class="form-control" ng-model="perForm.product" typeahead="option as option.name for option in p.options | filter:$viewValue" />
+
+                <button class="btn btn-primary input-cutom" ng-click="addUserToGroup()">Add User</button>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-7 col-md-offset-1">
+        <div class="row">
+            <alert ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">{{alert.msg}}</alert>
+            <table class="table table-hover">
+                <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone number</th>
+                    <th>Created at</th>
+                    <th>Email</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tr ng-repeat="user in users" class="my-repeat-animation">
+                    <td>{{user.first_name}}</td>
+                    <td>{{user.last_name}}</td>
+                    <td>{{user.phone_no}}</td>
+                    <td>{{user.created_at | date:'yyyy-MM-dd'}}</td>
+                    <td>{{user.email}}</td>
+                    <td class="dropdown">
+
+                        <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a><i class="fa fa-trash-o" ng-click="deleteUser(user.id,$index)"> Delete</i></a></li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>

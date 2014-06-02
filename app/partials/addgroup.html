@@ -1,0 +1,59 @@
+<navbar></navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner">
+        <ul class="nav nav-justified">
+            <li><a href="#/main">Home</a></li>
+            <li><a href="#/gps">Vehicles</a></li>
+            <li><a href="#/groups">Groups</a></li>
+            <li><a href="#/vendors">Vendors</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="col-md-12">
+        <h1><i class="fa fa-users fa-1x icon-padding"></i>Create new group</h1>
+        <hr>
+    </div>
+    <div class="col-md-6">
+        <form ng-submit="addGroup()" name="form" novalidate>
+            <div class="well well-lg">
+                <fieldset>
+                    <legend>
+                        Group Information
+                    </legend>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="help-block">Enter name for group</span>
+                            <input  type="text" class="form-control custom-margin" name="Name" placeholder="Name of group" ng-model="group.name" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="help-block">Enter address for group</span>
+                            <input type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="group.location_attributes.address" required>
+                        </div>
+                    </div>
+                    <div class="form-horizontal">
+                        <fieldset>
+                            <span class="help-block">Enter description for a group</span>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea rows="5" type="text" class="form-control custom-margin" placeholder="Description" ng-model="group.description"></textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                    <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+                </fieldset>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <div class="bs-callout bs-callout-info">
+            <div>
+                <p>To create a group, type group's name and address</p>
+                <p>Example of address Street/House Number, Street Name, Town/City, County</p>
+            </div>
+        </div>
+    </div>
+</div>

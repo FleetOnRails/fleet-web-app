@@ -8,21 +8,72 @@
 
     <title>FleetOnRails</title>
 
-    <!-- REQUIRED THIRD PARTY LIBRARY JAVASCRIPT AND CSS -->
-    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"/>
-    <script src="lib/angular/angular.min.js"></script>
-    <script src="lib/angular/angular-route.min.js"></script>
-    <script src="lib/angular-ui.js"></script>
-    <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    <link rel="icon" type="image/ico" href="img/icons/favicon.ico">
+    <link rel="apple-touch-icon" href="img/icons/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="img/icons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="img/icons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="img/icons/apple-touch-icon-114x114.png" />
 
-    <!-- APPLICATION CSS AND JAVASCRIPT -->
-    <link rel="stylesheet" href="css/app.css"/>
-    <script type="text/javascript" src="js/app.js"></script>
+    <!-- REQUIRED THIRD PARTY LIBRARY JAVASCRIPT AND CSS -->
+    <script src="lib/file-upload/angular-file-upload-shim.js"></script>
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="lib/font-awesome-4.0.3/css/font-awesome.css">
+    <script src="lib/angular/angular.js"></script>
+    <script src="lib/angular/angular-route.js"></script>
+    <script src="lib/angular-ui/angular-ui.js"></script>
+    <script src='//maps.googleapis.com/maps/api/js?sensor=false'></script>
+    <script src='lib/google-maps/underscore-min.js'></script>
+    <script src='lib/google-maps/angular-google-maps.js'></script>
+    <script src="lib/n3-charts/pie-chart.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.js"></script>
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script type="text/javascript" src="lib/angular/angular-animate.js"></script>
+    <script type="text/javascript" src="lib/angular/angular-base64.js"></script>
+    <script src="lib/n3-charts/line-chart.min.js"></script>
+    <script src="lib/file-upload/angular-file-upload.js"></script>
+    <script src="lib/highcharts-ng/highcharts.min.js"></script>
+    <script src="lib/highcharts-ng/highcharts-ng.min.js"></script>
+    <script src="lib/file-upload/angular-file-upload.js"></script>
+    <script src="lib/randomColor/randomColor.js"></script>
+
+
 
     <!-- APPLICATION CONTROLLERS -->
     <script type="text/javascript" src="js/controllers.js"></script>
     <script type="text/javascript" src="js/controllers/login-controller.js"></script>
-    <script type="text/javascript" src="js/controllers/toggle-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/main-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/car-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/gps-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/fuel-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/users-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/services-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/reminders-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/cars_diagnostics_faults-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/cars_diagnostics_statistics-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/cars_documents-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/vendors-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/groups-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/group-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/groups_users-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/group_cars-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/group_vendors-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/group_destinations-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/doc_upload.js"></script>
+    <script type="text/javascript" src="js/controllers/vendor_products-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/group-car-dash_controller.js"></script>
+    <script type="text/javascript" src="js/controllers/group-car-fuel_controller.js"></script>
+    <script type="text/javascript" src="js/controllers/group-car-service_controller.js"></script>
+    <script type="text/javascript" src="js/controllers/group-car-reminder_controller.js"></script>
+    <script type="text/javascript" src="js/controllers/group-car-edit_controller.js"></script>
+    <script type="text/javascript" src="js/controllers/car_edit-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/fuel-edit_controller.js"></script>
+    <script type="text/javascript" src="js/controllers/expenses_edit-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/reminders_edit-controller.js"></script>
+    <script type="text/javascript" src="js/controllers/group-car-fuel-edit_controller.js"></script>
+    <script type="text/javascript" src="js/controllers/group-doc_controller.js"></script>
+    <script type="text/javascript" src="js/controllers/group-car-reminder-edit_controller.js"></script>
+    <script type="text/javascript" src="js/controllers/group-car-expense-edit_controller.js"></script>
 
     <!--APPLICATION FACTORIES-->
     <script type="text/javascript" src="js/factories.js"></script>
@@ -32,16 +83,47 @@
     <!--<script type="text/javascript" src="js/filters/my-filter.js"></script>-->
 
     <!-- APPLICATION DIRECTIVES -->
-    <!--<script type="text/javascript" src="js/directives.js"></script>-->
-    <!--<script type="text/javascript" src="js/directives/login-directive.js"></script>-->
+    <script type="text/javascript" src="js/directives/navbar-directive.js"></script>
+
 
     <!-- APPLICATION SERVICES -->
     <script type="text/javascript" src="js/services.js"></script>
     <script type="text/javascript" src="js/services/login-service.js"></script>
+    <script type="text/javascript" src="js/services/me-service.js"></script>
+    <script type="text/javascript" src="js/services/cars-service.js"></script>
+    <script type="text/javascript" src="js/services/gps-service.js"></script>
+    <script type="text/javascript" src="js/services/fuel-service.js"></script>
+    <script type="text/javascript" src="js/services/users-service.js"></script>
+    <script type="text/javascript" src="js/services/services-service.js"></script>
+    <script type="text/javascript" src="js/services/reminders-service.js"></script>
+    <script type="text/javascript" src="js/services/cars_diagnostic_faults-service.js"></script>
+    <script type="text/javascript" src="js/services/cars_diagnostic_statistics-service.js"></script>
+    <script type="text/javascript" src="js/services/cars_documents-service.js"></script>
+    <script type="text/javascript" src="js/services/vendors-service.js"></script>
+    <script type="text/javascript" src="js/services/vendors_products-service.js"></script>
+    <script type="text/javascript" src="js/services/expenses_documents-service.js"></script>
+    <script type="text/javascript" src="js/services/groups-service.js"></script>
+    <script type="text/javascript" src="js/services/groups_users-service.js"></script>
+    <script type="text/javascript" src="js/services/groups_cars-service.js"></script>
+    <script type="text/javascript" src="js/services/groups_vendors-service.js"></script>
+    <script type="text/javascript" src="js/services/groups_destinations-service.js"></script>
+
+
+
+
+
+    <!-- Bootstrap core CSS -->
+    <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!-- APPLICATION CSS AND JAVASCRIPT -->
+    <link rel="stylesheet" href="css/app.css"/>
+    <script type="text/javascript" src="js/app.js"></script>
+
 </head>
 
-<body>
-    <div ng-view></div>
+<body class="body-font">
+<div ng-view></div>
 </body>
 
 </html>

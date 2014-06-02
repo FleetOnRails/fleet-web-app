@@ -2,6 +2,7 @@ angular.module('fleetonrails.services.login-service', [])
 
     .service('loginService', ['$http', 'globalSettings', function ($http, globalSettings) {
         var loginWithPassword = function (email, password) {
+
             var params = {
                 'grant_type' : 'password',
                 'client_id' : globalSettings.api_client_id,
@@ -12,6 +13,7 @@ angular.module('fleetonrails.services.login-service', [])
             return $http({
                 method : 'POST',
                 url : globalSettings.api_base_url + '/oauth/token',
+//                TODO change to data
                 params : params
             })
         };
@@ -31,7 +33,10 @@ angular.module('fleetonrails.services.login-service', [])
         };
 
         var logout = function () {
-//            TODO = implement a logout function
+            localStorage.setItem('access_token', '');
+            localStorage.setItem('refresh_token', '');
+            localStorage.clear()
+            console.log(localStorage)
         }
 
         return {

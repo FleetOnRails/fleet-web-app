@@ -1,0 +1,112 @@
+<navbar></navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner">
+        <ul class="nav nav-justified">
+            <li><a href="#/main">Home</a></li>
+            <li><a href="#/gps">Vehicles</a></li>
+            <li><a href="#/groups">Groups</a></li>
+            <li><a href="#/vendors">Vendors</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="row">
+        <div class="container col-md-7">
+            <alert  class="col-md-11 col-md-offset-1" ng-repeat="alert in alerts" type="alert.type" close="closeAlert($index)">
+                <a  href={{alert.link}} class="alert-link">{{alert.msg}}</a>
+            </alert>
+            <div class="panel panel-default col-md-11 custom-panel col-md-offset-1">
+                <div class="panel-heading custom-panel-heading">Reminders</div>
+                <div class="panel-body">
+                    <div class="text-center" ng-if="pending">
+                        <i class="fa fa-spinner fa-spin"></i>
+                    </div>
+                    <div ng-if="!pending">
+                        <table class="table table-hover">
+                            <thead>
+                            <tr>
+                                <th>Make</th>
+                                <th>Model</th>
+                                <th>Reg</th>
+                                <th>Description</th>
+                                <th>Type</th>
+                                <th>Due Date</th>
+                            </tr>
+                            </thead>
+                            <tbody ng-repeat="car in cars | filter:searchReminders" class="my-repeat-animation">
+                            <tr ng-repeat="reminder in car.reminders" >
+                                <td>{{car.make}}</td>
+                                <td>{{car.model}}</td>
+                                <td>{{car.registration}}</td>
+                                <td> {{reminder.description}} </td>
+                                <td> {{reminder.reminder_type}} </td>
+                                <td> {{reminder.date | date:'yyyy-MM-dd'}} </td>
+
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="col-md-5">
+                <div class="panel panel-default  custom-panel  col-md-offset-1 ">
+                    <div class="tab-content tab-custom">
+                        <tabset>
+                            <tab heading="Cars: {{countCars}}">
+                                <input type="text" class="input-cutom form-control" placeholder="Filter Cars" ng-model="searchText" >
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Make</th>
+                                        <th>Model</th>
+                                        <th>Reg. Num</th>
+                                        <th></th>
+                                    </tr>
+                                    </thead>
+                                    <tr ng-repeat="car in cars | filter:searchText" class="my-repeat-animation">
+                                        <td><a href="#/car/{{car.id}}">{{car.make}} </a></td>
+                                        <td> {{car.model}} </td>
+                                        <td> {{car.registration}} </td>
+                                        <td class="dropdown">
+
+                                            <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                                            <ul class="dropdown-menu">
+                                                <li><a href="#/car/{{car.id}}"><i class="fa fa-bar-chart-o"> Dashboard</i></a></li>
+                                                <li><a><i class="fa fa-trash-o" ng-click="deleteCar(car.id,$index)"> Delete</i></a></li>
+                                            </ul>
+                                        </td>
+                                    </tr>
+                                </table>
+                                <button class="btn btn-default" ng-click="changeToAddcar()">Add car</button>
+                            </tab>
+                            <tab heading="Groups: {{countGroups}}">
+                                <input type="text" class="input-cutom form-control" placeholder="Filter Groups" ng-model="searchGroups" >
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                    </tr>
+                                    </thead>
+                                    <tr ng-repeat="group in groups| filter:searchGroups" class="my-repeat-animation">
+                                        <td><a href="#/group/{{group.id}}">{{group.name}} </a></td>
+                                    </tr>
+                                </table>
+                                <button class="btn btn-default" ng-click="changeToAddGroup()">Add Group</button>
+                            </tab>
+                        </tabset>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <div class="row">
+        <div class=" col-md-12">
+            <div class="row">
+                <highchart id="chart1" config="chartConfig"></highchart>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

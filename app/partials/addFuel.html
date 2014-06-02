@@ -1,0 +1,107 @@
+<navbar></navbar>
+<nav class="navbar navbar-custom" ng-if="personalNav">
+    <div class="navbar-inner ">
+        <ul class="nav nav-justified">
+            <li><a href="#/car/{{car.id}}">Dashboard</a></li>
+            <li><a href="#/car/{{car.id}}/edit">Settings</a></li>
+            <li><a href="#/car/{{car.id}}/fuel">Fuel Entry</a></li>
+            <li><a href="#/car/{{car.id}}/documents">Documents</a></li>
+            <li><a href="#/car/{{car.id}}/service" ng-click="stopInterval()">Expenses</a></li>
+            <li><a href="#/car/{{car.id}}/reminders">Reminders</a></li>
+        </ul>
+    </div>
+</nav>
+<nav class="navbar navbar-custom" ng-if="groupNav">
+    <div class="navbar-inner ">
+        <ul class="nav nav-justified">
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}">Dashboard</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/edit" ng-click="stopInterval()">Settings</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/fuel" ng-click="stopInterval()">Fuel Entry</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/documents">Documents</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/service" ng-click="stopInterval()">Expenses</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/reminders">Reminders</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="col-md-12">
+    <div class="col-md-12">
+        <h1><i class="fa fa-tint fa-1x icon-padding"></i>New Fuel Entry</h1>
+        <hr>
+    </div>
+    <div class="col-md-8" >
+        <form ng-submit="addFuel(car.id)" name="form" novalidate>
+            <div class="well well-lg">
+                <fieldset>
+                    <legend>
+                        <span>Fuel entry information</span>
+                    </legend>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <span class="help-block">Enter odometer reading</span>
+                            <input  type="text" class="form-control custom-margin" name="Name" placeholder="Odometer" ng-model="fuel.odometer" required>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="help-block">Enter price per litre</span>
+                            <input  type="text" class="form-control custom-margin" name="Name" placeholder="Price" ng-model="fuel.price" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="help-block"> Enter amount of liters </span>
+                            <input  type="text" class="form-control custom-margin" name="liters" placeholder="liters" ng-model="fuel.liters" required>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="help-block"> Enter filling station name </span>
+                            <input  type="text" class="form-control custom-margin" name="fillingStation" placeholder="filling station" ng-model="fuel.filling_station" required>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="help-block"> Enter address of station </span>
+                            <input value="Null" type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="fuel.location_attributes.address" required="">
+
+                        </div>
+                        <div class="col-md-6">
+                            <span class="help-block">Enter date</span>
+                            <p class="input-group">
+                                <input  placeholder="Date" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="fuel.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="help-block">Filled tank </span>
+                            <select class="form-control custom-margin "data-ng-options="o.name for o in options" data-ng-model="selectedOption" required><option></option></select>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="help-block">Choose fuel type</span>
+                            <select class="form-control custom-margin"data-ng-options="o.name for o in optionsFuel" data-ng-model="selectedOptionFuel" required><option></option></select>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="well">
+                <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4 ">
+        <div class="bs-callout bs-callout-info">
+            <div>
+                <p>To add a vehicle type in Cars Model, Make and Registration number </p>
+                <p>These fields are required to add a vehicle to a fleet</p>
+                <p>Example of car details: Toyota, Corolla, 01D01</p>
+                <hr>
+                <p>Under Settings enter car's color, year, engine size and transmission</p>
+                <p>Example: Blue, 2013, 1.9 TDI, Manual</p>
+                <hr>
+                <p>Under Description type any comments associated with the vehicle</p>
+            </div>
+        </div>
+    </div>
+</div>

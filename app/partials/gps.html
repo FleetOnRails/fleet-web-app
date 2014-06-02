@@ -1,0 +1,72 @@
+<navbar></navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner">
+        <ul class="nav nav-justified">
+            <li><a href="#/main">Home</a></li>
+            <li><a href="#/gps">Vehicles</a></li>
+            <li><a href="#/groups">Groups</a></li>
+            <li><a href="#/vendors">Vendors</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="col-md-12">
+        <h1><i class="fa fa-map-marker fa-1x icon-padding"></i>{{user.me.first_name}}'s vehicles locations </h1>
+        <hr>
+    </div>
+    <div class="panel panel-default col-md-12 custom-panel custom-panel-profile ">
+        <div class="panel-body">
+            <google-map
+                    center="map.center"
+                    zoom="map.zoom"
+                    draggable="true"
+                    dragging="map.dragging"
+                    bounds="map.bounds"
+                    events="map.events"
+                    options="map.options"
+                    pan="true"
+                    control="map.control"
+                    >
+
+                <layer type="TrafficLayer" show="map.showTraffic"></layer>
+
+                <markers  models="map.dynamicMarkers" coords="'self'">
+                    <windows show="'showWindow'" ng-cloak>
+                        <p>Name: {{destination.make}}</p>
+                        <p ng-non-bindable>
+                            {{ latitude | number:4 }}, {{ longitude | number:4}}
+                        </p>
+                    </windows>
+                </markers>
+            </google-map>
+        </div>
+    </div>
+    <div class="panel panel-default col-md-12 custom-panel custom-panel-profile" ng-controller="carController">
+        <div class="panel-heading"><input class="form-control" placeholder="Filter Cars" ng-model="searchText"></div>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Location</th>
+                <th>Reg. Num</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tr ng-repeat="car in cars | filter:searchText" class="my-repeat-animation">
+                <td><a href="#/car/{{car.id}}">{{car.make}} </a></td>
+                <td> {{car.model}} </td>
+                <td>{{car.current_gps_statistic.latitude}}</td>
+                <td> {{car.registration}} </td>
+                <td class="dropdown">
+
+                    <a href="#" tooltip-placement="left" tooltip="Settings" class="dropdown-toggle"><i class="fa fa-cogs fa-lg"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#/car/{{car.id}}"><i class="fa fa-pencil">Dashboard</i></a></li>
+                        <li><a><i class="fa fa-trash-o" ng-click="deleteCar(car.id)"> Delete</i></a></li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

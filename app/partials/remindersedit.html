@@ -1,0 +1,56 @@
+<navbar></navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner ">
+        <ul class="nav nav-justified">
+            <li><a href="#/car/{{car.id}}">Dashboard</a></li>
+            <li><a href="#/car/{{car.id}}/edit">Settings</a></li>
+            <li><a href="#/car/{{car.id}}/fuel">Fuel Entry</a></li>
+            <li><a href="#/car/{{car.id}}/documents">Documents</a></li>
+            <li><a href="#/car/{{car.id}}/service" ng-click="stopInterval()">Expenses</a></li>
+            <li><a href="#/car/{{car.id}}/reminders">Reminders</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="col-md-12">
+    <div class="col-md-12">
+        <h1><i class="fa fa-calendar fa-1x icon-padding"></i>Edit reminder entry </h1>
+        <hr>
+    </div>
+    <div class="col-md-8 well">
+        <legend>Reminder Entry Information</legend>
+        <form ng-submit="updateReminder()" name="form" novalidate>
+            <div class="row">
+                <div class="col-md-6">
+                    <span class="help-block"> Enter odometer reading </span>
+                    <input  type="text" class="form-control custom-margin" name="odometer" placeholder="Odometer" ng-model="reminder.reminder.odometer" required>
+                </div>
+                <div class="col-md-6">
+                    <span class="help-block"> Enter reminder type </span>
+                    <input  type="text" class="form-control custom-margin" name="technician" placeholder="Reminder Type" ng-model="reminder.reminder.reminder_type" required>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-12">
+                    <span class="help-block"> Enter date to be reminded </span>
+                    <p class="input-group">
+                        <input  placeholder="Date" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="reminder.reminder.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                    </p>
+                </div>
+            </div>
+            <hr>
+            <textarea  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="reminder.reminder.description" required></textarea>
+            <button type="submit" class="btn btn-primary pull-right" ng-disabled="form.$invalid">Create</button>
+        </form>
+    </div>
+    <div class="col-md-4 ">
+        <div class="bs-callout bs-callout-info">
+            <div>
+
+            </div>
+        </div>
+    </div>
+</div>

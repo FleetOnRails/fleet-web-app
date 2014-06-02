@@ -1,16 +1,353 @@
 body {
+    padding-bottom: 40px;
     padding-top: 50px;
-    padding-bottom: 20px;
+    font-family: "Open Sans",serif;
 }
+
 
 .left-inner-addon {
     position: relative;
 }
+
 .left-inner-addon input {
     padding-left: 30px;
 }
+
 .left-inner-addon i {
     position: absolute;
     padding: 10px 12px;
     pointer-events: none;
 }
+/*.panel-success > .panel-heading {*/
+    /*color: #000000;*/
+    /*background-color: #ffffff;*/
+    /*border-color: #ffffff;*/
+/*}*/
+/*.panel-success  {*/
+
+    /*border-color: #3a3c3a;*/
+/*}*/
+
+.panel {
+
+    box-shadow: 0px 0px 33px, rgba(58, 60, 58, 0.69) !important;
+}
+.mycontent-left {
+    border-left: 1px solid #c0c0c0;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+.body-font{
+    font-family: "Open Sans",serif;
+}
+
+.angular-google-map-container {
+    height: 400px;
+}
+.tab-custom{
+    padding: 15px;
+}
+
+.input-cutom{
+    float: right;
+    margin-top: 10px;
+}
+.container-custom{
+    margin-top: 20px;
+}
+.icon-padding{
+    margin-right: 10px;
+}
+
+.stats-box{
+    margin-right: 10px;
+    margin-left: 10px;
+}
+
+
+.navbar-default {
+    background-color: #525252;
+    border-color: #525252;
+}
+.navbar-default .navbar-brand {
+    color: #ecf0f1;
+}
+.navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+    color: #a0a0a0;
+}
+.navbar-default .navbar-text {
+    color: #ecf0f1;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #ecf0f1;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #a0a0a0;
+}
+.navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: #a0a0a0;
+    background-color: #525252;
+}
+.navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: #a0a0a0;
+    background-color: #525252;
+}
+.navbar-default .navbar-toggle {
+    border-color: #525252;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+    background-color: #a0a0a0;
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #ecf0f1;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+    border-color: #ecf0f1;
+}
+.navbar-default .navbar-link {
+    color: #ecf0f1;
+}
+.navbar-default .navbar-link:hover {
+    color: #ffbbbc;
+}
+
+@media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+        color: #ecf0f1;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+        color: #a0a0a0;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+        color: #a0a0a0;
+        background-color: #525252;
+    }
+}
+
+.ul-custom {
+    display: -moz-box;
+    display: -webkit-box;
+    display: box;
+}
+
+.li-custom {
+    -moz-box-flex: 1;
+    -webkit-box-flex: 1;
+    box-flex: 1;
+
+    padding: 20px;
+    margin: 5px;
+    border: 1px solid rgb(200, 200, 255);
+}
+
+.navbar-custom {
+    background-color: #efefef;
+    color:#000000;
+    margin-top: 0px;
+    min-height: 40px;
+    box-shadow: 1px 0px 3px;
+}
+
+
+.navbar .nav a {
+    color: #525252;
+}
+
+.navbar .nav a:hover {
+    background: #ffffff;
+}
+
+
+.custom-margin{
+    margin-bottom: 10px;
+}
+.custom-border{
+    border: 10px;
+}
+.custom-panel{
+    padding: 0px;
+}
+.custom-panel-top{
+    margin-top: 30px;
+}
+.custom-panel-profile{
+    margin-top: 20px;
+}
+.custom-toggle{
+    margin-bottom: 30px;
+}
+
+.custom-icon-pos{
+    margin-top: 5px;
+}
+
+.gauge {
+    height: 250px;
+}
+
+.my-repeat-animation.ng-enter,
+.my-repeat-animation.ng-leave,
+.my-repeat-animation.ng-move {
+    -webkit-transition: 0.5s linear all;
+    transition: 0.5s linear all;
+    position:relative;
+}
+
+.my-repeat-animation.ng-enter {
+    left:-10px;
+    opacity:0;
+}
+.my-repeat-animation.ng-enter.ng-enter-active {
+    left:0;
+    opacity:1;
+}
+
+.my-repeat-animation.ng-leave {
+    left:0;
+    opacity:1;
+}
+.my-repeat-animation.ng-leave.ng-leave-active {
+    left:-10px;
+    opacity:0;
+}
+
+.my-repeat-animation.ng-move {
+    opacity:0.5;
+}
+.my-repeat-animation.ng-move.ng-move-active {
+    opacity:1;
+}
+
+.my-slide-container {
+    position:relative;
+}
+.my-slide-animation.ng-enter, .my-slide-animation.ng-leave {
+    -webkit-transition:0.5s linear all;
+    transition:0.5s linear all;
+
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    height:600px;
+}
+
+.my-slide-animation.ng-enter {
+    z-index:100;
+    top:600px;
+    opacity:0;
+}
+.my-slide-animation.ng-enter.ng-enter-active {
+    top:0;
+    opacity:1;
+}
+
+.my-slide-animation.ng-leave {
+    z-index:101;
+    top:0;
+    opacity:1;
+}
+.my-slide-animation.ng-leave.ng-leave-active {
+    top:-600px;
+    opacity:0;
+}
+
+form[novalidate] input{
+    border-left-width:1px ;
+    border-color: #3498db;
+    border-style: solid;
+}
+
+input[required].ng-pristine{
+    border-color: #e7827c;
+}
+
+input.ng-invalid.ng-dirty{
+    border-color: #e7827c;
+}
+
+input.ng-valid.ng-dirty{
+    border-color: #4dcc99;
+}
+
+.form-actions {
+    margin: 0;
+    background-color: transparent;
+    text-align: center;
+}
+
+.bs-callout {
+    margin: 0px 0;
+    padding: 20px;
+    border-left: 3px solid #eee;
+    color: #666;
+    background: #f9f9f9
+}
+
+.bs-callout h4 {
+    margin-top: 0;
+    margin-bottom: 5px
+}
+
+.bs-callout p:last-child {
+    margin-bottom: 0
+}
+
+.bs-callout-danger {
+    background-color: #fdf7f7;
+    border-color: #eed3d7;
+    color: #b94a48
+}
+
+.bs-callout-warning {
+    background-color: #faf8f0;
+    border-color: #faebcc;
+    color: #8a6d3b
+}
+
+.bs-callout-info {
+    background-color: #f4f8fa;
+    border-color: #bce8f1;
+    color: #34789a
+}
+
+.bs-callout-success {
+    background-color: #dff0d8;
+    border-color: #5cA64d;
+    color: #3c763d
+}
+
+.avatar{
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 999px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+
+
+

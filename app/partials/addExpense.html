@@ -1,0 +1,97 @@
+<navbar></navbar>
+<nav class="navbar navbar-custom" ng-if="personalNav">
+    <div class="navbar-inner ">
+        <ul class="nav nav-justified">
+            <li><a href="#/car/{{car.id}}">Dashboard</a></li>
+            <li><a href="#/car/{{car.id}}/edit">Settings</a></li>
+            <li><a href="#/car/{{car.id}}/fuel">Fuel Entry</a></li>
+            <li><a href="#/car/{{car.id}}/documents">Documents</a></li>
+            <li><a href="#/car/{{car.id}}/service" ng-click="stopInterval()">Expenses</a></li>
+            <li><a href="#/car/{{car.id}}/reminders">Reminders</a></li>
+        </ul>
+    </div>
+</nav>
+<nav class="navbar navbar-custom" ng-if="groupNav">
+    <div class="navbar-inner ">
+        <ul class="nav nav-justified">
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}">Dashboard</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/edit" ng-click="stopInterval()">Settings</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/fuel" ng-click="stopInterval()">Fuel Entry</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/documents">Documents</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/service" ng-click="stopInterval()">Expenses</a></li>
+            <li><a href="#/group/{{group.id}}/car/{{car.id}}/reminders">Reminders</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="col-md-12">
+    <div class="col-md-12">
+        <h1><i class="fa fa-bar-chart-o fa-1x icon-padding"></i>New Expense Entry</h1>
+        <hr>
+    </div>
+    <div class="col-md-8" >
+        <form ng-submit="addExpense()" name="form" novalidate>
+            <div class="well well-lg">
+                <fieldset>
+                    <legend>
+                        <span>Expense entry information</span>
+                    </legend>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <span class="help-block">Enter odometer reading</span>
+                            <input  type="text" class="form-control custom-margin" name="odometer" placeholder="Odometer" ng-model="expenses.odometer" required>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="help-block">Enter type of expense</span>
+                            <input  type="text" class="form-control custom-margin" name="technician" placeholder="Type" ng-model="expenses.expense_type" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="help-block"> Enter cost of expense</span>
+                            <input  type="text" class="form-control custom-margin" name="price" placeholder="Price" ng-model="expenses.price" required>
+                        </div>
+                        <div class="col-md-6">
+                            <span class="help-block"> Enter address  </span>
+                            <input  type="text" class="form-control custom-margin" name="address" placeholder="address" ng-model="expenses.location_attributes.address" required>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <span class="help-block">Enter date</span>
+                            <p class="input-group">
+                                <input placeholder="Date" type="text" class="form-control" datepicker-popup="{{format}}" ng-model="expenses.date" is-open="opened" min="minDate" max="'2015-06-22'" datepicker-options="dateOptions"  ng-required="true" close-text="Close" />
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                            </span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <fieldset>
+                            <legend>
+                                <span>Description</span>
+                            </legend>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <textarea rows="5"  type="text" class="form-control custom-margin" name="description" placeholder="Description" ng-model="expenses.description" required></textarea>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </div>
+                </fieldset>
+            </div>
+            <div class="well">
+                <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4 ">
+        <div class="bs-callout bs-callout-info">
+            <div>
+
+            </div>
+        </div>
+    </div>
+</div>

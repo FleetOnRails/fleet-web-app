@@ -1,0 +1,55 @@
+<navbar></navbar>
+<nav class="navbar navbar-custom">
+    <div class="navbar-inner">
+        <ul class="nav nav-justified">
+            <li><a href="#/main">Home</a></li>
+            <li><a href="#/gps">Vehicles</a></li>
+            <li><a href="#/groups">Groups</a></li>
+            <li><a href="#/vendors">Vendors</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="col-md-12">
+        <h1><i class="fa fa-barcode fa-1x icon-padding"></i>Create new product</h1>
+        <hr>
+    </div>
+    <div class="col-md-6">
+        <form ng-submit="addProduct()" name="form" novalidate>
+            <div class="well well-lg">
+                <fieldset>
+                    <legend>
+                        Group Information
+                    </legend>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="help-block">Enter name for product</span>
+                            <input  type="text" class="form-control custom-margin" name="name" placeholder="Name" ng-model="product.name" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="help-block">Enter price for product</span>
+                            <input  type="text" class="form-control custom-margin" name="price" placeholder="Price" ng-model="product.price" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <span class="help-block">Enter part number</span>
+                            <input  type="text" class="form-control custom-margin" name="part_num" placeholder="Part Number" ng-model="product.part_no" required>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary" ng-disabled="form.$invalid">Create</button>
+                </fieldset>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <div class="bs-callout bs-callout-info">
+            <div>
+                <p>To create a group, type group's name and address</p>
+                <p>Example of address Street/House Number, Street Name, Town/City, County</p>
+            </div>
+        </div>
+    </div>
+</div>
